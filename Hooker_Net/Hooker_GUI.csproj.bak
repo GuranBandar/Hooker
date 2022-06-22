@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FEEB300C-8D37-4651-8AFD-90978F617821}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hooker_GUI</RootNamespace>
+    <AssemblyName>Hooker_Net</AssemblyName>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <StartupObject>Hooker_GUI.MDIFönster</StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <ManifestCertificateThumbprint>AB9D88C64A040B6E20E1112565BB257F7517E945</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Hooker_GUI_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <TargetFrameworkProfile />
+    <PublishUrl>G:\Görans\Program\Hooker_Net_Beta\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>28</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\HookerGemensam\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GemensamService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HookerGemensam\bin\GemensamService.dll</HintPath>
+    </Reference>
+    <Reference Include="Hooker.Affärslager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HookerGemensam\bin\Hooker.Affärslager.dll</HintPath>
+    </Reference>
+    <Reference Include="Hooker.Affärsobjekt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HookerGemensam\bin\Hooker.Affärsobjekt.dll</HintPath>
+    </Reference>
+    <Reference Include="Hooker.Datalager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HookerGemensam\bin\Hooker.Datalager.dll</HintPath>
+    </Reference>
+    <Reference Include="Hooker.Dataset, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HookerGemensam\bin\Hooker.Dataset.dll</HintPath>
+    </Reference>
+    <Reference Include="Hooker.Gemensam, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HookerGemensam\bin\Hooker.Gemensam.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BanaInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BanaInfo.Designer.cs">
+      <DependentUpon>BanaInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BanaInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseQuery.designer.cs">
+      <DependentUpon>DatabaseQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GolfklubbInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GolfklubbInfo.Designer.cs">
+      <DependentUpon>GolfklubbInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GolfklubbInto_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inloggning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inloggning.Designer.cs">
+      <DependentUpon>Inloggning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KoderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KoderInfo.Designer.cs">
+      <DependentUpon>KoderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KoderInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kontroller\RundaNotering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kontroller\RundaNotering.Designer.cs">
+      <DependentUpon>RundaNotering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIFönster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIFönster.Designer.cs">
+      <DependentUpon>MDIFönster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Om.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedovisningInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedovisningInfo.Designer.cs">
+      <DependentUpon>RedovisningInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedovisningInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RundaInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RundaInfo.Designer.cs">
+      <DependentUpon>RundaInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RundaInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendMail.Designer.cs">
+      <DependentUpon>SendMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpelareInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpelareInfo.Designer.cs">
+      <DependentUpon>SpelareInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpelareInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\EGALista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\EGALista.Designer.cs">
+      <DependentUpon>EGALista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HcplistaGraf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HcplistaGraf.Designer.cs">
+      <DependentUpon>HcplistaGraf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\HcplistaSpelare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\HcplistaSpelare.Designer.cs">
+      <DependentUpon>HcplistaSpelare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemvariablerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemvariablerInfo.Designer.cs">
+      <DependentUpon>SystemvariablerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemvariablerInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökAnvändare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökAnvändare.Designer.cs">
+      <DependentUpon>SökAnvändare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SökAnvändare_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökBana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökBana.Designer.cs">
+      <DependentUpon>SökBana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SökKoder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökKoder.Designer.cs">
+      <DependentUpon>SökKoder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SökRedovisning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökRedovisning.Designer.cs">
+      <DependentUpon>SökRedovisning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SökRunda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökRunda.Designer.cs">
+      <DependentUpon>SökRunda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SökSpelare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökSpelare.Designer.cs">
+      <DependentUpon>SökSpelare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SökTävling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SökTävling.Designer.cs">
+      <DependentUpon>SökTävling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table.cs" />
+    <Compile Include="Tavling\AllaBett.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\AllaBett.Designer.cs">
+      <DependentUpon>AllaBett.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\AndelPuttGraf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\AndelPuttGraf.Designer.cs">
+      <DependentUpon>AndelPuttGraf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnvandareInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnvandareInfo.Designer.cs">
+      <DependentUpon>AnvandareInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnvändarInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App_GlobalResources\Ordlista.Designer.cs">
+      <DependentUpon>Ordlista.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Statistik\BanaAnalys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\BanaAnalys.Designer.cs">
+      <DependentUpon>BanaAnalys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\Deltagarlista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Deltagarlista.Designer.cs">
+      <DependentUpon>Deltagarlista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\EkonomiAnalys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\EkonomiAnalys.Designer.cs">
+      <DependentUpon>EkonomiAnalys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\KlassInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\R2AInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\R2AInfo.Designer.cs">
+      <DependentUpon>R2AInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\FormkurvaGraf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\FormkurvaGraf.Designer.cs">
+      <DependentUpon>FormkurvaGraf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\Gruppanalys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\Gruppanalys.Designer.cs">
+      <DependentUpon>Gruppanalys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\KlassInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\KlassInfo.Designer.cs">
+      <DependentUpon>KlassInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\ComboBoxPar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Kontroller\FormBas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kontroller\FormBas.Designer.cs">
+      <DependentUpon>FormBas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\Fönsterhanterare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\Fönsterhanterare.Designer.cs">
+      <DependentUpon>Fönsterhanterare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\KontrollBas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\KontrollBas.Designer.cs">
+      <DependentUpon>KontrollBas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\MenyKontroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\MenyKontroll.Designer.cs">
+      <DependentUpon>MenyKontroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\RondResultatSpelare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\RondResultatSpelare.Designer.cs">
+      <DependentUpon>RondResultatSpelare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\StatistikHuvudKontroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\StatistikHuvudKontroll.Designer.cs">
+      <DependentUpon>StatistikHuvudKontroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\Tangentkontroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\Tangentkontroll.Designer.cs">
+      <DependentUpon>Tangentkontroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\TavlingAnmalanKontroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\TavlingAnmalanKontroll.Designer.cs">
+      <DependentUpon>TavlingAnmalanKontroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\TavlingKlassKontroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Kontroller\TavlingKlassKontroll.Designer.cs">
+      <DependentUpon>TavlingKlassKontroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\Timglas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Nassau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Nassau.Designer.cs">
+      <DependentUpon>Nassau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\Puttstatistik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\Puttstatistik.Designer.cs">
+      <DependentUpon>Puttstatistik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\Resultatlista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Resultatlista.Designer.cs">
+      <DependentUpon>Resultatlista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\Rondresultat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Rondresultat.Designer.cs">
+      <DependentUpon>Rondresultat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\Rondanalys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\Rondanalys.Designer.cs">
+      <DependentUpon>Rondanalys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistik\Rondgraf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistik\Rondgraf.Designer.cs">
+      <DependentUpon>Rondgraf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\Rondresultat_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Startlista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\Startlista.Designer.cs">
+      <DependentUpon>Startlista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontroller\Knappkontoller.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tavling\TävlingInfo_Eventhandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="BanaInfo.resx">
+      <DependentUpon>BanaInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseQuery.resx">
+      <DependentUpon>DatabaseQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GolfklubbInfo.resx">
+      <DependentUpon>GolfklubbInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inloggning.resx">
+      <DependentUpon>Inloggning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KoderInfo.resx">
+      <DependentUpon>KoderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\RundaNotering.resx">
+      <DependentUpon>RundaNotering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIFönster.resx">
+      <DependentUpon>MDIFönster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Om.resx">
+      <DependentUpon>Om.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedovisningInfo.resx">
+      <DependentUpon>RedovisningInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RundaInfo.resx">
+      <DependentUpon>RundaInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendMail.resx">
+      <DependentUpon>SendMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpelareInfo.resx">
+      <DependentUpon>SpelareInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\EGALista.resx">
+      <DependentUpon>EGALista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HcplistaGraf.resx">
+      <DependentUpon>HcplistaGraf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\HcplistaSpelare.resx">
+      <DependentUpon>HcplistaSpelare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemvariablerInfo.resx">
+      <DependentUpon>SystemvariablerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökAnvändare.resx">
+      <DependentUpon>SökAnvändare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökBana.resx">
+      <DependentUpon>SökBana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökKoder.resx">
+      <DependentUpon>SökKoder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökRedovisning.resx">
+      <DependentUpon>SökRedovisning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökRunda.resx">
+      <DependentUpon>SökRunda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökSpelare.resx">
+      <DependentUpon>SökSpelare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SökTävling.resx">
+      <DependentUpon>SökTävling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\AllaBett.resx">
+      <DependentUpon>AllaBett.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\AndelPuttGraf.resx">
+      <DependentUpon>AndelPuttGraf.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnvandareInfo.resx">
+      <DependentUpon>AnvandareInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\BanaAnalys.resx">
+      <DependentUpon>BanaAnalys.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\Deltagarlista.resx">
+      <DependentUpon>Deltagarlista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\EkonomiAnalys.resx">
+      <DependentUpon>EkonomiAnalys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\R2AInfo.resx">
+      <DependentUpon>R2AInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\FormkurvaGraf.resx">
+      <DependentUpon>FormkurvaGraf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\Gruppanalys.resx">
+      <DependentUpon>Gruppanalys.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\KlassInfo.resx">
+      <DependentUpon>KlassInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\FormBas.resx">
+      <DependentUpon>FormBas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\MenyKontroll.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MenyKontroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\RondResultatSpelare.resx">
+      <DependentUpon>RondResultatSpelare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\StatistikHuvudKontroll.resx">
+      <DependentUpon>StatistikHuvudKontroll.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\Tangentkontroll.resx">
+      <DependentUpon>Tangentkontroll.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\TavlingAnmalanKontroll.resx">
+      <DependentUpon>TavlingAnmalanKontroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\TavlingKlassKontroll.resx">
+      <DependentUpon>TavlingKlassKontroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\Nassau.resx">
+      <DependentUpon>Nassau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\Puttstatistik.resx">
+      <DependentUpon>Puttstatistik.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\Resultatlista.resx">
+      <DependentUpon>Resultatlista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\Rondresultat.resx">
+      <DependentUpon>Rondresultat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\Rondanalys.resx">
+      <DependentUpon>Rondanalys.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistik\Rondgraf.resx">
+      <DependentUpon>Rondgraf.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\Startlista.resx">
+      <DependentUpon>Startlista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kontroller\Knappkontoller.resx">
+      <DependentUpon>Knappkontoller.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\TrofeInfo.resx">
+      <DependentUpon>TrofeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tavling\TävlingInfo.resx">
+      <DependentUpon>TävlingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_GlobalResources\Ordlista.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ordlista.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Tavling\TrofeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\TrofeInfo.Designer.cs">
+      <DependentUpon>TrofeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tavling\TävlingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tavling\TävlingInfo.Designer.cs">
+      <DependentUpon>TävlingInfo.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Augusta National.jpg" />
+    <Content Include="Resources\Golf Cart Filled.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Golf Cart UnFilled.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Golfer big.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Golfer colored.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Scottish golfer.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\DSCN2815.JPG" />
+    <None Include="Resources\DSCN3012.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

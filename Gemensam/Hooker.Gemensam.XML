@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hooker.Gemensam</name>
+    </assembly>
+    <members>
+        <member name="T:Hooker.Gemensam.EGAPrognos">
+            <summary>
+            Beräknar EGA Hcp Prognos
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.EGAPrognos.SpelarID">
+            <summary>
+            SpelarID
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.EGAPrognos.HcpResultat">
+            <summary>
+            Prognosticerat HCP
+            </summary>
+        </member>
+        <member name="M:Hooker.Gemensam.EGAPrognos.UtförHcpPrognos">
+            <summary>
+            Beräknar EGA hcp prognos
+            </summary>
+            <returns>EGA prognos</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.EGAPrognos.TopDataRow(System.Data.DataTable)">
+            <summary>
+            Sorterar listan på poäng i fallande ordning, men bara Hcpronder
+            </summary>
+            <param name="dt">DataTable som ska sorteras</param>
+            <returns>Sorterad DataTable</returns>
+        </member>
+        <member name="T:Hooker.Gemensam.EGAPrognos.EightRounds">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.EGAPrognos.EightRounds.RundaNr">
+            <summary>
+            RundaNe
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.EGAPrognos.EightRounds.Poäng">
+            <summary>
+            Poäng på rundan
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.EGAPrognos.EightRounds.Hcp">
+            <summary>
+            Beräknat Hcp för rundan
+            </summary>
+        </member>
+        <member name="T:Hooker.Gemensam.Kodtabell">
+            <summary>
+            Kodtabell
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Alla_koder">
+            <summary>
+            Alla_Koder
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Distrikt">
+            <summary>
+            Distrikt
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Kön">
+            <summary>
+            Kön
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Golfklubbar">
+            <summary>
+            Golfklubbar
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Land">
+            <summary>
+            Land
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Tee">
+            <summary>
+            Tee
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Max_och_min">
+            <summary>
+            Max_och_min
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Medlemskategori">
+            <summary>
+            Medlemskategori
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Medlemstyp">
+            <summary>
+            Medlemstyp
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Handicapklasser">
+            <summary>
+            Handicapklasser
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Redovisningstyper">
+            <summary>
+            Redovisningstyper
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Spelformer">
+            <summary>
+            Tävlingsformer
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Tävlingsstatus">
+            <summary>
+            Tävlingsstatus
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Spelsätt">
+            <summary>
+            Spelsätt
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Speltyper">
+            <summary>
+            Speltyper
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.ÖppenFör">
+            <summary>
+            ÖppenFör
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.PrincipForOveranmalan">
+            <summary>
+            PrincipForOveranmalan
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Tävlingsklasser">
+            <summary>
+            Tävlingsklasser
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Klasstyp">
+            <summary>
+            Klasstyp
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Rondstatus">
+            <summary>
+            Rondstatus
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Buffertzon">
+            <summary>
+            Buffertzoner
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Hcpjustering">
+            <summary>
+            Hcpjustering
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Anvandargrupper">
+            <summary>
+            Användargrupper
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.WebBrowsers">
+            <summary>
+            WebBrowser
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Kodtabell.Sprakkod">
+            <summary>
+            Språkkod
+            </summary>
+        </member>
+        <member name="T:Hooker.Gemensam.DataTyp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Binary">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Bool">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Byte">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Char">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.DateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Decimal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Int">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Longblob">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.NChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.NVarChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.SmallDateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.String">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.Time">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.TimeStamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.DataTyp.VarChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Hooker.Gemensam.ProcessAccessFlags">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Hooker.Gemensam.Functions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Functions.ToBool">
+            <summary>
+            To Bool
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Functions.ToStr">
+            <summary>
+            To string
+            </summary>
+        </member>
+        <member name="F:Hooker.Gemensam.Functions.ToInt">
+            <summary>
+            To int
+            </summary>
+        </member>
+        <member name="T:Hooker.Gemensam.HookerException">
+            <summary>
+            Summary description for HookerException.
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.HookerException.FelKod">
+            <summary>
+            Egenskapen FelKod
+            </summary>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerException.#ctor">
+            <summary>
+            Defaultkonstruktor
+            </summary>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerException.#ctor(GemensamService.FelKod)">
+            <summary>
+            Konstruktor att användas av bla subklasser.
+            </summary>
+            <param name="felkod">Felkod</param>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerException.#ctor(System.Exception)">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="ex">Inner exception</param>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerException.#ctor(GemensamService.FelKod,System.Exception)">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="ex">Inner exception</param>
+            <param name="felkod">Felkod</param>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Konstruktor med fler överlagrade parametrar
+            </summary>
+            <param name="meddelande">Meddelande</param>
+            <param name="ex">Inner Exception</param>
+        </member>
+        <member name="T:Hooker.Gemensam.HookerExtensions">
+            <summary>
+            Class for all Extension methods
+            </summary>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.DatumMinValue">
+            <summary>
+            DateTime är inte en nullable typ, därför sätter jag minimum vad sql:en gillar
+            </summary>
+            <returns>DateTime min value</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.BytUtPunkt(System.String)">
+            <summary>
+            Ersätter elaka kommatecken i decimaltal med punkt, databasen vill ha det så.
+            </summary>
+            <param name="text">talet, på vilket punkten ska ersättas med kommatecken</param>
+            <returns>talet, i strängformat, med punkten utbytt mot kommatecken</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.BytUtKomma(System.String)">
+            <summary>
+            Ersätter elaka kommatecken i decimaltal med punkt, databasen vill ha det så.
+            </summary>
+            <param name="text">talet, på vilket punkten ska ersättas med kommatecken</param>
+            <returns>talet, i strängformat, med punkten utbytt mot kommatecken</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.ÄrEnInt(System.String)">
+            <summary>
+            Metoden kontrollerar om inparametern är av typen int
+            </summary>
+            <param name="indata">Indata som ska kontrolleras</param>
+            <returns>True om OK, annars false</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.ÄrEnIckeNegativDecimal(System.String)">
+            <summary>
+            Metoden kontrollerar om inparametern är en icke-negativ decimal
+            </summary>
+            <param name="indata">Indata som ska kontrolleras</param>
+            <returns>True om OK, annars false</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.ÄrEnDecimal(System.String)">
+            <summary>
+            Metoden kontrollerar om inparametern är en decimal
+            </summary>
+            <param name="indata">Indata som ska kontrolleras</param>
+            <returns>True om OK, annars false</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.ÄrEttOKDatum(System.String)">
+            <summary>
+            Metoden kontrollerar om inparametern är ett OK-datum
+            </summary>
+            <param name="indata">Indata som ska kontrolleras</param>
+            <returns>True om OK, annars false</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.EnumToInt(System.Enum)">
+            <summary>
+            Konverterar en Enum till en int
+            </summary>
+            <param name="enumValue">Enumen som ska konverteras</param>
+            <returns>En int</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.ConvertToTimeSpan(System.String)">
+            <summary>
+            Konverterar en sträng till en TimeSpan
+            </summary>
+            <param name="timeString">Sträng som ska konverteras</param>
+            <returns>En TimeSpan</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.SättFärg(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sätt blå färg om sämre än par, röd om bättre än par annars svart
+            </summary>
+            <param name="antalSlag">Antal slag</param>
+            <param name="par">Hålets par</param>
+            <param name="slag">True om slag annars poäng</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.FindMatchingRow(System.Int32,System.Windows.Forms.DataGridView,System.String)">
+            <summary>
+            Hitta matchande RundNr för aktuell rad
+            </summary>
+            <param name="rowIndex">radindex</param>
+            <param name="dgv"></param>
+            <param name="searchValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.Formatera(System.String,System.Decimal)">
+            <summary>
+            Formaterar tal för presentation, typen styr hur. Följande typer finns:
+            
+                N   (Nollutfyllnad ett tecken)
+                N4  (Nollutfyllnad fyra tecken)   
+                ND1 (Nollutfyllnad med en decimal)
+                ND2 (Nollutfylld och tusenseparerad)
+                NT  (Nollutfyllnad ett tecken)
+                D   (Ingen nollutfyllnad)
+                DD2 (Ingen nollutfyllnad och två decimaler)
+                T   (Tusenseparerad utan komma)
+                TK  (Tusenseparerad med komma)
+                P1  (Procent med en decimal)
+            </summary>
+            <param name="typ">Typ av formatering</param>
+            <param name="tal">Talet som ska formateras</param>
+            <returns>Formaterat tal returneras</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.Formatera(System.String,System.DateTime)">
+            <summary>
+            Formaterar datum för presentation, typen styr hur. Följande typer finns:
+            
+                STD (Standard YYYY-MM-DD)   
+                SDS (Short Date String)
+                LDS (Long Date tring)
+            </summary>
+            <param name="typ">Typ av formatering</param>
+            <param name="datum">Datumet som ska formateras</param>
+            <returns>Formaterat tal returneras</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.GetText(System.Data.DataRow,System.String)">
+            <summary>
+            Byta ut elaka nullvärden mot blankt
+            </summary>
+            <param name="row"></param>
+            <param name="columnName"></param>
+            <returns>string, blanke eller värde</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.Rank``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,System.Int32,``2})">
+            <summary>
+            Kolla ranking
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="U"></typeparam>
+            <param name="source"></param>
+            <param name="keySelector"></param>
+            <param name="selector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.IsWithin(System.Int32,System.Decimal,System.Decimal)">
+            <summary>
+            Kolla om värde är mellan eller lika med min och max
+            </summary>
+            <param name="value"></param>
+            <param name="minimum"></param>
+            <param name="maximum"></param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.CheckForErrors(System.String,System.Data.DataSet)">
+            <summary>
+            Checkar vid fel i dataset
+            </summary>
+            <param name="message"></param>
+            <param name="ds"></param>
+            <returns>message</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.LastN``1(System.Collections.Generic.IList{``0},System.Int32)">
+            <summary>
+            Hämta N senaste i en Objektlista
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="n"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.PrintRowErrs(System.Data.DataSet)">
+            <summary>
+            Om fel i någon rad i datasetet
+            </summary>
+            <param name="dataSet"></param>
+            <returns>Felmeddelande</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.IsInDesignMode(System.Windows.Forms.Control)">
+            <summary>
+            Extension method to return if the control is in design mode
+            </summary>
+            <param name="control">Control to examine</param>
+            <returns>True if in design mode, otherwise false</returns>
+        </member>
+        <member name="M:Hooker.Gemensam.HookerExtensions.ResolveDesignMode(System.Windows.Forms.Control)">
+            <summary>
+            Method to test if the control or it's parent is in design mode
+            </summary>
+            <param name="control">Control to examine</param>
+            <returns>True if in design mode, otherwise false</returns>
+        </member>
+        <member name="T:Hooker.Gemensam.Mail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Hooker.Gemensam.Mail.#ctor">
+            <summary>
+            Konstruktor
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.Mail.MailFrom">
+            <summary>
+            Mail from address
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.Mail.Password">
+            <summary>
+            Mail from address
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.Mail.MailTo">
+            <summary>
+            Mail to address
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.Mail.Subject">
+            <summary>
+            Mail subject
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.Mail.Body">
+            <summary>
+            Mail body
+            </summary>
+        </member>
+        <member name="P:Hooker.Gemensam.Mail.IsHTML">
+            <summary>
+            Is HTML
+            </summary>
+        </member>
+        <member name="M:Hooker.Gemensam.Mail.SendMail">
+            <summary>
+            Send mail
+            </summary>
+        </member>
+        <member name="T:ProcessFileNameFinderClass">
+            <summary>
+            Hjälpklass för att veta vilka processer som är startade
+            </summary>
+        </member>
+        <member name="M:ProcessFileNameFinderClass.GetAllRunningProcessFilePaths">
+            <summary>
+            Lista alla öppna processer
+            </summary>
+            <returns>Alla öppna processer</returns>
+        </member>
+        <member name="M:ProcessFileNameFinderClass.GetProcessExecutablePath(System.Diagnostics.Process)">
+            <summary>
+            Get executable path of running process
+            </summary>
+            <param name="Process"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProcessFileNameFinderClass.GetExecutablePathAboveXP(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ProcessId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

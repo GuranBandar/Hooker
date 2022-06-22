@@ -1,0 +1,1294 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hooker.Affärslager</name>
+    </assembly>
+    <members>
+        <member name="T:Hooker.Affärslager.AnvandareAktivitet">
+            <summary>
+            Klass för Användare
+            
+            Innehåller alla metoder för klassen Användares verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.AnvandareAktivitet.LoggaIn(System.String,System.String)">
+            <summary>
+            Metoden anropas vid inloggning
+            </summary>
+            <param name="anvandarnamn">Användarnamn som ska kontrolleras</param>
+            <param name="losenord">Lösenord som ska kontrolleras</param>
+            <returns>Spelarens ID vid en lyckad inloggning</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.AnvandareAktivitet.Spara(Hooker.Affärsobjekt.Anvandare,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i Anvandare i databasen 
+            </summary>
+            <param name="anvandare">Aktuell användare</param>
+            <param name="nySpelare">Ny spelare, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.AnvandareAktivitet.TaBort(Hooker.Affärsobjekt.Anvandare,System.String@,System.String@)">
+            <summary>
+            Ta bort Användare i databasen 
+            </summary>
+            <param name="spelare">Aktuell spelare</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.AnvandareAktivitet.InloggningOK(System.Int32,System.DateTime,System.String@,System.String@)">
+            <summary>
+            Datum för senaste inloggning uppdateras
+            </summary>
+            <param name="inloggadDatum">Inloggningsdatum</param>
+        </member>
+        <member name="T:Hooker.Affärslager.BanaAktivitet">
+            <summary>
+                Affärslagerklass för Bana
+            
+                Innehåller alla metoder för klassen Banas verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaBana(System.Int32)">
+            <summary>
+            Hämtar rad från tabellen Bana i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="banaNR">Aktuell Bana</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaBana(System.String)">
+            <summary>
+                Hämtar rad/-er från tabellen Bana i aktuell databas med angiven grupp.
+            </summary>
+            <param name="namn">Aktuell namn</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaAktuellaBanorMedGolfklubbNr(System.Int32)">
+            <summary>
+            Hämtar rad/-er från tabellen Bana i aktuell databas med angivet GolfklubbNr.
+            </summary>
+            <param name="namn">Aktuellt GolfklubbNr</param>
+            <returns>Lista med Banaobjekt med efterfrågade banor</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaBanaMedGolfklubbNr(System.Int32)">
+            <summary>
+            Hämtar rad/-er från tabellen Bana i aktuell databas med angivet GolfklubbNr.
+            </summary>
+            <param name="namn">Aktuellt GolfklubbNr</param>
+            <returns>Lista med Banaobjekt med efterfrågade banor</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaBanorMedGolfklubbNr(System.Int32)">
+            <summary>
+            Hämtar rad/-er från tabellen Bana i aktuell databas med angivet GolfklubbNr.
+            </summary>
+            <param name="namn">Aktuellt GolfklubbNr</param>
+            <returns>Lista med Banaobjekt med efterfrågade banor</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaMaxBanNr">
+            <summary>
+                Hämtar högsta nummer för Bana
+            </summary>
+            <returns>Dataset med kolumn för högsta nr i Bana</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.SökBana(System.String,System.String,System.String,System.String)">
+            <summary>
+                Söker rad/-er från tabellen Bana i aktuell databas med angivet sökvillkor.
+            </summary>
+            <param name="namn">Aktuell namn</param>
+            <param name="ort">Ev ort i sökningen</param>
+            <param name="land">Ev Landkod i sökningen</param>
+            <param name="distrikt">Ev Distriktkod i sökningen</param>
+            <returns>Banaobjekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.HämtaBanaBanaHal(System.Int32)">
+            <summary>
+                Hämta Bana och banans alla BanaHal för angivet banaNr.
+            </summary>
+            <param name="banaNr">Banans nr</param>
+            <returns>Ett sammansatt typat dataset med aktuell information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.Spara(Hooker.Affärsobjekt.Bana,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Sparar alla förändringar i Bana i databasen 
+            </summary>
+            <param name="bana">Aktuell bana</param>
+            <param name="nyBana">Ny bana, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.TaBort(Hooker.Affärsobjekt.Bana,System.String@,System.String@)">
+            <summary>
+                Ta bort Bana i databasen 
+            </summary>
+            <param name="bana">Aktuell bana</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaAktivitet.Kolla(Hooker.Affärsobjekt.Bana,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="bana">Banaobjekt med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.BanaHalAktivitet">
+            <summary>
+            Klass för BanaHal
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.BanaHalAktivitet.Kolla(Hooker.Affärsobjekt.Bana,System.String@,System.String@)">
+            <summary>
+            Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="bana">Objekt med informationen som ska kollas</param>
+            <param name="felID">Felmeddelande i Orslistan som ska visas</param>
+            <param name="felmeddelande">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.CursorsAktivitet.Hämta">
+            <summary>
+            Hämta från databasen
+            </summary>
+            <returns>Systemvariabler objektet</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.CursorsAktivitet.Hämta(System.Int32)">
+            <summary>
+            Hämta aktuell Cursor från databasen
+            </summary>
+            <returns>Cursor objektet</returns>
+        </member>
+        <member name="T:Hooker.Affärslager.ExecuteQueryAktivitet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.ExecuteQueryAktivitet.ExecuteQuery(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hooker.Affärslager.GolfklubbAktivitet">
+            <summary>
+            Affärslagerklass för Golfklubb
+            
+            Innehåller alla metoder för klassen Golfklubbs verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.GolfklubbAktivitet.HämtaGolfklubb(System.Int32)">
+            <summary>
+            Hämtar rad från tabellen Golfklubb i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="golfklubbNR">Aktuell Golfklubb</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.GolfklubbAktivitet.HämtaGolfklubb(System.String)">
+            <summary>
+            Hämtar rad/-er från tabellen Golfklubb i aktuell databas med angiven grupp.
+            </summary>
+            <param name="namn">Aktuell namn</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.GolfklubbAktivitet.SökGolfklubb(System.String,System.String,System.String,System.String)">
+            <summary>
+            Söker rad/-er från tabellen Golfklubb i aktuell databas med angivet sökvillkor.
+            </summary>
+            <param name="namn">Aktuell namn</param>
+            <param name="ort">Ev ort i sökningen</param>
+            <param name="land">Ev Landkod i sökningen</param>
+            <param name="distrikt">Ev Distriktkod i sökningen</param>
+            <returns>Golfklubbobjekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.GolfklubbAktivitet.Spara(Hooker.Affärsobjekt.Golfklubb,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Sparar alla förändringar i Golfklubb i databasen 
+            </summary>
+            <param name="Golfklubb">Aktuell Golfklubb</param>
+            <param name="nyGolfklubb">Ny Golfklubb, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.GolfklubbAktivitet.TaBort(Hooker.Affärsobjekt.Golfklubb,System.String@,System.String@)">
+            <summary>
+                Ta bort Golfklubb i databasen 
+            </summary>
+            <param name="Golfklubb">Aktuell Golfklubb</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.GolfklubbAktivitet.Kolla(Hooker.Affärsobjekt.Golfklubb,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="Golfklubb">Golfklubbobjekt med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.HcplistaAktivitet">
+            <summary>
+            Affärslagerklass för Hcplista
+            
+            Innehåller alla metoder för klassen Hcplista verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.HcplistaAktivitet.HämtaHcplista(System.Int32)">
+            <summary>
+            Hämtar rad/-er från tabellen Hcplista i aktuell databas med angivet spelarID.
+            </summary>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <returns>Hcplistaobjekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.HcplistaAktivitet.HämtaHcplista(System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Hämtar rad/-er från tabellen Hcplista i aktuell databas med angivet spelarID.
+            </summary>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Aktuellt from datum</param>
+            <param name="tomDatum">Aktuellt tom datum</param>
+            <returns>Hcplistaobjekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.HcplistaAktivitet.Spara(Hooker.Affärsobjekt.Hcplista,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i Hcplista i databasen 
+            </summary>
+            <param name="Hcplista">Aktuell Hcplista</param>
+            <param name="nyHcplista">Ny Hcplista, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.HcplistaAktivitet.TaBort(Hooker.Affärsobjekt.Hcplista,System.String@,System.String@)">
+            <summary>
+            Ta bort Hcplista i databasen 
+            </summary>
+            <param name="Hcplista">Aktuell Hcplista</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.KoderAktivitet">
+            <summary>
+            Affärsklass för Koder
+            
+            Innehåller alla metoder för klassen Koders verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.SökKoder(System.String,System.String)">
+            <summary>
+                Skapar söksträng för sök i databasen, anropar sök och sätter värden för
+                aktuella Koder i klassen.
+            </summary>
+            <param name="typ">Del av nyckel till Koder som ska hämtas</param>
+            <param name="argument">Del av nyckel till Koder som ska hämtas</param>
+            <returns>Typat dataset med Koder</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.SökKoder(System.Int32,System.String)">
+            <summary>
+                Skapar söksträng för sök i databasen, anropar sök och sätter värden för
+                aktuella Koder i klassen.
+            </summary>
+            <param name="kod">Del av nyckel till Koder som ska hämtas</param>
+            <param name="argument">Del av nyckel till Koder som ska hämtas</param>
+            <returns>Typat dataset med Koder</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.SökKoder(System.Int32,System.String,System.String)">
+            <summary>
+                Skapar söksträng för sök i databasen, anropar sök och sätter värden för
+                aktuella Koder i klassen.
+            </summary>
+            <param name="typ">Del av nyckel till Koder som ska hämtas</param>
+            <param name="argument">Del av nyckel till Koder som ska hämtas</param>
+            <param name="sortering">Ev kolumn resultatet ska sorteras på</param>
+            <returns>Dataset med Koder</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.HämtaKoder(System.String,System.String)">
+            <summary>
+                Hämtar koder för angiven Typ och Argument
+            </summary>
+            <param name="typ">Del av nyckel</param>
+            <param name="argument">Del av nyckel</param>
+            <returns>Typat dataset med önskade uppgifter</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.HämtaKoder(System.Int32,System.String)">
+            <summary>
+                Hämtar koder för angiven Typ och Argument
+            </summary>
+            <param name="typ">Del av nyckel</param>
+            <param name="argument">Del av nyckel</param>
+            <returns>Typat dataset med önskade uppgifter</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.HämtaMaxArgument(System.Int32,System.String)">
+            <summary>
+                Hämtar max Argument för angiven typ
+            </summary>
+            <param name="typ">Typ</param>
+            <param name="argument">Argument</param>
+            <returns>Dataset med Max Argument</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.Spara(Hooker.Affärsobjekt.Koder,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Sparar Koder
+            </summary>
+            <param name="koder">Objekt med Koder som ska sparas</param>
+            <param name="nyKod">Ny kod, true eller false </param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.TaBort(Hooker.Affärsobjekt.Koder,System.String@,System.String@)">
+            <summary>
+            Ta bort Koder i databasen 
+            </summary>
+            <param name="koder">Aktuell kod</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.KoderAktivitet.Kolla(Hooker.Affärsobjekt.Koder,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="koder">Object med informationen som ska kollas</param>
+            <param name="nyKod">Ny kod, true eller false </param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="feltext">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.OrdlistaAktivitet">
+            <summary>
+            Klass för OrdlistaAktivitet
+            
+            Innehåller alla metoder för klassen OrdlistaAktivitets verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.OrdlistaAktivitet.HämtaOrdlista(System.String,System.String,System.String)">
+            <summary>
+            Hämtar rad från tabellen Ordlista i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="grupp">Aktuell grupp</param>
+            <param name="text">Aktuell text</param>
+            <param name="sprakkod">Språkkod</param>
+            <returns>Objektlista Ordlista med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.OrdlistaAktivitet.HämtaOrdlista(System.String,System.String)">
+            <summary>
+            Hämtar grupprad från tabellen Ordlista i aktuell databas med angiven grupp.
+            </summary>
+            <param name="grupp">Aktuell grupp</param>
+            <returns>Objektlista Ordlista med efterfrågat data</returns>
+        </member>
+        <member name="T:Hooker.Affärslager.SystemvariablerAktivitet">
+            <summary>
+            Klass för Systemvariabler
+            
+            Innehåller alla metoder för klassen Systemvariabler verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.SystemvariablerAktivitet.Hämta">
+            <summary>
+            Hämta från databasen
+            </summary>
+            <returns>Systemvariabler objektet</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SystemvariablerAktivitet.Spara(Hooker.Affärsobjekt.Systemvariabler,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i Systemvariabler i databasen 
+            </summary>
+            <param name="anvandare">Aktuell användare</param>
+            <param name="nySpelare">Ny spelare, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.TavlingAktivitet">
+            <summary>
+            Affärslagerklass för Tävling
+            
+            Innehåller alla metoder för klassen Tavlingss verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.HämtaTavling(System.Int32)">
+            <summary>
+            Hämtar rad från tabellen Tavling i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="tavlingID">Aktuell Tavling</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.HämtaTavlingTavlingKlass(System.Int32)">
+            <summary>
+            Hämtar rad från tabellen Tavling i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="tavlingID">Aktuell Tavling</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.HämtaAllaTavlingar(System.DateTime,System.DateTime)">
+            <summary>
+            Hämtar alla tävlingar för aktuell period.
+            </summary>
+            <param name="fromDatum">From datum</param>
+            <param name="tomDatum">Tom datum</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.HämtaAllaStartadeEllerKlaraTavlingar(System.DateTime,System.DateTime)">
+            <summary>
+            Hämtar alla tävlingar för aktuell period.
+            </summary>
+            <param name="fromDatum">From datum</param>
+            <param name="tomDatum">Tom datum</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.HämtaTavlingAllt(System.Int32)">
+            <summary>
+            Hämtar alla tävlingsposter för Tavling i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="tavlingID">Aktuell Tavling</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.SökTavling(System.String,System.String,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Hämtar rad/-er från tabellen Tavling i aktuell databas med angivet tavlingNamn.
+            </summary>
+            <param name="tavlingNamn">Aktuell tavlingNamn</param>
+            <param name="spelsatt">Spelsätt</param>
+            <param name="speltyp">Speltyp</param>
+            <param name="fromDatum">From datum</param>
+            <param name="tomDatum">Tom datum</param>
+            <returns>Objektlista med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.KollaAntaletAnmälda(System.Int32)">
+            <summary>
+            Kolla hur många anmälda som finns registrerad på aktuell tävling
+            </summary>
+            <param name="tavlingID">Aktuellt tavlingID</param>
+            <returns>Antalet registrerade spelare på tävlingen</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.Spara(Hooker.Affärsobjekt.Tavling,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Sparar alla förändringar i Tavling i databasen 
+            </summary>
+            <param name="tavling">Aktuell Tavling</param>
+            <param name="nyTavling">Ny Tavling, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.TaBort(Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+            Ta bort Tavling i databasen 
+            </summary>
+            <param name="tavling">Aktuell Tavling</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingAktivitet.Kolla(Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="tavling">Tavling med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.TavlingDeltagareAktivitet">
+            <summary>
+            Affärslagerklass för TävlingDeltagare
+            
+            Innehåller alla metoder för klassen TavlingDeltagares verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingDeltagareAktivitet.HämtaDeltagarlista(System.Int32)">
+            <summary>
+            Hämta Deltagarlistan för aktuell tävling
+            </summary>
+            <param name="tavlingID">Aktuellt TavlingID</param>
+            <returns>Otypat dataset med aktuell information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingDeltagareAktivitet.HämtaDeltagareFörTavlingRond(System.Int32,System.Int32)">
+            <summary>
+            Hämtar spelare för tävlingsrond.
+            </summary>
+            <param name="tavlingID">Aktuellt tavlingID</param>
+            <param name="rondID">Akteullt rondID</param>
+            <returns>Objektlista med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingDeltagareAktivitet.HämtaDeltagareFörTavling(System.Int32)">
+            <summary>
+            Hämtar spelare för tävling.
+            </summary>
+            <param name="tavlingID">Aktuellt tavlingID</param>
+            <returns>Objektlista med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingDeltagareAktivitet.TaBort(System.Int32,Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+            Ta bort TavlingDeltagare i databasen 
+            </summary>
+            <param name="spelarID">Aktuell Spelare</param>
+            <param name="tavling">Tavlingobjekt</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingDeltagareAktivitet.Spara(Hooker.Affärsobjekt.TavlingDeltagare,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i TavlingDeltagare i databasen 
+            </summary>
+            <param name="tavlingDeltagare">Aktuell TavlingDeltagare</param>
+            <param name="nyTavlingDeltagare">Ny TavlingDeltagare, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingDeltagareAktivitet.Kolla(Hooker.Affärsobjekt.TavlingDeltagare,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="tavlingDeltagare">TavlingDeltagare med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.TavlingKlassAktivitet">
+            <summary>
+            Affärslagerklass för TävlingKlass
+            
+            Innehåller alla metoder för klassen TavlingKlass verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.HämtaTavlingKlass(System.Int32,System.String)">
+            <summary>
+            Hämtar rad från tabellen TavlingKlass i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="tavlingID">Aktuell Tavling</param>
+            <param name="klass">Aktuell klass</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.HämtaTavlingKlassTavlingRond(System.Int32,System.String)">
+            <summary>
+            Hämtar alla tavlingsrondposter i tabellen TavlingRond för angiven tavling och klass
+            </summary>
+            <param name="tavlingID">Aktuell tavling</param>
+            <param name="klass">Aktuell klass</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.FinnsTavlingKlass(System.Int32,System.String)">
+            <summary>
+            Hämtar rad från tabellen TavlingKlass i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="tavlingID">Aktuell Tavling</param>
+            <param name="klass">Aktuell klass</param>
+            <returns>True om raden finnas annars false</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.Spara(Hooker.Affärsobjekt.Tavling,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i TavlingKlass i databasen 
+            </summary>
+            <param name="tavling">Aktuell TavlingKlass</param>
+            <param name="nyTavlingKlass">Ny TavlingKlass, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.Spara(Hooker.Affärsobjekt.TavlingKlass,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i TavlingKlass i databasen 
+            </summary>
+            <param name="tavlingKlass">Aktuell TavlingKlass</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.TaBort(Hooker.Affärsobjekt.TavlingKlass,System.String@,System.String@)">
+            <summary>
+                Ta bort TavlingKlass i databasen 
+            </summary>
+            <param name="tavlingKlass">Aktuell TavlingKlass</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingKlassAktivitet.Kolla(Hooker.Affärsobjekt.TavlingKlass,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="tavlingKlass">TavlingKlass med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.TavlingRondAktivitet">
+            <summary>
+            Affärslagerklass för TävlingRond
+            
+            Innehåller alla metoder för klassen TavlingRonds verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondAktivitet.HämtaTavlingRond(System.Int32)">
+            <summary>
+            Hämtar en post i tabellen TavlingRond
+            </summary>
+            <param name="rondID">Aktuell rond</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondAktivitet.HämtaAllaTavlingRonderFörTävlingOchKlass(System.Int32,System.String)">
+            <summary>
+            Hämtar alla tavlingsrondposter i tabellen TavlingRond för angiven tavling och klass
+            </summary>
+            <param name="tavlingID">Aktuell tavling</param>
+            <param name="klass">Aktuell klass</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondAktivitet.Spara(Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+            Sparar alla nya TavlingRond rader i databasen 
+            </summary>
+            <param name="tavlingKlass">Aktuell TavlingKlass</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondAktivitet.Spara(Hooker.Affärsobjekt.TavlingRond,System.String@,System.String@)">
+            <summary>
+            Sparar aktuell TavlingRond i databasen 
+            </summary>
+            <param name="tavlingRond">Aktuell TavlingRond</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondAktivitet.TaBort(Hooker.Affärsobjekt.TavlingRond,System.String@,System.String@)">
+            <summary>
+            Ta bort TavlingRond i databasen 
+            </summary>
+            <param name="tavlingRond">Aktuell TavlingRond</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondAktivitet.TaBort(Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+            Ta bort TavlingRond i databasen 
+            </summary>
+            <param name="tavlingRond">Aktuell TavlingRond</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.TavlingRondResultatAktivitet">
+            <summary>
+            Affärslagerklass för TävlingRondResultat
+            
+            Innehåller alla metoder för klassen TavlingRondResultat verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaTavlingRondResultat(System.Int32,System.Int32)">
+            <summary>
+            Hämtar en post i tabellen TavlingRondResultat
+            </summary>
+            <param name="rondID">Aktuell rond</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaTavlingRondResultatForSpelare(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Hämtar en post i tabellen TavlingRondResultat
+            </summary>
+            <param name="rondNr">Aktuell rond</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaTavlingResultatForSpelare(System.Int32,System.Int32)">
+            <summary>
+            Hämtar Tävlingresultat för spelare
+            </summary>
+            <param name="tavlingID">Aktuellt TavlingId</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.InitieraTavlingRondResultat(Hooker.Affärsobjekt.Tavling,System.Int32,System.String@,System.String@)">
+            <summary>
+            Initiera poster i tabellen TavlingRondResultat
+            </summary>
+            <param name="tavling">Aktuell Tavling</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaResultatlista(Hooker.Affärsobjekt.Tavling,System.String,System.Int32)">
+            <summary>
+            Hämta resultatlistan för aktuell tävling och rond
+            </summary>
+            <param name="tavling">Tavlingobjekt</param>
+            <param name="klass">A</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaNassau(System.Int32)">
+            <summary>
+            Hämta Nassauresultat för aktuell tävling
+            </summary>
+            <param name="tavlingID">TavlingID</param>
+            <returns>Otypat dataset med begärd information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaTrofen(Hooker.Affärsobjekt.Tavling)">
+            <summary>
+            Hämta Troféresultat för aktuell tävling
+            </summary>
+            <param name="tavlingID">TavlingID</param>
+            <returns>Otypat dataset med begärd information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.HämtaR2A(System.Int32)">
+            <summary>
+            Hämta R2A
+            </summary>
+            <param name="tavlingID">TavlingID</param>
+            <returns>Otypat dataset med begärd information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.TaBort(System.Int32,System.Int32,System.String@,System.String@)">
+            <summary>
+            Ta bort rader ur tabellen TavlingRondResultat för en spelare och tävling
+            </summary>
+            <param name="rondID">Aktuellt rondID</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.Spara(Hooker.Affärsobjekt.Tavling,System.Int32,System.Int32,System.String@,System.String@)">
+            <summary>
+            Spara i tabellen TavlingRondResultat för en spelare och tävling
+            </summary>
+            <param name="tavling">Aktuellt objekt</param>
+            <param name="rondID">Aktuellt RondID</param>
+            <param name="spelarID">Aktuellt SpelarID</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingRondResultatAktivitet.SkapaRankingLista(System.Data.DataSet,Hooker.Affärsobjekt.Tavling)">
+            <summary>
+            Löser det här med kod därför att den version av MariaDB som Synology supporterar inte fixar detta.
+            
+            Den version som behövs är 10.2.3 som lägst, Synologys version suger.
+            </summary>
+            <param name="trofenDS"></param>
+            <param name="tavling"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hooker.Affärslager.TavlingStartlistaAktivitet">
+            <summary>
+            Affärslagerklass för TävlingStartlista
+            
+            Innehåller alla metoder för klassen TavlingStartlista verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingStartlistaAktivitet.HämtaStartlista(System.Int32)">
+            <summary>
+            Hämta Startlistan för aktuell tävling
+            </summary>
+            <param name="tavlingID">Aktuellt TavlingID</param>
+            <returns>Otypat dataset med aktuell information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingStartlistaAktivitet.SkapaStartlista(Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+            Skapa startlista
+            </summary>
+            <param name="tavling">Aktuell Tavling</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingStartlistaAktivitet.RäknaUtErhållnaSlag(Hooker.Affärsobjekt.Spelare,System.Int32)">
+            <summary>
+            Hämtar aktuell Bana
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingStartlistaAktivitet.RäknaUtErhållnaSlag(System.String,System.Decimal,System.Int32)">
+            <summary>
+            Räkna ut antal erhållna slag
+            </summary>
+            <param name="kon">Spelarens kön</param>
+            <param name="hcp">Spelarens hcp</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingStartlistaAktivitet.UppdateraStartlista(Hooker.Affärsobjekt.Tavling,System.String@,System.String@)">
+            <summary>
+            Uppdatera startlista
+            </summary>
+            <param name="tavling">Aktuell Tavling</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.TavlingStartlistaAktivitet.TaBort(Hooker.Affärsobjekt.Tavling,System.Int32,System.Int32,System.String@,System.String@)">
+            <summary>
+            Ta bort TavlingStartlista i databasen 
+            </summary>
+            <param name="rondID">Aktuellt rondID</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Hooker.Affärslager.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Hooker.Affärslager.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Hooker.Affärslager.RedovisningAktivitet">
+            <summary>
+            Klass för Redovisning
+            
+            Innehåller alla metoder för klassen Redovisning verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.RedovisningAktivitet.SökRedovisning(System.String,System.String,System.DateTime,System.DateTime)">
+            <summary>
+                Skapar söksträng för sök i databasen, anropar sök och sätter värden för
+                aktuella Redovisningar i klassen.
+            </summary>
+            <param name="typ">Typ av Redovisning som ska hämtas</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <returns>Objektlista med Redovisning</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RedovisningAktivitet.HämtaRedovisning(System.Int32)">
+            <summary>
+            Hämtar Redovisning för angivet TransNr
+            </summary>
+            <param name="transNr">TransNr</param>
+            <returns>Redovisningaobjekt</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RedovisningAktivitet.Spara(Hooker.Affärsobjekt.Runda,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i rundans Redovisning i databasen 
+            </summary>
+            <param name="runda">Aktuell runda</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.RedovisningAktivitet.Spara(Hooker.Affärsobjekt.Redovisning,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i rundans Redovisning i databasen 
+            </summary>
+            <param name="redovisning">Aktuell runda</param>
+            <param name="nyRedovisning">Ny runda, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.RedovisningAktivitet.TaBort(Hooker.Affärsobjekt.Redovisning,System.String@,System.String@)">
+            <summary>
+            Ta bort Redovisning i databasen 
+            </summary>
+            <param name="redovisning">Aktuell redovisning</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.RedovisningAktivitet.Kolla(Hooker.Affärsobjekt.Redovisning,System.String@,System.String@)">
+            <summary>
+            Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="redovisning">Dataset med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.RundaAktivitet">
+            <summary>
+                Klass för Runda
+            
+                Innehåller alla metoder för klassen Rundas verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.KollaAntaletRundor(System.Int32)">
+            <summary>
+                Kolla hur många rundor som finns registrerad på aktuell bana
+            </summary>
+            <param name="banaNr">Aktuell banaNr</param>
+            <returns>Antalet registrerade rundor på banan</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.KollaAntaletRundorForSpelare(System.Int32)">
+            <summary>
+                Kolla hur många rundor som finns registrerad på aktuell spelare
+            </summary>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <returns>Antalet registrerade rundor på spelaren</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.HämtaMaxRundaNr">
+            <summary>
+            Hämtar högsta nummer för Runda
+            </summary>
+            <returns>Dataset med kolumn för högsta nr i Runda</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.HämtaRunda(System.Int32)">
+            <summary>
+            Hämtar rad från tabellen Runda i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="rundaNr">Aktuell Runda</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.SökRunda(System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Söker rad/-er från tabellen Runda i aktuell databas med angivet sökvillkor.
+            </summary>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="bananr">Bananr</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomdatum">Ev tom datum</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.SökRundaGolfklubb(System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Söker rad/-er från tabellen Runda i aktuell databas med angivet sökvillkor.
+            </summary>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="golfklubbNr">GolfklubbNr</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomdatum">Ev tom datum</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.HämtaRundaRundaHalRedovisning(System.Int32)">
+            <summary>
+                Hämta Runda, Rundans alla RundaHal samt Redovisning för angivet rundaNr.
+            </summary>
+            <param name="rundaNr">Rundans nr</param>
+            <returns>Ett objekt med aktuell information</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.Kolla(Hooker.Affärsobjekt.Runda,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="runda">Objekt med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.Spara(System.Data.DataSet,System.String@,System.String@)">
+            <summary>
+                Sparar alla förändringar i Runda, RundaHal och Redovisning i databasen 
+            </summary>
+            <param name="ds">Aktuellt dataset</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.Spara(Hooker.Affärsobjekt.Runda,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Sparar alla förändringar i Runda i databasen 
+            </summary>
+            <param name="runda">Aktuell runda</param>
+            <param name="nyRunda">Ny runda, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.RundaAktivitet.TaBort(Hooker.Affärsobjekt.Runda,System.String@,System.String@)">
+            <summary>
+            Ta bort Runda i databasen 
+            </summary>
+            <param name="runda">Aktuell runda</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.Slope">
+            <summary>
+            Klass för Slope
+            
+            Innehåller alla metoder för klassen Slopes verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(System.Decimal,System.Int32,System.Int32,System.Decimal,System.String@)">
+            <summary>
+            Räknar ut erhållna slag för spelare med exakt handikap. Banan ska 
+            också ha CR (Course Rating) och slopevärde, går inte annars. Finns inte
+            CR eller slope för banan ska hcp sättas enligt gammalt, ett hcp ?,5 ger
+            höjning närmast hela och hcp ?,4 sänkning närmast hela.
+            
+            Formeln är (enligt Svensk Golf):
+            erhållnaSlag = Course rating(CR) - par + exakt handicap * slope / 113
+            
+            </summary>
+            <param name="cr">Banans CR (Course Rating)</param>
+            <param name="slope">Banans slopevärde</param>
+            <param name="par">Banans Par</param>
+            <param name="exaktHcp">Spelarens exakta handicap</param>
+            <param name="felID">Meddelande om att vilka/-en uppgift som saknas eller
+            är felaktig till Felhantering</param>
+            <returns>Det antal slag aktuell spelare har på aktuell bana</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(System.Decimal,System.Int32,System.Int32,System.Decimal)">
+            <summary>
+            Räkna ut erhållna slag enligt SGF:s formel
+            </summary>
+            <param name="cr"></param>
+            <param name="slope"></param>
+            <param name="par"></param>
+            <param name="exaktHcp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Slope.RäknaUtAntalPoäng(System.Int32,System.Int32,System.Int32,System.Int32,System.String@)">
+            <summary>
+            Räknar ut spelarens poäng på aktuellt hål.
+            </summary>
+            <param name="erhallnaSlag">Spelarens erhållna slag (= Spelarens hcp för Banan)</param>
+            <param name="slag">Antalet slag på hålet</param>
+            <param name="par">Paret på hålet</param>
+            <param name="hcp">Hålets handicap</param>
+            <param name="felID">Meddelande om att vilka/-en uppgift som saknas eller
+            är felaktig till Felhantering</param>
+            <returns>Antalet poäng på hålet</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Slope.SättKlass(System.Decimal,System.String@)">
+            <summary>
+            Sätt klass för spelare med exakthandikap. Klassen hämtas från tabellen Koder.
+            </summary>
+            <param name="exaktHcp">spelarens exakta handicap</param>
+            <param name="felID">Meddelande om att vilka/-en uppgift som saknas eller
+            är felaktig till Felhantering</param>
+            <returns>exakt hcp översatt till hcp-grupp</returns>
+        </member>
+        <member name="T:Hooker.Affärslager.SpelareAktivitet">
+            <summary>
+            Affärslagerklass för Spelare
+            
+            Innehåller alla metoder för klassen Spelares verksamhetslogik.
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.HämtaSpelare(System.Int32)">
+            <summary>
+            Hämtar rad från tabellen Spelare i aktuell databas med angiven nyckel.
+            </summary>
+            <param name="spelarID">Aktuell Spelare</param>
+            <returns>Objekt med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.HämtaSpelare(System.String)">
+            <summary>
+            Hämtar rad/-er från tabellen Spelare i aktuell databas med angivet namn.
+            </summary>
+            <param name="namn">Aktuell namn</param>
+            <returns>Objektlista med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.HämtaMaxSpelarID">
+            <summary>
+            Hämtar högsta nummer för Spelare
+            </summary>
+            <returns>Dataset med kolumn för högsta nr i Spelare</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.SökSpelare(System.String,System.String)">
+            <summary>
+            Söker rad/-er från tabellen Spelare i aktuell databas med angivet sökvillkor.
+            </summary>
+            <param name="namn">Aktuell namn</param>
+            <param name="golfID">Ev GolfID i sökningen</param>
+            <returns>Typat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.SökSpelareAnvandare">
+            <summary>
+            Söker rad/-er från tabellen Spelare i aktuell databas som också är
+            användare.
+            </summary>
+            <returns>Typat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.HämtaSpelareEjAnmälda(Hooker.Affärsobjekt.Tavling)">
+            <summary>
+            Hämtar alla spelare som ej är anmälda till aktuell tävling
+            </summary>
+            <param name="tavling">Aktuell tävling</param>
+            <returns>DataSet med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.Spara(Hooker.Affärsobjekt.Spelare,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Sparar alla förändringar i Spelare i databasen 
+            </summary>
+            <param name="spelare">Aktuell spelare</param>
+            <param name="nySpelare">Ny spelare, true or false</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.TaBort(Hooker.Affärsobjekt.Spelare,System.String@,System.String@)">
+            <summary>
+                Ta bort Spelare i databasen 
+            </summary>
+            <param name="spelare">Aktuell spelare</param>
+            <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+            <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        </member>
+        <member name="M:Hooker.Affärslager.SpelareAktivitet.Kolla(Hooker.Affärsobjekt.Spelare,System.String@,System.String@)">
+            <summary>
+                Metoden kollar informationen innan uppdatering ska göras
+            </summary>
+            <param name="spelare">Spelare med informationen som ska kollas</param>
+            <param name="felID">Ev felID som returneras</param>
+            <param name="felmeddelande">Ev felmeddelande som returneras</param>
+        </member>
+        <member name="T:Hooker.Affärslager.Statistik">
+            <summary>
+            Affärslagerklass för statistiken
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.Statistik.Bananalys(System.String,System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Hämtar data för aktuell Bananalys
+            </summary>
+            <param name="golfklubbNr">Golfklubbnummer</param>
+            <param name="banaNr">Bananummer</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Statistik.EGALista(System.String)">
+            <summary>
+            Hämta de senaste 25 rundorna för spelaren
+            </summary>
+            <param name="spelarID">Aktuellt spelarID</param>
+        </member>
+        <member name="M:Hooker.Affärslager.Statistik.Ekonomianalys(System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean)">
+            <summary>
+            Hämtar data för aktuell Ekonomianalys
+            </summary>
+            <param name="redovisningsTyp">RedovisningsTyp</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="detaljerad">Ev markering för detaljerad redovisning</param>
+            <param name="summerad">Ev markering för summerad redovisning</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Statistik.Gruppanalys(System.String,System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Hämtar data för aktuell Gruppanalys
+            </summary>
+            <param name="golfklubbNr">Golfklubbnummer</param>
+            <param name="banaNr">Bananummer</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Statistik.Puttstatistik(System.String,System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Hämtar data för aktuell Puttstatistik
+            </summary>
+            <param name="golfklubbNr">Golfklubbnummer</param>
+            <param name="banaNr">Bananummer</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.Statistik.Rondanalys(System.String,System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Hämtar data för aktuell Rondanalys
+            </summary>
+            <param name="golfklubbNr">Golfklubbnummer</param>
+            <param name="banaNr">Bananummer</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <returns>Otypat dataset med efterfrågat data</returns>
+        </member>
+        <member name="T:Hooker.Affärslager.SökVillkor">
+            <summary>
+            Klass för skapande av wherevillkor för statistiksökningar
+            </summary>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.SkapaSökvillkor(System.String,System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Skapar sökvillkor för statistiken
+            </summary>
+            <param name="banaNr">Bananummer</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="hcprond">Ev markering för hcprond</param>
+            <param name="niohalsrond">Ev markering för niohålsrond</param>
+            <param name="sallskapsrond">Ev markering för sällskapsrond</param>
+            <param name="tavlingsrond">Ev markering för tävlingsrond</param>
+            <returns>Färdigknåpat sökvillkor för statistiken</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.SkapaSökvillkor(System.String,System.String,System.DateTime,System.DateTime,System.Boolean,System.Boolean)">
+            <summary>
+                Skapar sökvillkor för statistiken
+            </summary>
+            <param name="redovisningsTyp">RedovisningsTyp</param>
+            <param name="spelarID">Aktuellt spelarID</param>
+            <param name="fromDatum">Ev from datum</param>
+            <param name="tomDatum">Ev tom datum</param>
+            <param name="detaljerad">Ev markering för detaljerad redovisning</param>
+            <param name="summerad">Ev markering för summerad redovisning</param>
+            <returns>Färdigknåpat sökvillkor för statistiken</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.SkapaSökvillkor(System.String,System.String,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Skapar sökvillkor för tävlingar
+            </summary>
+            <param name="tavlingNamn">Aktuell tavlingNamn</param>
+            <param name="spelsatt">Spelsätt</param>
+            <param name="speltyp">Speltyp</param>
+            <param name="fromDatum">From datum</param>
+            <param name="tomDatum">Tom datum</param>
+            <returns>Färdigknåpat sökvillkor för statistiken</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.SkapaSökvillkor(System.DateTime,System.DateTime)">
+            <summary>
+            Skapar sökvillkor för tävlingar
+            </summary>
+            <param name="fromDatum">From datum</param>
+            <param name="tomDatum">Tom datum</param>
+            <returns>Färdigknåpat sökvillkor för statistiken</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.WhereFörSträng(System.Object,System.String,System.String@,System.Int16@,System.String)">
+            <summary>
+            Skapar dynamisk frågesträng för sträng, lägger först på ett AND om det finns andra sökkriterier.
+            </summary>
+            <param name="fältVärde">Vad, värdet, term nedan ska sätta till</param>
+            <param name="fältNamn">Vad termen heter som ska sättas</param>
+            <param name="kriteria">Sträng med tidigare wherevillkor</param>
+            <param name="argRäknare">Antal argument i kriteria</param>
+            <param name="operand">Typ av operand, t ex större än</param>
+            <returns>Söksträng efter behandling, räknaren upptaggad med 1 och true, om allt gick bra</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.WhereMedLikeEfter(System.Object,System.String,System.String@,System.Int16@)">
+            <summary>
+            Skapar dynamisk frågesträng för sträng med "LIKE" och med wildcard (%) efter inmatat värde. 
+            Finns fler sökkriterier läggs först på ett "AND".
+            </summary>
+            <param name="fältVärde">Vad, värdet, term nedan ska sätta till</param>
+            <param name="fältNamn">Vad termen heter som ska sättas</param>
+            <param name="kriteria">Sträng med tidigare wherevillkor</param>
+            <param name="argRäknare">Antal argument i kriteria</param>
+            <returns>Söksträng efter behandling, räknaren upptaggad med 1 och true, om allt gick bra</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.WhereMedORochLikeEfter(System.Object,System.String,System.String@,System.Int16@)">
+            <summary>
+            Skapar dynamisk frågesträng för sträng med "LIKE" och med wildcard (%) efter inmatat värde. 
+            Finns fler sökkriterier läggs först på ett "OR".
+            </summary>
+            <param name="fältVärde">Vad, värdet, term nedan ska sätta till</param>
+            <param name="fältNamn">Vad termen heter som ska sättas</param>
+            <param name="kriteria">Sträng med tidigare wherevillkor</param>
+            <param name="argRäknare">Antal argument i kriteria</param>
+            <returns>Söksträng efter behandling, räknaren upptaggad med 1 och true, om allt gick bra</returns>
+        </member>
+        <member name="M:Hooker.Affärslager.SökVillkor.WhereFörInteger(System.Object,System.String,System.String@,System.Int16@,System.String)">
+            <summary>
+            Skapar dynamisk frågesträng för en integer (numeriskt värde). Finns fler
+            sökvillkor läggs först till ett "AND".
+            </summary>
+            <param name="fältVärde">Vad term ska sätta till</param>
+            <param name="fältNamn">Vad termen heter som ska sättas</param>
+            <param name="kriteria">Sträng med tidigare wherevillkor</param>
+            <param name="argRäknare">Antal argument i strKriteria</param>
+            <param name="operand">Lika med, större än, etc</param>
+            <returns>Söksträng efter behandling, räknaren upptaggad med 1 och true, om allt gick bra</returns>
+        </member>
+    </members>
+</doc>
