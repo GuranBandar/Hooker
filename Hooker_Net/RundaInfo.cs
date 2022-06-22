@@ -632,7 +632,7 @@ namespace Hooker_GUI
                         //Hålnr hämtas från kontrollens namn
                         halnr = int.Parse(cc.Name.Substring(10, 2));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalSlag);
-                        slagIn = slagIn +
+                        slagIn += 
                             int.Parse(Runda.RundaHal[halnr - 1].AntalSlag.ToString());
 
                         //Sätt blå färg om sämre än par, röd om bättre än par
@@ -1203,6 +1203,55 @@ namespace Hooker_GUI
             }
             result = true;
             return result;
+        }
+
+
+        /// <summary>
+        /// Visar hålens längd 
+        /// </summary>
+        /// <param name="halnr"></param>
+        /// <param name="langd"></param>
+        /// <param name="cc"></param>
+        private void FyllLangdPerHal(int halnr, int langd,
+            System.Windows.Forms.Control cc)
+        {
+            bool niohal = false;
+            bool tolvhal = false;
+            bool artonhal = false;
+
+            switch (Bana.AntalHal)
+            {
+                case "9":
+                    niohal = true;
+                    break;
+                case "12":
+                    tolvhal = true;
+                    break;
+                case "18":
+                    artonhal = true;
+                    break;
+            }
+
+            if (artonhal)
+            {
+                cc.Text = ("D").Formatera(langd);
+            }
+            else if (niohal && halnr < 10)
+            {
+                cc.Text = ("D").Formatera(langd);
+            }
+            else if (niohal && halnr > 9)
+            {
+                cc.Enabled = false;
+            }
+            else if (tolvhal && halnr < 13)
+            {
+                cc.Text = ("D").Formatera(langd);
+            }
+            else if (tolvhal && halnr > 12)
+            {
+                cc.Enabled = false;
+            }
         }
 
         /// <summary>

@@ -475,6 +475,12 @@ namespace Hooker_GUI
             txtParSa.Text = parTot.ToString();
         }
 
+        /// <summary>
+        /// Visar hålens längd 
+        /// </summary>
+        /// <param name="halnr"></param>
+        /// <param name="langd"></param>
+        /// <param name="cc"></param>
         private void FyllLangdPerHal(int halnr, int langd, 
             System.Windows.Forms.Control cc)
         {
