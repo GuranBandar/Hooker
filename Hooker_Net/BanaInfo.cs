@@ -4,7 +4,9 @@ using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Hooker_GUI
 {
@@ -504,6 +506,10 @@ namespace Hooker_GUI
                     break;
             }
 
+
+            //if (cc.Controls.i)
+            //var TextBoxes = Controls.OfType<TextBox>();
+
             if (artonhal)
             {
                 cc.Text = ("D").Formatera(langd);
@@ -514,7 +520,12 @@ namespace Hooker_GUI
             }
             else if (niohal && halnr > 9)
             {
-                cc.Enabled = false;
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    textBox.BackColor = Color.AntiqueWhite;
+                    textBox.Enabled = false;
+                }
             }
             else if (tolvhal && halnr < 13)
             {
@@ -522,7 +533,12 @@ namespace Hooker_GUI
             }
             else if (tolvhal && halnr > 12)
             {
-                cc.Enabled = false;
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    textBox.BackColor = Color.AntiqueWhite;
+                    textBox.Enabled = false;
+                }
             }
         }
 

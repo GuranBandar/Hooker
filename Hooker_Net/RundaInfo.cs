@@ -382,16 +382,22 @@ namespace Hooker_GUI
                 //Börja med hålen ut
                 foreach (System.Windows.Forms.Control cc in gbxUt.Controls)
                 {
+                    //if (cc.Name.StartsWith("lblHal
+                    //{
+                    //    this.HanteraAntalHal(cc);
+                    //}
+
                     if (cc.Name.StartsWith("txtParHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 1));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = Bana.BanaHal[halnr - 1].Par.ToString();
-                        parUt = parUt +
-                            int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
+                        parUt += int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
                     }
                     if (cc.Name.StartsWith("txtHcpHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 1));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = Bana.BanaHal[halnr - 1].Hcp.ToString();
                     }
                 }
@@ -402,13 +408,14 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtParHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = Bana.BanaHal[halnr - 1].Par.ToString();
-                        parIn = parIn +
-                            int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
+                        parIn += int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
                     }
                     if (cc.Name.StartsWith("txtHcpHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = Bana.BanaHal[halnr - 1].Hcp.ToString();
                     }
                 }
@@ -424,6 +431,53 @@ namespace Hooker_GUI
             catch (Exception ex)
             {
                 HanteraUndantag(ex);
+            }
+        }
+
+        /// <summary>
+        /// Hantera bana med olika antal hål
+        /// </summary>
+        /// <param name="cc"></param>
+        private void HanteraAntalHal(int halnr, System.Windows.Forms.Control cc)
+        {
+            bool niohal = false;
+            bool tolvhal = false;
+            bool artonhal = false;
+
+            switch (Bana.AntalHal)
+            {
+                case "9":
+                    niohal = true;
+                    break;
+                case "12":
+                    tolvhal = true;
+                    break;
+                case "18":
+                    artonhal = true;
+                    break;
+            }
+
+            if (artonhal)
+            {
+                //Gör ingenting
+                return;
+            }
+            else if (niohal && halnr < 10)
+            {
+                //Samma här
+                return;
+            }
+            else if (niohal && halnr > 9)
+            {
+                cc.BackColor = Color.AntiqueWhite;
+            }
+            //else if (tolvhal && halnr < 13)
+            //{
+            //    //cc.Text = ("D").Formatera(langd);
+            //}
+            else if (tolvhal && halnr > 12)
+            {
+                cc.BackColor = Color.AntiqueWhite;
             }
         }
 
@@ -537,8 +591,7 @@ namespace Hooker_GUI
                         //Hålnr hämtas från kontrollens namn
                         halnr = int.Parse(cc.Name.Substring(10, 1));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalSlag);
-                        slagUt = slagUt +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalSlag.ToString());
+                        slagUt += int.Parse(Runda.RundaHal[halnr - 1].AntalSlag.ToString());
 
                         //Sätt blå färg om sämre än par, röd om bättre än par
                         cc.ForeColor = (Runda.RundaHal[halnr - 1].AntalSlag.SättFärg(Bana.BanaHal[halnr - 1].Par, true));
@@ -579,15 +632,13 @@ namespace Hooker_GUI
                     {
                         halnr = int.Parse(cc.Name.Substring(11, 1));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalPoang);
-                        poangUt = poangUt +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalPoang.ToString());
+                        poangUt += int.Parse(Runda.RundaHal[halnr - 1].AntalPoang.ToString());
                     }
                     if (cc.Name.StartsWith("txtPuttarHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(12, 1));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalPuttar);
-                        puttarUt = puttarUt +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalPuttar.ToString());
+                        puttarUt += int.Parse(Runda.RundaHal[halnr - 1].AntalPuttar.ToString());
                     }
                     if (cc.Name.StartsWith("cbxFWHal"))
                     {
@@ -611,8 +662,7 @@ namespace Hooker_GUI
                     {
                         halnr = int.Parse(cc.Name.Substring(11, 1));
                         cc.Text = ("D").Formatera(Runda.RundaHal[halnr - 1].AntalPlikt);
-                        pliktUt = pliktUt +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalPlikt.ToString());
+                        pliktUt += int.Parse(Runda.RundaHal[halnr - 1].AntalPlikt.ToString());
                     }
                 }
 
@@ -632,8 +682,7 @@ namespace Hooker_GUI
                         //Hålnr hämtas från kontrollens namn
                         halnr = int.Parse(cc.Name.Substring(10, 2));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalSlag);
-                        slagIn += 
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalSlag.ToString());
+                        slagIn += int.Parse(Runda.RundaHal[halnr - 1].AntalSlag.ToString());
 
                         //Sätt blå färg om sämre än par, röd om bättre än par
                         cc.ForeColor = (Runda.RundaHal[halnr - 1].AntalSlag.SättFärg(Bana.BanaHal[halnr - 1].Par, true));
@@ -674,15 +723,13 @@ namespace Hooker_GUI
                     {
                         halnr = int.Parse(cc.Name.Substring(11, 2));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalPoang);
-                        poangIn = poangIn +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalPoang.ToString());
+                        poangIn += int.Parse(Runda.RundaHal[halnr - 1].AntalPoang.ToString());
                     }
                     if (cc.Name.StartsWith("txtPuttarHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(12, 2));
                         cc.Text = ("N").Formatera(Runda.RundaHal[halnr - 1].AntalPuttar);
-                        puttarIn = puttarIn +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalPuttar.ToString());
+                        puttarIn += int.Parse(Runda.RundaHal[halnr - 1].AntalPuttar.ToString());
                     }
                     if (cc.Name.StartsWith("cbxFWHal"))
                     {
@@ -706,8 +753,7 @@ namespace Hooker_GUI
                     {
                         halnr = int.Parse(cc.Name.Substring(11, 2));
                         cc.Text = ("D").Formatera(Runda.RundaHal[halnr - 1].AntalPlikt);
-                        pliktIn = pliktIn +
-                            int.Parse(Runda.RundaHal[halnr - 1].AntalPlikt.ToString());
+                        pliktIn += int.Parse(Runda.RundaHal[halnr - 1].AntalPlikt.ToString());
                     }
                 }
 
@@ -1205,54 +1251,6 @@ namespace Hooker_GUI
             return result;
         }
 
-
-        /// <summary>
-        /// Visar hålens längd 
-        /// </summary>
-        /// <param name="halnr"></param>
-        /// <param name="langd"></param>
-        /// <param name="cc"></param>
-        private void FyllLangdPerHal(int halnr, int langd,
-            System.Windows.Forms.Control cc)
-        {
-            bool niohal = false;
-            bool tolvhal = false;
-            bool artonhal = false;
-
-            switch (Bana.AntalHal)
-            {
-                case "9":
-                    niohal = true;
-                    break;
-                case "12":
-                    tolvhal = true;
-                    break;
-                case "18":
-                    artonhal = true;
-                    break;
-            }
-
-            if (artonhal)
-            {
-                cc.Text = ("D").Formatera(langd);
-            }
-            else if (niohal && halnr < 10)
-            {
-                cc.Text = ("D").Formatera(langd);
-            }
-            else if (niohal && halnr > 9)
-            {
-                cc.Enabled = false;
-            }
-            else if (tolvhal && halnr < 13)
-            {
-                cc.Text = ("D").Formatera(langd);
-            }
-            else if (tolvhal && halnr > 12)
-            {
-                cc.Enabled = false;
-            }
-        }
 
         /// <summary>
         /// Tabellen RundaHal initieras om ny Runda, kontrollerna på scorekortet kommer lite hur som helst
