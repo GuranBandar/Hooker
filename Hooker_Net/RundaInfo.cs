@@ -1335,16 +1335,16 @@ namespace Hooker_GUI
 
         /// <summary>
         /// Fixa till antal slag för banaor ej arton hål. 11 poäng ska delas ut och slag ska vara
-        /// enligt hcp.
+        /// enligt hcp. Sätter sista hålet med slag till +2, då blir det en med 1 poäng.
         /// </summary>
         private void AntalSlagEjArtonbHal(int halNr, System.Windows.Forms.Control cc)
         {
             bool niohal = false;
             bool tolvhal = false;
             bool artonhal = false;
-            int halIndex = Bana.BanaHal[halNr].Hcp;
+            int halIndex = Bana.BanaHal[halNr - 1].Hcp;
             int erhallnaSlag = Runda.ErhallnaSlag;
-            int par = Bana.BanaHal[halNr].Par;
+            int par = Bana.BanaHal[halNr - 1].Par;
 
             switch (Bana.AntalHal)
             {
@@ -1374,13 +1374,28 @@ namespace Hooker_GUI
                 if (cc.GetType() == typeof(TextBox))
                 {
                     TextBox textBox = cc as TextBox;
-                    if (halIndex >= erhallnaSlag)
+                    if (erhallnaSlag > 18)
+                    {
+                        par += 1;
+                        erhallnaSlag -= 18;
+                    }
+                    if (halIndex == erhallnaSlag)
+                    {
+                        textBox.Text = (par + 1).ToString();
+                    }
+                    else if (halIndex < erhallnaSlag)
+                    {
+                        textBox.Text = (par + 1).ToString();
+                    }
+                    if (halIndex > erhallnaSlag)
                     {
                         textBox.Text = par.ToString();
                     }
-                    if (halIndex <= erhallnaSlag) 
+                    if (halNr == 10)
                     {
-                        textBox.Text = (par + (erhallnaSlag - halIndex)).ToString();
+                        int number = Convert.ToInt32(textBox.Text);
+                        number += 1;
+                        textBox.Text = number.ToString();
                     }
                 }
             }
@@ -1390,17 +1405,36 @@ namespace Hooker_GUI
             //}
             else if (tolvhal && halNr > 12)
             {
-                TextBox textBox = cc as TextBox;
-                if (halIndex >= erhallnaSlag)
+                if (cc.GetType() == typeof(TextBox))
                 {
-                    textBox.Text = par.ToString();
-                }
-                if (halIndex <= erhallnaSlag)
-                {
-                    textBox.Text = (par + (erhallnaSlag - halIndex)).ToString();
+                    TextBox textBox = cc as TextBox;
+                    //Mer erhållna slag än 18, börja med att lägga till ett slag per hål som är kvar.
+                    //Dra sedan 18 från antal erhållna slag.
+                    if (erhallnaSlag > 18)
+                    {
+                        par += 1;
+                        erhallnaSlag -= 18;
+                    }
+                    if (halIndex == erhallnaSlag)
+                    {
+                        textBox.Text = (par + 1).ToString();
+                    }
+                    else if (halIndex < erhallnaSlag)
+                    {
+                        textBox.Text = (par + 1).ToString();
+                    }
+                    if (halIndex > erhallnaSlag)
+                    {
+                        textBox.Text = par.ToString();
+                    }
+                    if (halNr == 13)
+                    {
+                        int number = Convert.ToInt32(textBox.Text);
+                        number += 1;
+                        textBox.Text = number.ToString();
+                    }
                 }
             }
-
         }
 
         /// <summary>
