@@ -400,6 +400,36 @@ namespace Hooker_GUI
                         this.HanteraAntalHal(halnr, cc);
                         cc.Text = Bana.BanaHal[halnr - 1].Hcp.ToString();
                     }
+                    if (cc.Name.StartsWith("txtSlagHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(10, 1));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("txtPuttarHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(12, 1));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("txtPoangHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(11, 1));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("txtPliktHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(11, 1));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("cbxFWHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(8, 1));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("cbxGRHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(8, 1));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
                 }
 
                 //och fortsätt sedan med hålen in
@@ -417,6 +447,36 @@ namespace Hooker_GUI
                         halnr = int.Parse(cc.Name.Substring(9, 2));
                         this.HanteraAntalHal(halnr, cc);
                         cc.Text = Bana.BanaHal[halnr - 1].Hcp.ToString();
+                    }
+                    if (cc.Name.StartsWith("txtSlagHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(10, 2));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("txtPuttarHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(12, 2));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("txtPoangHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(11, 2));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("txtPliktHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(11, 2));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("cbxFWHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(8, 2));
+                        this.HanteraAntalHal(halnr, cc);
+                    }
+                    if (cc.Name.StartsWith("cbxGRHal"))
+                    {
+                        halnr = int.Parse(cc.Name.Substring(8, 2));
+                        this.HanteraAntalHal(halnr, cc);
                     }
                 }
 
@@ -469,7 +529,18 @@ namespace Hooker_GUI
             }
             else if (niohal && halnr > 9)
             {
-                cc.BackColor = Color.AntiqueWhite;
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    textBox.BackColor = Color.AntiqueWhite;
+                    textBox.Enabled = false;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = cc as CheckBox;
+                    checkBox.BackColor = Color.AntiqueWhite;
+                    checkBox.Enabled = false;
+                }
             }
             //else if (tolvhal && halnr < 13)
             //{
@@ -477,7 +548,18 @@ namespace Hooker_GUI
             //}
             else if (tolvhal && halnr > 12)
             {
-                cc.BackColor = Color.AntiqueWhite;
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    textBox.BackColor = Color.AntiqueWhite;
+                    textBox.Enabled = false;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = cc as CheckBox;
+                    checkBox.BackColor = Color.AntiqueWhite;
+                    checkBox.Enabled = false;
+                }
             }
         }
 
@@ -853,7 +935,6 @@ namespace Hooker_GUI
             {
                 if (NyRunda)
                 {
-                    //Runda = new Runda();
                     Runda.RundaNr = RundaNr;
                 }
 
@@ -1139,6 +1220,7 @@ namespace Hooker_GUI
                         //då ska vi kolla textboxen och, om OK, flytta till objektet
                         //Hålnr hämtas från kontrollens namn
                         halnr = int.Parse(cc.Name.Substring(10, 2));
+                        this.AntalSlagEjArtonbHal(halnr, cc);
                         if (cc.Text.Trim().Length == 0)
                         {
                             VisaFelmeddelande("RNDHOLESLAGMISSING");
@@ -1251,6 +1333,75 @@ namespace Hooker_GUI
             return result;
         }
 
+        /// <summary>
+        /// Fixa till antal slag för banaor ej arton hål. 11 poäng ska delas ut och slag ska vara
+        /// enligt hcp.
+        /// </summary>
+        private void AntalSlagEjArtonbHal(int halNr, System.Windows.Forms.Control cc)
+        {
+            bool niohal = false;
+            bool tolvhal = false;
+            bool artonhal = false;
+            int halIndex = Bana.BanaHal[halNr].Hcp;
+            int erhallnaSlag = Runda.ErhallnaSlag;
+            int par = Bana.BanaHal[halNr].Par;
+
+            switch (Bana.AntalHal)
+            {
+                case "9":
+                    niohal = true;
+                    break;
+                case "12":
+                    tolvhal = true;
+                    break;
+                case "18":
+                    artonhal = true;
+                    break;
+            }
+
+            if (artonhal)
+            {
+                //Gör ingenting
+                return;
+            }
+            else if (niohal && halNr < 10)
+            {
+                //Samma här
+                return;
+            }
+            else if (niohal && halNr > 9)
+            {
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    if (halIndex >= erhallnaSlag)
+                    {
+                        textBox.Text = par.ToString();
+                    }
+                    if (halIndex <= erhallnaSlag) 
+                    {
+                        textBox.Text = (par + (erhallnaSlag - halIndex)).ToString();
+                    }
+                }
+            }
+            //else if (tolvhal && halnr < 13)
+            //{
+            //    //cc.Text = ("D").Formatera(langd);
+            //}
+            else if (tolvhal && halNr > 12)
+            {
+                TextBox textBox = cc as TextBox;
+                if (halIndex >= erhallnaSlag)
+                {
+                    textBox.Text = par.ToString();
+                }
+                if (halIndex <= erhallnaSlag)
+                {
+                    textBox.Text = (par + (erhallnaSlag - halIndex)).ToString();
+                }
+            }
+
+        }
 
         /// <summary>
         /// Tabellen RundaHal initieras om ny Runda, kontrollerna på scorekortet kommer lite hur som helst
