@@ -370,7 +370,7 @@ namespace Hooker_GUI
         /// </summary>
         private void FyllBanaHal(int banaNr)
         {
-            Hooker.Affärslager.BanaAktivitet banaAktivitet = new Hooker.Affärslager.BanaAktivitet();
+            BanaAktivitet banaAktivitet = new BanaAktivitet();
             int halnr;
             int parUt = 0;
             int parIn = 0;
@@ -519,13 +519,35 @@ namespace Hooker_GUI
 
             if (artonhal)
             {
-                //Gör ingenting
-                return;
+                //Den här behövs om banan är bytt
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    textBox.BackColor = Color.White;
+                    textBox.Enabled = true;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = cc as CheckBox;
+                    checkBox.BackColor = Color.White;
+                    checkBox.Enabled = true;
+                }
             }
             else if (niohal && halnr < 10)
             {
-                //Samma här
-                return;
+                //Den här behövs om banan är bytt
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = cc as TextBox;
+                    textBox.BackColor = Color.White;
+                    textBox.Enabled = true;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = cc as CheckBox;
+                    checkBox.BackColor = Color.White;
+                    checkBox.Enabled = true;
+                }
             }
             else if (niohal && halnr > 9)
             {
@@ -1254,7 +1276,7 @@ namespace Hooker_GUI
                         halnr = int.Parse(cc.Name.Substring(12, 2));
                         if (cc.Text.Trim().Length == 0)
                         {
-                            Runda.RundaHal[halnr - 1].AntalPuttar = 0;
+                            Runda.RundaHal[halnr - 1].AntalPuttar = 2;
                         }
                         else
                         {
