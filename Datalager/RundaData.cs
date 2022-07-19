@@ -10,6 +10,8 @@ namespace Hooker.Datalager
 {
     /// <summary>
     /// Datalagerklass för Runda
+    /// 
+    /// Ska kolla om det går att göra en uppdatering paralellt här
     /// </summary>
     public sealed class RundaData : AbstractDataLager
     {
