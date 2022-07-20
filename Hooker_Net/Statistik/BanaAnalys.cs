@@ -1,9 +1,11 @@
 ﻿using Hooker.Affärsobjekt;
+using Hooker.Affärslager;
 using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Hooker_GUI
 {
@@ -13,6 +15,12 @@ namespace Hooker_GUI
     public partial class BanaAnalys : FormBas
     {
         private DataSet _bananalysDS = new DataSet();
+
+        /// <summary>
+        /// Objektet Bana
+        /// </summary>
+        public Bana Bana { get; set; }
+
         /// <summary>
         /// Konstruktor
         /// </summary>
@@ -137,25 +145,25 @@ namespace Hooker_GUI
             int halnr;
             int parUt = 0;
             int parIn = 0;
-            Bana bana = new Bana();
-            Hooker.Affärslager.BanaAktivitet banaAktivitet = new Hooker.Affärslager.BanaAktivitet();
+            //Bana = new Bana();
+            BanaAktivitet banaAktivitet = new BanaAktivitet();
 
             try
             {
                 if (statistikHuvudKontroll1.BanaNr != 0)
                 {
-                    bana = banaAktivitet.HämtaBanaBanaHal(statistikHuvudKontroll1.BanaNr);
+                    Bana = banaAktivitet.HämtaBanaBanaHal(statistikHuvudKontroll1.BanaNr);
 
                     foreach (System.Windows.Forms.Control cc in gbxUt.Controls)
                     {
                         if (cc.Name.StartsWith("lblParHal"))
                         {
                             halnr = int.Parse(cc.Name.Substring(9, 1));
-                            cc.Text = ("D").Formatera(bana.BanaHal[halnr - 1].Par);
+                            cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].Par);
                             Font oldFont = cc.Font;
                             Font newFont = new Font(oldFont, FontStyle.Bold | FontStyle.Italic);
                             cc.Font = newFont;
-                            parUt = parUt + (int)bana.BanaHal[halnr - 1].Par;
+                            parUt = parUt + (int)Bana.BanaHal[halnr - 1].Par;
                         }
                     }
 
@@ -164,11 +172,11 @@ namespace Hooker_GUI
                         if (cc.Name.StartsWith("lblParHal"))
                         {
                             halnr = int.Parse(cc.Name.Substring(9, 2));
-                            cc.Text = ("D").Formatera(bana.BanaHal[halnr - 1].Par);
+                            cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].Par);
                             Font oldFont = cc.Font;
                             Font newFont = new Font(oldFont, FontStyle.Bold | FontStyle.Italic);
                             cc.Font = newFont;
-                            parIn = parIn + (int)bana.BanaHal[halnr - 1].Par;
+                            parIn = parIn + (int)Bana.BanaHal[halnr - 1].Par;
                         }
                     }
 
@@ -344,11 +352,13 @@ namespace Hooker_GUI
                 txtGRSnittUtProc.Text = ("ND1").Formatera((decimal.Parse(grUt.ToString()) / antal) / 9 * 100);
 
                 // och fortsätt med hålen in
+
                 foreach (System.Windows.Forms.Control cc in gbxIn.Controls)
                 {
                     if (cc.Name.StartsWith("txtSlagHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(10, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString())
                             / antal);
@@ -359,6 +369,7 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtPoangHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(11, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString())
                             / antal);
@@ -369,6 +380,7 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtPuttarHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(12, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString())
                             / antal);
@@ -379,6 +391,7 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtParHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         if (_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString() != "")
                         {
                             cc.Text = ("N").Formatera(
@@ -397,6 +410,7 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtBirdieHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(12, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         if (_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString() != "")
                         {
                             cc.Text = ("N").Formatera(
@@ -415,6 +429,7 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtFWHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(8, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         if (_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString() != "")
                         {
                             cc.Text = ("ND1").Formatera(
@@ -432,6 +447,7 @@ namespace Hooker_GUI
                     if (cc.Name.StartsWith("txtGRHal"))
                     {
                         halnr = int.Parse(cc.Name.Substring(8, 2));
+                        this.HanteraAntalHal(halnr, cc);
                         if (_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString() != "")
                         {
                             cc.Text = ("ND1").Formatera(
@@ -569,6 +585,97 @@ namespace Hooker_GUI
                 }
             }
             gbxGraf.Visible = false;
+        }
+
+        /// <summary>
+        /// Hantera bana med olika antal hål
+        /// </summary>
+        /// <param name="cc"></param>
+        private void HanteraAntalHal(int halnr, System.Windows.Forms.Control cc)
+        {
+            bool niohal = false;
+            bool tolvhal = false;
+            bool artonhal = false;
+
+            switch (Bana.AntalHal)
+            {
+                case "9":
+                    niohal = true;
+                    break;
+                case "12":
+                    tolvhal = true;
+                    break;
+                case "18":
+                    artonhal = true;
+                    break;
+            }
+
+            if (artonhal)
+            {
+                //Den här behövs om banan är bytt
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = (TextBox)cc;
+                    textBox.BackColor = Color.White;
+                    textBox.Enabled = true;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = (CheckBox)cc;
+                    checkBox.BackColor = Color.White;
+                    checkBox.Enabled = true;
+                }
+            }
+            else if (niohal && halnr < 10)
+            {
+                //Den här behövs om banan är bytt
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = (TextBox)cc;
+                    textBox.BackColor = Color.White;
+                    textBox.Enabled = true;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = (CheckBox)cc;
+                    checkBox.BackColor = Color.White;
+                    checkBox.Enabled = true;
+                }
+            }
+            else if (niohal && halnr > 9)
+            {
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = (TextBox)cc;
+                    textBox.BackColor = Color.AntiqueWhite;
+                    textBox.Enabled = false;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = (CheckBox)cc;
+                    checkBox.BackColor = Color.AntiqueWhite;
+                    checkBox.Enabled = false;
+                }
+            }
+            //else if (tolvhal && halnr < 13)
+            //{
+            //    //cc.Text = ("D").Formatera(langd);
+            //}
+            else if (tolvhal && halnr > 12)
+            {
+                if (cc.GetType() == typeof(TextBox))
+                {
+                    TextBox textBox = (TextBox)cc;
+                    textBox.BackColor = Color.AntiqueWhite;
+                    textBox.Enabled = false;
+                }
+                if (cc.GetType() == typeof(CheckBox))
+                {
+                    CheckBox checkBox = (CheckBox)cc;
+                    checkBox.BackColor = Color.AntiqueWhite;
+                    checkBox.Enabled = false;
+                }
+            }
         }
         #endregion
 
