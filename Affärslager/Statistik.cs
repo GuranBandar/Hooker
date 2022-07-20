@@ -74,9 +74,11 @@ namespace Hooker.Affärslager
             DataSet ekonomianalysDS = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
             string sql;
+
             try
             {
-                sql = SkapaSökvillkor(redovisningsTyp, spelarID, fromDatum, tomDatum, detaljerad, summerad);
+                sql = SkapaSökvillkor(redovisningsTyp, spelarID, fromDatum, tomDatum, 
+                    detaljerad, summerad);
                 ekonomianalysDS = statistik.Ekonomianalys(sql, detaljerad);
                 return ekonomianalysDS;
             }

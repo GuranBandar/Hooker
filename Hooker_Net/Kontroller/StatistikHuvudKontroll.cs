@@ -16,7 +16,7 @@ namespace Hooker_GUI.Kontroller
         private int _hemmabanaNr;
         private int _banaNr;
         private int _golfklubbNr;
-        private string _redovisningstyp;
+        private string redovisningstyp;
         private DateTime _fromDatum;
         private DateTime _tomDatum;
         private bool _detaljeradRedovisningVald;
@@ -104,7 +104,7 @@ namespace Hooker_GUI.Kontroller
         /// <summary>
         /// Redovisningstyp
         /// </summary>
-        public string Redovisningstyp { get { return _redovisningstyp; } }
+        public string Redovisningstyp { get { return redovisningstyp; } }
 
         /// <summary>
         /// From-datum
@@ -179,12 +179,12 @@ namespace Hooker_GUI.Kontroller
             //Hämta spelarinfo från inloggningen
             Anvandare = FormBas.GetAppUser();
             _spelarID = Anvandare.SpelarID;
+            redovisningstyp = "0";
             this.FyllSpelareCombo();
 
             _hemmabanaNr = Spelare.HemmabanaNr;
             _golfklubbNr = Spelare.GolfklubbNr;
             _banaNr = Spelare.HemmabanaNr;
-            _redovisningstyp = "0";
 
             //Initiera med datum från årets början
             int dagnr = DateTime.Today.DayOfYear;
@@ -375,7 +375,7 @@ namespace Hooker_GUI.Kontroller
 
         private void ddnRedovisningstyper_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _redovisningstyp = ((ComboBoxKod)ddnRedovisningstyper.SelectedItem).Kod;
+            redovisningstyp = ((ComboBoxKod)ddnRedovisningstyper.SelectedItem).Kod;
 
             if (OnDdnRedovisningsSelect != null)
             {
