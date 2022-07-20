@@ -46,7 +46,7 @@ namespace Hooker_GUI.Kontroller
         /// <summary>
         /// Property för vilken databas
         /// </summary>
-        private DatabasAccess DatabasAccess { get; set; }
+        private IDatabasAccess DatabasAccess { get; set; }
 
         /// <summary>
         /// MDIBasformulär

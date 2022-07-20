@@ -11,7 +11,7 @@ namespace Hooker.Datalager
         /// <summary>
         /// 
         /// </summary>
-        protected DatabasAccess DatabasAccess { get; set; }
+        protected IDatabasAccess DatabasAccess { get; set; }
 
         /// <summary>
         /// 
