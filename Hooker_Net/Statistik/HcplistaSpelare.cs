@@ -195,7 +195,9 @@ namespace Hooker_GUI
                     cboSpelare.SelectedItem = AppUser.SpelarID;
                     cboSpelare.DisplayMember = "visa";
                     SpelarID = AppUser.SpelarID;
-                    txtExaktHcp.Text = Spelare.ExaktHcp.ToString();
+                    txtExaktHcp.Text = spelarLista.Find(Spelare =>
+                        Spelare.AktuelltSpelarID == AppUser.SpelarID).ExaktHcp.ToString();
+                    //txtExaktHcp.Text = Spelare.ExaktHcp.ToString();
                 }
             }
             catch (Exception ex)

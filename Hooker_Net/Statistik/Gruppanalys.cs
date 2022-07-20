@@ -11,7 +11,7 @@ namespace Hooker_GUI
     /// </summary>
     public partial class Gruppanalys : FormBas
     {
-        private DataSet _gruppanalysDS = new DataSet();
+        private DataSet gruppanalysDS = new DataSet();
 
         /// <summary>
         /// Konstruktor
@@ -169,34 +169,34 @@ namespace Hooker_GUI
         /// </summary>
         private void VisaResultat()
         {
-            txtAntal.Text = _gruppanalysDS.Tables["Antal"].Rows[0]["Antal rundor"].ToString();
+            txtAntal.Text = gruppanalysDS.Tables["Antal"].Rows[0]["Antal rundor"].ToString();
 
-            foreach (DataRow rad in _gruppanalysDS.Tables["Gruppanalys"].Rows)
+            foreach (DataRow rad in gruppanalysDS.Tables["Gruppanalys"].Rows)
             {
                 switch (rad["Par"].ToString())
                 {
                     case "3":
                         //Par 3:or
-                        txtPar3Antal.Text = ("N").Formatera(int.Parse(rad["Antal hål"].ToString()));
-                        txtPar3Poangsnitt.Text = ("ND1").Formatera(
+                        txtPar3Antal.Text = "N".Formatera(int.Parse(rad["Antal hål"].ToString()));
+                        txtPar3Poangsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Poäng"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar3Slagsnitt.Text = ("ND1").Formatera(
+                        txtPar3Slagsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Slag"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar3Puttsnitt.Text = ("ND1").Formatera(
+                        txtPar3Puttsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Puttar"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar3GRTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal GR"]));
-                        txtPar3GRTraffProc.Text = ("ND1").Formatera(
+                        txtPar3GRTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal GR"]));
+                        txtPar3GRTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal GR"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
-                        txtPar3FWTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal FW"]));
-                        txtPar3FWTraffProc.Text = ("ND1").Formatera(
+                        txtPar3FWTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal FW"]));
+                        txtPar3FWTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal FW"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
 
                         if (rad["Antal Eagle"].ToString() != "")
                         {
-                            txtPar3Eagle.Text = ("N").Formatera(int.Parse(rad["Antal Eagle"].ToString()));
-                            txtPar3EagleProc.Text = ("ND1").Formatera(
+                            txtPar3Eagle.Text = "N".Formatera(int.Parse(rad["Antal Eagle"].ToString()));
+                            txtPar3EagleProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Eagle"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar3Eagle.ForeColor = Color.Red;
@@ -205,8 +205,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Birdie"].ToString() != "")
                         {
-                            txtPar3Birdie.Text = ("N").Formatera(int.Parse(rad["Antal Birdie"].ToString()));
-                            txtPar3BirdieProc.Text = ("ND1").Formatera(
+                            txtPar3Birdie.Text = "N".Formatera(int.Parse(rad["Antal Birdie"].ToString()));
+                            txtPar3BirdieProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Birdie"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar3Birdie.ForeColor = Color.Red;
@@ -215,16 +215,16 @@ namespace Hooker_GUI
 
                         if (rad["Antal Par"].ToString() != "")
                         {
-                            txtPar3Par.Text = ("N").Formatera(int.Parse(rad["Antal Par"].ToString()));
-                            txtPar3ParProc.Text = ("ND1").Formatera(
+                            txtPar3Par.Text = "N".Formatera(int.Parse(rad["Antal Par"].ToString()));
+                            txtPar3ParProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Par"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                         }
 
                         if (rad["Antal Bogey"].ToString() != "")
                         {
-                            txtPar3Bogey.Text = ("N").Formatera(int.Parse(rad["Antal Bogey"].ToString()));
-                            txtPar3BogeyProc.Text = ("ND1").Formatera(
+                            txtPar3Bogey.Text = "N".Formatera(int.Parse(rad["Antal Bogey"].ToString()));
+                            txtPar3BogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Bogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar3Bogey.ForeColor = Color.Blue;
@@ -233,8 +233,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Dubbelbogey"].ToString() != "")
                         {
-                            txtPar3Dubbelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
-                            txtPar3DubbelbogeyProc.Text = ("ND1").Formatera(
+                            txtPar3Dubbelbogey.Text = "N".Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
+                            txtPar3DubbelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Dubbelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar3Dubbelbogey.ForeColor = Color.Blue;
@@ -243,8 +243,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Trippelbogey"].ToString() != "")
                         {
-                            txtPar3Trippelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
-                            txtPar3TrippelbogeyProc.Text = ("ND1").Formatera(
+                            txtPar3Trippelbogey.Text = "N".Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
+                            txtPar3TrippelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Trippelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar3Trippelbogey.ForeColor = Color.Blue;
@@ -253,8 +253,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Andra"].ToString() != "")
                         {
-                            txtPar3Andra.Text = ("N").Formatera(int.Parse(rad["Antal Andra"].ToString()));
-                            txtPar3AndraProc.Text = ("ND1").Formatera(
+                            txtPar3Andra.Text = "N".Formatera(int.Parse(rad["Antal Andra"].ToString()));
+                            txtPar3AndraProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Andra"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar3Andra.ForeColor = Color.Blue;
@@ -263,26 +263,26 @@ namespace Hooker_GUI
                         break;
                     case "4":
                         //Par 4:or
-                        txtPar4Antal.Text = ("N").Formatera(int.Parse(rad["Antal hål"].ToString()));
-                        txtPar4Poangsnitt.Text = ("ND1").Formatera(
+                        txtPar4Antal.Text = "N".Formatera(int.Parse(rad["Antal hål"].ToString()));
+                        txtPar4Poangsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Poäng"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar4Slagsnitt.Text = ("ND1").Formatera(
+                        txtPar4Slagsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Slag"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar4Puttsnitt.Text = ("ND1").Formatera(
+                        txtPar4Puttsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Puttar"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar4GRTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal GR"]));
-                        txtPar4GRTraffProc.Text = ("ND1").Formatera(
+                        txtPar4GRTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal GR"]));
+                        txtPar4GRTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal GR"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
-                        txtPar4FWTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal FW"]));
-                        txtPar4FWTraffProc.Text = ("ND1").Formatera(
+                        txtPar4FWTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal FW"]));
+                        txtPar4FWTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal FW"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
 
                         if (rad["Antal Eagle"].ToString() != "")
                         {
-                            txtPar4Eagle.Text = ("N").Formatera(int.Parse(rad["Antal Eagle"].ToString()));
-                            txtPar4EagleProc.Text = ("ND1").Formatera(
+                            txtPar4Eagle.Text = "N".Formatera(int.Parse(rad["Antal Eagle"].ToString()));
+                            txtPar4EagleProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Eagle"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar4Eagle.ForeColor = Color.Red;
@@ -291,8 +291,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Birdie"].ToString() != "")
                         {
-                            txtPar4Birdie.Text = ("N").Formatera(int.Parse(rad["Antal Birdie"].ToString()));
-                            txtPar4BirdieProc.Text = ("ND1").Formatera(
+                            txtPar4Birdie.Text = "N".Formatera(int.Parse(rad["Antal Birdie"].ToString()));
+                            txtPar4BirdieProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Birdie"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar4Birdie.ForeColor = Color.Red;
@@ -301,7 +301,7 @@ namespace Hooker_GUI
 
                         if (rad["Antal Par"].ToString() != "")
                         {
-                            txtPar4Par.Text = ("N").Formatera(int.Parse(rad["Antal Par"].ToString()));
+                            txtPar4Par.Text = "N".Formatera(int.Parse(rad["Antal Par"].ToString()));
                             txtPar4ParProc.Text = ("ND1").Formatera(
                                 decimal.Parse(rad["Antal Par"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
@@ -309,8 +309,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Bogey"].ToString() != "")
                         {
-                            txtPar4Bogey.Text = ("N").Formatera(int.Parse(rad["Antal Bogey"].ToString()));
-                            txtPar4BogeyProc.Text = ("ND1").Formatera(
+                            txtPar4Bogey.Text = "N".Formatera(int.Parse(rad["Antal Bogey"].ToString()));
+                            txtPar4BogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Bogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar4Bogey.ForeColor = Color.Blue;
@@ -319,8 +319,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Dubbelbogey"].ToString() != "")
                         {
-                            txtPar4Dubbelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
-                            txtPar4DubbelbogeyProc.Text = ("ND1").Formatera(
+                            txtPar4Dubbelbogey.Text = "N".Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
+                            txtPar4DubbelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Dubbelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar4Dubbelbogey.ForeColor = Color.Blue;
@@ -329,8 +329,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Trippelbogey"].ToString() != "")
                         {
-                            txtPar4Trippelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
-                            txtPar4TrippelbogeyProc.Text = ("ND1").Formatera(
+                            txtPar4Trippelbogey.Text = "N".Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
+                            txtPar4TrippelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Trippelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar4Trippelbogey.ForeColor = Color.Blue;
@@ -339,8 +339,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Andra"].ToString() != "")
                         {
-                            txtPar4Andra.Text = ("N").Formatera(int.Parse(rad["Antal Andra"].ToString()));
-                            txtPar4AndraProc.Text = ("ND1").Formatera(
+                            txtPar4Andra.Text = "N".Formatera(int.Parse(rad["Antal Andra"].ToString()));
+                            txtPar4AndraProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Andra"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar4Andra.ForeColor = Color.Blue;
@@ -349,26 +349,26 @@ namespace Hooker_GUI
                         break;
                     case "5":
                         //Par 5:or
-                        txtPar5Antal.Text = ("N").Formatera(int.Parse(rad["Antal hål"].ToString()));
-                        txtPar5Poangsnitt.Text = ("ND1").Formatera(
+                        txtPar5Antal.Text = "N".Formatera(int.Parse(rad["Antal hål"].ToString()));
+                        txtPar5Poangsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Poäng"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar5Slagsnitt.Text = ("ND1").Formatera(
+                        txtPar5Slagsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Slag"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar5Puttsnitt.Text = ("ND1").Formatera(
+                        txtPar5Puttsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Puttar"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtPar5GRTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal GR"]));
-                        txtPar5GRTraffProc.Text = ("ND1").Formatera(
+                        txtPar5GRTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal GR"]));
+                        txtPar5GRTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal GR"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
-                        txtPar5FWTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal FW"]));
-                        txtPar5FWTraffProc.Text = ("ND1").Formatera(
+                        txtPar5FWTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal FW"]));
+                        txtPar5FWTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal FW"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
 
                         if (rad["Antal Eagle"].ToString() != "")
                         {
-                            txtPar5Eagle.Text = ("N").Formatera(int.Parse(rad["Antal Eagle"].ToString()));
-                            txtPar5EagleProc.Text = ("ND1").Formatera(
+                            txtPar5Eagle.Text = "N".Formatera(int.Parse(rad["Antal Eagle"].ToString()));
+                            txtPar5EagleProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Eagle"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar5Eagle.ForeColor = Color.Red;
@@ -377,8 +377,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Birdie"].ToString() != "")
                         {
-                            txtPar5Birdie.Text = ("N").Formatera(int.Parse(rad["Antal Birdie"].ToString()));
-                            txtPar5BirdieProc.Text = ("ND1").Formatera(
+                            txtPar5Birdie.Text = "N".Formatera(int.Parse(rad["Antal Birdie"].ToString()));
+                            txtPar5BirdieProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Birdie"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar5Birdie.ForeColor = Color.Red;
@@ -387,16 +387,16 @@ namespace Hooker_GUI
 
                         if (rad["Antal Par"].ToString() != "")
                         {
-                            txtPar5Par.Text = ("N").Formatera(int.Parse(rad["Antal Par"].ToString()));
-                            txtPar5ParProc.Text = ("ND1").Formatera(
+                            txtPar5Par.Text = "N".Formatera(int.Parse(rad["Antal Par"].ToString()));
+                            txtPar5ParProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Par"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                         }
 
                         if (rad["Antal Bogey"].ToString() != "")
                         {
-                            txtPar5Bogey.Text = ("N").Formatera(int.Parse(rad["Antal Bogey"].ToString()));
-                            txtPar5BogeyProc.Text = ("ND1").Formatera(
+                            txtPar5Bogey.Text = "N".Formatera(int.Parse(rad["Antal Bogey"].ToString()));
+                            txtPar5BogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Bogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar5Bogey.ForeColor = Color.Blue;
@@ -405,8 +405,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Dubbelbogey"].ToString() != "")
                         {
-                            txtPar5Dubbelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
-                            txtPar5DubbelbogeyProc.Text = ("ND1").Formatera(
+                            txtPar5Dubbelbogey.Text = "N".Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
+                            txtPar5DubbelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Dubbelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar5Dubbelbogey.ForeColor = Color.Blue;
@@ -415,8 +415,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Trippelbogey"].ToString() != "")
                         {
-                            txtPar5Trippelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
-                            txtPar5TrippelbogeyProc.Text = ("ND1").Formatera(
+                            txtPar5Trippelbogey.Text = "N".Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
+                            txtPar5TrippelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Trippelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar5Trippelbogey.ForeColor = Color.Blue;
@@ -425,8 +425,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Andra"].ToString() != "")
                         {
-                            txtPar5Andra.Text = ("N").Formatera(int.Parse(rad["Antal Andra"].ToString()));
-                            txtPar5AndraProc.Text = ("ND1").Formatera(
+                            txtPar5Andra.Text = "N".Formatera(int.Parse(rad["Antal Andra"].ToString()));
+                            txtPar5AndraProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Andra"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtPar5Andra.ForeColor = Color.Blue;
@@ -435,26 +435,26 @@ namespace Hooker_GUI
                         break;
                     case "9":
                         //Totalt
-                        txtTotaltAntal.Text = ("N").Formatera(int.Parse(rad["Antal hål"].ToString()));
-                        txtTotaltPoangsnitt.Text = ("ND1").Formatera(
+                        txtTotaltAntal.Text = "N".Formatera(int.Parse(rad["Antal hål"].ToString()));
+                        txtTotaltPoangsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Poäng"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtTotaltSlagsnitt.Text = ("ND1").Formatera(
+                        txtTotaltSlagsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Slag"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtTotaltPuttsnitt.Text = ("ND1").Formatera(
+                        txtTotaltPuttsnitt.Text = "ND1".Formatera(
                             decimal.Parse(rad["Puttar"].ToString()) / decimal.Parse(rad["Antal hål"].ToString()));
-                        txtTotaltGRTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal GR"]));
-                        txtTotaltGRTraffProc.Text = ("ND1").Formatera(
+                        txtTotaltGRTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal GR"]));
+                        txtTotaltGRTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal GR"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
-                        txtTotaltFWTraff.Text = ("N").Formatera(Convert.ToInt32(rad["Antal FW"]));
-                        txtTotaltFWTraffProc.Text = ("ND1").Formatera(
+                        txtTotaltFWTraff.Text = "N".Formatera(Convert.ToInt32(rad["Antal FW"]));
+                        txtTotaltFWTraffProc.Text = "ND1".Formatera(
                             decimal.Parse(Convert.ToInt32(rad["Antal FW"]).ToString()) /
                             decimal.Parse(Convert.ToInt32(rad["Antal hål"]).ToString()) * 100);
 
                         if (rad["Antal Eagle"].ToString() != "")
                         {
-                            txtTotaltEagle.Text = ("N").Formatera(int.Parse(rad["Antal Eagle"].ToString()));
-                            txtTotaltEagleProc.Text = ("ND1").Formatera(
+                            txtTotaltEagle.Text = "N".Formatera(int.Parse(rad["Antal Eagle"].ToString()));
+                            txtTotaltEagleProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Eagle"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtTotaltEagle.ForeColor = Color.Red;
@@ -463,8 +463,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Birdie"].ToString() != "")
                         {
-                            txtTotaltBirdie.Text = ("N").Formatera(int.Parse(rad["Antal Birdie"].ToString()));
-                            txtTotaltBirdieProc.Text = ("ND1").Formatera(
+                            txtTotaltBirdie.Text = "N".Formatera(int.Parse(rad["Antal Birdie"].ToString()));
+                            txtTotaltBirdieProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Birdie"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtTotaltBirdie.ForeColor = Color.Red;
@@ -473,16 +473,16 @@ namespace Hooker_GUI
 
                         if (rad["Antal Par"].ToString() != "")
                         {
-                            txtTotaltPar.Text = ("N").Formatera(int.Parse(rad["Antal Par"].ToString()));
-                            txtTotaltParProc.Text = ("ND1").Formatera(
+                            txtTotaltPar.Text = "N".Formatera(int.Parse(rad["Antal Par"].ToString()));
+                            txtTotaltParProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Par"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                         }
 
                         if (rad["Antal Bogey"].ToString() != "")
                         {
-                            txtTotaltBogey.Text = ("N").Formatera(int.Parse(rad["Antal Bogey"].ToString()));
-                            txtTotaltBogeyProc.Text = ("ND1").Formatera(
+                            txtTotaltBogey.Text = "N".Formatera(int.Parse(rad["Antal Bogey"].ToString()));
+                            txtTotaltBogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Bogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtTotaltBogey.ForeColor = Color.Blue;
@@ -491,8 +491,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Dubbelbogey"].ToString() != "")
                         {
-                            txtTotaltDubbelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
-                            txtTotaltDubbelbogeyProc.Text = ("ND1").Formatera(
+                            txtTotaltDubbelbogey.Text = "N".Formatera(int.Parse(rad["Antal Dubbelbogey"].ToString()));
+                            txtTotaltDubbelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Dubbelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtTotaltDubbelbogey.ForeColor = Color.Blue;
@@ -501,8 +501,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Trippelbogey"].ToString() != "")
                         {
-                            txtTotaltTrippelbogey.Text = ("N").Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
-                            txtTotaltTrippelbogeyProc.Text = ("ND1").Formatera(
+                            txtTotaltTrippelbogey.Text = "N".Formatera(int.Parse(rad["Antal Trippelbogey"].ToString()));
+                            txtTotaltTrippelbogeyProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Trippelbogey"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtTotaltTrippelbogey.ForeColor = Color.Blue;
@@ -511,8 +511,8 @@ namespace Hooker_GUI
 
                         if (rad["Antal Andra"].ToString() != "")
                         {
-                            txtTotaltAndra.Text = ("N").Formatera(int.Parse(rad["Antal Andra"].ToString()));
-                            txtTotaltAndraProc.Text = ("ND1").Formatera(
+                            txtTotaltAndra.Text = "N".Formatera(int.Parse(rad["Antal Andra"].ToString()));
+                            txtTotaltAndraProc.Text = "ND1".Formatera(
                                 decimal.Parse(rad["Antal Andra"].ToString())
                                 / decimal.Parse(rad["Antal hål"].ToString()) * 100);
                             txtTotaltAndra.ForeColor = Color.Blue;
@@ -605,10 +605,10 @@ namespace Hooker_GUI
                         tavlingsrond = true;
                     }
 
-                    _gruppanalysDS = statistik.Gruppanalys(golfklubbNr, banaNr, spelarID.ToString(), fromDatum, tomDatum,
+                    gruppanalysDS = statistik.Gruppanalys(golfklubbNr, banaNr, spelarID.ToString(), fromDatum, tomDatum,
                         hcprond, niohalsrond, sallskapsrond, tavlingsrond);
 
-                    if (_gruppanalysDS.Tables["Antal"].Rows[0]["Antal rundor"].ToString() != "0")
+                    if (gruppanalysDS.Tables["Antal"].Rows[0]["Antal rundor"].ToString() != "0")
                     {
                         VisaResultat();
                     }
