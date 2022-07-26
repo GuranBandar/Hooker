@@ -232,11 +232,12 @@ namespace Hooker_GUI
 
                 if (Tavling != null)
                 {
-                    TavlingStartad = Tavling.HarTavlingStartlista() ? true : false;
+                    TavlingStartad = Tavling.ÄrPågående() ? true : false;
+                    //TavlingStartad = Tavling.HarTavlingStartlista() ? true : false;
 
                     if (!TavlingStartad)
                     {
-                        VisaFelmeddelande("TVLEJSTARTLISTA");
+                        //VisaFelmeddelande("TVLEJSTARTLISTA");
                         return;
                     }
 

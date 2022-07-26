@@ -379,10 +379,10 @@ namespace Hooker_GUI.Kontroller
         {
             rondResultat = new Rondresultat(int.Parse(tavlingID), fromDatum, tomDatum);
             rondResultat.TavlingID = int.Parse(tavlingID);
-            rondResultat.VisaRondResultat();
 
             if (rondResultat.TavlingStartad)
             {
+                rondResultat.VisaRondResultat();
                 rondResultat.Show();
             }
         }
