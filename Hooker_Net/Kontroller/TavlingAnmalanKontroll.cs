@@ -80,6 +80,9 @@ namespace Hooker_GUI.Kontroller
         private bool SpelareAktuell(decimal hcp, string golfID, string kon, ref string klass,
             ref string klassNamn)
         {
+            if (golfID == "")
+                return false;
+
             int year = DateTime.Today.Year;
             int alder = year - (1900 + int.Parse(golfID.Substring(0, 2)));
 
