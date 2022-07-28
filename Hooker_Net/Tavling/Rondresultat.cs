@@ -355,15 +355,15 @@ namespace Hooker_GUI
                     cboSpelare.Items.Clear();
                     cboNearest.Items.Clear();
                     cboLongest.Items.Clear();
+                    cboNearest.Items.Add(new ComboBoxPar(0, "Ingen", Tavling.TavlingStartlista));
+                    cboLongest.Items.Add(new ComboBoxPar(0, "Ingen", Tavling.TavlingStartlista));
 
                     foreach (TavlingStartlista tavlingStartlista in Tavling.TavlingStartlista)
                     {
                         if (tavlingStartlista.RondID == RondID)
                         {
                             spelarNamn = spelareAktivitet.HämtaSpelare(tavlingStartlista.SpelareID).Namn;
-                            cboNearest.Items.Add(new ComboBoxPar(0, "Ingen", tavlingStartlista));
                             cboNearest.Items.Add(new ComboBoxPar(tavlingStartlista.SpelareID, spelarNamn, tavlingStartlista));
-                            cboLongest.Items.Add(new ComboBoxPar(0, "Ingen", tavlingStartlista));
                             cboLongest.Items.Add(new ComboBoxPar(tavlingStartlista.SpelareID, spelarNamn, tavlingStartlista));
                             cboSpelare.Items.Add(new ComboBoxPar(tavlingStartlista.SpelareID, spelarNamn, tavlingStartlista));
                         }
@@ -477,8 +477,7 @@ namespace Hooker_GUI
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 1));
                         cc.Text = Bana.BanaHal[halnr - 1].Par.ToString();
-                        parUt = parUt +
-                            int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
+                        parUt += int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
                     }
                     if (cc.Name.StartsWith("txtHcpHal"))
                     {
@@ -494,8 +493,7 @@ namespace Hooker_GUI
                     {
                         halnr = int.Parse(cc.Name.Substring(9, 2));
                         cc.Text = Bana.BanaHal[halnr - 1].Par.ToString();
-                        parIn = parIn +
-                            int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
+                        parIn += int.Parse(Bana.BanaHal[halnr - 1].Par.ToString());
                     }
                     if (cc.Name.StartsWith("txtHcpHal"))
                     {
@@ -519,8 +517,7 @@ namespace Hooker_GUI
                         if (TavlingRondResultat != null)
                         {
                             cc.Text = ("D").Formatera(TavlingRondResultat[halnr - 1].AntalSlag);
-                            slagUt = slagUt +
-                                int.Parse(TavlingRondResultat[halnr - 1].AntalSlag.ToString());
+                            slagUt += int.Parse(TavlingRondResultat[halnr - 1].AntalSlag.ToString());
 
                             //Sätt blå färg om sämre än par, röd om bättre än par
                             cc.ForeColor = (TavlingRondResultat[halnr - 1].AntalSlag.SättFärg(Bana.BanaHal[halnr - 1].Par, true));
@@ -555,8 +552,7 @@ namespace Hooker_GUI
                             {
                                 cc.Text = ("D").Formatera(TavlingRondResultat[halnr - 1].AntalPoang);
                             }
-                            poangUt = poangUt +
-                                int.Parse(TavlingRondResultat[halnr - 1].AntalPoang.ToString());
+                            poangUt += int.Parse(TavlingRondResultat[halnr - 1].AntalPoang.ToString());
                         }
                         else
                         {
@@ -578,8 +574,7 @@ namespace Hooker_GUI
                         if (TavlingRondResultat != null)
                         {
                             cc.Text = ("D").Formatera(TavlingRondResultat[halnr - 1].AntalSlag);
-                            slagIn = slagIn +
-                                int.Parse(TavlingRondResultat[halnr - 1].AntalSlag.ToString());
+                            slagIn += int.Parse(TavlingRondResultat[halnr - 1].AntalSlag.ToString());
 
                             //Sätt blå färg om sämre än par, röd om bättre än par
                             cc.ForeColor = (TavlingRondResultat[halnr - 1].AntalSlag.SättFärg(Bana.BanaHal[halnr - 1].Par, true));
@@ -614,8 +609,7 @@ namespace Hooker_GUI
                             {
                                 cc.Text = ("D").Formatera(TavlingRondResultat[halnr - 1].AntalPoang);
                             }
-                            poangIn = poangIn +
-                                int.Parse(TavlingRondResultat[halnr - 1].AntalPoang.ToString());
+                            poangIn += int.Parse(TavlingRondResultat[halnr - 1].AntalPoang.ToString());
                         }
                         else
                         {

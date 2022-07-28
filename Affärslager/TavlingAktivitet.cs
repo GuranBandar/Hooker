@@ -222,11 +222,11 @@ namespace Hooker.Affärslager
             TavlingData tavlingData = new Datalager.TavlingData();
             DataSet tavlingDS = tavlingData.HämtaTavlingAllt(tavlingID);
             Tavling tavling = null;
-            TavlingKlass tavlingKlass = null;
-            TavlingDeltagare tavlingDeltagare = null;
-            TavlingRond tavlingRond = null;
-            TavlingRondResultat tavlingRondResultat = null;
-            TavlingStartlista tavlingStartlista = null;
+//            TavlingKlass tavlingKlass = null;
+//            TavlingDeltagare tavlingDeltagare = null;
+//            TavlingRond tavlingRond = null;
+//            TavlingRondResultat tavlingRondResultat = null;
+//            TavlingStartlista tavlingStartlista = null;
 
             if (tavlingDS.Tables["Tavling"].Rows.Count == 1)
             {
@@ -254,7 +254,7 @@ namespace Hooker.Affärslager
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingKlass"].Rows)
                 {
-                    tavlingKlass = new TavlingKlass();
+                    TavlingKlass tavlingKlass = new TavlingKlass();
                     tavlingKlass.TavlingID = (int)rad["TavlingID"];
                     tavlingKlass.Klass = rad["Klass"].ToString();
                     tavlingKlass.Spelform = rad["Spelform"].ToString();
@@ -285,7 +285,7 @@ namespace Hooker.Affärslager
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingDeltagare"].Rows)
                 {
-                    tavlingDeltagare = new TavlingDeltagare();
+                    TavlingDeltagare tavlingDeltagare = new TavlingDeltagare();
                     tavlingDeltagare.SpelarID = (int)rad["SpelarID"];
                     tavlingDeltagare.Klass = rad["Klass"].ToString();
                     tavlingDeltagare.AnmaldNr = (int)rad["AnmaldNr"];
@@ -297,7 +297,7 @@ namespace Hooker.Affärslager
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingRond"].Rows)
                 {
-                    tavlingRond = new TavlingRond();
+                    TavlingRond tavlingRond = new TavlingRond();
                     tavlingRond.RondId = (int)rad["RondID"];
                     tavlingRond.TavlingID = (int)rad["TavlingID"];
                     tavlingRond.Klass = rad["Klass"].ToString();
@@ -333,7 +333,7 @@ namespace Hooker.Affärslager
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingRondResultat"].Rows)
                 {
-                    tavlingRondResultat = new TavlingRondResultat();
+                    TavlingRondResultat tavlingRondResultat = new TavlingRondResultat();
                     tavlingRondResultat.RondId = (int)rad["RondID"];
                     tavlingRondResultat.SpelarID = (int)rad["SpelarID"];
                     tavlingRondResultat.HalNr = (int)rad["HalNr"];
@@ -345,7 +345,7 @@ namespace Hooker.Affärslager
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingStartlista"].Rows)
                 {
-                    tavlingStartlista = new TavlingStartlista();
+                    TavlingStartlista tavlingStartlista = new TavlingStartlista();
                     tavlingStartlista.RondID = (int)rad["RondID"];
                     tavlingStartlista.SpelareID = (int)rad["SpelarID"];
                     tavlingStartlista.BollNr = (int)rad["BollNr"];

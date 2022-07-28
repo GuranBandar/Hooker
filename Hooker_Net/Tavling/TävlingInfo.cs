@@ -365,6 +365,20 @@ namespace Hooker_GUI
                     }
                 }
 
+                if (!string.IsNullOrEmpty(txtStartavgift.Text))
+                {
+                    if ((txtStartavgift.Text).ÄrEnInt())
+                    {
+                        Tavling.Startavgift = Convert.ToInt32(txtStartavgift.Text);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        txtStartavgift.Focus();
+                        return false;
+                    }
+                }
+
                 if (txtNotering.Text.Trim().Length > 120)
                 {
                     Tavling.Notering = txtNotering.Text.Trim().Substring(0, 120);
