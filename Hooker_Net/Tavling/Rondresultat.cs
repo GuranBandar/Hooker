@@ -71,6 +71,8 @@ namespace Hooker_GUI
         public DateTime TomDatum { get; set; }
 
         public bool TavlingStartad { get; set; }
+
+        public bool TavlingAvslutad{ get; set; }
         #endregion
 
         /// <summary>
@@ -106,7 +108,7 @@ namespace Hooker_GUI
             Timglas.WaitCurson();
             FyllKlasserCombo();
 
-            if (TavlingStartad)
+            if (TavlingStartad || TavlingAvslutad)
             {
                 FyllRonderCombo();
                 FyllSpelareCombo();
@@ -233,9 +235,9 @@ namespace Hooker_GUI
                 if (Tavling != null)
                 {
                     TavlingStartad = Tavling.ÄrPågående() ? true : false;
-                    //TavlingStartad = Tavling.HarTavlingStartlista() ? true : false;
+                    TavlingAvslutad = Tavling.ÄrStängd();
 
-                    if (!TavlingStartad)
+                    if (!TavlingStartad && !TavlingAvslutad)
                     {
                         //VisaFelmeddelande("TVLEJSTARTLISTA");
                         return;
@@ -355,8 +357,8 @@ namespace Hooker_GUI
                     cboSpelare.Items.Clear();
                     cboNearest.Items.Clear();
                     cboLongest.Items.Clear();
-                    cboNearest.Items.Add(new ComboBoxPar(0, "Ingen", Tavling.TavlingStartlista));
-                    cboLongest.Items.Add(new ComboBoxPar(0, "Ingen", Tavling.TavlingStartlista));
+                    cboNearest.Items.Add(new ComboBoxPar(0, "Ingen Spelare", Tavling.TavlingStartlista));
+                    cboLongest.Items.Add(new ComboBoxPar(0, "Ingen Spelare", Tavling.TavlingStartlista));
 
                     foreach (TavlingStartlista tavlingStartlista in Tavling.TavlingStartlista)
                     {
@@ -400,6 +402,10 @@ namespace Hooker_GUI
             {
                 cboNearest.SelectedItem = Tavling.TavlingRond[RondNr - 1].SpelarIDNearest;
             }
+            else if (Tavling.TavlingRond[RondNr - 1].SpelarIDNearest == 0)
+            {
+                cboNearest.SelectedItem = Tavling.TavlingRond[RondNr - 1].SpelarIDNearest;
+            }
             else
             {
                 cboNearest.SelectedIndex = 0;
@@ -407,6 +413,10 @@ namespace Hooker_GUI
             }
 
             if (Tavling.TavlingRond[RondNr - 1].SpelarIDLongest != 0)
+            {
+                cboLongest.SelectedItem = Tavling.TavlingRond[RondNr - 1].SpelarIDLongest;
+            }
+            else if (Tavling.TavlingRond[RondNr - 1].SpelarIDLongest == 0)
             {
                 cboLongest.SelectedItem = Tavling.TavlingRond[RondNr - 1].SpelarIDLongest;
             }

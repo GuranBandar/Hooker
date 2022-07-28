@@ -260,13 +260,13 @@ namespace Hooker_GUI
                 beloppLN = Tavling.NassauBett * Tavling.TavlingDeltagare.Count();
                 //Kan ju vara så att ingen lyckades träffa
 
-                if (längst != string.Empty)
+                if (längst != string.Empty && !längst.Trim().StartsWith("Ingen"))
                 {
                     SpelareOchBett spelare = spelarBett.Find(x => x.Spelarenamn == längst);
                     spelare.Longest = spelare.Longest + beloppLN;
                 }
 
-                if (närmast != string.Empty)
+                if (närmast != string.Empty && !närmast.Trim().StartsWith("Ingen"))
                 {
                     SpelareOchBett spelare = spelarBett.Find(x => x.Spelarenamn == närmast);
                     spelare.Nearest = spelare.Nearest + beloppLN;

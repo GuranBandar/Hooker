@@ -380,7 +380,7 @@ namespace Hooker_GUI.Kontroller
             rondResultat = new Rondresultat(int.Parse(tavlingID), fromDatum, tomDatum);
             rondResultat.TavlingID = int.Parse(tavlingID);
 
-            if (rondResultat.TavlingStartad)
+            if (rondResultat.TavlingStartad || rondResultat.TavlingAvslutad)
             {
                 rondResultat.VisaRondResultat();
                 rondResultat.Show();
