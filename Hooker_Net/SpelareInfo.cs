@@ -167,14 +167,16 @@ namespace Hooker_GUI
         private void FyllBild()
         {
             txtExaktHcp.Text = Spelare.ExaktHcp.ToString();
-            decimal hcpResultat = 0;
+            decimal hcpResultat;
 
             if (Spelare.GolfID != null && Spelare.GolfID != "")
             {
                 txtGolfID.Text = Spelare.GolfID.Substring(0, 6);
                 txtLopnr.Text = Spelare.GolfID.Substring(6, 3);
-                EGAPrognos eGAPrognos = new EGAPrognos();
-                eGAPrognos.SpelarID = SpelarID;
+                EGAPrognos eGAPrognos = new EGAPrognos
+                {
+                    SpelarID = SpelarID
+                };
                 hcpResultat = eGAPrognos.UtförHcpPrognos();
                 string a = ("ND1").Formatera(hcpResultat / 8);
             }
@@ -289,8 +291,10 @@ namespace Hooker_GUI
                 List<Hcplista> hcplista = Hcplista.OrderByDescending(h => h.Datum).
                     Take(12).ToList();
                 hcplista = hcplista.OrderBy(h => h.Datum).ToList();
-                Series ser = new Series();
-                ser.ChartType = SeriesChartType.Line;
+                Series ser = new Series
+                {
+                    ChartType = SeriesChartType.Line
+                };
                 ser.Points.AddXY(0, hcplista[0].NyttHcp);
                 ser.MarkerStyle = MarkerStyle.Circle;
                 ser.MarkerSize = 10;
@@ -306,13 +310,13 @@ namespace Hooker_GUI
                     var nLista = hcplista.LastN(12);
                     var maxvalue = nLista.Max(w => w.Hcp);
                     var minvalue = nLista.Min(w => w.Hcp);
-                    cha.AxisY.Minimum = Convert.ToDouble(minvalue) - 1.5;
-                    cha.AxisY.Maximum = Convert.ToDouble(maxvalue) + 1.5;
+                    cha.AxisY.Minimum = Convert.ToDouble(minvalue) - 2;
+                    cha.AxisY.Maximum = Convert.ToDouble(maxvalue) + 2;
                 }
                 else
                 {
-                    cha.AxisY.Minimum = Convert.ToDouble(Spelare.ExaktHcp) - 1.5;
-                    cha.AxisY.Maximum = Convert.ToDouble(Spelare.ExaktHcp) + 1.5;
+                    cha.AxisY.Minimum = Convert.ToDouble(Spelare.ExaktHcp) - 2;
+                    cha.AxisY.Maximum = Convert.ToDouble(Spelare.ExaktHcp) + 2;
                 }
 
                 chaHcplista.Series.Clear();
