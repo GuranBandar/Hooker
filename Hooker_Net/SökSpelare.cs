@@ -62,7 +62,7 @@ namespace Hooker_GUI
                 knappkontroller1.btnKnapp2.Enabled = false;
                 List<Spelare> spelare = spelareAktivitet.SökSpelare(txtNamn.Text.ToString().Trim(), golfID);
 
-                if (spelare != null)
+                if (spelare.Count > 0)
                 {
                     for (int i = 0; i <= spelare.Count - 1; i++)
                     {
@@ -81,6 +81,10 @@ namespace Hooker_GUI
                     }
                     dgwSokSpelare.Rows[0].Cells[0].DataGridView.Focus();
                     knappkontroller1.btnKnapp2.Enabled = true;
+                }
+                else
+                {
+                    VisaFelmeddelande("SPELAREMISSING");
                 }
                 Timglas.DefaultCursor();
             }

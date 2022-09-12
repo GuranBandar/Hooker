@@ -176,7 +176,7 @@ namespace Hooker_GUI
             //SpelareAktivitet spelareAktivitet = new SpelareAktivitet();
             //Spelare = spelareAktivitet.HämtaSpelare(Anvandare.AktuelltSpelarID);
 
-            //txtAnvandarnamn.Text = Anvandare.Anvandarnamn;
+            txtAnvandarnamn.Text = Anvandare.Anvandarnamn;
 
             //if (Spelare.Namn != null)
             //{

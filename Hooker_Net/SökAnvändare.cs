@@ -62,7 +62,7 @@ namespace Hooker_GUI
                 List<Anvandare> Anvandare = anvandareAktivitet.
                     SökAnvandare(txtNamn.Text.ToString().Trim(), anvandarGrupp);
 
-                if (Anvandare != null)
+                if (Anvandare.Count > 0)
                 {
                     for (int i = 0; i <= Anvandare.Count - 1; i++)
                     {
@@ -76,6 +76,10 @@ namespace Hooker_GUI
                     }
                     dgwSokAnvandare.Rows[0].Cells[0].DataGridView.Focus();
                     knappkontroller1.btnKnapp2.Enabled = true;
+                }
+                else
+                {
+                    VisaFelmeddelande("ANVANDAREMISSING");
                 }
                 Timglas.DefaultCursor();
             }

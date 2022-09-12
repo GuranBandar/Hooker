@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalager", "Datalager\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gemensam", "Gemensam\Gemensam.csproj", "{7C50691B-CB09-4FA3-84CF-E006484CA0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsFabrik", "..\WindowsFormsFabrik\WindowsFormsFabrik.csproj", "{F391E2D6-B583-4E11-92FF-F524620BAF54}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -81,18 +79,6 @@ Global
 		{7C50691B-CB09-4FA3-84CF-E006484CA0BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C50691B-CB09-4FA3-84CF-E006484CA0BD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7C50691B-CB09-4FA3-84CF-E006484CA0BD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Debug|.NET.Build.0 = Debug|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Release|.NET.ActiveCfg = Release|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Release|.NET.Build.0 = Release|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F391E2D6-B583-4E11-92FF-F524620BAF54}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
