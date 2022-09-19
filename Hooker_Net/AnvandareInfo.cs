@@ -4,6 +4,7 @@ using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Hooker_GUI
@@ -122,9 +123,10 @@ namespace Hooker_GUI
             }
 
             knappkontroller1.btnKnapp0.Visible = false;
-            knappkontroller1.btnKnapp1.Visible = false;
+            knappkontroller1.btnKnapp1.Enabled = true;
             knappkontroller1.btnKnapp2.Enabled = false;
             knappkontroller1.btnKnapp3.Enabled = false;
+            knappkontroller1.btnKnapp1.Text = Översätt("Text", "Knapp_SendMail");
             knappkontroller1.btnKnapp2.Text = Översätt("Text", "Knapp_Spara");
             knappkontroller1.btnKnapp3.Text = Översätt("Text", "Knapp_TaBort");
             knappkontroller1.btnKnapp4.Text = Översätt("Text", "Knapp_Avbryt");
@@ -374,7 +376,41 @@ namespace Hooker_GUI
 
             return result;
         }
-        #endregion
 
+        /// <summary>
+        /// Skapa mail om registrerad runda
+        /// </summary>
+        private void SendMail()
+        {
+            StringBuilder email = new StringBuilder();
+            try
+            {
+                Mail mail = new Mail();
+                mail.MailFrom = Systemvariabel.MailFrom;
+                mail.Password = Systemvariabel.MailPassword;
+                mail.MailTo = Anvandare.Epostadress;
+                mail.IsHTML = true;
+                mail.Subject = "Registrerade användaruppgifter";
+
+                email.Append("<b>Hej " + Anvandare.Anvandarnamn + "</b><br/><br/>");
+                email.Append("Du har följande användaruppgifter registrerade:");
+                email.Append("<br/>");
+                email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + ".<br/>");
+                email.Append("Epostadress: " + Anvandare.Epostadress + ".<br/>");
+                email.Append("Lösenord: " + Anvandare.Losenord + ".<br/>");
+                mail.Body = email.ToString();
+
+                Timglas.WaitCurson();
+                mail.SendMail();
+                VisaMeddelande("Skicka_OK");
+                this.Close();
+                Timglas.DefaultCursor();
+            }
+            catch (HookerException)
+            {
+                VisaFelmeddelande(FelID, Feltext);
+            }
+        }
+        #endregion
     }
 }

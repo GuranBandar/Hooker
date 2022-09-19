@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 
 namespace Hooker.Gemensam
 {
@@ -66,25 +67,24 @@ namespace Hooker.Gemensam
                 string subject = Subject;
                 string body = Body;
 
-                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 10000,
-                };
+                MailMessage mail = new MailMessage(fromAddress.Address, toAddress.Address);
+                SmtpClient client = new SmtpClient();
 
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body,
-                    IsBodyHtml = IsHTML
-                })
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(fromAddress.Address, 
+                    fromPassword);
+                client.Host = "smtp-mail.outlook.com";
+                client.Port = 25;
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
+                    SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                smtp.Send(message);
+                mail.Subject = subject;
+                mail.Body = body;
+                mail.IsBodyHtml = IsHTML;
+
+                client.Send(mail);
             }
             catch (Exception ex)
             {

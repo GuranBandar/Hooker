@@ -21,6 +21,19 @@ namespace Hooker_GUI
         #endregion
 
         /// <summary>
+        /// Hantera Send mail knappen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void knappkontroller1_OnKnapp1Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Anvandare.Epostadress))
+            {
+                SendMail();
+            }
+        }
+
+        /// <summary>
         /// Hantera Spara-knappen
         /// </summary>
         private void knappkontroller1_OnKnapp2Click(object sender, EventArgs e)

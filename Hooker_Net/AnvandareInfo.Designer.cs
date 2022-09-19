@@ -64,76 +64,85 @@
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(13, 15);
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(17, 18);
+            this.lblAnvandarnamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAnvandarnamn.Name = "lblAnvandarnamn";
-            this.lblAnvandarnamn.Size = new System.Drawing.Size(131, 13);
+            this.lblAnvandarnamn.Size = new System.Drawing.Size(174, 17);
             this.lblAnvandarnamn.TabIndex = 0;
             this.lblAnvandarnamn.Text = "Radrubrik_Anvandarnamn";
             // 
             // txtAnvandarnamn
             // 
-            this.txtAnvandarnamn.Location = new System.Drawing.Point(100, 12);
+            this.txtAnvandarnamn.Location = new System.Drawing.Point(133, 15);
+            this.txtAnvandarnamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAnvandarnamn.Name = "txtAnvandarnamn";
-            this.txtAnvandarnamn.Size = new System.Drawing.Size(120, 20);
+            this.txtAnvandarnamn.Size = new System.Drawing.Size(159, 22);
             this.txtAnvandarnamn.TabIndex = 1;
             // 
             // lblAnvandargrupp
             // 
             this.lblAnvandargrupp.AutoSize = true;
-            this.lblAnvandargrupp.Location = new System.Drawing.Point(13, 49);
+            this.lblAnvandargrupp.Location = new System.Drawing.Point(17, 60);
+            this.lblAnvandargrupp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAnvandargrupp.Name = "lblAnvandargrupp";
-            this.lblAnvandargrupp.Size = new System.Drawing.Size(132, 13);
+            this.lblAnvandargrupp.Size = new System.Drawing.Size(176, 17);
             this.lblAnvandargrupp.TabIndex = 0;
             this.lblAnvandargrupp.Text = "Radrubrik_Anvandargrupp";
             // 
             // lblEpostadress
             // 
             this.lblEpostadress.AutoSize = true;
-            this.lblEpostadress.Location = new System.Drawing.Point(13, 148);
+            this.lblEpostadress.Location = new System.Drawing.Point(17, 182);
+            this.lblEpostadress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEpostadress.Name = "lblEpostadress";
-            this.lblEpostadress.Size = new System.Drawing.Size(86, 13);
+            this.lblEpostadress.Size = new System.Drawing.Size(114, 17);
             this.lblEpostadress.TabIndex = 0;
             this.lblEpostadress.Text = "Radrubrik_Epost";
             // 
             // lblLosenord
             // 
             this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(13, 81);
+            this.lblLosenord.Location = new System.Drawing.Point(17, 100);
+            this.lblLosenord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLosenord.Name = "lblLosenord";
-            this.lblLosenord.Size = new System.Drawing.Size(103, 13);
+            this.lblLosenord.Size = new System.Drawing.Size(138, 17);
             this.lblLosenord.TabIndex = 0;
             this.lblLosenord.Text = "Radrubrik_Losenord";
             // 
             // lblInloggadSenast
             // 
             this.lblInloggadSenast.AutoSize = true;
-            this.lblInloggadSenast.Location = new System.Drawing.Point(13, 204);
+            this.lblInloggadSenast.Location = new System.Drawing.Point(17, 251);
+            this.lblInloggadSenast.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInloggadSenast.Name = "lblInloggadSenast";
-            this.lblInloggadSenast.Size = new System.Drawing.Size(133, 13);
+            this.lblInloggadSenast.Size = new System.Drawing.Size(176, 17);
             this.lblInloggadSenast.TabIndex = 0;
             this.lblInloggadSenast.Text = "Radrubrik_InloggadSenast";
             // 
             // lblSenastByttLosen
             // 
             this.lblSenastByttLosen.AutoSize = true;
-            this.lblSenastByttLosen.Location = new System.Drawing.Point(199, 204);
+            this.lblSenastByttLosen.Location = new System.Drawing.Point(265, 251);
+            this.lblSenastByttLosen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSenastByttLosen.Name = "lblSenastByttLosen";
-            this.lblSenastByttLosen.Size = new System.Drawing.Size(139, 13);
+            this.lblSenastByttLosen.Size = new System.Drawing.Size(185, 17);
             this.lblSenastByttLosen.TabIndex = 0;
             this.lblSenastByttLosen.Text = "Radrubrik_SenastByttLosen";
             // 
             // txtEpostadress
             // 
-            this.txtEpostadress.Location = new System.Drawing.Point(100, 144);
+            this.txtEpostadress.Location = new System.Drawing.Point(133, 177);
+            this.txtEpostadress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEpostadress.Name = "txtEpostadress";
-            this.txtEpostadress.Size = new System.Drawing.Size(290, 20);
+            this.txtEpostadress.Size = new System.Drawing.Size(385, 22);
             this.txtEpostadress.TabIndex = 6;
             // 
             // txtLosenord
             // 
-            this.txtLosenord.Location = new System.Drawing.Point(100, 78);
+            this.txtLosenord.Location = new System.Drawing.Point(133, 96);
+            this.txtLosenord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLosenord.Name = "txtLosenord";
-            this.txtLosenord.Size = new System.Drawing.Size(120, 20);
+            this.txtLosenord.Size = new System.Drawing.Size(159, 22);
             this.txtLosenord.TabIndex = 4;
             this.txtLosenord.TextChanged += new System.EventHandler(this.txtLosenord_TextChanged);
             // 
@@ -142,34 +151,38 @@
             this.dtpSenastByttLosen.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtpSenastByttLosen.Enabled = false;
             this.dtpSenastByttLosen.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSenastByttLosen.Location = new System.Drawing.Point(310, 200);
+            this.dtpSenastByttLosen.Location = new System.Drawing.Point(413, 246);
+            this.dtpSenastByttLosen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpSenastByttLosen.Name = "dtpSenastByttLosen";
-            this.dtpSenastByttLosen.Size = new System.Drawing.Size(80, 20);
+            this.dtpSenastByttLosen.Size = new System.Drawing.Size(105, 22);
             this.dtpSenastByttLosen.TabIndex = 0;
             // 
             // dtpInloggadSenast
             // 
             this.dtpInloggadSenast.Enabled = false;
             this.dtpInloggadSenast.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInloggadSenast.Location = new System.Drawing.Point(100, 200);
+            this.dtpInloggadSenast.Location = new System.Drawing.Point(133, 246);
+            this.dtpInloggadSenast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpInloggadSenast.Name = "dtpInloggadSenast";
-            this.dtpInloggadSenast.Size = new System.Drawing.Size(80, 20);
+            this.dtpInloggadSenast.Size = new System.Drawing.Size(105, 22);
             this.dtpInloggadSenast.TabIndex = 0;
             // 
             // cboAnvandargrupp
             // 
             this.cboAnvandargrupp.FormattingEnabled = true;
-            this.cboAnvandargrupp.Location = new System.Drawing.Point(100, 45);
+            this.cboAnvandargrupp.Location = new System.Drawing.Point(133, 55);
+            this.cboAnvandargrupp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboAnvandargrupp.Name = "cboAnvandargrupp";
-            this.cboAnvandargrupp.Size = new System.Drawing.Size(120, 21);
+            this.cboAnvandargrupp.Size = new System.Drawing.Size(159, 24);
             this.cboAnvandargrupp.TabIndex = 3;
             // 
             // lblSpelarnamn
             // 
             this.lblSpelarnamn.AutoSize = true;
-            this.lblSpelarnamn.Location = new System.Drawing.Point(229, 15);
+            this.lblSpelarnamn.Location = new System.Drawing.Point(305, 18);
+            this.lblSpelarnamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpelarnamn.Name = "lblSpelarnamn";
-            this.lblSpelarnamn.Size = new System.Drawing.Size(95, 13);
+            this.lblSpelarnamn.Size = new System.Drawing.Size(127, 17);
             this.lblSpelarnamn.TabIndex = 12;
             this.lblSpelarnamn.Text = "Radrubrik_Spelare";
             // 
@@ -178,9 +191,11 @@
             this.gbxGIR.Controls.Add(this.rbnManuell);
             this.gbxGIR.Controls.Add(this.rbnMedHcp);
             this.gbxGIR.Controls.Add(this.rbnUtanHcp);
-            this.gbxGIR.Location = new System.Drawing.Point(232, 38);
+            this.gbxGIR.Location = new System.Drawing.Point(309, 47);
+            this.gbxGIR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxGIR.Name = "gbxGIR";
-            this.gbxGIR.Size = new System.Drawing.Size(158, 93);
+            this.gbxGIR.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxGIR.Size = new System.Drawing.Size(211, 114);
             this.gbxGIR.TabIndex = 7;
             this.gbxGIR.TabStop = false;
             this.gbxGIR.Text = "Text_GIR";
@@ -188,9 +203,10 @@
             // rbnManuell
             // 
             this.rbnManuell.AutoSize = true;
-            this.rbnManuell.Location = new System.Drawing.Point(11, 65);
+            this.rbnManuell.Location = new System.Drawing.Point(15, 80);
+            this.rbnManuell.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbnManuell.Name = "rbnManuell";
-            this.rbnManuell.Size = new System.Drawing.Size(89, 17);
+            this.rbnManuell.Size = new System.Drawing.Size(113, 21);
             this.rbnManuell.TabIndex = 2;
             this.rbnManuell.TabStop = true;
             this.rbnManuell.Text = "Text_Manuell";
@@ -199,9 +215,10 @@
             // rbnMedHcp
             // 
             this.rbnMedHcp.AutoSize = true;
-            this.rbnMedHcp.Location = new System.Drawing.Point(11, 42);
+            this.rbnMedHcp.Location = new System.Drawing.Point(15, 52);
+            this.rbnMedHcp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbnMedHcp.Name = "rbnMedHcp";
-            this.rbnMedHcp.Size = new System.Drawing.Size(93, 17);
+            this.rbnMedHcp.Size = new System.Drawing.Size(116, 21);
             this.rbnMedHcp.TabIndex = 1;
             this.rbnMedHcp.TabStop = true;
             this.rbnMedHcp.Text = "Text_MedHcp";
@@ -210,9 +227,10 @@
             // rbnUtanHcp
             // 
             this.rbnUtanHcp.AutoSize = true;
-            this.rbnUtanHcp.Location = new System.Drawing.Point(11, 19);
+            this.rbnUtanHcp.Location = new System.Drawing.Point(15, 23);
+            this.rbnUtanHcp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbnUtanHcp.Name = "rbnUtanHcp";
-            this.rbnUtanHcp.Size = new System.Drawing.Size(95, 17);
+            this.rbnUtanHcp.Size = new System.Drawing.Size(119, 21);
             this.rbnUtanHcp.TabIndex = 0;
             this.rbnUtanHcp.TabStop = true;
             this.rbnUtanHcp.Text = "Text_UtanHcp";
@@ -220,27 +238,31 @@
             // 
             // txtKonfirmera
             // 
-            this.txtKonfirmera.Location = new System.Drawing.Point(100, 111);
+            this.txtKonfirmera.Location = new System.Drawing.Point(133, 137);
+            this.txtKonfirmera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtKonfirmera.Name = "txtKonfirmera";
-            this.txtKonfirmera.Size = new System.Drawing.Size(120, 20);
+            this.txtKonfirmera.Size = new System.Drawing.Size(159, 22);
             this.txtKonfirmera.TabIndex = 5;
             // 
             // lblKonfirmera
             // 
             this.lblKonfirmera.AutoSize = true;
-            this.lblKonfirmera.Location = new System.Drawing.Point(13, 114);
+            this.lblKonfirmera.Location = new System.Drawing.Point(17, 140);
+            this.lblKonfirmera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKonfirmera.Name = "lblKonfirmera";
-            this.lblKonfirmera.Size = new System.Drawing.Size(109, 13);
+            this.lblKonfirmera.Size = new System.Drawing.Size(147, 17);
             this.lblKonfirmera.TabIndex = 14;
             this.lblKonfirmera.Text = "Radrubrik_Konfirmera";
             // 
             // knappkontroller1
             // 
             this.knappkontroller1.Button4Text = "Knapp4";
-            this.knappkontroller1.Location = new System.Drawing.Point(-11, 16);
+            this.knappkontroller1.Location = new System.Drawing.Point(-15, 20);
+            this.knappkontroller1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.knappkontroller1.Name = "knappkontroller1";
-            this.knappkontroller1.Size = new System.Drawing.Size(417, 32);
+            this.knappkontroller1.Size = new System.Drawing.Size(556, 39);
             this.knappkontroller1.TabIndex = 9;
+            this.knappkontroller1.OnKnapp1Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp1ClickEventHandler(this.knappkontroller1_OnKnapp1Click);
             this.knappkontroller1.OnKnapp2Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp2ClickEventHandler(this.knappkontroller1_OnKnapp2Click);
             this.knappkontroller1.OnKnapp3Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp3ClickEventHandler(this.knappkontroller1_OnKnapp3Click);
             this.knappkontroller1.OnKnapp4Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp4ClickEventHandler(this.knappkontroller1_OnKnapp4Click);
@@ -248,9 +270,11 @@
             // gbxKnappkontroll
             // 
             this.gbxKnappkontroll.Controls.Add(this.knappkontroller1);
-            this.gbxKnappkontroll.Location = new System.Drawing.Point(-5, 264);
+            this.gbxKnappkontroll.Location = new System.Drawing.Point(-7, 325);
+            this.gbxKnappkontroll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxKnappkontroll.Name = "gbxKnappkontroll";
-            this.gbxKnappkontroll.Size = new System.Drawing.Size(412, 54);
+            this.gbxKnappkontroll.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxKnappkontroll.Size = new System.Drawing.Size(549, 66);
             this.gbxKnappkontroll.TabIndex = 10;
             this.gbxKnappkontroll.TabStop = false;
             this.gbxKnappkontroll.Text = "Text_Blank";
@@ -258,68 +282,75 @@
             // cboWebBrowser
             // 
             this.cboWebBrowser.FormattingEnabled = true;
-            this.cboWebBrowser.Location = new System.Drawing.Point(100, 234);
+            this.cboWebBrowser.Location = new System.Drawing.Point(133, 288);
+            this.cboWebBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboWebBrowser.Name = "cboWebBrowser";
-            this.cboWebBrowser.Size = new System.Drawing.Size(121, 21);
+            this.cboWebBrowser.Size = new System.Drawing.Size(160, 24);
             this.cboWebBrowser.TabIndex = 15;
             // 
             // lblWebBrowser
             // 
             this.lblWebBrowser.AutoSize = true;
-            this.lblWebBrowser.Location = new System.Drawing.Point(13, 238);
+            this.lblWebBrowser.Location = new System.Drawing.Point(17, 293);
+            this.lblWebBrowser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWebBrowser.Name = "lblWebBrowser";
-            this.lblWebBrowser.Size = new System.Drawing.Size(120, 13);
+            this.lblWebBrowser.Size = new System.Drawing.Size(158, 17);
             this.lblWebBrowser.TabIndex = 16;
             this.lblWebBrowser.Text = "Radrubrik_WebBrowser";
             // 
             // cboSprakkod
             // 
             this.cboSprakkod.FormattingEnabled = true;
-            this.cboSprakkod.Location = new System.Drawing.Point(310, 234);
+            this.cboSprakkod.Location = new System.Drawing.Point(413, 288);
+            this.cboSprakkod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboSprakkod.Name = "cboSprakkod";
-            this.cboSprakkod.Size = new System.Drawing.Size(78, 21);
+            this.cboSprakkod.Size = new System.Drawing.Size(103, 24);
             this.cboSprakkod.TabIndex = 17;
             // 
             // lblSprakkod
             // 
             this.lblSprakkod.AutoSize = true;
-            this.lblSprakkod.Location = new System.Drawing.Point(237, 238);
+            this.lblSprakkod.Location = new System.Drawing.Point(316, 293);
+            this.lblSprakkod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSprakkod.Name = "lblSprakkod";
-            this.lblSprakkod.Size = new System.Drawing.Size(105, 13);
+            this.lblSprakkod.Size = new System.Drawing.Size(138, 17);
             this.lblSprakkod.TabIndex = 18;
             this.lblSprakkod.Text = "Radrubrik_Sprakkod";
             // 
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(13, 176);
+            this.lblEpost.Location = new System.Drawing.Point(17, 217);
+            this.lblEpost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEpost.Name = "lblEpost";
-            this.lblEpost.Size = new System.Drawing.Size(144, 13);
+            this.lblEpost.Size = new System.Drawing.Size(192, 17);
             this.lblEpost.TabIndex = 19;
             this.lblEpost.Text = "Radrubrik_Epostmeddelande";
             // 
             // cbxEpost
             // 
             this.cbxEpost.AutoSize = true;
-            this.cbxEpost.Location = new System.Drawing.Point(168, 175);
+            this.cbxEpost.Location = new System.Drawing.Point(224, 215);
+            this.cbxEpost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbxEpost.Name = "cbxEpost";
-            this.cbxEpost.Size = new System.Drawing.Size(15, 14);
+            this.cbxEpost.Size = new System.Drawing.Size(18, 17);
             this.cbxEpost.TabIndex = 20;
             this.cbxEpost.UseVisualStyleBackColor = true;
             // 
             // cboSpelare
             // 
             this.cboSpelare.FormattingEnabled = true;
-            this.cboSpelare.Location = new System.Drawing.Point(290, 12);
+            this.cboSpelare.Location = new System.Drawing.Point(387, 15);
+            this.cboSpelare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboSpelare.Name = "cboSpelare";
-            this.cboSpelare.Size = new System.Drawing.Size(97, 21);
+            this.cboSpelare.Size = new System.Drawing.Size(128, 24);
             this.cboSpelare.TabIndex = 21;
             // 
             // AnvandareInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 317);
+            this.ClientSize = new System.Drawing.Size(533, 390);
             this.Controls.Add(this.cboSpelare);
             this.Controls.Add(this.cbxEpost);
             this.Controls.Add(this.lblEpost);
@@ -345,6 +376,7 @@
             this.Controls.Add(this.lblAnvandarnamn);
             this.Controls.Add(this.gbxKnappkontroll);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "AnvandareInfo";
             this.Text = "Titel_AnvandareInfo";
             this.Load += new System.EventHandler(this.AnvandareInfo_Load);
