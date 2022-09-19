@@ -393,11 +393,11 @@ namespace Hooker_GUI
                 mail.Subject = "Registrerade användaruppgifter";
 
                 email.Append("<b>Hej " + Anvandare.Anvandarnamn + "</b><br/><br/>");
-                email.Append("Du har följande användaruppgifter registrerade:");
-                email.Append("<br/>");
-                email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + ".<br/>");
-                email.Append("Epostadress: " + Anvandare.Epostadress + ".<br/>");
-                email.Append("Lösenord: " + Anvandare.Losenord + ".<br/>");
+                email.Append("<p>Du har följande användaruppgifter registrerade i bokningswebben:");
+                email.Append("<br><br>");
+                email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + ",<br/>");
+                email.Append("Epostadress: " + Anvandare.Epostadress + ",<br/>");
+                email.Append("Lösenord: " + Anvandare.Losenord + ".</p>");
                 mail.Body = email.ToString();
 
                 Timglas.WaitCurson();
