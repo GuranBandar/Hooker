@@ -73,8 +73,8 @@ namespace Hooker.Gemensam
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(fromAddress.Address, 
                     fromPassword);
-                client.Host = "smtp-mail.outlook.com";
-                client.Port = 25;
+                client.Host = "smtp.outlook.com";
+                client.Port = 587;
                 client.EnableSsl = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
