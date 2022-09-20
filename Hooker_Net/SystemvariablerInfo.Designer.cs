@@ -283,7 +283,7 @@
             this.gbxMail.Size = new System.Drawing.Size(866, 99);
             this.gbxMail.TabIndex = 101;
             this.gbxMail.TabStop = false;
-            this.gbxMail.Text = "Mail parametrar";
+            this.gbxMail.Text = "Text_MailParametrar";
             // 
             // lblSmtpHost
             // 
