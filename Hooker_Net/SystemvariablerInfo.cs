@@ -55,6 +55,8 @@ namespace Hooker_GUI
                     Systemvariabel.Version = systemvariabel.Version;
                     Systemvariabel.WriteToLog = systemvariabel.WriteToLog;
                     Systemvariabel.WaitCursorImageID = systemvariabel.WaitCursorImageID;
+                    Systemvariabel.SmtpHost = systemvariabel.SmtpHost;
+                    Systemvariabel.Port = systemvariabel.Port;
                 }
             }
             catch (Exception ex)
@@ -96,6 +98,8 @@ namespace Hooker_GUI
                 }
                 txtMailFrom.Text = Systemvariabler.MailFrom;
                 txtMailPassword.Text = Systemvariabler.MailPassword;
+                txtSmtpHost.Text = Systemvariabel.SmtpHost;
+                txtPort.Text = Systemvariabel.Port;
             }
         }
 
@@ -117,6 +121,8 @@ namespace Hooker_GUI
             Systemvariabler.MailFrom = txtMailFrom.Text;
             Systemvariabler.MailPassword = txtMailPassword.Text;
             Systemvariabler.WaitCursorImageID = ((ComboBoxPar)cbxCursor.SelectedItem).Identifier.ToString();
+            Systemvariabel.SmtpHost = txtSmtpHost.Text;
+            Systemvariabel.Port = txtPort.Text;
         }
 
         /// <summary>

@@ -237,6 +237,11 @@ namespace Hooker_GUI
                 control.Click += Systemvariabel_Changed;
                 control.TextChanged += Systemvariabel_Changed;
             }
+            foreach (var mailControl in gbxMail.Controls.OfType<Control>())
+            {
+                mailControl.Click += Systemvariabel_Changed;
+                mailControl.TextChanged += Systemvariabel_Changed;
+            }
         }
 
         private void Systemvariabel_Changed(object sender, EventArgs e)

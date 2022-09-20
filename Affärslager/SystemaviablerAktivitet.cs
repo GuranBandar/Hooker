@@ -1,7 +1,6 @@
 using System;
 using Hooker.Datalager;
 using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
 using Hooker.Dataset;
 
 namespace Hooker.Affärslager
@@ -45,6 +44,10 @@ namespace Hooker.Affärslager
                     systemvariabler.MailFrom = systemvariablerDS.Systemvariabler[0].MailFrom.ToString();
                     systemvariabler.MailPassword = systemvariablerDS.Systemvariabler[0].MailPassword.ToString();
                     systemvariabler.WaitCursorImageID = systemvariablerDS.Systemvariabler[0].WaitCursorImageID.ToString();
+                    systemvariabler.SmtpHost = (systemvariablerDS.Systemvariabler[0].IsSmtpHostNull()) ?
+                        string.Empty : systemvariablerDS.Systemvariabler[0].SmtpHost.ToString();
+                    systemvariabler.Port = (systemvariablerDS.Systemvariabler[0].IsPortNull()) ?
+                        string.Empty : systemvariablerDS.Systemvariabler[0].Port.ToString();
                 }
             }
             catch (Exception ex)

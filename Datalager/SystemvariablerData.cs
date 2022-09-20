@@ -52,10 +52,11 @@ namespace Hooker.Datalager
             try
             {
                 sql = "INSERT INTO Systemvariabler(Applikationsnamn, Version, Utvecklare, Verktyg, Epostadress, " +
-                    "MobilUtvecklare, WriteToLog, MailFrom, MailPassword, WaitCursorImageID)" +
+                    "MobilUtvecklare, WriteToLog, MailFrom, MailPassword, WaitCursorImageID," +
+                    " SmtpHost, Port)" +
                     "VALUES " +
                     "(@Applikationsnamn, @Version, @Utvecklare, @Verktyg, @Epostadress, @MobilUtvecklare, " +
-                    "@WriteToLog, @MailFrom, @MailPassword, @WaitCursorImageID)";
+                    "@WriteToLog, @MailFrom, @MailPassword, @WaitCursorImageID, @SmtpHost, @Port)";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -68,7 +69,9 @@ namespace Hooker.Datalager
                     new DatabasParameters("@WriteToLog", DataTyp.Char, systemvariabler.WriteToLog.ToString()),
                     new DatabasParameters("@MailFrom", DataTyp.VarChar, systemvariabler.MailFrom.ToString()),
                     new DatabasParameters("@MailPassword", DataTyp.VarChar, systemvariabler.MailPassword.ToString()),
-                    new DatabasParameters("@WaitCursorImageID", DataTyp.VarChar, systemvariabler.WaitCursorImageID.ToString())
+                    new DatabasParameters("@WaitCursorImageID", DataTyp.VarChar, systemvariabler.WaitCursorImageID.ToString()),
+                    new DatabasParameters("@SmtpHost", DataTyp.VarChar, systemvariabler.SmtpHost.ToString()),
+                    new DatabasParameters("@Port", DataTyp.Char, systemvariabler.Port.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();
@@ -108,7 +111,8 @@ namespace Hooker.Datalager
                     "SET Applikationsnamn = @Applikationsnamn, Version = @Version, Utvecklare = @Utvecklare, " +
                     "Verktyg = @Verktyg, Epostadress = @Epostadress, MobilUtvecklare = @MobilUtvecklare, " +
                     "WriteToLog = @WriteToLog, MailFrom = @MailFrom, " +
-                    "MailPassword = @MailPassword, WaitCursorImageID = @WaitCursorImageID";
+                    "MailPassword = @MailPassword, WaitCursorImageID = @WaitCursorImageID, " +
+                    "SmtpHost = @SmtpHost, Port = @Port";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@Applikationsnamn", DataTyp.VarChar, systemvariabler.Applikationsnamn.ToString()),
@@ -120,7 +124,9 @@ namespace Hooker.Datalager
                     new DatabasParameters("@WriteToLog", DataTyp.Char, systemvariabler.WriteToLog.ToString()),
                     new DatabasParameters("@MailFrom", DataTyp.VarChar, systemvariabler.MailFrom.ToString()),
                     new DatabasParameters("@MailPassword", DataTyp.VarChar, systemvariabler.MailPassword.ToString()),
-                    new DatabasParameters("@WaitCursorImageID", DataTyp.VarChar, systemvariabler.WaitCursorImageID.ToString())
+                    new DatabasParameters("@WaitCursorImageID", DataTyp.VarChar, systemvariabler.WaitCursorImageID.ToString()),
+                    new DatabasParameters("@SmtpHost", DataTyp.VarChar, systemvariabler.SmtpHost.ToString()),
+                    new DatabasParameters("@Port", DataTyp.Char, systemvariabler.Port.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();
