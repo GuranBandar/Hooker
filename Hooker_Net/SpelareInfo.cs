@@ -1,6 +1,6 @@
 ﻿using Hooker.Affärslager;
 using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
+//using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Collections.Generic;

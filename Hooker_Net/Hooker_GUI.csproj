@@ -127,6 +127,7 @@
     <Compile Include="DatabaseQuery.designer.cs">
       <DependentUpon>DatabaseQuery.cs</DependentUpon>
     </Compile>
+    <Compile Include="EGAPrognos.cs" />
     <Compile Include="GolfklubbInfo.cs">
       <SubType>Form</SubType>
     </Compile>

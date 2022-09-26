@@ -72,10 +72,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\HookerGemensam\bin\GemensamService.dll</HintPath>
     </Reference>
-    <Reference Include="Hooker.Affärslager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\HookerGemensam\bin\Hooker.Affärslager.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -85,7 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EGAPrognos.cs" />
     <Compile Include="Enumkoder.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="HookerException.cs" />
