@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using Hooker.Affärslager;
 
-namespace Hooker.Gemensam
+namespace Hooker_GUI
 {
     /// <summary>
     /// Beräknar EGA Hcp Prognos
