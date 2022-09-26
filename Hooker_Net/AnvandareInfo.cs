@@ -261,8 +261,10 @@ namespace Hooker_GUI
             {
                 if (NyAnvandare)
                 {
-                    Anvandare = new Anvandare();
-                    Anvandare.SenastByttLosenordDatum = string.Empty;
+                    Anvandare = new Anvandare
+                    {
+                        SenastByttLosenordDatum = string.Empty
+                    };
                 }
                 else
                 {
@@ -385,14 +387,16 @@ namespace Hooker_GUI
             StringBuilder email = new StringBuilder();
             try
             {
-                Mail mail = new Mail();
-                mail.MailFrom = Systemvariabel.MailFrom;
-                mail.Password = Systemvariabel.MailPassword;
-                mail.MailTo = Anvandare.Epostadress;
-                mail.IsHTML = true;
-                mail.Host = Systemvariabel.SmtpHost;
-                mail.Port = Int32.Parse(Systemvariabel.Port);
-                mail.Subject = "Registrerade användaruppgifter";
+                Mail mail = new Mail
+                {
+                    MailFrom = Systemvariabel.MailFrom,
+                    Password = Systemvariabel.MailPassword,
+                    MailTo = Anvandare.Epostadress,
+                    IsHTML = true,
+                    Host = Systemvariabel.SmtpHost,
+                    Port = Int32.Parse(Systemvariabel.Port),
+                    Subject = "Registrerade användaruppgifter"
+                };
 
                 email.Append("<b>Hej " + Anvandare.Anvandarnamn + "</b><br/><br/>");
                 email.Append("<p>Du har följande användaruppgifter registrerade i bokningswebben:");

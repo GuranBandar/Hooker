@@ -39,10 +39,10 @@ namespace Hooker.Gemensam
                 switch (tempstr)
                 {
                     case ".":
-                        resultat = resultat + ",";
+                        resultat += ",";
                         break;
                     default:
-                        resultat = resultat + tempstr;
+                        resultat += tempstr;
                         break;
                 }
             }
@@ -66,10 +66,10 @@ namespace Hooker.Gemensam
                 switch (tempstr)
                 {
                     case ",":
-                        resultat = resultat + ".";
+                        resultat += ".";
                         break;
                     default:
-                        resultat = resultat + tempstr;
+                        resultat += tempstr;
                         break;
                 }
             }
@@ -203,8 +203,8 @@ namespace Hooker.Gemensam
         {
             string format = "g";
             CultureInfo culture = CultureInfo.CurrentCulture;
-            TimeSpan timeSpan = new TimeSpan();
-
+            _ = new TimeSpan();
+            TimeSpan timeSpan;
             try
             {
                 timeSpan = TimeSpan.ParseExact(timeString, format, culture);
@@ -434,10 +434,9 @@ namespace Hooker.Gemensam
         /// <summary>
         /// Checkar vid fel i dataset
         /// </summary>
-        /// <param name="message"></param>
         /// <param name="ds"></param>
         /// <returns>message</returns>
-        public static string CheckForErrors(this string message, DataSet ds)
+        public static string CheckForErrors(this DataSet ds)
         {
             string errorMessage = string.Empty;
             if (!ds.HasErrors)

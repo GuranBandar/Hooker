@@ -79,7 +79,7 @@ namespace Hooker.Datalager
         /// <returns>Typat dataset med efterfrågat data</returns>
         public DataSet SökSpelare(string sqlSok)
         {
-            DataSet spelareDS = new DataSet();
+            _ = new DataSet();
             string sql;
 
             try
@@ -88,7 +88,7 @@ namespace Hooker.Datalager
                     "LEFT OUTER JOIN Golfklubb g ON g.GolfklubbNr = s.GolfklubbNr " +
                     "LEFT OUTER JOIN Bana b ON b.BanaNr = s.HemmabanaNr " +
                     sqlSok.ToString();
-                spelareDS = DatabasAccess.RunSql(sql);
+                DataSet spelareDS = DatabasAccess.RunSql(sql);
                 spelareDS.Tables[0].TableName = "Spelare";
                 return spelareDS;
             }
@@ -105,11 +105,10 @@ namespace Hooker.Datalager
         /// <summary>
         /// Hämtar rad/-er från tabellen Bana i aktuell databas med angiven nyckel.
         /// </summary>
-        /// <param name="sqlSok">Eventuellt where-villkor</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
         public DataSet SökSpelareAnvandare()
         {
-            DataSet spelareDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
 
             try
@@ -120,7 +119,7 @@ namespace Hooker.Datalager
                 sql.Append("INNER JOIN Anvandare a ON a.SpelarID = s.SpelarID ");
                 sql.Append("LEFT OUTER JOIN Golfklubb g ON g.GolfklubbNr = s.GolfklubbNr ");
                 sql.Append("LEFT OUTER JOIN Bana b ON b.BanaNr = s.HemmabanaNr");
-                spelareDS = DatabasAccess.RunSql(sql.ToString());
+                DataSet spelareDS = DatabasAccess.RunSql(sql.ToString());
                 spelareDS.Tables[0].TableName = "Spelare";
                 return spelareDS;
             }
@@ -140,13 +139,13 @@ namespace Hooker.Datalager
         /// <returns>Dataset med efterfrågat data</returns>
         public DataSet HämtaMaxSpelarID()
         {
-            DataSet spelareDS = new DataSet();
+            _ = new DataSet();
             string sql;
 
             try
             {
                 sql = "SELECT MAX(SpelarID) AS Max FROM Spelare";
-                spelareDS = DatabasAccess.RunSql(sql);
+                DataSet spelareDS = DatabasAccess.RunSql(sql);
                 spelareDS.Tables[0].TableName = "Spelare";
                 return spelareDS;
             }
@@ -167,7 +166,7 @@ namespace Hooker.Datalager
         /// <returns>Dataset med efterfrågat data</returns>
         public DataSet HämtaSpelareEjAnmälda(int tavlingID)
         {
-            DataSet spelareDS = new DataSet();
+            _ = new DataSet();
 
             try
             {
@@ -175,7 +174,7 @@ namespace Hooker.Datalager
                 {
                     new DatabasParameters("@tavlingID", DataTyp.Int, tavlingID.ToString())
                 };
-                spelareDS = DatabasAccess.ExecuteSP("GetSpelareEjAnmald", dbParameters);
+                DataSet spelareDS = DatabasAccess.ExecuteSP("GetSpelareEjAnmald", dbParameters);
                 spelareDS.Tables[0].TableName = "Spelare";
                 return spelareDS;
             }
