@@ -10,13 +10,6 @@ namespace Hooker.Gemensam
     /// </summary>
     public class Maila
     {
-        #region Egenskaper
-        /// <summary>
-        /// Mail objektet
-        /// </summary>
-        //public Mail Mail { get; set; }
-        #endregion
-
         /// <summary>
         /// Send mail
         /// <paramref name="Mail"/>
