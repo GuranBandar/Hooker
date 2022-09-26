@@ -29,14 +29,14 @@ namespace Hooker.Affärslager
         public DataSet Bananalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum, 
             DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
         {
-            DataSet bananalysDS = new DataSet();
+            _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
             string sql;
             try
             {
                 sql = SkapaSökvillkor(golfklubbNr, banaNr, spelarID, fromDatum, tomDatum, hcprond, niohalsrond,
                     sallskapsrond, tavlingsrond);
-                bananalysDS = statistik.Bananalys(sql);
+                DataSet bananalysDS = statistik.Bananalys(sql);
                 return bananalysDS;
             }
             catch (HookerException)
@@ -51,10 +51,10 @@ namespace Hooker.Affärslager
         /// <param name="spelarID">Aktuellt spelarID</param>
         public DataSet EGALista(string spelarID)
         {
-            DataSet rundaDS = new DataSet();
+            _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
 
-            rundaDS = statistik.EGALista(spelarID);
+            DataSet rundaDS = statistik.EGALista(spelarID);
             return rundaDS;
         }
 
@@ -71,7 +71,7 @@ namespace Hooker.Affärslager
         public DataSet Ekonomianalys(string redovisningsTyp, string spelarID, DateTime fromDatum, DateTime tomDatum, 
             bool detaljerad, bool summerad)
         {
-            DataSet ekonomianalysDS = new DataSet();
+            _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
             string sql;
 
@@ -79,7 +79,7 @@ namespace Hooker.Affärslager
             {
                 sql = SkapaSökvillkor(redovisningsTyp, spelarID, fromDatum, tomDatum, 
                     detaljerad, summerad);
-                ekonomianalysDS = statistik.Ekonomianalys(sql, detaljerad);
+                DataSet ekonomianalysDS = statistik.Ekonomianalys(sql, detaljerad);
                 return ekonomianalysDS;
             }
             catch (HookerException)
@@ -104,14 +104,14 @@ namespace Hooker.Affärslager
         public DataSet Gruppanalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum, 
             DateTime tomDatum, bool hcprond,bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
         {
-            DataSet gruppanalysDS = new DataSet();
+            _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
             string sql;
             try
             {
                 sql = SkapaSökvillkor(golfklubbNr, banaNr, spelarID, fromDatum, tomDatum, hcprond, niohalsrond,
                     sallskapsrond, tavlingsrond);
-                gruppanalysDS = statistik.Gruppanalys(sql);
+                DataSet gruppanalysDS = statistik.Gruppanalys(sql);
                 return gruppanalysDS;
             }
             catch (HookerException)
@@ -137,14 +137,14 @@ namespace Hooker.Affärslager
             DateTime fromDatum, DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, 
             bool tavlingsrond)
         {
-            DataSet puttstatistikDS = new DataSet();
+            _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
             string sql;
             try
             {
                 sql = SkapaSökvillkor(golfklubbNr, banaNr, spelarID, fromDatum, tomDatum, hcprond, niohalsrond,
                     sallskapsrond, tavlingsrond);
-                puttstatistikDS = statistik.Puttstatistik(sql);
+                DataSet puttstatistikDS = statistik.Puttstatistik(sql);
                 return puttstatistikDS;
             }
             catch (HookerException)
@@ -169,14 +169,14 @@ namespace Hooker.Affärslager
         public DataSet Rondanalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum, 
             DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
         {
-            DataSet rondanalysDS = new DataSet();
+            _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
             string sql;
             try
             {
                 sql = SkapaSökvillkor(golfklubbNr, banaNr, spelarID, fromDatum, tomDatum, hcprond, niohalsrond,
                     sallskapsrond, tavlingsrond);
-                rondanalysDS = statistik.Rondanalys(sql);
+                DataSet rondanalysDS = statistik.Rondanalys(sql);
                 return rondanalysDS;
             }
             catch (HookerException)

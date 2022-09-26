@@ -24,27 +24,29 @@ namespace Hooker.Affärslager
         {
             TavlingData tavlingData = new Datalager.TavlingData();
             TavlingDS tavlingDS = tavlingData.HämtaTavling(tavlingID);
-            Tavling tavling = new Hooker.Affärsobjekt.Tavling();
-            tavling.TavlingID = tavlingDS.Tavling[0].TavlingID;
-            tavling.Namn = tavlingDS.Tavling[0].Namn;
-            tavling.StartDatum = tavlingDS.Tavling[0].StartDatum;
-            tavling.TavlingStatus = tavlingDS.Tavling[0].TavlingStatus;
-            tavling.Spelsatt = tavlingDS.Tavling[0].Spelsatt;
-            tavling.Speltyp = tavlingDS.Tavling[0].Speltyp;
-            tavling.OppenFor = tavlingDS.Tavling[0].OppenFor;
-            tavling.AnmalanTidigast= tavlingDS.Tavling[0].AnmalanTidigast;
-            tavling.AnmalanSenast = tavlingDS.Tavling[0].AnmalanSenast;
-            tavling.StartlistaPubliceras = tavlingDS.Tavling[0].StartlistaPubliceras;
-            tavling.ForstaStart = tavlingDS.Tavling[0].ForstaStart;
-            tavling.MaxAntalAnmalda = tavlingDS.Tavling[0].MaxAntalAnmalda;
-            tavling.PrincipForOveranmalan = tavlingDS.Tavling[0].PrincipForOveranmalan;
-            tavling.Startavgift = tavlingDS.Tavling[0].Startavgift;
-            tavling.Greenfee = tavlingDS.Tavling[0].Greenfee;
-            tavling.Prissumma = tavlingDS.Tavling[0].Prissumma;
-            tavling.Notering = tavlingDS.Tavling[0].Notering;
-            tavling.UppdatDatum = tavlingDS.Tavling[0].UppdatDatum;
-            tavling.FleraBanor = tavlingDS.Tavling[0].FleraBanor;
-            tavling.NassauBett = tavlingDS.Tavling[0].NassauBett;
+            Tavling tavling = new Hooker.Affärsobjekt.Tavling
+            {
+                TavlingID = tavlingDS.Tavling[0].TavlingID,
+                Namn = tavlingDS.Tavling[0].Namn,
+                StartDatum = tavlingDS.Tavling[0].StartDatum,
+                TavlingStatus = tavlingDS.Tavling[0].TavlingStatus,
+                Spelsatt = tavlingDS.Tavling[0].Spelsatt,
+                Speltyp = tavlingDS.Tavling[0].Speltyp,
+                OppenFor = tavlingDS.Tavling[0].OppenFor,
+                AnmalanTidigast = tavlingDS.Tavling[0].AnmalanTidigast,
+                AnmalanSenast = tavlingDS.Tavling[0].AnmalanSenast,
+                StartlistaPubliceras = tavlingDS.Tavling[0].StartlistaPubliceras,
+                ForstaStart = tavlingDS.Tavling[0].ForstaStart,
+                MaxAntalAnmalda = tavlingDS.Tavling[0].MaxAntalAnmalda,
+                PrincipForOveranmalan = tavlingDS.Tavling[0].PrincipForOveranmalan,
+                Startavgift = tavlingDS.Tavling[0].Startavgift,
+                Greenfee = tavlingDS.Tavling[0].Greenfee,
+                Prissumma = tavlingDS.Tavling[0].Prissumma,
+                Notering = tavlingDS.Tavling[0].Notering,
+                UppdatDatum = tavlingDS.Tavling[0].UppdatDatum,
+                FleraBanor = tavlingDS.Tavling[0].FleraBanor,
+                NassauBett = tavlingDS.Tavling[0].NassauBett
+            };
             return tavling;
         }
 
@@ -58,59 +60,63 @@ namespace Hooker.Affärslager
             TavlingData tavlingData = new Datalager.TavlingData();
             DataSet tavlingDS = tavlingData.HämtaTavlingTavlingKlass(tavlingID);
             Tavling tavling = null;
-            TavlingKlass tavlingKlass = null;
+            //TavlingKlass tavlingKlass = null;
 
             if (tavlingDS.Tables["Tavling"].Rows.Count == 1)
             {
-                tavling = new Hooker.Affärsobjekt.Tavling();
-                tavling.TavlingID = (int)tavlingDS.Tables["Tavling"].Rows[0]["TavlingID"];
-                tavling.Namn = tavlingDS.Tables["Tavling"].Rows[0]["Namn"].ToString();
-                tavling.StartDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartDatum"];
-                tavling.TavlingStatus = tavlingDS.Tables["Tavling"].Rows[0]["TavlingStatus"].ToString();
-                tavling.Spelsatt = tavlingDS.Tables["Tavling"].Rows[0]["Spelsatt"].ToString();
-                tavling.Speltyp = tavlingDS.Tables["Tavling"].Rows[0]["Speltyp"].ToString();
-                tavling.OppenFor = tavlingDS.Tables["Tavling"].Rows[0]["OppenFor"].ToString();
-                tavling.AnmalanTidigast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanTidigast"];
-                tavling.AnmalanSenast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanSenast"];
-                tavling.StartlistaPubliceras = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartlistaPubliceras"];
-                tavling.ForstaStart = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["ForstaStart"];
-                tavling.MaxAntalAnmalda = (int)tavlingDS.Tables["Tavling"].Rows[0]["MaxAntalAnmalda"];
-                tavling.PrincipForOveranmalan = tavlingDS.Tables["Tavling"].Rows[0]["PrincipForOveranmalan"].ToString();
-                tavling.Startavgift = (int)tavlingDS.Tables["Tavling"].Rows[0]["Startavgift"];
-                tavling.Greenfee = (int)tavlingDS.Tables["Tavling"].Rows[0]["Greenfee"];
-                tavling.Prissumma = (int)tavlingDS.Tables["Tavling"].Rows[0]["Prissumma"];
-                tavling.Notering = tavlingDS.Tables["Tavling"].Rows[0]["Notering"].ToString();
-                tavling.UppdatDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["UppdatDatum"];
-                tavling.FleraBanor = tavlingDS.Tables["Tavling"].Rows[0]["FleraBanor"].ToString();
-                tavling.NassauBett = (int)tavlingDS.Tables["Tavling"].Rows[0]["NassauBett"];
+                tavling = new Hooker.Affärsobjekt.Tavling
+                {
+                    TavlingID = (int)tavlingDS.Tables["Tavling"].Rows[0]["TavlingID"],
+                    Namn = tavlingDS.Tables["Tavling"].Rows[0]["Namn"].ToString(),
+                    StartDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartDatum"],
+                    TavlingStatus = tavlingDS.Tables["Tavling"].Rows[0]["TavlingStatus"].ToString(),
+                    Spelsatt = tavlingDS.Tables["Tavling"].Rows[0]["Spelsatt"].ToString(),
+                    Speltyp = tavlingDS.Tables["Tavling"].Rows[0]["Speltyp"].ToString(),
+                    OppenFor = tavlingDS.Tables["Tavling"].Rows[0]["OppenFor"].ToString(),
+                    AnmalanTidigast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanTidigast"],
+                    AnmalanSenast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanSenast"],
+                    StartlistaPubliceras = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartlistaPubliceras"],
+                    ForstaStart = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["ForstaStart"],
+                    MaxAntalAnmalda = (int)tavlingDS.Tables["Tavling"].Rows[0]["MaxAntalAnmalda"],
+                    PrincipForOveranmalan = tavlingDS.Tables["Tavling"].Rows[0]["PrincipForOveranmalan"].ToString(),
+                    Startavgift = (int)tavlingDS.Tables["Tavling"].Rows[0]["Startavgift"],
+                    Greenfee = (int)tavlingDS.Tables["Tavling"].Rows[0]["Greenfee"],
+                    Prissumma = (int)tavlingDS.Tables["Tavling"].Rows[0]["Prissumma"],
+                    Notering = tavlingDS.Tables["Tavling"].Rows[0]["Notering"].ToString(),
+                    UppdatDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["UppdatDatum"],
+                    FleraBanor = tavlingDS.Tables["Tavling"].Rows[0]["FleraBanor"].ToString(),
+                    NassauBett = (int)tavlingDS.Tables["Tavling"].Rows[0]["NassauBett"]
+                };
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingKlass"].Rows)
                 {
-                    tavlingKlass = new TavlingKlass();
-                    tavlingKlass.Klass = rad["Klass"].ToString();
-                    tavlingKlass.Spelform = rad["Spelform"].ToString();
-                    tavlingKlass.Klasstyp = rad["Klasstyp"].ToString();
-                    tavlingKlass.AntRonder = (int)rad["AntRonder"];
-                    tavlingKlass.TeeMan = rad["TeeMan"].ToString();
-                    tavlingKlass.TeeKvinna = rad["TeeKvinna"].ToString();
-                    tavlingKlass.OnskemalOmTee = rad["OnskemalOmTee"].ToString();
-                    tavlingKlass.Kon = rad["Kon"].ToString();
-                    tavlingKlass.Anmalningsavgift = (int)rad["Anmalningsavgift"];
-                    tavlingKlass.Tillaggsavgift = (int)rad["Tillaggsavgift"];
-                    tavlingKlass.MinHcpMan = (decimal)rad["MinHcpMan"];
-                    tavlingKlass.MaxHcpMan = (decimal)rad["MaxHcpMan"];
-                    tavlingKlass.MinHcpKvinna = (decimal)rad["MinHcpKvinna"];
-                    tavlingKlass.MaxHcpKvinna = (decimal)rad["MaxHcpKvinna"];
-                    tavlingKlass.MinHcpLag = (decimal)rad["MinHcpLag"];
-                    tavlingKlass.MaxHcpLag = (decimal)rad["MaxHcpLag"];
-                    tavlingKlass.MinAlderMan = (int)rad["MinAlderMan"];
-                    tavlingKlass.MaxAlderMan = (int)rad["MaxAlderMan"];
-                    tavlingKlass.MinAlderKvinna = (int)rad["MinAlderKvinna"];
-                    tavlingKlass.MaxAlderKvinna = (int)rad["MaxAlderKvinna"];
-                    tavlingKlass.UppdatDatum = (System.DateTime)rad["UppdatDatum"];
-                    tavlingKlass.KlassNamn = rad["KlassNamn"].ToString();
-                    tavlingKlass.SpelformVarde = rad["SpelformVarde"].ToString();
-                    tavlingKlass.KlasstypVarde = rad["KlasstypVarde"].ToString();
+                    TavlingKlass tavlingKlass = new TavlingKlass
+                    {
+                        Klass = rad["Klass"].ToString(),
+                        Spelform = rad["Spelform"].ToString(),
+                        Klasstyp = rad["Klasstyp"].ToString(),
+                        AntRonder = (int)rad["AntRonder"],
+                        TeeMan = rad["TeeMan"].ToString(),
+                        TeeKvinna = rad["TeeKvinna"].ToString(),
+                        OnskemalOmTee = rad["OnskemalOmTee"].ToString(),
+                        Kon = rad["Kon"].ToString(),
+                        Anmalningsavgift = (int)rad["Anmalningsavgift"],
+                        Tillaggsavgift = (int)rad["Tillaggsavgift"],
+                        MinHcpMan = (decimal)rad["MinHcpMan"],
+                        MaxHcpMan = (decimal)rad["MaxHcpMan"],
+                        MinHcpKvinna = (decimal)rad["MinHcpKvinna"],
+                        MaxHcpKvinna = (decimal)rad["MaxHcpKvinna"],
+                        MinHcpLag = (decimal)rad["MinHcpLag"],
+                        MaxHcpLag = (decimal)rad["MaxHcpLag"],
+                        MinAlderMan = (int)rad["MinAlderMan"],
+                        MaxAlderMan = (int)rad["MaxAlderMan"],
+                        MinAlderKvinna = (int)rad["MinAlderKvinna"],
+                        MaxAlderKvinna = (int)rad["MaxAlderKvinna"],
+                        UppdatDatum = (System.DateTime)rad["UppdatDatum"],
+                        KlassNamn = rad["KlassNamn"].ToString(),
+                        SpelformVarde = rad["SpelformVarde"].ToString(),
+                        KlasstypVarde = rad["KlasstypVarde"].ToString()
+                    };
                     tavling.AddTavlingKlass(tavlingKlass);
                 }
             }
@@ -230,84 +236,92 @@ namespace Hooker.Affärslager
 
             if (tavlingDS.Tables["Tavling"].Rows.Count == 1)
             {
-                tavling = new Hooker.Affärsobjekt.Tavling();
-                tavling.TavlingID = (int)tavlingDS.Tables["Tavling"].Rows[0]["TavlingID"];
-                tavling.Namn = tavlingDS.Tables["Tavling"].Rows[0]["Namn"].ToString();
-                tavling.StartDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartDatum"];
-                tavling.TavlingStatus = tavlingDS.Tables["Tavling"].Rows[0]["TavlingStatus"].ToString();
-                tavling.Spelsatt = tavlingDS.Tables["Tavling"].Rows[0]["Spelsatt"].ToString();
-                tavling.Speltyp = tavlingDS.Tables["Tavling"].Rows[0]["Speltyp"].ToString();
-                tavling.OppenFor = tavlingDS.Tables["Tavling"].Rows[0]["OppenFor"].ToString();
-                tavling.AnmalanTidigast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanTidigast"];
-                tavling.AnmalanSenast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanSenast"];
-                tavling.StartlistaPubliceras = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartlistaPubliceras"];
-                tavling.ForstaStart = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["ForstaStart"];
-                tavling.MaxAntalAnmalda = (int)tavlingDS.Tables["Tavling"].Rows[0]["MaxAntalAnmalda"];
-                tavling.PrincipForOveranmalan = tavlingDS.Tables["Tavling"].Rows[0]["PrincipForOveranmalan"].ToString();
-                tavling.Startavgift = (int)tavlingDS.Tables["Tavling"].Rows[0]["Startavgift"];
-                tavling.Greenfee = (int)tavlingDS.Tables["Tavling"].Rows[0]["Greenfee"];
-                tavling.Prissumma = (int)tavlingDS.Tables["Tavling"].Rows[0]["Prissumma"];
-                tavling.Notering = tavlingDS.Tables["Tavling"].Rows[0]["Notering"].ToString();
-                tavling.UppdatDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["UppdatDatum"];
-                tavling.FleraBanor = tavlingDS.Tables["Tavling"].Rows[0]["FleraBanor"].ToString();
-                tavling.NassauBett = (int)tavlingDS.Tables["Tavling"].Rows[0]["NassauBett"];
+                tavling = new Hooker.Affärsobjekt.Tavling
+                {
+                    TavlingID = (int)tavlingDS.Tables["Tavling"].Rows[0]["TavlingID"],
+                    Namn = tavlingDS.Tables["Tavling"].Rows[0]["Namn"].ToString(),
+                    StartDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartDatum"],
+                    TavlingStatus = tavlingDS.Tables["Tavling"].Rows[0]["TavlingStatus"].ToString(),
+                    Spelsatt = tavlingDS.Tables["Tavling"].Rows[0]["Spelsatt"].ToString(),
+                    Speltyp = tavlingDS.Tables["Tavling"].Rows[0]["Speltyp"].ToString(),
+                    OppenFor = tavlingDS.Tables["Tavling"].Rows[0]["OppenFor"].ToString(),
+                    AnmalanTidigast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanTidigast"],
+                    AnmalanSenast = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["AnmalanSenast"],
+                    StartlistaPubliceras = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["StartlistaPubliceras"],
+                    ForstaStart = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["ForstaStart"],
+                    MaxAntalAnmalda = (int)tavlingDS.Tables["Tavling"].Rows[0]["MaxAntalAnmalda"],
+                    PrincipForOveranmalan = tavlingDS.Tables["Tavling"].Rows[0]["PrincipForOveranmalan"].ToString(),
+                    Startavgift = (int)tavlingDS.Tables["Tavling"].Rows[0]["Startavgift"],
+                    Greenfee = (int)tavlingDS.Tables["Tavling"].Rows[0]["Greenfee"],
+                    Prissumma = (int)tavlingDS.Tables["Tavling"].Rows[0]["Prissumma"],
+                    Notering = tavlingDS.Tables["Tavling"].Rows[0]["Notering"].ToString(),
+                    UppdatDatum = (System.DateTime)tavlingDS.Tables["Tavling"].Rows[0]["UppdatDatum"],
+                    FleraBanor = tavlingDS.Tables["Tavling"].Rows[0]["FleraBanor"].ToString(),
+                    NassauBett = (int)tavlingDS.Tables["Tavling"].Rows[0]["NassauBett"]
+                };
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingKlass"].Rows)
                 {
-                    TavlingKlass tavlingKlass = new TavlingKlass();
-                    tavlingKlass.TavlingID = (int)rad["TavlingID"];
-                    tavlingKlass.Klass = rad["Klass"].ToString();
-                    tavlingKlass.Spelform = rad["Spelform"].ToString();
-                    tavlingKlass.Klasstyp = rad["Klasstyp"].ToString();
-                    tavlingKlass.AntRonder = (int)rad["AntRonder"];
-                    tavlingKlass.TeeMan = rad["TeeMan"].ToString();
-                    tavlingKlass.TeeKvinna = rad["TeeKvinna"].ToString();
-                    tavlingKlass.OnskemalOmTee = rad["OnskemalOmTee"].ToString();
-                    tavlingKlass.Kon = rad["Kon"].ToString();
-                    tavlingKlass.Anmalningsavgift = (int)rad["Anmalningsavgift"];
-                    tavlingKlass.Tillaggsavgift = (int)rad["Tillaggsavgift"];
-                    tavlingKlass.MinHcpMan = (decimal)rad["MinHcpMan"];
-                    tavlingKlass.MaxHcpMan = (decimal)rad["MaxHcpMan"];
-                    tavlingKlass.MinHcpKvinna = (decimal)rad["MinHcpKvinna"];
-                    tavlingKlass.MaxHcpKvinna = (decimal)rad["MaxHcpKvinna"];
-                    tavlingKlass.MinHcpLag = (decimal)rad["MinHcpLag"];
-                    tavlingKlass.MaxHcpLag = (decimal)rad["MaxHcpLag"];
-                    tavlingKlass.MinAlderMan = (int)rad["MinAlderMan"];
-                    tavlingKlass.MaxAlderMan = (int)rad["MaxAlderMan"];
-                    tavlingKlass.MinAlderKvinna = (int)rad["MinAlderKvinna"];
-                    tavlingKlass.MaxAlderKvinna = (int)rad["MaxAlderKvinna"];
-                    tavlingKlass.UppdatDatum = (System.DateTime)rad["UppdatDatum"];
-                    tavlingKlass.KlassNamn = rad["KlassNamn"].ToString();
-                    tavlingKlass.SpelformVarde = rad["SpelformVarde"].ToString();
-                    tavlingKlass.KlasstypVarde = rad["KlasstypVarde"].ToString();
+                    TavlingKlass tavlingKlass = new TavlingKlass
+                    {
+                        TavlingID = (int)rad["TavlingID"],
+                        Klass = rad["Klass"].ToString(),
+                        Spelform = rad["Spelform"].ToString(),
+                        Klasstyp = rad["Klasstyp"].ToString(),
+                        AntRonder = (int)rad["AntRonder"],
+                        TeeMan = rad["TeeMan"].ToString(),
+                        TeeKvinna = rad["TeeKvinna"].ToString(),
+                        OnskemalOmTee = rad["OnskemalOmTee"].ToString(),
+                        Kon = rad["Kon"].ToString(),
+                        Anmalningsavgift = (int)rad["Anmalningsavgift"],
+                        Tillaggsavgift = (int)rad["Tillaggsavgift"],
+                        MinHcpMan = (decimal)rad["MinHcpMan"],
+                        MaxHcpMan = (decimal)rad["MaxHcpMan"],
+                        MinHcpKvinna = (decimal)rad["MinHcpKvinna"],
+                        MaxHcpKvinna = (decimal)rad["MaxHcpKvinna"],
+                        MinHcpLag = (decimal)rad["MinHcpLag"],
+                        MaxHcpLag = (decimal)rad["MaxHcpLag"],
+                        MinAlderMan = (int)rad["MinAlderMan"],
+                        MaxAlderMan = (int)rad["MaxAlderMan"],
+                        MinAlderKvinna = (int)rad["MinAlderKvinna"],
+                        MaxAlderKvinna = (int)rad["MaxAlderKvinna"],
+                        UppdatDatum = (System.DateTime)rad["UppdatDatum"],
+                        KlassNamn = rad["KlassNamn"].ToString(),
+                        SpelformVarde = rad["SpelformVarde"].ToString(),
+                        KlasstypVarde = rad["KlasstypVarde"].ToString()
+                    };
                     tavling.AddTavlingKlass(tavlingKlass);
                 }
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingDeltagare"].Rows)
                 {
-                    TavlingDeltagare tavlingDeltagare = new TavlingDeltagare();
-                    tavlingDeltagare.SpelarID = (int)rad["SpelarID"];
-                    tavlingDeltagare.Klass = rad["Klass"].ToString();
-                    tavlingDeltagare.AnmaldNr = (int)rad["AnmaldNr"];
-                    tavlingDeltagare.Hcp = (decimal)rad["Hcp"];
-                    tavlingDeltagare.SpelHcp = (int)rad["SpelHcp"];
-                    tavlingDeltagare.UppdatDatum = (System.DateTime)rad["UppdatDatum"];
+                    TavlingDeltagare tavlingDeltagare = new TavlingDeltagare
+                    {
+                        SpelarID = (int)rad["SpelarID"],
+                        Klass = rad["Klass"].ToString(),
+                        AnmaldNr = (int)rad["AnmaldNr"],
+                        Hcp = (decimal)rad["Hcp"],
+                        SpelHcp = (int)rad["SpelHcp"],
+                        UppdatDatum = (System.DateTime)rad["UppdatDatum"]
+                    };
                     tavling.AddTavlingDeltagare(tavlingDeltagare);
                 }
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingRond"].Rows)
                 {
-                    TavlingRond tavlingRond = new TavlingRond();
-                    tavlingRond.RondId = (int)rad["RondID"];
-                    tavlingRond.TavlingID = (int)rad["TavlingID"];
-                    tavlingRond.Klass = rad["Klass"].ToString();
-                    tavlingRond.RondNr = (int)rad["RondNr"];
-                    tavlingRond.Datum = (System.DateTime)rad["Datum"];
-                    tavlingRond.ForstaStartTid = (TimeSpan)rad["ForstaStartTid"];
-                    tavlingRond.AntalHal = (int)rad["AntalHal"];
-                    tavlingRond.Cut = rad["Cut"].ToString();
-                    tavlingRond.UppdatDatum = (System.DateTime)rad["UppdatDatum"];
-                    
+                    TavlingRond tavlingRond = new TavlingRond
+                    {
+                        RondId = (int)rad["RondID"],
+                        TavlingID = (int)rad["TavlingID"],
+                        Klass = rad["Klass"].ToString(),
+                        RondNr = (int)rad["RondNr"],
+                        Datum = (System.DateTime)rad["Datum"],
+                        ForstaStartTid = (TimeSpan)rad["ForstaStartTid"],
+                        AntalHal = (int)rad["AntalHal"],
+                        Cut = rad["Cut"].ToString(),
+                        UppdatDatum = (System.DateTime)rad["UppdatDatum"]
+                    };
+
                     if (rad["SpelarIDNearest"] == System.DBNull.Value)
                     {
                         tavlingRond.SpelarIDNearest = 0;
@@ -333,30 +347,34 @@ namespace Hooker.Affärslager
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingRondResultat"].Rows)
                 {
-                    TavlingRondResultat tavlingRondResultat = new TavlingRondResultat();
-                    tavlingRondResultat.RondId = (int)rad["RondID"];
-                    tavlingRondResultat.SpelarID = (int)rad["SpelarID"];
-                    tavlingRondResultat.HalNr = (int)rad["HalNr"];
-                    tavlingRondResultat.AntalSlag = (int)rad["AntalSlag"];
-                    tavlingRondResultat.AntalPoang = (int)rad["AntalPoang"];
-                    tavlingRondResultat.UppdatDatum = (System.DateTime)rad["UppdatDatum"];
+                    TavlingRondResultat tavlingRondResultat = new TavlingRondResultat
+                    {
+                        RondId = (int)rad["RondID"],
+                        SpelarID = (int)rad["SpelarID"],
+                        HalNr = (int)rad["HalNr"],
+                        AntalSlag = (int)rad["AntalSlag"],
+                        AntalPoang = (int)rad["AntalPoang"],
+                        UppdatDatum = (System.DateTime)rad["UppdatDatum"]
+                    };
                     tavling.AddTavlingRondResultat(tavlingRondResultat);
                 }
 
                 foreach (DataRow rad in tavlingDS.Tables["TavlingStartlista"].Rows)
                 {
-                    TavlingStartlista tavlingStartlista = new TavlingStartlista();
-                    tavlingStartlista.RondID = (int)rad["RondID"];
-                    tavlingStartlista.SpelareID = (int)rad["SpelarID"];
-                    tavlingStartlista.BollNr = (int)rad["BollNr"];
-                    tavlingStartlista.Hal = (int)rad["Hal"];
-                    tavlingStartlista.StartDatum = (System.DateTime)rad["StartDatum"];
-                    tavlingStartlista.Starttid = (TimeSpan)rad["Starttid"];
-                    tavlingStartlista.Klass = rad["Klass"].ToString();
-                    tavlingStartlista.ExaktHcp = (decimal)rad["ExaktHcp"];
-                    tavlingStartlista.ErhallnaSlag = (int)rad["ErhallnaSlag"];
-                    tavlingStartlista.Tee = rad["Tee"].ToString();
-                    tavlingStartlista.UppdatDatum = (System.DateTime)rad["UppdatDatum"];
+                    TavlingStartlista tavlingStartlista = new TavlingStartlista
+                    {
+                        RondID = (int)rad["RondID"],
+                        SpelareID = (int)rad["SpelarID"],
+                        BollNr = (int)rad["BollNr"],
+                        Hal = (int)rad["Hal"],
+                        StartDatum = (System.DateTime)rad["StartDatum"],
+                        Starttid = (TimeSpan)rad["Starttid"],
+                        Klass = rad["Klass"].ToString(),
+                        ExaktHcp = (decimal)rad["ExaktHcp"],
+                        ErhallnaSlag = (int)rad["ErhallnaSlag"],
+                        Tee = rad["Tee"].ToString(),
+                        UppdatDatum = (System.DateTime)rad["UppdatDatum"]
+                    };
                     tavling.AddTavlingStartlista(tavlingStartlista);
                 }
             }
@@ -397,9 +415,9 @@ namespace Hooker.Affärslager
         /// <returns>Antalet registrerade spelare på tävlingen</returns>
         public int KollaAntaletAnmälda(int tavlingID)
         {
-            TavlingDeltagareDS tavlingDeltagareDS = new TavlingDeltagareDS();
+            _ = new TavlingDeltagareDS();
             TavlingData tavlingData = new TavlingData();
-            tavlingDeltagareDS = tavlingData.KollaAntaletAnmalda(tavlingID);
+            TavlingDeltagareDS tavlingDeltagareDS = tavlingData.KollaAntaletAnmalda(tavlingID);
             return tavlingDeltagareDS.TavlingDeltagare.Count;
         }
 

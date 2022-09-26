@@ -121,7 +121,7 @@
             this.dgwSokSpelare.RowTemplate.Height = 24;
             this.dgwSokSpelare.Size = new System.Drawing.Size(505, 220);
             this.dgwSokSpelare.TabIndex = 8;
-            this.dgwSokSpelare.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            this.dgwSokSpelare.DoubleClick += new System.EventHandler(this.DataGridView1_DoubleClick);
             // 
             // SpelarID
             // 

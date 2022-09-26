@@ -18,7 +18,7 @@ namespace Hooker.Datalager
         /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet Bananalys(string sqlSok)
         {
-            DataSet bananalysDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
 
             try
@@ -36,7 +36,7 @@ namespace Hooker.Datalager
                 sql.Append(sqlSok.ToString());
                 sql.Append(" GROUP BY r.SpelarID, r.BanaNr, rh.HalNr ");
                 sql.Append("ORDER BY r.BanaNr, rh.HalNr");
-                bananalysDS = DatabasAccess.RunSql(sql.ToString());
+                DataSet bananalysDS = DatabasAccess.RunSql(sql.ToString());
                 bananalysDS.Tables[0].TableName = "Bananalys";
                 return bananalysDS;
             }
@@ -59,7 +59,7 @@ namespace Hooker.Datalager
         /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet EGALista(string spelarID)
         {
-            DataSet egaListaDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
             try
             {
@@ -84,7 +84,7 @@ namespace Hooker.Datalager
                 {
                     new DatabasParameters("@SpelarID", DataTyp.String, spelarID)
                 };
-                egaListaDS = DatabasAccess.FyllDataSet(sql.ToString(), dbParameters);
+                DataSet egaListaDS = DatabasAccess.FyllDataSet(sql.ToString(), dbParameters);
                 egaListaDS.Tables[0].TableName = "EGALista";
                 return egaListaDS;
             }
@@ -109,7 +109,7 @@ namespace Hooker.Datalager
             /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet Ekonomianalys(string sqlSok, bool detaljerad)
         {
-            DataSet ekonomianalysDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
 
             try
@@ -138,7 +138,7 @@ namespace Hooker.Datalager
                     sql.Append("GROUP BY re.Typ, re.SpelarID, s.Namn, k.Varde ");
                     sql.Append("ORDER BY Typnamn, s.Namn");
                 }
-                ekonomianalysDS = DatabasAccess.RunSql(sql.ToString());
+                DataSet ekonomianalysDS = DatabasAccess.RunSql(sql.ToString());
                 ekonomianalysDS.Tables[0].TableName = "Ekonomianalys";
                 return ekonomianalysDS;
             }
@@ -162,7 +162,7 @@ namespace Hooker.Datalager
         /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet Gruppanalys(string sqlSok)
         {
-            DataSet gruppanalysDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
 
             try
@@ -254,7 +254,7 @@ namespace Hooker.Datalager
                 sql.Append("INNER JOIN Bana b ON b.BanaNr = r.BanaNr ");
                 sql.Append("INNER JOIN Golfklubb g ON g.GolfklubbNr = b.GolfklubbNr");
                 sql.Append(sqlSok.ToString() + ";");
-                gruppanalysDS = DatabasAccess.RunSql(sql.ToString());
+                DataSet gruppanalysDS = DatabasAccess.RunSql(sql.ToString());
                 gruppanalysDS.Tables[0].TableName = "Gruppanalys";
                 gruppanalysDS.Tables[1].TableName = "Antal";
                 return gruppanalysDS;
@@ -279,7 +279,7 @@ namespace Hooker.Datalager
         /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet Puttstatistik(string sqlSok)
         {
-            DataSet puttstatistikDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
 
             try
@@ -359,7 +359,7 @@ namespace Hooker.Datalager
                 sql.Append("INNER JOIN Bana b ON b.BanaNr = r.BanaNr ");
                 sql.Append("INNER JOIN Golfklubb g ON g.GolfklubbNr = b.GolfklubbNr");
                 sql.Append(sqlSok.ToString() + ";");
-                puttstatistikDS = DatabasAccess.RunSql(sql.ToString());
+                DataSet puttstatistikDS = DatabasAccess.RunSql(sql.ToString());
                 puttstatistikDS.Tables[0].TableName = "Puttstatistik";
                 puttstatistikDS.Tables[1].TableName = "Antal";
                 return puttstatistikDS;
@@ -384,7 +384,7 @@ namespace Hooker.Datalager
         /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet Rondanalys(string sqlSok)
         {
-            DataSet rondanalysDS = new DataSet();
+            _ = new DataSet();
             StringBuilder sql = new StringBuilder();
 
             try
@@ -409,7 +409,7 @@ namespace Hooker.Datalager
                 sql.Append(sqlSok.ToString());
                 sql.Append(" GROUP BY r.SpelarID, g.GolfklubbNr, r.BanaNr, r.RundaNr, r.Datum, g.GolfklubbNamn, b.Namn, b.Aktuell ");
                 sql.Append("ORDER BY r.Datum, r.RundaNr");
-                rondanalysDS = DatabasAccess.RunSql(sql.ToString());
+                DataSet rondanalysDS = DatabasAccess.RunSql(sql.ToString());
                 rondanalysDS.Tables[0].TableName = "Rondanalys";
                 return rondanalysDS;
             }

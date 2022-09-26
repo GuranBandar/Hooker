@@ -110,7 +110,7 @@ namespace Hooker_GUI
         private void FyllObjektet()
         {
             Systemvariabler = new Systemvariabler();
-            CursorsAktivitet cursorsAktivitet = new CursorsAktivitet();
+            _ = new CursorsAktivitet();
 
             Systemvariabler.Applikationsnamn = txtApplikationsnamn.Text.ToString().Trim();
             Systemvariabler.Version = txtVersion.Text;
@@ -131,13 +131,12 @@ namespace Hooker_GUI
         /// </summary>
         private void FyllCursorCombo()
         {
-            List<Cursors> cursors = null;
             CursorsAktivitet cursorsAktivitet = new CursorsAktivitet();
 
             try
             {
                 //Typ = 1 är Distriktkoder
-                cursors = cursorsAktivitet.Hämta();
+                List<Cursors> cursors = cursorsAktivitet.Hämta();
 
                 if (cursors.Count > 0)
                 {

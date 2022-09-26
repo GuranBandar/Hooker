@@ -95,7 +95,6 @@ namespace Hooker_GUI
         {
             decimal beloppTotal = 0;
             decimal beloppSumma = 0;
-            string redovisningsTyp = null;
             int radnr = 0;
             dgwEkonomiAnalys.Rows.Clear();
 
@@ -121,7 +120,7 @@ namespace Hooker_GUI
 
             if (statistikHuvudKontroll1.DetaljeradRedovisningVald)
             {
-                redovisningsTyp = _ekonomiAnalysDS.Tables["Ekonomianalys"].Rows[0]["Typnamn"].ToString();
+                string redovisningsTyp = _ekonomiAnalysDS.Tables["Ekonomianalys"].Rows[0]["Typnamn"].ToString();
 
                 for (int i = 0; i <= _ekonomiAnalysDS.Tables["Ekonomianalys"].Rows.Count - 1; i++)
                 {

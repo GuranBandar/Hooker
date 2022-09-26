@@ -95,8 +95,10 @@ namespace Hooker_GUI
                 ;
             DataTable dtRes = result.CopyToDataTable();
             DataTable dtTop = dtRes.Rows.OfType<DataRow>().ToList().CopyToDataTable();
-            DataView view = new DataView(dtTop);
-            view.Sort = "Poäng DESC";
+            DataView view = new DataView(dtTop)
+            {
+                Sort = "Poäng DESC"
+            };
             DataTable dtn = view.ToTable();
             return dtn;
         }

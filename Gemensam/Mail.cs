@@ -54,12 +54,12 @@ namespace Hooker.Gemensam
         public bool IsHTML { get; set; }
 
         /// <summary>
-        /// Mail body
+        /// Mail Host
         /// </summary>
         public string Host { get; set; }
 
         /// <summary>
-        /// Mail body
+        /// Mail Port
         /// </summary>
         public int Port { get; set; }
 
@@ -78,15 +78,18 @@ namespace Hooker.Gemensam
                 string body = Body;
 
                 MailMessage mail = new MailMessage(fromAddress.Address, toAddress.Address);
-                SmtpClient client = new SmtpClient();
+                
+                SmtpClient client = new SmtpClient
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address,
+                        fromPassword),
+                    Host = Host,
+                    Port = Port,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network
+                };
 
-                client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(fromAddress.Address, 
-                    fromPassword);
-                client.Host = Host;
-                client.Port = Port;
-                client.EnableSsl = true;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
                     SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 

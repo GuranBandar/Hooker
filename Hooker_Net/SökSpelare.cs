@@ -140,7 +140,7 @@ namespace Hooker_GUI
         /// <summary>
         /// Användaren har dubbelklickat på en rad, då ska Spelaren visas 
         /// </summary>
-        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        private void DataGridView1_DoubleClick(object sender, EventArgs e)
         {
             hanteraFönster1.HanteraVisaSpelare(dgwSokSpelare.CurrentRow.Cells["SpelarID"].Value.ToString());
         }

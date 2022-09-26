@@ -178,7 +178,7 @@ namespace Hooker_GUI
                     SpelarID = SpelarID
                 };
                 hcpResultat = eGAPrognos.UtförHcpPrognos();
-                string a = ("ND1").Formatera(hcpResultat / 8);
+                _ = ("ND1").Formatera(hcpResultat / 8);
             }
 
             if (Spelare.FederationNo != 0)
@@ -208,13 +208,12 @@ namespace Hooker_GUI
         /// </summary>
         private void FyllGolfklubbCombo()
         {
-            List<Golfklubb> golfklubb = null;
             GolfklubbAktivitet golfklubbAktivitet = new GolfklubbAktivitet();
 
             try
             {
                 //golfklubb = golfklubbAktivitet.HämtaGolfklubb("");
-                golfklubb = golfklubbAktivitet.SökGolfklubb("", "", "", "");
+                List<Golfklubb> golfklubb = golfklubbAktivitet.SökGolfklubb("", "", "", "");
 
                 if (golfklubb.Count > 0)
                 {
@@ -244,7 +243,6 @@ namespace Hooker_GUI
         /// </summary>
         private void FyllBanorCombo()
         {
-            List<Bana> bana = null;
             BanaAktivitet banaAktivitet = new BanaAktivitet();
 
             try
@@ -252,7 +250,7 @@ namespace Hooker_GUI
                 if (Spelare.GolfklubbNr != 0)
                 {
 
-                    bana = banaAktivitet.HämtaBanaMedGolfklubbNr(Spelare.GolfklubbNr);
+                    List<Bana> bana = banaAktivitet.HämtaBanaMedGolfklubbNr(Spelare.GolfklubbNr);
 
                     if (bana != null && bana.Count > 0)
                     {
@@ -457,16 +455,18 @@ namespace Hooker_GUI
         private void UppdateraHcplista(decimal hcp)
         {
             HcplistaAktivitet hcplistaAktivitet = new HcplistaAktivitet();
-            Hcplista hcplista = new Hcplista();
-            hcplista.Typ = "M";
-            hcplista.SpelarID = Spelare.AktuelltSpelarID;
-            hcplista.RundaNr = 0;
-            hcplista.Datum = Spelare.Revisionsdatum;
-            hcplista.AntalSlag = 0;
-            hcplista.AntalPoang = 0;
-            hcplista.Hcp = hcp;
-            hcplista.NyttHcp = Spelare.ExaktHcp;
-            hcplista.PlusMinus = Spelare.ExaktHcp - hcp;
+            Hcplista hcplista = new Hcplista
+            {
+                Typ = "M",
+                SpelarID = Spelare.AktuelltSpelarID,
+                RundaNr = 0,
+                Datum = Spelare.Revisionsdatum,
+                AntalSlag = 0,
+                AntalPoang = 0,
+                Hcp = hcp,
+                NyttHcp = Spelare.ExaktHcp,
+                PlusMinus = Spelare.ExaktHcp - hcp
+            };
             //Ingen ändring, hoppa över uppdateringen
             if (hcplista.PlusMinus != 0)
             {

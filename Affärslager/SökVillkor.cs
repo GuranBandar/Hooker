@@ -251,7 +251,7 @@ namespace Hooker.Affärslager
                     // Lägg på ''AND'' om det finns andra kriterier
                     if (argRäknare > 0)
                     {
-                        kriteria = kriteria + " AND ";
+                        kriteria += " AND ";
                     }
 
                     // Lägger till fnuttar (')
@@ -292,7 +292,7 @@ namespace Hooker.Affärslager
                     // Lägg på ''AND'' om det finns andra kriterier
                     if (argRäknare > 0)
                     {
-                        kriteria = kriteria + " AND ";
+                        kriteria += " AND ";
                     }
 
                     // Lägger till '=39
@@ -332,7 +332,7 @@ namespace Hooker.Affärslager
                     // Lägg på ''OR'' om det finns andra kriterier
                     if (argRäknare > 0)
                     {
-                        kriteria = kriteria + " OR ";
+                        kriteria += " OR ";
                     }
 
                     // Lägger till '=39
@@ -373,7 +373,7 @@ namespace Hooker.Affärslager
                     // Lägg på ''AND'' om det finns andra kriterier
                     if (argRäknare > 0)
                     {
-                        kriteria = kriteria + " AND ";
+                        kriteria += " AND ";
                     }
 
                     kriteria = (kriteria + fältNamn + operand + fältVärde);

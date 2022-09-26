@@ -100,8 +100,10 @@ namespace Hooker_GUI
             {
                 txtSpelarNamn.Text = Spelare.Namn;
                 txtExaktHcp.Text = Spelare.ExaktHcp.ToString();
-                EGAPrognos eGAPrognos = new EGAPrognos();
-                eGAPrognos.SpelarID = Spelare.AktuelltSpelarID;
+                EGAPrognos eGAPrognos = new EGAPrognos
+                {
+                    SpelarID = Spelare.AktuelltSpelarID
+                };
                 txtPrognosEGA.Text = ("ND1").Formatera(eGAPrognos.UtförHcpPrognos());
             }
             else
@@ -121,8 +123,10 @@ namespace Hooker_GUI
             
             if (hcplista.Count != 0)
             {
-                Series ser = new Series();
-                ser.ChartType = SeriesChartType.Line;
+                Series ser = new Series
+                {
+                    ChartType = SeriesChartType.Line
+                };
                 ser.Points.AddXY(0, hcplista[0].NyttHcp);
                 ser.MarkerStyle = MarkerStyle.Circle;
                 ser.MarkerSize = 10;
@@ -203,9 +207,9 @@ namespace Hooker_GUI
         private string ClickPoint(MouseEventArgs e)
         {
             string rundaNr = "";
-            HitTestResult clicked = new HitTestResult();
+            _ = new HitTestResult();
             //check where you clicked, returns different information like the clicked series name and the index of the clicked point
-            clicked = chaHcpGraf.HitTest(e.X, e.Y);
+            HitTestResult clicked = chaHcpGraf.HitTest(e.X, e.Y);
 
             if (clicked.PointIndex != -1)
             {

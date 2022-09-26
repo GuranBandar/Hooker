@@ -18,11 +18,11 @@ namespace Hooker_GUI.Kontroller
         private static bool _formsUppdaterad;
         private static bool _formsLaddar;
         //private static string _databasNamn;
-        private static System.Collections.Specialized.NameValueCollection _ordlista =
+        private static readonly System.Collections.Specialized.NameValueCollection _ordlista =
             new System.Collections.Specialized.NameValueCollection();
-        private static System.Collections.Specialized.NameValueCollection _tooltip =
-            new System.Collections.Specialized.NameValueCollection();
-        private static System.Collections.Specialized.NameValueCollection _felmeddelande =
+        //private static readonly System.Collections.Specialized.NameValueCollection _tooltip =
+        //    new System.Collections.Specialized.NameValueCollection();
+        private static readonly System.Collections.Specialized.NameValueCollection _felmeddelande =
             new System.Collections.Specialized.NameValueCollection();
 
         public Hooker_GUI.Kontroller.Knappkontroller knappkontroll = new Knappkontroller();
@@ -41,7 +41,7 @@ namespace Hooker_GUI.Kontroller
         /// <summary>
         /// Indikerar att applikationen håller på att avsluta
         /// </summary>
-        static bool Avslutar = false;
+        static readonly bool Avslutar = false;
 
         /// <summary>
         /// Property för vilken databas
@@ -283,8 +283,7 @@ namespace Hooker_GUI.Kontroller
         protected static void VisaFelmeddelande(string felID, string meddelande)
         {
             //Hämta felmeddelande från tabell
-            string felmeddelande = "";
-            felmeddelande = ÖversättFelmeddelande("Felmeddelande", felID);
+            string felmeddelande = ÖversättFelmeddelande("Felmeddelande", felID);
             if (felmeddelande.Length > 0)
             {
                 MessageBox.Show(felmeddelande.ToString() + "\n" + meddelande.ToString(), "Fel", MessageBoxButtons.OK,
@@ -303,11 +302,9 @@ namespace Hooker_GUI.Kontroller
         /// <returns>Svaret, ja eller nej</returns>
         protected static string VisaFråga(string msgID)
         {
-            DialogResult resultat = new DialogResult();
-            string meddelande = "";
-            meddelande = Översätt("Text", msgID);
-            resultat = MessageBox.Show(meddelande.ToString(), "Varning", MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            string meddelande = Översätt("Text", msgID);
+            DialogResult resultat = MessageBox.Show(meddelande.ToString(), "Varning", MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
             if (resultat == DialogResult.Yes)
             {
@@ -325,11 +322,9 @@ namespace Hooker_GUI.Kontroller
         /// <param name="msgID">ID till meddelande som ska visas</param>
         protected static void VisaMeddelande(string msgID)
         {
-            DialogResult resultat = new DialogResult();
-            string meddelande = "";
-            meddelande = Översätt("Text", msgID);
-            resultat = MessageBox.Show(meddelande.ToString(), "Information", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+            string meddelande = Översätt("Text", msgID);
+            _ = MessageBox.Show(meddelande.ToString(), "Information", MessageBoxButtons.OK,
+        MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -443,12 +438,11 @@ namespace Hooker_GUI.Kontroller
         /// <param name="tomRad">Markerar om en extra rad ska adderas</param>
         protected void FyllComboBoxKod(ComboBox combo, Enum tabell, string showItem, bool tomRad)
         {
-            List<Koder> koder = null;
             KoderAktivitet koderAktivitet = new KoderAktivitet();
 
             try
             {
-                koder = koderAktivitet.SökKoder((tabell).EnumToInt(), "", "Varde");
+                List<Koder> koder = koderAktivitet.SökKoder((tabell).EnumToInt(), "", "Varde");
 
                 if (koder.Count > 0)
                 {
