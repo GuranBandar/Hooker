@@ -358,12 +358,16 @@ namespace Hooker_GUI
             StringBuilder email = new StringBuilder();
             try
             {
-                Mail mail = new Mail();
-                mail.MailFrom = Systemvariabel.MailFrom;
-                mail.Password = Systemvariabel.MailPassword;
-                mail.MailTo = AppUser.Epostadress;
-                mail.IsHTML = true;
-                mail.Subject = "Registrerad golfrond";
+                Mail Mail = new Mail
+                {
+                    MailFrom = Systemvariabel.MailFrom,
+                    Password = Systemvariabel.MailPassword,
+                    MailTo = AppUser.Epostadress,
+                    IsHTML = true,
+                    SmtpHost = Systemvariabel.SmtpHost,
+                    Port = Int32.Parse(Systemvariabel.Port),
+                    Subject = "Registrerad golfrond"
+                };
 
                 email.Append("<b>Hej " + AppUser.Anvandarnamn + "</b><br/><br/>");
                 email.Append("Du har registerat en golfrunda, " + Runda.Notering.ToString());
@@ -373,10 +377,12 @@ namespace Hooker_GUI
                 email.Append("Speldatum: " + dtpDatum.Value.ToShortDateString() + "<br/>");
                 email.Append("Golklubb: " + cboGolfklubb.SelectedItem.ToString() + "<br/>");
                 email.Append("Bana: " + cboBana.SelectedItem.ToString() + "<br/>");
-                mail.Body = email.ToString();
+                Mail.Body = email.ToString();
 
                 Timglas.WaitCurson();
-                mail.SendMail();
+                Maila Maila = new Maila();
+                Maila.SendMail(Mail);
+                VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();
             }

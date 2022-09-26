@@ -1,4 +1,5 @@
-﻿using Hooker.Gemensam;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace Hooker_GUI
 {
     public partial class SendMail : FormBas
     {
+        //public Mail Mail { get; set; }
+
         public SendMail()
         {
             InitializeComponent();
@@ -88,15 +91,20 @@ namespace Hooker_GUI
         {
             try
             {
-                Mail mail = new Mail();
-                mail.MailFrom = Systemvariabel.MailFrom;
-                mail.Password = Systemvariabel.MailPassword;
-                mail.MailTo = txtMailToAddress.Text;
-                mail.Subject = txtMailSubject.Text;
-                mail.Body = rtbMailBody.Text;
+                Mail Mail = new Mail
+                {
+                    MailFrom = Systemvariabel.MailFrom,
+                    Password = Systemvariabel.MailPassword,
+                    MailTo = txtMailToAddress.Text,
+                    Subject = txtMailSubject.Text,
+                    SmtpHost = Systemvariabel.SmtpHost,
+                    Port = Int32.Parse(Systemvariabel.Port),
+                    Body = rtbMailBody.Text
+                };
 
                 Timglas.WaitCurson();
-                mail.SendMail();
+                Maila maila = new Maila();
+                maila.SendMail(Mail);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();

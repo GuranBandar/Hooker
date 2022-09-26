@@ -387,13 +387,13 @@ namespace Hooker_GUI
             StringBuilder email = new StringBuilder();
             try
             {
-                Mail mail = new Mail
+                Mail Mail = new Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,
                     MailTo = Anvandare.Epostadress,
                     IsHTML = true,
-                    Host = Systemvariabel.SmtpHost,
+                    SmtpHost = Systemvariabel.SmtpHost,
                     Port = Int32.Parse(Systemvariabel.Port),
                     Subject = "Registrerade användaruppgifter"
                 };
@@ -404,10 +404,11 @@ namespace Hooker_GUI
                 email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + ",<br/>");
                 email.Append("Epostadress: " + Anvandare.Epostadress + ",<br/>");
                 email.Append("Lösenord: " + Anvandare.Losenord + ".</p>");
-                mail.Body = email.ToString();
+                Mail.Body = email.ToString();
 
                 Timglas.WaitCurson();
-                mail.SendMail();
+                Maila Maila = new Maila();
+                Maila.SendMail(Mail);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();
