@@ -169,6 +169,8 @@ namespace Hooker_GUI.Kontroller
                     systemvariabler.Version = systemvariabel.Version;
                     systemvariabler.WaitCursorImageID = systemvariabel.WaitCursorImageID;
                     systemvariabler.WriteToLog = systemvariabel.WriteToLog;
+                    systemvariabler.SmtpHost = systemvariabel.SmtpHost;
+                    systemvariabler.Port = systemvariabel.Port;
                 }
                 Systemvariabel = systemvariabler;
             }

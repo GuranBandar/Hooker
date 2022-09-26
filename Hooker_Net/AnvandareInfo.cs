@@ -390,6 +390,8 @@ namespace Hooker_GUI
                 mail.Password = Systemvariabel.MailPassword;
                 mail.MailTo = Anvandare.Epostadress;
                 mail.IsHTML = true;
+                mail.Host = Systemvariabel.SmtpHost;
+                mail.Port = Int32.Parse(Systemvariabel.Port);
                 mail.Subject = "Registrerade användaruppgifter";
 
                 email.Append("<b>Hej " + Anvandare.Anvandarnamn + "</b><br/><br/>");

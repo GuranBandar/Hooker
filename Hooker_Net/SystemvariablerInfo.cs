@@ -78,6 +78,7 @@ namespace Hooker_GUI
             if (Systemvariabler == null)
             {
                 NySystemvariabel = true;
+                Systemvariabler = new Systemvariabler();
             }
             else
             {
@@ -98,8 +99,8 @@ namespace Hooker_GUI
                 }
                 txtMailFrom.Text = Systemvariabler.MailFrom;
                 txtMailPassword.Text = Systemvariabler.MailPassword;
-                txtSmtpHost.Text = Systemvariabel.SmtpHost;
-                txtPort.Text = Systemvariabel.Port;
+                txtSmtpHost.Text = Systemvariabler.SmtpHost;
+                txtPort.Text = Systemvariabler.Port;
             }
         }
 
@@ -121,8 +122,8 @@ namespace Hooker_GUI
             Systemvariabler.MailFrom = txtMailFrom.Text;
             Systemvariabler.MailPassword = txtMailPassword.Text;
             Systemvariabler.WaitCursorImageID = ((ComboBoxPar)cbxCursor.SelectedItem).Identifier.ToString();
-            Systemvariabel.SmtpHost = txtSmtpHost.Text;
-            Systemvariabel.Port = txtPort.Text;
+            Systemvariabler.SmtpHost = txtSmtpHost.Text;
+            Systemvariabler.Port = txtPort.Text;
         }
 
         /// <summary>
@@ -147,7 +148,7 @@ namespace Hooker_GUI
                         cbxCursor.Items.Add(new ComboBoxPar(rad.CursorID, rad.Cursornamn.ToString(), rad));
                     }
 
-                    if (Systemvariabler != null)
+                    if (Systemvariabler.WaitCursorImageID != null)
                     {
                         cbxCursor.SelectedItem = int.Parse(Systemvariabler.WaitCursorImageID.ToString());
                     }

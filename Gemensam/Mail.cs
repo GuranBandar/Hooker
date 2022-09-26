@@ -54,6 +54,16 @@ namespace Hooker.Gemensam
         public bool IsHTML { get; set; }
 
         /// <summary>
+        /// Mail body
+        /// </summary>
+        public string Host { get; set; }
+
+        /// <summary>
+        /// Mail body
+        /// </summary>
+        public int Port { get; set; }
+
+        /// <summary>
         /// Send mail
         /// </summary>
         public void SendMail()
@@ -73,8 +83,8 @@ namespace Hooker.Gemensam
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(fromAddress.Address, 
                     fromPassword);
-                client.Host = "smtp.outlook.com";
-                client.Port = 587;
+                client.Host = Host;
+                client.Port = Port;
                 client.EnableSsl = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
