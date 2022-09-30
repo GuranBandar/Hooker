@@ -384,6 +384,7 @@ namespace Hooker_GUI
         /// </summary>
         private void SendMail()
         {
+            Maila maila = new Maila();
             StringBuilder email = new StringBuilder();
             try
             {
@@ -407,8 +408,7 @@ namespace Hooker_GUI
                 Mail.Body = email.ToString();
 
                 Timglas.WaitCurson();
-                Maila Maila = new Maila();
-                Maila.Skicka(Mail);
+                maila.Skicka(Mail);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();

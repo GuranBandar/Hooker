@@ -14,7 +14,7 @@ namespace Hooker.Gemensam
         /// Skicka mail
         /// <paramref name="Mail"/>
         /// </summary>
-        public void Skicka(Hooker.Affärsobjekt.Mail Mail)
+        public void Skicka(Mail Mail)
         {
             try
             {
