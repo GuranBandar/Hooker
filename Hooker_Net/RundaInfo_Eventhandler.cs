@@ -381,7 +381,7 @@ namespace Hooker_GUI
 
                 Timglas.WaitCurson();
                 Maila Maila = new Maila();
-                Maila.SendMail(Mail);
+                Maila.Skicka(Mail);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();

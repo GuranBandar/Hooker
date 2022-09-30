@@ -104,7 +104,7 @@ namespace Hooker_GUI
 
                 Timglas.WaitCurson();
                 Maila maila = new Maila();
-                maila.SendMail(Mail);
+                maila.Skicka(Mail);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();
