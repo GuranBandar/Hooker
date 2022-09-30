@@ -1,10 +1,10 @@
-﻿using System;
-using System.Data;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
-using GemensamService;
 using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace Hooker.Datalager
@@ -297,7 +297,7 @@ namespace Hooker.Datalager
                     "SET SpelarID = @SpelarID, Namn = @Namn, Hcp = @Hcp, Klass = @Klass" +
                     ", Kon = @Kon, RevisionsDatum = @RevisionsDatum, Hemmabananr = @Hemmabananr" +
                     ", GolfID = @GolfID, UppdatDatum = @UppdatDatum, GolfklubbNr = @GolfklubbNr" +
-                    ", FederationNo = @FederationNo "+
+                    ", FederationNo = @FederationNo " +
                     "WHERE SpelarID = @SpelarID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {

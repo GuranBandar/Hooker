@@ -72,7 +72,7 @@ namespace Hooker_GUI
 
         public bool TavlingStartad { get; set; }
 
-        public bool TavlingAvslutad{ get; set; }
+        public bool TavlingAvslutad { get; set; }
         #endregion
 
         /// <summary>

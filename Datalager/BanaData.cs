@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Datalager
 {
@@ -184,7 +184,7 @@ namespace Hooker.Datalager
             }
             catch (HookerException hex)
             {
-                throw hex;     
+                throw hex;
             }
             finally
             {
@@ -393,7 +393,7 @@ namespace Hooker.Datalager
 
             try
             {
-                DatabasAccess.SkapaTransaktion(); 
+                DatabasAccess.SkapaTransaktion();
                 for (int i = 0; i < bana.BanaHal.Length; i++)
                 {
                     sql = " INSERT INTO BanaHal (BanaNr, Halnr, LangdVit, LangdGul, LangdBla" +

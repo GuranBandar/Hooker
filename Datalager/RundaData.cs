@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Datalager
 {
@@ -267,7 +267,7 @@ namespace Hooker.Datalager
         public void TaBortRunda(Runda runda, ref string felID, ref string feltext)
         {
             string sql;
-                
+
             try
             {
                 DatabasAccess.SkapaTransaktion();
@@ -374,7 +374,7 @@ namespace Hooker.Datalager
                 }
             }
         }
-        
+
         /// <summary>
         /// Ny Runda.
         /// </summary>
@@ -421,7 +421,7 @@ namespace Hooker.Datalager
                 throw ex;
             }
         }
-        
+
         /// <summary>
         /// Sparar i Runda.
         /// </summary>
@@ -491,7 +491,7 @@ namespace Hooker.Datalager
                 }
             }
         }
-        
+
         /// <summary>
         /// Uppdatera i RundaHal.
         /// </summary>
@@ -547,7 +547,7 @@ namespace Hooker.Datalager
         /// <param name="redovisning"></param>
         /// <param name="felID">Felmeddelande i Orslistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void Spara(RundaRundaHalRedovisningSDS.RundaDataTable runda, 
+        public void Spara(RundaRundaHalRedovisningSDS.RundaDataTable runda,
             RundaRundaHalRedovisningSDS.RundaHalDataTable rundaHal,
             RundaRundaHalRedovisningSDS.RedovisningDataTable redovisning,
             ref string felID, ref string feltext)
@@ -569,21 +569,21 @@ namespace Hooker.Datalager
                                 sql = "DELETE FROM Redovisning WHERE RundaNr = @RundaNr";
                                 dbParameters = new List<DatabasParameters>()
                                 {
-                                    new DatabasParameters("@RundaNr", 
+                                    new DatabasParameters("@RundaNr",
                                         rad["RundaNr", DataRowVersion.Original].ToString())
                                 };
                                 DatabasAccess.RunSql(sql, dbParameters);
                                 sql = "DELETE FROM RundaHal WHERE RundaNr = @RundaNr";
                                 dbParameters = new List<DatabasParameters>()
                                 {
-                                    new DatabasParameters("@RundaNr", 
+                                    new DatabasParameters("@RundaNr",
                                         rad["RundaNr", DataRowVersion.Original].ToString())
                                 };
                                 DatabasAccess.RunSql(sql, dbParameters);
                                 sql = "DELETE FROM Runda WHERE RundaNr = @RundaNr";
                                 dbParameters = new List<DatabasParameters>()
                                 {
-                                    new DatabasParameters("@RundaNr", 
+                                    new DatabasParameters("@RundaNr",
                                         rad["RundaNr", DataRowVersion.Original].ToString())
                                 };
                                 DatabasAccess.RunSql(sql, dbParameters);
@@ -618,7 +618,7 @@ namespace Hooker.Datalager
                                 break;
                             case DataRowState.Modified:
                                 sql = "UPDATE Runda " +
-                                    "SET Datum = @Datum, SpelarID = @SpelarID" + 
+                                    "SET Datum = @Datum, SpelarID = @SpelarID" +
                                     ", ExaktHcp = @ExaktHcp, ErhallnaSlag = @ErhallnaSlag, Tee = @Tee" +
                                     ", BanaNr = @BanaNr, Tavlingsrond = @Tavlingsrond, Placering = @Placering" +
                                     ", Sallskapsrond = @Sallskapsrond, Hcprond = @Hcprond, Notering = @Notering" +
@@ -709,7 +709,7 @@ namespace Hooker.Datalager
                                 sql = "DELETE Redovisning WHERE TransNr = @TransNr";
                                 dbParameters = new List<DatabasParameters>()
                                 {
-                                    new DatabasParameters("@TransNr", 
+                                    new DatabasParameters("@TransNr",
                                         rad["TransNr", DataRowVersion.Original].ToString())
                                 };
                                 DatabasAccess.RunSql(sql, dbParameters);

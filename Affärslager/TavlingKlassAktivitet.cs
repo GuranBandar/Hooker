@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using Hooker.Dataset;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Datalager;
+using Hooker.Dataset;
 using Hooker.Gemensam;
-using Hooker.Affärsobjekt;
+using System;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -187,8 +186,8 @@ namespace Hooker.Affärslager
             if (Kolla(tavlingKlass, ref felID, ref feltext))
             {
                 tavlingKlassData = new TavlingKlassData();
-                    tavlingKlass.UppdatDatum = DateTime.Today.Date;
-                    tavlingKlassData.SparaTavlingKlass(tavlingKlass, ref felID, ref feltext);
+                tavlingKlass.UppdatDatum = DateTime.Today.Date;
+                tavlingKlassData.SparaTavlingKlass(tavlingKlass, ref felID, ref feltext);
 
                 //Tabellen TavlingRond ska uppdateras nu, men först måste en ev gammal tas bort först
                 //if (nyTavlingKlass)

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using Hooker.Dataset;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Datalager;
-using Hooker.Gemensam;
-using Hooker.Affärsobjekt;
+using Hooker.Dataset;
+using System;
+using System.Collections.Generic;
 
 namespace Hooker.Affärslager
 {
@@ -59,7 +57,7 @@ namespace Hooker.Affärslager
         /// <param name="fromDatum">Aktuellt from datum</param>
         /// <param name="tomDatum">Aktuellt tom datum</param>
         /// <returns>Hcplistaobjekt med efterfrågat data</returns>
-        public List<Hcplista> HämtaHcplista(int spelarID, DateTime fromDatum, 
+        public List<Hcplista> HämtaHcplista(int spelarID, DateTime fromDatum,
             DateTime tomDatum)
         {
             HcplistaData hcplistaData = new HcplistaData();

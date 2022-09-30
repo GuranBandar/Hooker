@@ -1,5 +1,5 @@
-﻿using Hooker.Affärsobjekt;
-using Hooker.Affärslager;
+﻿using Hooker.Affärslager;
+using Hooker.Affärsobjekt;
 using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
@@ -225,7 +225,7 @@ namespace Hooker_GUI
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString())
                             / antal);
-                        slagUt +=                             int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString());
+                        slagUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString());
                     }
 
                     if (cc.Name.StartsWith("txtPoangHal"))
@@ -234,7 +234,7 @@ namespace Hooker_GUI
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString())
                             / antal);
-                        poangUt +=                             int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString());
+                        poangUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString());
                     }
 
                     if (cc.Name.StartsWith("txtPuttarHal"))
@@ -243,7 +243,7 @@ namespace Hooker_GUI
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString())
                             / antal);
-                        puttarUt +=                             int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString());
+                        puttarUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString());
                     }
 
                     if (cc.Name.StartsWith("txtParHal"))
@@ -254,7 +254,7 @@ namespace Hooker_GUI
                             cc.Text = ("N").Formatera(
                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString()));
                             cc.ForeColor = Color.Blue;
-                            parUt +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString());
+                            parUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString());
                         }
                         else
                         {
@@ -271,7 +271,7 @@ namespace Hooker_GUI
                             cc.Text = ("N").Formatera(
                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString()));
                             cc.ForeColor = Color.Red;
-                            birdieUt +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString());
+                            birdieUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString());
                         }
                         else
                         {
@@ -288,7 +288,7 @@ namespace Hooker_GUI
                             cc.Text = ("ND1").Formatera(
                                 decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString())
                                 / antal * 100);
-                            fwUt +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString());
+                            fwUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString());
                         }
                         else
                         {
@@ -304,7 +304,7 @@ namespace Hooker_GUI
                             cc.Text = ("ND1").Formatera(
                                 decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString())
                                 / antal * 100);
-                            grUt +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString());
+                            grUt += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString());
                         }
                         else
                         {
@@ -355,7 +355,7 @@ namespace Hooker_GUI
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString())
                             / antal);
-                        slagIn +=                             int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString());
+                        slagIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Slag"].ToString());
                     }
 
                     if (cc.Name.StartsWith("txtPoangHal"))
@@ -365,7 +365,7 @@ namespace Hooker_GUI
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString())
                             / antal);
-                        poangIn +=                             int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString());
+                        poangIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Poäng"].ToString());
                     }
 
                     if (cc.Name.StartsWith("txtPuttarHal"))
@@ -375,7 +375,7 @@ namespace Hooker_GUI
                         cc.Text = ("ND1").Formatera(
                             decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString())
                             / antal);
-                        puttarIn +=                             int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString());
+                        puttarIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Puttar"].ToString());
                     }
 
                     if (cc.Name.StartsWith("txtParHal"))
@@ -387,7 +387,7 @@ namespace Hooker_GUI
                             cc.Text = ("N").Formatera(
                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString()));
                             cc.ForeColor = Color.Blue;
-                            parIn +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString());
+                            parIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Par"].ToString());
                         }
                         else
                         {
@@ -405,7 +405,7 @@ namespace Hooker_GUI
                             cc.Text = ("N").Formatera(
                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString()));
                             cc.ForeColor = Color.Red;
-                            birdieIn +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString());
+                            birdieIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal Birdie"].ToString());
                         }
                         else
                         {
@@ -423,7 +423,7 @@ namespace Hooker_GUI
                             cc.Text = ("ND1").Formatera(
                                 decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString())
                                 / antal * 100);
-                            fwIn +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString());
+                            fwIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal FW"].ToString());
                         }
                         else
                         {
@@ -440,7 +440,7 @@ namespace Hooker_GUI
                             cc.Text = ("ND1").Formatera(
                                 decimal.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString())
                                 / antal * 100);
-                            grIn +=                                 int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString());
+                            grIn += int.Parse(_bananalysDS.Tables["Bananalys"].Rows[halnr - 1]["Antal GR"].ToString());
                         }
                         else
                         {

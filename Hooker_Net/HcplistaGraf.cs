@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Hooker.Affärslager;
+using Hooker.Affärsobjekt;
+using Hooker.Gemensam;
+using Hooker_GUI.Kontroller;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Hooker.Affärslager;
-using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
-using Hooker_GUI.Kontroller;
 
 namespace Hooker_GUI
 {
@@ -120,7 +120,7 @@ namespace Hooker_GUI
 
             List<Hcplista> hcplista = Hcplista.OrderByDescending(h => h.Datum).Take(20).ToList();
             hcplista = hcplista.OrderBy(h => h.Datum).ToList();
-            
+
             if (hcplista.Count != 0)
             {
                 Series ser = new Series
@@ -145,12 +145,12 @@ namespace Hooker_GUI
 
                     if (hcplista[i].Typ == "M")
                     {
-                        ser.Points[i].Tag = hcplista[i].Hcp + "/" + 
+                        ser.Points[i].Tag = hcplista[i].Hcp + "/" +
                             hcplista[i].Typ + "/" + hcplista[i].HcplistaID;
                     }
                     else
                     {
-                        ser.Points[i].Tag = hcplista[i].RundaNr + "/" 
+                        ser.Points[i].Tag = hcplista[i].RundaNr + "/"
                             + hcplista[i].Typ + "/" + hcplista[i].HcplistaID;
                     }
                     ser.Points[i].ToolTip = hcplista[i].Datum.ToShortDateString() +

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Text;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace Hooker.Datalager
 {
@@ -30,7 +29,7 @@ namespace Hooker.Datalager
                 //Skapa sql:en
                 sql.Append("SELECT re.TransNr, re.Typ, re.Datum, re.RundaNr, re.SpelarID, re.Belopp, k.Varde AS Typnamn, ");
                 sql.Append("CASE WHEN r.Notering IS NOT NULL THEN r.Notering ");
-		        sql.Append("WHEN re.Notering IS NOT NULL THEN re.Notering ");
+                sql.Append("WHEN re.Notering IS NOT NULL THEN re.Notering ");
                 sql.Append("ELSE '' END AS Notering ");
                 sql.Append("FROM Redovisning re ");
                 sql.Append("INNER JOIN Koder k ON k.Typ = 10 AND k.Argument = re.Typ ");
@@ -47,7 +46,7 @@ namespace Hooker.Datalager
             }
             finally
             {
-                if (DatabasAccess!= null)
+                if (DatabasAccess != null)
                 {
                     DatabasAccess.Dispose();
                 }
@@ -92,7 +91,7 @@ namespace Hooker.Datalager
         public void TaBortRedovisningRunda(int rundaNr, ref string felID, ref string feltext)
         {
             string sql;
-                
+
             try
             {
                 DatabasAccess.SkapaTransaktion();
@@ -196,7 +195,7 @@ namespace Hooker.Datalager
                 sql = "INSERT INTO Redovisning (Typ, Datum, RundaNr, SpelarID, Belopp, Notering, UppdatDatum) " +
                     "VALUES " +
                     "(@Typ, @Datum, @RundaNr, @SpelarID, @Belopp, @Notering, @UppdatDatum);";
-                    //"SELECT @@IDENTITY;";
+                //"SELECT @@IDENTITY;";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@Typ", DataTyp.Char, redovisning.Typ),
@@ -209,7 +208,7 @@ namespace Hooker.Datalager
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 sql = "SELECT LAST_INSERT_ID()";
-                
+
                 nyttTransNr = Convert.ToInt32(DatabasAccess.ExecuteScalar(sql));
                 DatabasAccess.BekräftaTransaktion();
             }
@@ -240,7 +239,7 @@ namespace Hooker.Datalager
             }
             return nyttTransNr;
         }
-        
+
         /// <summary>
         /// Sparar i Redovisning.
         /// </summary>

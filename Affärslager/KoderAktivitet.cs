@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using Hooker.Affärsobjekt;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Datalager;
 using Hooker.Dataset;
 using Hooker.Gemensam;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -193,7 +192,7 @@ namespace Hooker.Affärslager
                 }
 
                 koderDS = koderData.HämtaMaxArgument(kod, sql);
-                
+
                 if (koderDS.Tables[0].Rows.Count > 0)
                 {
                     if (kod == Kodtabell.Distrikt)

@@ -14,7 +14,7 @@ namespace Hooker.Gemensam
         /// Skicka mail
         /// <paramref name="Mail"/>
         /// </summary>
-        public void Skicka(Mail Mail)
+        public void Skicka(Hooker.Affärsobjekt.Mail Mail)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace Hooker.Gemensam
                 string subject = Mail.Subject;
                 string body = Mail.Body;
 
-                MailMessage mailMessage = new MailMessage(fromAddress.Address, 
+                MailMessage mailMessage = new MailMessage(fromAddress.Address,
                     toAddress.Address);
 
                 SmtpClient client = new SmtpClient

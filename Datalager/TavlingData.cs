@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace Hooker.Datalager
 {
@@ -299,7 +299,7 @@ namespace Hooker.Datalager
                 sql.Append("DELETE c FROM TavlingKlass AS c WHERE c.TavlingID = @TavlingID;");
                 sql.Append("DELETE c FROM TavlingDeltagare AS c WHERE c.TavlingID = @TavlingID;");
                 sql.Append("DELETE c FROM TavlingRond AS c WHERE c.TavlingID = @TavlingID;");
-                sql.Append("DELETE FROM Tavling WHERE TavlingID = @TavlingID;") ;
+                sql.Append("DELETE FROM Tavling WHERE TavlingID = @TavlingID;");
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {

@@ -1,10 +1,9 @@
-﻿using Hooker.Datalager;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Datalager;
 using Hooker.Dataset;
-using Hooker.Affärsobjekt;
 using Hooker.Gemensam;
-using System.Collections.Generic;
-using System.Data;
 using System;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -103,7 +102,7 @@ namespace Hooker.Affärslager
         {
             int nyttBokningID = 0;
             bool kollaOK = true;
-//                Kolla(bokningDag, ref felID, ref feltext);
+            //                Kolla(bokningDag, ref felID, ref feltext);
 
             if (kollaOK)
             {

@@ -324,16 +324,16 @@ namespace Hooker_GUI
 
                     if (Hcplista[i].Typ == "M")
                     {
-                        ser.Points[i].Tag = hcplista[i].Hcp + "/" 
+                        ser.Points[i].Tag = hcplista[i].Hcp + "/"
                             + hcplista[i].Typ + "/" + hcplista[i].HcplistaID;
                     }
                     else
                     {
-                        ser.Points[i].Tag = hcplista[i].RundaNr + "/" + 
+                        ser.Points[i].Tag = hcplista[i].RundaNr + "/" +
                             hcplista[i].Typ + "/" + hcplista[i].HcplistaID;
                     }
                     ser.Points[i].ToolTip = hcplista[i].Datum.ToShortDateString() +
-                        "/" +  hcplista[i].NyttHcp;
+                        "/" + hcplista[i].NyttHcp;
                 }
 
                 chaHcplista.Series.Add(ser);

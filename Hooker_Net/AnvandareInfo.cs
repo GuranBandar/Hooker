@@ -249,7 +249,7 @@ namespace Hooker_GUI
             knappkontroller1.btnKnapp3.Enabled = false;
             FormsUppdaterad = false;
         }
-    
+
         /// <summary>
         /// Gå igenom alla fält i bilden för Anvandare innan uppdatering
         /// </summary>
@@ -387,7 +387,7 @@ namespace Hooker_GUI
             StringBuilder email = new StringBuilder();
             try
             {
-                Mail Mail = new Mail
+                Hooker.Affärsobjekt.Mail Mail = new Hooker.Affärsobjekt.Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,

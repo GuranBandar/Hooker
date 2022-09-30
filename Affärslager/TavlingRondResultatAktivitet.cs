@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Datalager;
+using Hooker.Dataset;
+using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using Hooker.Dataset;
-using Hooker.Datalager;
-using Hooker.Gemensam;
-using Hooker.Affärsobjekt;
 
 namespace Hooker.Affärslager
 {
@@ -56,7 +56,7 @@ namespace Hooker.Affärslager
         public List<TavlingRondResultat> HämtaTavlingRondResultatForSpelare(int tavlingID, int rondNr, int spelarID)
         {
             TavlingRondResultatData tavlingRondResultatData = new TavlingRondResultatData();
-            TavlingRondResultatDS tavlingRondResultatDS = 
+            TavlingRondResultatDS tavlingRondResultatDS =
                 tavlingRondResultatData.HämtaTavlingRondResultatForSpelare(tavlingID, rondNr, spelarID);
             List<TavlingRondResultat> tavlingRondResultat = null;
 
@@ -134,7 +134,7 @@ namespace Hooker.Affärslager
         {
             TavlingRondResultatData tavlingRondResultatData = new TavlingRondResultatData();
             TavlingResultatLista tavlingResultatLista = null;
-            
+
             //Fältet Spelform i Tavlingklass anger om slag eller poäng ska räknas. 
             //Spelform "SG" och "ST" är slagspelformer
             bool slag = false;
@@ -143,7 +143,7 @@ namespace Hooker.Affärslager
 
             if (antalKlasser > 0)
             {
-                for (int i = 0; i < tavling.TavlingKlass.Length; i++ )
+                for (int i = 0; i < tavling.TavlingKlass.Length; i++)
                 {
                     if (tavling.TavlingKlass[i].Klass == klass)
                     {

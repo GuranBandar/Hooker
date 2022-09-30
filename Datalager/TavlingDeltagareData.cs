@@ -1,10 +1,9 @@
-﻿using System;
+﻿using GemensamService;
+using Hooker.Affärsobjekt;
+using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using Hooker.Affärsobjekt;
-using Hooker.Dataset;
-using Hooker.Gemensam;
-using GemensamService;
 
 namespace Hooker.Datalager
 {
@@ -160,7 +159,7 @@ namespace Hooker.Datalager
         /// <param name="tavlingDeltagare">TavlingDeltagare</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int SparaNyTavlingDeltagare(TavlingDeltagare tavlingDeltagare, ref string felID, 
+        public int SparaNyTavlingDeltagare(TavlingDeltagare tavlingDeltagare, ref string felID,
             ref string feltext)
         {
             int nyaRader = 1;

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Hooker.Datalager;
 using System.Data;
-using Hooker.Datalager;
 
 namespace Hooker.Affärslager
 {

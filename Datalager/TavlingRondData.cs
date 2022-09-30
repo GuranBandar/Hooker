@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
 
 namespace Hooker.Datalager
 {
@@ -29,7 +29,7 @@ namespace Hooker.Datalager
                 };
                 DatabasAccess.ExecuteSP("GetTavlingRondByPrimaryKey", dbParameters, ds);
                 return ds;
-}
+            }
             catch (HookerException hex)
             {
                 throw hex;
@@ -261,7 +261,7 @@ namespace Hooker.Datalager
             }
             return nyaRader;
         }
-    
+
         /// <summary>
         /// Sparar i TavlingRond.
         /// </summary>

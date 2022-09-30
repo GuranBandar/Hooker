@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Hooker.Affärslager;
+using Hooker.Affärsobjekt;
+using Hooker.Gemensam;
+using Hooker_GUI.Kontroller;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Hooker.Affärslager;
-using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
-using Hooker_GUI.Kontroller;
 
 namespace Hooker_GUI
 {
@@ -18,7 +18,7 @@ namespace Hooker_GUI
         private int SpelarID { get; set; }
         private DateTime FromDatum { get; set; }
         private DateTime TomDatum { get; set; }
-        
+
         Fönsterhanterare fönsterhanterare = new Fönsterhanterare();
 
         public HcplistaSpelare()
@@ -76,7 +76,7 @@ namespace Hooker_GUI
         private void InitieraDatum()
         {
             //Initiera med datum
-            FromDatum = DateTime.Today.AddYears(- 2);
+            FromDatum = DateTime.Today.AddYears(-2);
             TomDatum = DateTime.Today;
             dtpFromDatum.Text = FromDatum.ToShortDateString();
             dtpTomDatum.Text = TomDatum.ToShortDateString();
@@ -150,7 +150,7 @@ namespace Hooker_GUI
 
         private void knappkontroller1_OnKnapp2Click(object sender, EventArgs e)
         {
-            Spelare = spelarLista.Where(s => s.AktuelltSpelarID == 
+            Spelare = spelarLista.Where(s => s.AktuelltSpelarID ==
                 SpelarID).FirstOrDefault();
             fönsterhanterare.HanteraVisaHcplistaGraf(Spelare, Hcplista);
         }

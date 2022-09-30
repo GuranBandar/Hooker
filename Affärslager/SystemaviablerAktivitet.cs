@@ -1,7 +1,7 @@
-using System;
-using Hooker.Datalager;
 using Hooker.Affärsobjekt;
+using Hooker.Datalager;
 using Hooker.Dataset;
+using System;
 
 namespace Hooker.Affärslager
 {

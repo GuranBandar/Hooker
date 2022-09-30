@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using Hooker.Affärsobjekt;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -104,7 +104,7 @@ namespace Hooker.Affärslager
         /// <param name="hcprond">Ev markering för hcprond</param>
         /// <param name="niohalsrond">Ev markering för niohålsrond</param>
         /// <returns>Otypat dataset med efterfrågat data</returns>
-        public List<Runda> SökRunda(string spelarID, string bananr, DateTime fromDatum, DateTime tomdatum, 
+        public List<Runda> SökRunda(string spelarID, string bananr, DateTime fromDatum, DateTime tomdatum,
             bool tavlingsrond, bool sallskapsrond, bool hcprond, bool niohalsrond)
         {
             DataSet rundaDS = new DataSet();
@@ -424,7 +424,7 @@ namespace Hooker.Affärslager
                 felmeddelande = "";
                 return false;
             }
-            
+
             if (runda.Placering > 0 & runda.Tavlingsrond == "")
             {
                 felID = "TAVLINGSRONDFEL";
@@ -446,8 +446,8 @@ namespace Hooker.Affärslager
             {
                 Datalager.RundaData rundaData = new Datalager.RundaData();
                 rundaData.Spara((RundaRundaHalRedovisningSDS.RundaDataTable)ds.Tables["Runda"],
-                    (RundaRundaHalRedovisningSDS.RundaHalDataTable)ds.Tables["RundaHal"], 
-                    (RundaRundaHalRedovisningSDS.RedovisningDataTable)ds.Tables["Redovisning"], 
+                    (RundaRundaHalRedovisningSDS.RundaHalDataTable)ds.Tables["RundaHal"],
+                    (RundaRundaHalRedovisningSDS.RedovisningDataTable)ds.Tables["Redovisning"],
                     ref felID, ref feltext);
             }
         }

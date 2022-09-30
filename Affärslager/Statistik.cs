@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Hooker.Gemensam;
+using System;
 using System.Data;
-using Hooker.Affärsobjekt;
-using Hooker.Datalager;
-using Hooker.Dataset;
-using Hooker.Gemensam;
 
 namespace Hooker.Affärslager
 {
@@ -26,7 +22,7 @@ namespace Hooker.Affärslager
         /// <param name="sallskapsrond">Ev markering för sällskapsrond</param>
         /// <param name="tavlingsrond">Ev markering för tävlingsrond</param>
         /// <returns>Otypat dataset med efterfrågat data</returns>
-        public DataSet Bananalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum, 
+        public DataSet Bananalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum,
             DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
         {
             _ = new DataSet();
@@ -68,7 +64,7 @@ namespace Hooker.Affärslager
         /// <param name="detaljerad">Ev markering för detaljerad redovisning</param>
         /// <param name="summerad">Ev markering för summerad redovisning</param>
         /// <returns>Otypat dataset med efterfrågat data</returns>
-        public DataSet Ekonomianalys(string redovisningsTyp, string spelarID, DateTime fromDatum, DateTime tomDatum, 
+        public DataSet Ekonomianalys(string redovisningsTyp, string spelarID, DateTime fromDatum, DateTime tomDatum,
             bool detaljerad, bool summerad)
         {
             _ = new DataSet();
@@ -77,7 +73,7 @@ namespace Hooker.Affärslager
 
             try
             {
-                sql = SkapaSökvillkor(redovisningsTyp, spelarID, fromDatum, tomDatum, 
+                sql = SkapaSökvillkor(redovisningsTyp, spelarID, fromDatum, tomDatum,
                     detaljerad, summerad);
                 DataSet ekonomianalysDS = statistik.Ekonomianalys(sql, detaljerad);
                 return ekonomianalysDS;
@@ -101,8 +97,8 @@ namespace Hooker.Affärslager
         /// <param name="sallskapsrond">Ev markering för sällskapsrond</param>
         /// <param name="tavlingsrond">Ev markering för tävlingsrond</param>
         /// <returns>Otypat dataset med efterfrågat data</returns>
-        public DataSet Gruppanalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum, 
-            DateTime tomDatum, bool hcprond,bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
+        public DataSet Gruppanalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum,
+            DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
         {
             _ = new DataSet();
             Datalager.Statistik statistik = new Datalager.Statistik();
@@ -133,8 +129,8 @@ namespace Hooker.Affärslager
         /// <param name="sallskapsrond">Ev markering för sällskapsrond</param>
         /// <param name="tavlingsrond">Ev markering för tävlingsrond</param>
         /// <returns>Otypat dataset med efterfrågat data</returns>
-        public DataSet Puttstatistik(string golfklubbNr, string banaNr, string spelarID, 
-            DateTime fromDatum, DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, 
+        public DataSet Puttstatistik(string golfklubbNr, string banaNr, string spelarID,
+            DateTime fromDatum, DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond,
             bool tavlingsrond)
         {
             _ = new DataSet();
@@ -166,7 +162,7 @@ namespace Hooker.Affärslager
         /// <param name="sallskapsrond">Ev markering för sällskapsrond</param>
         /// <param name="tavlingsrond">Ev markering för tävlingsrond</param>
         /// <returns>Otypat dataset med efterfrågat data</returns>
-        public DataSet Rondanalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum, 
+        public DataSet Rondanalys(string golfklubbNr, string banaNr, string spelarID, DateTime fromDatum,
             DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, bool tavlingsrond)
         {
             _ = new DataSet();

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Hooker.Gemensam;
+using System.Text;
 
 /// <summary>
 /// Hjälpklass för att veta vilka processer som är startade

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Datalager;
 using Hooker.Dataset;
-using Hooker.Affärsobjekt;
 using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -45,7 +45,7 @@ namespace Hooker.Affärslager
                     anvandare.AnvandarID = anvandareDS.Anvandare[0].AnvandarID;
                     anvandare.Anvandarnamn = anvandareDS.Anvandare[0].Anvandarnamn;
                     anvandare.Anvandargrupp = anvandareDS.Anvandare[0].Anvandargrupp;
-                    anvandare.Epostadress = (anvandareDS.Anvandare[0].IsEpostadressNull()) ? 
+                    anvandare.Epostadress = (anvandareDS.Anvandare[0].IsEpostadressNull()) ?
                         string.Empty : anvandareDS.Anvandare[0].Epostadress;
                     anvandare.Losenord = anvandareDS.Anvandare[0].Losenord;
                     anvandare.SenastInloggadDatum = anvandareDS.Anvandare[0].SenastByttLosenordDatum;

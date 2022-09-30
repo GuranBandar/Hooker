@@ -1,8 +1,8 @@
-﻿using System.Data;
-using System.Text;
+﻿using GemensamService;
 using Hooker.Gemensam;
-using GemensamService;
 using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace Hooker.Datalager
 {
@@ -78,7 +78,7 @@ namespace Hooker.Datalager
                 sql.Append("GROUP BY r.RundaNr, r.SpelarID, g.GolfklubbNamn, b.Namn, r.Datum, b.SlopeHerrarGul, ");
                 sql.Append("b.CrHerrarGul, b.SlopeDamerRod, b.CrDamerRod, r.ErhallnaSlag, r.Hcprond ");
                 sql.Append("ORDER BY r.Datum DESC;");
-//                sql.Append("LIMIT 25; ");
+                //                sql.Append("LIMIT 25; ");
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -101,12 +101,12 @@ namespace Hooker.Datalager
             }
         }
 
-            /// <summary>
-            /// Skapar statistiken för Ekonomianlysen (två olika selecter blev det)
-            /// </summary>
-            /// <param name="sqlSok">Aktuellt where-villkor</param>
-            /// <param name="detaljerad">Detaljerad, true eller false</param>
-            /// <returns>Otypat dataset med efterfrågat resultat</returns>
+        /// <summary>
+        /// Skapar statistiken för Ekonomianlysen (två olika selecter blev det)
+        /// </summary>
+        /// <param name="sqlSok">Aktuellt where-villkor</param>
+        /// <param name="detaljerad">Detaljerad, true eller false</param>
+        /// <returns>Otypat dataset med efterfrågat resultat</returns>
         public DataSet Ekonomianalys(string sqlSok, bool detaljerad)
         {
             _ = new DataSet();
@@ -396,12 +396,12 @@ namespace Hooker.Datalager
                 sql.Append("SUM(CASE WHEN rh.HalNr > 9 THEN rh.AntalSlag END) AS 'Slag In', ");
                 sql.Append("SUM(CASE WHEN rh.HalNr < 10 THEN rh.AntalPoang END) AS 'Poäng Ut', ");
                 sql.Append("SUM(CASE WHEN rh.HalNr > 9 THEN rh.AntalPoang END) AS 'Poäng In', ");
-	            sql.Append("SUM(CASE WHEN rh.HalNr < 4 THEN rh.AntalPoang END) AS 'Res efter 3', ");
-	            sql.Append("SUM(CASE WHEN rh.HalNr < 7 THEN rh.AntalPoang END) AS 'Res efter 6', ");
-	            sql.Append("SUM(CASE WHEN rh.HalNr < 10 THEN rh.AntalPoang END) AS 'Res efter 9', ");
-	            sql.Append("SUM(CASE WHEN rh.HalNr < 13 THEN rh.AntalPoang END) AS 'Res efter 12', ");
-	            sql.Append("SUM(CASE WHEN rh.HalNr < 16 THEN rh.AntalPoang END) AS 'Res efter 15', ");
-	            sql.Append("SUM(CASE WHEN rh.HalNr < 19 THEN rh.AntalPoang END) AS 'Res efter 18' ");
+                sql.Append("SUM(CASE WHEN rh.HalNr < 4 THEN rh.AntalPoang END) AS 'Res efter 3', ");
+                sql.Append("SUM(CASE WHEN rh.HalNr < 7 THEN rh.AntalPoang END) AS 'Res efter 6', ");
+                sql.Append("SUM(CASE WHEN rh.HalNr < 10 THEN rh.AntalPoang END) AS 'Res efter 9', ");
+                sql.Append("SUM(CASE WHEN rh.HalNr < 13 THEN rh.AntalPoang END) AS 'Res efter 12', ");
+                sql.Append("SUM(CASE WHEN rh.HalNr < 16 THEN rh.AntalPoang END) AS 'Res efter 15', ");
+                sql.Append("SUM(CASE WHEN rh.HalNr < 19 THEN rh.AntalPoang END) AS 'Res efter 18' ");
                 sql.Append("FROM Runda r ");
                 sql.Append("INNER JOIN RundaHal rh ON r.RundaNr = rh.RundaNr ");
                 sql.Append("INNER JOIN Bana b ON b.BanaNr = r.BanaNr ");
@@ -425,6 +425,6 @@ namespace Hooker.Datalager
                 }
             }
         }
- 
+
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Datalager;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using Hooker.Datalager;
-using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
 
 namespace Hooker.Affärslager
 {

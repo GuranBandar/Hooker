@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using Hooker.Dataset;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
+using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Hooker.Datalager
 {
@@ -264,7 +264,7 @@ namespace Hooker.Datalager
                     "SenastByttLosenordDatum = @SenastByttLosenordDatum, " +
                     "Anvandargrupp = @Anvandargrupp, Epostadress = @Epostadress, GIR = @GIR, WebBrowser = @WebBrowser, " +
                     "Sprakkod = @Sprakkod, Epostmeddelande = @Epostmeddelande " +
-                    "WHERE AnvandarID = @AnvandarID"; 
+                    "WHERE AnvandarID = @AnvandarID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@AnvandarID", DataTyp.Int, anvandare.AnvandarID.ToString()),

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace Hooker.Datalager
 {
@@ -445,7 +445,7 @@ namespace Hooker.Datalager
             try
             {
                 DatabasAccess.SkapaTransaktion();
-                
+
                 for (int i = 0; i < tavling.TavlingRondResultat.Length; i++)
                 {
                     List<DatabasParameters> dbParameters = new List<DatabasParameters>()

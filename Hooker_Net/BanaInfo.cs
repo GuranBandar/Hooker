@@ -5,7 +5,6 @@ using Hooker_GUI.Kontroller;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Hooker_GUI
@@ -360,7 +359,7 @@ namespace Hooker_GUI
                     this.FyllLangdPerHal(halnr, langd, cc);
                     //cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].LangdBla);
                     langdBlaSa = langdBlaSa + langd;
-                        //int.Parse(Bana.BanaHal[halnr - 1].LangdBla.ToString());
+                    //int.Parse(Bana.BanaHal[halnr - 1].LangdBla.ToString());
                 }
                 if (cc.Name.StartsWith("txtLangdRodHal"))
                 {
@@ -369,7 +368,7 @@ namespace Hooker_GUI
                     this.FyllLangdPerHal(halnr, langd, cc);
                     //cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].LangdRod);
                     langdRodSa = langdRodSa + langd;
-                        //int.Parse(Bana.BanaHal[halnr - 1].LangdRod.ToString());
+                    //int.Parse(Bana.BanaHal[halnr - 1].LangdRod.ToString());
                 }
                 if (cc.Name.StartsWith("txtParHal"))
                 {
@@ -415,7 +414,7 @@ namespace Hooker_GUI
                     this.FyllLangdPerHal(halnr, langd, cc);
                     //cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].LangdVit);
                     langdVitSa = langdVitSa + langd;
-                        //int.Parse(Bana.BanaHal[halnr - 1].LangdVit.ToString());
+                    //int.Parse(Bana.BanaHal[halnr - 1].LangdVit.ToString());
                 }
                 if (cc.Name.StartsWith("txtLangdGulHal"))
                 {
@@ -424,7 +423,7 @@ namespace Hooker_GUI
                     this.FyllLangdPerHal(halnr, langd, cc);
                     //cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].LangdGul);
                     langdGulSa = langdGulSa + langd;
-                        //int.Parse(Bana.BanaHal[halnr - 1].LangdGul.ToString());
+                    //int.Parse(Bana.BanaHal[halnr - 1].LangdGul.ToString());
                 }
                 if (cc.Name.StartsWith("txtLangdBlaHal"))
                 {
@@ -433,7 +432,7 @@ namespace Hooker_GUI
                     this.FyllLangdPerHal(halnr, langd, cc);
                     //cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].LangdBla);
                     langdBlaSa = langdBlaSa + langd;
-                        //int.Parse(Bana.BanaHal[halnr - 1].LangdBla.ToString());
+                    //int.Parse(Bana.BanaHal[halnr - 1].LangdBla.ToString());
                 }
                 if (cc.Name.StartsWith("txtLangdRodHal"))
                 {
@@ -442,7 +441,7 @@ namespace Hooker_GUI
                     this.FyllLangdPerHal(halnr, langd, cc);
                     //cc.Text = ("D").Formatera(Bana.BanaHal[halnr - 1].LangdRod);
                     langdRodSa = langdRodSa + langd;
-                        //int.Parse(Bana.BanaHal[halnr - 1].LangdRod.ToString());
+                    //int.Parse(Bana.BanaHal[halnr - 1].LangdRod.ToString());
                 }
                 if (cc.Name.StartsWith("txtParHal"))
                 {
@@ -483,7 +482,7 @@ namespace Hooker_GUI
         /// <param name="halnr"></param>
         /// <param name="langd"></param>
         /// <param name="cc"></param>
-        private void FyllLangdPerHal(int halnr, int langd, 
+        private void FyllLangdPerHal(int halnr, int langd,
             System.Windows.Forms.Control cc)
         {
             bool niohal = false;

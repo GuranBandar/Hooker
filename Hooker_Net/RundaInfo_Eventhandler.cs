@@ -358,7 +358,7 @@ namespace Hooker_GUI
             StringBuilder email = new StringBuilder();
             try
             {
-                Mail Mail = new Mail
+                Hooker.Affärsobjekt.Mail Mail = new Hooker.Affärsobjekt.Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,

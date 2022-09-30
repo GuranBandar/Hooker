@@ -50,8 +50,8 @@ namespace Hooker_GUI
         /// </summary>
         private void VisaResultat()
         {
-            AnvandareAktivitet anvandareAktivitet= new AnvandareAktivitet();
-            string anvandarGrupp = cboAnvandargrupp.SelectedItem == null ? 
+            AnvandareAktivitet anvandareAktivitet = new AnvandareAktivitet();
+            string anvandarGrupp = cboAnvandargrupp.SelectedItem == null ?
                 string.Empty : cboAnvandargrupp.SelectedItem.ToString();
 
             try
@@ -66,7 +66,7 @@ namespace Hooker_GUI
                 {
                     for (int i = 0; i <= Anvandare.Count - 1; i++)
                     {
-                        anvandarGrupp = cboAnvandargrupp.GetItemText(Anvandare[i].Anvandargrupp); 
+                        anvandarGrupp = cboAnvandargrupp.GetItemText(Anvandare[i].Anvandargrupp);
                         dgwSokAnvandare.Rows.Add();
                         dgwSokAnvandare.Rows[i].Cells["AnvandarID"].Value = Anvandare[i].AnvandarID;
                         dgwSokAnvandare.Rows[i].Cells["Anvandarnamn"].Value = Anvandare[i].Anvandarnamn;

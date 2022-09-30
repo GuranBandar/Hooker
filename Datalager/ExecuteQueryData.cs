@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Hooker.Gemensam;
 using System.Data;
-using System.Data.SqlClient;
-using GemensamService;
-using Hooker.Gemensam;
 
 namespace Hooker.Datalager
 {

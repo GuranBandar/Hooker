@@ -1,5 +1,4 @@
-﻿using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
+﻿using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Linq;
@@ -91,7 +90,7 @@ namespace Hooker_GUI
         {
             try
             {
-                Mail Mail = new Mail
+                Hooker.Affärsobjekt.Mail Mail = new Hooker.Affärsobjekt.Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,

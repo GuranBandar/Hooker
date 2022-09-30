@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Hooker.Affärslager;
+using Hooker.Affärsobjekt;
+using Hooker.Gemensam;
+using Hooker_GUI.Kontroller;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Hooker.Affärslager;
-using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
-using Hooker_GUI.Kontroller;
 
 namespace Hooker_GUI
 {
@@ -149,7 +149,7 @@ namespace Hooker_GUI
                         ("ND1").Formatera(decimal.Parse(row["Slope Herrar"].ToString()));
                     dgwEGALista.Rows[i].Cells["CR"].Value =
                         ("ND1").Formatera(decimal.Parse(row["CR Herrar"].ToString()));
-                    dgwEGALista.Rows[i].Cells["Hcprond"].Value = 
+                    dgwEGALista.Rows[i].Cells["Hcprond"].Value =
                         (row["Hcp"].ToString() == "X" ? "Ja" : "Nej");
                     dgwEGALista.Rows[i].Cells["Par"].Value =
                         ("N").Formatera(int.Parse(row["Par"].ToString()));

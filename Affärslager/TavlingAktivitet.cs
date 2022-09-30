@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Datalager;
+using Hooker.Dataset;
+using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using Hooker.Dataset;
-using Hooker.Datalager;
-using Hooker.Gemensam;
-using Hooker.Affärsobjekt;
 
 namespace Hooker.Affärslager
 {
@@ -228,11 +228,11 @@ namespace Hooker.Affärslager
             TavlingData tavlingData = new Datalager.TavlingData();
             DataSet tavlingDS = tavlingData.HämtaTavlingAllt(tavlingID);
             Tavling tavling = null;
-//            TavlingKlass tavlingKlass = null;
-//            TavlingDeltagare tavlingDeltagare = null;
-//            TavlingRond tavlingRond = null;
-//            TavlingRondResultat tavlingRondResultat = null;
-//            TavlingStartlista tavlingStartlista = null;
+            //            TavlingKlass tavlingKlass = null;
+            //            TavlingDeltagare tavlingDeltagare = null;
+            //            TavlingRond tavlingRond = null;
+            //            TavlingRondResultat tavlingRondResultat = null;
+            //            TavlingStartlista tavlingStartlista = null;
 
             if (tavlingDS.Tables["Tavling"].Rows.Count == 1)
             {
@@ -330,7 +330,7 @@ namespace Hooker.Affärslager
                     {
                         tavlingRond.SpelarIDNearest = (int)rad["SpelarIDNearest"];
                     }
-                    
+
                     if (rad["SpelarIDLongest"] == System.DBNull.Value)
                     {
                         tavlingRond.SpelarIDLongest = 0;

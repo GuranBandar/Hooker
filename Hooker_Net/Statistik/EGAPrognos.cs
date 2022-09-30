@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Hooker.Affärslager;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using Hooker.Affärslager;
 
 namespace Hooker_GUI
 {

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using GemensamService;
+using Hooker.Affärsobjekt;
+using Hooker.Dataset;
+using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Hooker.Dataset;
-using Hooker.Affärsobjekt;
-using Hooker.Gemensam;
-using GemensamService;
 
 namespace Hooker.Datalager
 {
@@ -25,7 +25,7 @@ namespace Hooker.Datalager
             try
             {
                 DatabasAccess.FyllEnkeltDataSet(sql, systemvariablerDS);
-                return systemvariablerDS; 
+                return systemvariablerDS;
             }
             catch (SqlException sex)
             {

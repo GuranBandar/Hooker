@@ -234,7 +234,7 @@ namespace Hooker.Gemensam
         public static Color SättFärg(this int antalSlag, int par, bool slag)
         {
             if (slag)
-            { 
+            {
                 if (antalSlag == 0)
                 {
                     return Color.Black;
@@ -247,7 +247,7 @@ namespace Hooker.Gemensam
                 {
                     return Color.Blue;
                 }
-                else if (antalSlag == par -1)
+                else if (antalSlag == par - 1)
                 {
                     return Color.Red;
                 }

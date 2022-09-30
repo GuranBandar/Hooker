@@ -1,10 +1,10 @@
-﻿using System;
-using System.Data;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
-using GemensamService;
-using Hooker.Gemensam;
 using Hooker.Dataset;
+using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Datalager
 {
@@ -104,7 +104,7 @@ namespace Hooker.Datalager
                     sql = "SELECT MAX(Argument) AS Max FROM Koder";
                     sql = sql + sqlSök.ToString();
                 }
-                
+
                 return DatabasAccess.RunSql(sql);
             }
             catch (HookerException hex)
@@ -130,14 +130,14 @@ namespace Hooker.Datalager
 
             try
             {
-               sql = "DELETE FROM Koder WHERE Typ = @Typ AND Argument = @Argument";
-               List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                sql = "DELETE FROM Koder WHERE Typ = @Typ AND Argument = @Argument";
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@Typ", DataTyp.Int, koder.Typ.ToString()),
                     new DatabasParameters("@Argument", DataTyp.VarChar, koder.Argument)
                 };
-               DatabasAccess.RunSql(sql, dbParameters);
-               DatabasAccess.BekräftaTransaktion();
+                DatabasAccess.RunSql(sql, dbParameters);
+                DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
             {

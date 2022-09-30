@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using Hooker.Dataset;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Datalager;
-using Hooker.Gemensam;
-using Hooker.Affärsobjekt;
+using System;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -57,13 +54,13 @@ namespace Hooker.Affärslager
                     case 6:
                     case 7:
                     case 8:
-                        antPerBoll= 4;
+                        antPerBoll = 4;
                         break;
                     case 9:
                         antPerBoll = 3;
                         break;
                     default:
-                        antPerBoll= 4;
+                        antPerBoll = 4;
                         break;
                 }
                 foreach (TavlingDeltagare startande in tavling.TavlingDeltagare)
@@ -83,7 +80,7 @@ namespace Hooker.Affärslager
                     tavlingStartlista.Starttid = rond.ForstaStartTid.Add(minuter);
                     tavlingStartlista.Klass = startande.Klass;
                     tavlingStartlista.ExaktHcp = spelare.ExaktHcp;
-                    tavlingStartlista.ErhallnaSlag = 
+                    tavlingStartlista.ErhallnaSlag =
                         RäknaUtErhållnaSlag(spelare, rond.BanaNr);
                     tavlingStartlista.Tee = "3";
                     tavlingStartlista.UppdatDatum = DateTime.Today;

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Text;
-using Hooker.Gemensam;
+﻿using Hooker.Gemensam;
+using System;
 
 namespace Hooker.Affärslager
 {
@@ -21,8 +20,8 @@ namespace Hooker.Affärslager
         /// <param name="sallskapsrond">Ev markering för sällskapsrond</param>
         /// <param name="tavlingsrond">Ev markering för tävlingsrond</param>
         /// <returns>Färdigknåpat sökvillkor för statistiken</returns>
-        protected static string SkapaSökvillkor(string golfklubbNr, string banaNr, string spelarID, 
-            DateTime fromDatum, DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond, 
+        protected static string SkapaSökvillkor(string golfklubbNr, string banaNr, string spelarID,
+            DateTime fromDatum, DateTime tomDatum, bool hcprond, bool niohalsrond, bool sallskapsrond,
             bool tavlingsrond)
         {
             short antArgument = 0;
@@ -97,7 +96,7 @@ namespace Hooker.Affärslager
         /// <param name="detaljerad">Ev markering för detaljerad redovisning</param>
         /// <param name="summerad">Ev markering för summerad redovisning</param>
         /// <returns>Färdigknåpat sökvillkor för statistiken</returns>
-        protected static string SkapaSökvillkor(string redovisningsTyp, string spelarID, DateTime fromDatum, 
+        protected static string SkapaSökvillkor(string redovisningsTyp, string spelarID, DateTime fromDatum,
             DateTime tomDatum, bool detaljerad, bool summerad)
         {
             short antArgument = 0;
@@ -146,7 +145,7 @@ namespace Hooker.Affärslager
         /// <param name="fromDatum">From datum</param>
         /// <param name="tomDatum">Tom datum</param>
         /// <returns>Färdigknåpat sökvillkor för statistiken</returns>
-        protected static string SkapaSökvillkor(string tavlingNamn, string spelsatt, string speltyp, DateTime fromDatum, 
+        protected static string SkapaSökvillkor(string tavlingNamn, string spelsatt, string speltyp, DateTime fromDatum,
             DateTime tomDatum)
         {
             short antArgument = 0;

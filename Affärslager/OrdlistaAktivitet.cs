@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Hooker.Datalager;
+﻿using Hooker.Affärsobjekt;
 using Hooker.Dataset;
-using Hooker.Affärsobjekt;
+using System.Collections.Generic;
 
 namespace Hooker.Affärslager
 {
@@ -50,7 +47,7 @@ namespace Hooker.Affärslager
         public List<Ordlista> HämtaOrdlista(string grupp, string sprakkod)
         {
             OrdlistaDS ordlistaDS = new OrdlistaDS();
-            Datalager.OrdlistaData ordlistaData= new Datalager.OrdlistaData();
+            Datalager.OrdlistaData ordlistaData = new Datalager.OrdlistaData();
             ordlistaDS = ordlistaData.HämtaOrdlista(grupp, sprakkod);
 
             List<Ordlista> ordlista = new List<Ordlista>(ordlistaDS.Ordlista.Rows.Count);

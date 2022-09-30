@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using GemensamService;
 using Hooker.Affärsobjekt;
 using Hooker.Dataset;
 using Hooker.Gemensam;
-using GemensamService;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Datalager
 {
@@ -240,7 +240,7 @@ namespace Hooker.Datalager
                 DatabasAccess.SkapaTransaktion();
                 DatabasAccess.ExecuteSP("UpdateGolfklubb", dbParameters);
                 DatabasAccess.BekräftaTransaktion();
-}
+            }
             catch (HookerException hex)
             {
                 felID = "SQLERROR";

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Datalager;
+using Hooker.Dataset;
+using Hooker.Gemensam;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using Hooker.Dataset;
-using Hooker.Datalager;
-using Hooker.Gemensam;
-using Hooker.Affärsobjekt;
 
 namespace Hooker.Affärslager
 {
@@ -47,7 +47,7 @@ namespace Hooker.Affärslager
                     bana.RankSkick = banaDS.Bana[0].RankSkick;
                     bana.RankStrategi = banaDS.Bana[0].RankStrategi;
                     bana.RankNatur = banaDS.Bana[0].RankNatur;
-                    bana.RankEtikett= banaDS.Bana[0].RankEtikett;
+                    bana.RankEtikett = banaDS.Bana[0].RankEtikett;
                     bana.RankRange = banaDS.Bana[0].RankRange;
                     bana.SlopeHerrarRod = banaDS.Bana[0].SlopeHerrarRod;
                     bana.CrHerrarRod = banaDS.Bana[0].CrHerrarRod;
@@ -229,7 +229,7 @@ namespace Hooker.Affärslager
             banaDS = banaData.HämtaMaxBanNr();
             return (int)banaDS.Tables[0].Rows[0]["Max"];
         }
-        
+
         /// <summary>
         ///     Söker rad/-er från tabellen Bana i aktuell databas med angivet sökvillkor.
         /// </summary>
