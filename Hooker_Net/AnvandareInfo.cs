@@ -384,11 +384,11 @@ namespace Hooker_GUI
         /// </summary>
         private void SendMail()
         {
-            Maila maila = new Maila();
+            Hooker.Gemensam.Mail maila = new Hooker.Gemensam.Mail();
             StringBuilder email = new StringBuilder();
             try
             {
-                Hooker.Affärsobjekt.Mail Mail = new Hooker.Affärsobjekt.Mail
+                Hooker.Affärsobjekt.Mail Mailet = new Hooker.Affärsobjekt.Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,
@@ -405,10 +405,10 @@ namespace Hooker_GUI
                 email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + ",<br/>");
                 email.Append("Epostadress: " + Anvandare.Epostadress + ",<br/>");
                 email.Append("Lösenord: " + Anvandare.Losenord + ".</p>");
-                Mail.Body = email.ToString();
+                Mailet.Body = email.ToString();
 
                 Timglas.WaitCurson();
-                maila.Skicka(Mail);
+                maila.Skicka_Mail(Mailet);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();

@@ -1,5 +1,4 @@
-﻿using Hooker.Affärsobjekt;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Mail;
 
@@ -8,22 +7,22 @@ namespace Hooker.Gemensam
     /// <summary>
     /// 
     /// </summary>
-    public class Maila
+    public class Mail
     {
         /// <summary>
         /// Skicka mail
-        /// <paramref name="Mail"/>
+        /// <paramref name="Mailet">Det mail som ska skickas</paramref>/>
         /// </summary>
-        public void Skicka(Mail Mail)
+        public void Skicka_Mail(Hooker.Affärsobjekt.Mail Mailet)
         {
             try
             {
-                var fromAddress = new MailAddress(Mail.MailFrom);
-                var fromPassword = Mail.Password;
-                var toAddress = new MailAddress(Mail.MailTo);
+                var fromAddress = new MailAddress(Mailet.MailFrom);
+                var fromPassword = Mailet.Password;
+                var toAddress = new MailAddress(Mailet.MailTo);
 
-                string subject = Mail.Subject;
-                string body = Mail.Body;
+                string subject = Mailet.Subject;
+                string body = Mailet.Body;
 
                 MailMessage mailMessage = new MailMessage(fromAddress.Address,
                     toAddress.Address);
@@ -33,8 +32,8 @@ namespace Hooker.Gemensam
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(fromAddress.Address,
                         fromPassword),
-                    Host = Mail.SmtpHost,
-                    Port = Mail.Port,
+                    Host = Mailet.SmtpHost,
+                    Port = Mailet.Port,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network
                 };
@@ -44,7 +43,7 @@ namespace Hooker.Gemensam
 
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
-                mailMessage.IsBodyHtml = Mail.IsHTML;
+                mailMessage.IsBodyHtml = Mailet.IsHTML;
 
                 client.Send(mailMessage);
             }

@@ -1,4 +1,5 @@
-﻿using Hooker.Gemensam;
+﻿using Hooker.Affärsobjekt;
+using Hooker.Gemensam;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Linq;
@@ -90,7 +91,7 @@ namespace Hooker_GUI
         {
             try
             {
-                Hooker.Affärsobjekt.Mail Mail = new Hooker.Affärsobjekt.Mail
+                Hooker.Affärsobjekt.Mail Mailet = new Hooker.Affärsobjekt.Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,
@@ -102,8 +103,8 @@ namespace Hooker_GUI
                 };
 
                 Timglas.WaitCurson();
-                Maila maila = new Maila();
-                maila.Skicka(Mail);
+                Hooker.Gemensam.Mail maila = new Hooker.Gemensam.Mail();
+                maila.Skicka_Mail(Mailet);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();

@@ -358,7 +358,7 @@ namespace Hooker_GUI
             StringBuilder email = new StringBuilder();
             try
             {
-                Hooker.Affärsobjekt.Mail Mail = new Hooker.Affärsobjekt.Mail
+                Hooker.Affärsobjekt.Mail Mailet = new Hooker.Affärsobjekt.Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,
@@ -377,11 +377,11 @@ namespace Hooker_GUI
                 email.Append("Speldatum: " + dtpDatum.Value.ToShortDateString() + "<br/>");
                 email.Append("Golklubb: " + cboGolfklubb.SelectedItem.ToString() + "<br/>");
                 email.Append("Bana: " + cboBana.SelectedItem.ToString() + "<br/>");
-                Mail.Body = email.ToString();
+                Mailet.Body = email.ToString();
 
                 Timglas.WaitCurson();
-                Maila Maila = new Maila();
-                Maila.Skicka(Mail);
+                Hooker.Gemensam.Mail Maila = new Hooker.Gemensam.Mail();
+                Maila.Skicka_Mail(Mailet);
                 VisaMeddelande("Skicka_OK");
                 this.Close();
                 Timglas.DefaultCursor();
