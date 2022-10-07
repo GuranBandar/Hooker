@@ -89,7 +89,6 @@
     <Compile Include="Functions.cs" />
     <Compile Include="HookerException.cs" />
     <Compile Include="HookerExtensions.cs" />
-    <Compile Include="Mail.cs" />
     <Compile Include="ProcessFileNameFinderClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
