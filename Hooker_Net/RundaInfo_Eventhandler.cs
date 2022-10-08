@@ -355,10 +355,11 @@ namespace Hooker_GUI
         /// </summary>
         private void SendMail()
         {
+            string resultat;
             StringBuilder email = new StringBuilder();
             try
             {
-                Hooker.Affärsobjekt.Mail Mailet = new Hooker.Affärsobjekt.Mail
+                Mail Mailet = new Mail
                 {
                     MailFrom = Systemvariabel.MailFrom,
                     Password = Systemvariabel.MailPassword,
@@ -380,9 +381,12 @@ namespace Hooker_GUI
                 Mailet.Body = email.ToString();
 
                 Timglas.WaitCurson();
-                Hooker.Gemensam.Mail Maila = new Hooker.Gemensam.Mail();
-                Maila.Skicka_Mail(Mailet);
-                VisaMeddelande("Skicka_OK");
+                resultat = Mailet.Skicka_Mail();
+
+                if (resultat == "OK")
+                {
+                    VisaMeddelande("Skicka_OK");
+                }
                 this.Close();
                 Timglas.DefaultCursor();
             }

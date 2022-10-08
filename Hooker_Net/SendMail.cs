@@ -89,6 +89,7 @@ namespace Hooker_GUI
         /// <param name="e"></param>
         private void knappkontroller1_OnKnapp4Click(object sender, EventArgs e)
         {
+            string resultat;
             try
             {
                 Hooker.Affärsobjekt.Mail Mailet = new Hooker.Affärsobjekt.Mail
@@ -103,9 +104,12 @@ namespace Hooker_GUI
                 };
 
                 Timglas.WaitCurson();
-                Hooker.Gemensam.Mail maila = new Hooker.Gemensam.Mail();
-                maila.Skicka_Mail(Mailet);
-                VisaMeddelande("Skicka_OK");
+                resultat = Mailet.Skicka_Mail();
+
+                if (resultat == "OK")
+                {
+                    VisaMeddelande("Skicka_OK");
+                }
                 this.Close();
                 Timglas.DefaultCursor();
             }

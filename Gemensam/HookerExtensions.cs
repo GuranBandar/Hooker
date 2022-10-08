@@ -4,6 +4,8 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace Hooker.Gemensam
@@ -448,6 +450,52 @@ namespace Hooker.Gemensam
                 errorMessage = PrintRowErrs(ds);
             }
             return errorMessage;
+        }
+
+        /// <summary>
+        /// Skicka mail
+        /// <paramref name="Mailet">Det mail som ska skickas</paramref>/>
+        /// </summary>
+        public static string Skicka_Mail(this Hooker.Affärsobjekt.Mail Mailet)
+        {
+            string resultat = string.Empty;
+            try
+            {
+                var fromAddress = new MailAddress(Mailet.MailFrom);
+                var fromPassword = Mailet.Password;
+                var toAddress = new MailAddress(Mailet.MailTo);
+
+                string subject = Mailet.Subject;
+                string body = Mailet.Body;
+
+                MailMessage mailMessage = new MailMessage(fromAddress.Address,
+                    toAddress.Address);
+
+                SmtpClient client = new SmtpClient
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address,
+                        fromPassword),
+                    Host = Mailet.SmtpHost,
+                    Port = Mailet.Port,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network
+                };
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
+                    SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                mailMessage.IsBodyHtml = Mailet.IsHTML;
+
+                client.Send(mailMessage);
+                return resultat = "OK";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         /// <summary>
