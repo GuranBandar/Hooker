@@ -400,11 +400,12 @@ namespace Hooker_GUI
                 };
 
                 email.Append("<b>Hej " + Anvandare.Anvandarnamn + "</b><br/><br/>");
-                email.Append("<p>Du har följande användaruppgifter registrerade i bokningswebben:");
+                email.Append("<p>Du har följande användaruppgifter registrerade i " +
+                    "bokningswebben https://quintagolfers.hardelin.nu:");
                 email.Append("<br><br>");
-                email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + ",<br/>");
-                email.Append("Epostadress: " + Anvandare.Epostadress + ",<br/>");
-                email.Append("Lösenord: " + Anvandare.Losenord + ".</p>");
+                email.Append("Anändarnamn: " + Anvandare.Anvandarnamn + "<br/>");
+                email.Append("Epostadress: " + Anvandare.Epostadress + "<br/>");
+                email.Append("Lösenord: " + Anvandare.Losenord + "</p>");
                 Mailet.Body = email.ToString();
 
                 Timglas.WaitCurson();
