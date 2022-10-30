@@ -73,6 +73,36 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen Spelare i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="Portugalgolfare">Markerar portugalgolfare</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public SpelareDS HämtaPortugalgolfare(string Portugalgolfare)
+        {
+            SpelareDS spelareDS = new SpelareDS();
+            string sql = "SELECT s.* FROM Spelare s WHERE s.Portugalgolfare = @Portugalgolfare " +
+                "ORDER BY s.Namn";
+
+            try
+            {
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@Portugalgolfare", DataTyp.Char, Portugalgolfare.ToString())
+                };
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, spelareDS);
+                return spelareDS;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                DatabasAccess.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Hämtar rad/-er från tabellen Bana i aktuell databas med angiven nyckel.
         /// </summary>
         /// <param name="sqlSok">Eventuellt where-villkor</param>
@@ -241,10 +271,11 @@ namespace Hooker.Datalager
             try
             {
                 sql = "INSERT INTO Spelare (SpelarID, Namn, Hcp, Klass, Kon, RevisionsDatum, " +
-                    "Hemmabananr, GolfID, UppdatDatum, GolfklubbNr, FederationNo)" +
+                    "Hemmabananr, GolfID, UppdatDatum, GolfklubbNr, FederationNo, " +
+                    "Portugalgolfare) " +
                     "VALUES " +
                     "(@SpelarID, @Namn, @Hcp, @Klass, @Kon, @RevisionsDatum, @Hemmabananr, @GolfID, " +
-                    "@UppdatDatum, @GolfklubbNr, @FederationNo)";
+                    "@UppdatDatum, @GolfklubbNr, @FederationNo, @Portugalgolfare)";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@SpelarID", DataTyp.Int, spelare.AktuelltSpelarID.ToString()),
@@ -257,7 +288,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@GolfID", DataTyp.NChar, spelare.GolfID.ToString()),
                     new DatabasParameters("@UppdatDatum", DataTyp.SmallDateTime, spelare.UppdatDatum.ToString()),
                     new DatabasParameters("@GolfklubbNr", DataTyp.Int, spelare.GolfklubbNr.ToString()),
-                    new DatabasParameters("@FederationNo", DataTyp.Int, spelare.FederationNo.ToString())
+                    new DatabasParameters("@FederationNo", DataTyp.Int, spelare.FederationNo.ToString()),
+                    new DatabasParameters("@Portugalgolfare", DataTyp.Char, spelare.Portugalgolfare)
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();
@@ -297,7 +329,7 @@ namespace Hooker.Datalager
                     "SET SpelarID = @SpelarID, Namn = @Namn, Hcp = @Hcp, Klass = @Klass" +
                     ", Kon = @Kon, RevisionsDatum = @RevisionsDatum, Hemmabananr = @Hemmabananr" +
                     ", GolfID = @GolfID, UppdatDatum = @UppdatDatum, GolfklubbNr = @GolfklubbNr" +
-                    ", FederationNo = @FederationNo " +
+                    ", FederationNo = @FederationNo, Portugalgolfare = @Portugalgolfare " +
                     "WHERE SpelarID = @SpelarID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -311,7 +343,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@GolfID", DataTyp.NChar, spelare.GolfID.ToString()),
                     new DatabasParameters("@UppdatDatum", DataTyp.SmallDateTime, spelare.UppdatDatum.ToString()),
                     new DatabasParameters("@GolfklubbNr", DataTyp.Int, spelare.GolfklubbNr.ToString()),
-                    new DatabasParameters("@FederationNo", DataTyp.Int, spelare.FederationNo.ToString())
+                    new DatabasParameters("@FederationNo", DataTyp.Int, spelare.FederationNo.ToString()),
+                    new DatabasParameters("@Portugalgolfare", DataTyp.Char, spelare.Portugalgolfare)
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();

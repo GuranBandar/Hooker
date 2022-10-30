@@ -78,7 +78,8 @@ namespace Hooker.Affärslager
                     Revisionsdatum = rad.RevisionsDatum,
                     UppdatDatum = rad.UppdatDatum,
                     GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
-                    FederationNo = rad.FederationNo
+                    FederationNo = rad.FederationNo,
+                    Portugalgolfare = rad.Portugalgolfare
                 });
             }
             return spelare;
@@ -148,7 +149,46 @@ namespace Hooker.Affärslager
                         GolfklubbNr = (int)rad["GolfklubbNr"],
                         Golfklubbnamn = rad["GolfklubbNamn"].ToString(),
                         Hemmabana = rad["BanaNamn"].ToString(),
-                        FederationNo = (int)rad["FederationNo"]
+                        FederationNo = (int)rad["FederationNo"],
+                        Portugalgolfare = rad["Portugalgolfare"].ToString()
+                    });
+                }
+                return spelare;
+            }
+            catch (HookerException)
+            {
+                throw;
+            }
+        }
+
+        public List<Spelare> HämtaPortugalgolfare(string Portugalgolfare)
+        {
+            SpelareDS spelareDS = new SpelareDS();
+            SpelareData spelareData = new SpelareData();
+
+            try
+            {
+                spelareDS = spelareData.HämtaPortugalgolfare(Portugalgolfare);
+                List<Spelare> spelare = new List<Spelare>(spelareDS.Tables["Spelare"].Rows.Count);
+                foreach (SpelareDS.SpelareRow rad in spelareDS.Spelare.Rows)
+                {
+                    if (rad.IsGolfklubbNrNull())
+                        rad.GolfklubbNr = 0;
+
+                    spelare.Add(new Spelare()
+                    {
+                        AktuelltSpelarID = rad.SpelarID,
+                        Namn = rad.Namn,
+                        ExaktHcp = rad.Hcp,
+                        GolfID = rad.GolfID,
+                        HemmabanaNr = rad.Hemmabananr,
+                        Klass = rad.Klass,
+                        Kön = rad.Kon,
+                        Revisionsdatum = rad.RevisionsDatum,
+                        UppdatDatum = rad.UppdatDatum,
+                        GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
+                        FederationNo = rad.FederationNo,
+                        Portugalgolfare = rad.Portugalgolfare
                     });
                 }
                 return spelare;
@@ -193,7 +233,8 @@ namespace Hooker.Affärslager
                         GolfklubbNr = (int)rad["GolfklubbNr"],
                         Golfklubbnamn = rad["GolfklubbNamn"].ToString(),
                         Hemmabana = rad["BanaNamn"].ToString(),
-                        FederationNo = (int)rad["FederationNo"]
+                        FederationNo = (int)rad["FederationNo"],
+                        Portugalgolfare = rad["Portugalgolfare"].ToString()
                     });
                 }
                 return spelare;

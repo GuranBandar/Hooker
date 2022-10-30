@@ -112,6 +112,37 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen BokningDag i aktuell databas med start från
+        /// dagens datum.
+        /// </summary>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public DataSet HämtaKommandeBokning(string sqlSok)
+        {
+            DataSet bokningDagDS = new DataSet();
+            string sql;
+
+            try
+            {
+                sql = "SELECT b.BokningID FROM BokningDag b " +
+                    sqlSok.ToString() +
+                    " ORDER BY b.Datum ASC";
+                bokningDagDS = DatabasAccess.RunSql(sql);
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+            return bokningDagDS;
+        }
+
+        /// <summary>
         /// Ny Bokning.
         /// </summary>
         /// <param name="bokningDag">Bokningen</param>
@@ -126,10 +157,12 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
                 sql = "INSERT INTO BokningDag(Bana, Datum, Tider, TisdagTorsdag, " +
-                    "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum )" +
+                    "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum, " +
+                    "Notering)" +
                     "VALUES " +
                     "(@Bana, @Datum, @Tider, @TisdagTorsdag, " +
-                    "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum)";
+                    "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum, " +
+                    "@Notering)";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@Bana", DataTyp.VarChar, bokningDag.Bana.ToString()),
@@ -139,7 +172,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@AnvandarNamnSkapad", DataTyp.VarChar, bokningDag.AnvandarNamnSkapad.ToString()),
                     new DatabasParameters("@SkapadDatum", DataTyp.VarChar, bokningDag.SkapadDatum.ToString()),
                     new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, bokningDag.AnvandarNamnUppdat.ToString()),
-                    new DatabasParameters("@UppdatDatum", DataTyp.VarChar, bokningDag.UppdatDatum.ToString())
+                    new DatabasParameters("@UppdatDatum", DataTyp.VarChar, bokningDag.UppdatDatum.ToString()),
+                    new DatabasParameters("@Notering", DataTyp.VarChar, bokningDag.Notering.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 sql = "SELECT LAST_INSERT_ID()";
@@ -245,7 +279,8 @@ namespace Hooker.Datalager
                 sql = "UPDATE BokningDag " +
                     "SET Bana = @Bana, Datum = @Datum, Tider = @Tider, " +
                     "TisdagTorsdag = @TisdagTorsdag, AnvandarNamnSkapad = @AnvandarNamnSkapad, " +
-                    "AnvandarNamnUppdat = @AnvandarNamnUppdat, UppdatDatum = @UppdatDatum " +
+                    "AnvandarNamnUppdat = @AnvandarNamnUppdat, UppdatDatum = @UppdatDatum, " +
+                    "Notering = @Notering " +
                     "WHERE BokningID = @BokningID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -257,7 +292,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@AnvandarNamnSkapad", DataTyp.VarChar, bokningDag.AnvandarNamnSkapad.ToString()),
                     new DatabasParameters("@SkapadDatum", DataTyp.VarChar, bokningDag.SkapadDatum.ToString()),
                     new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, bokningDag.AnvandarNamnUppdat.ToString()),
-                    new DatabasParameters("@UppdatDatum", DataTyp.VarChar, bokningDag.UppdatDatum.ToString())
+                    new DatabasParameters("@UppdatDatum", DataTyp.VarChar, bokningDag.UppdatDatum.ToString()),
+                    new DatabasParameters("@Notering", DataTyp.VarChar, bokningDag.Notering.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();

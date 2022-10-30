@@ -190,6 +190,11 @@ namespace Hooker_GUI
             txtNamn.Text = Spelare.Namn.ToString();
             txtRevDatum.Text = Spelare.Revisionsdatum.ToShortDateString().ToString();
 
+            if (Spelare.Portugalgolfare == "1")
+            {
+                cbxPortugalgolfare.Checked = true;
+            }
+
             txtSpelHcp.Text = ("D").Formatera(Spelare.ExaktHcp);
 
             switch (Spelare.Kön)
@@ -378,6 +383,11 @@ namespace Hooker_GUI
                 else
                 {
                     Spelare.HemmabanaNr = 0;
+                }
+
+                if (cbxPortugalgolfare.Checked)
+                {
+                    Spelare.Portugalgolfare = "1";
                 }
 
                 if ((txtRevDatum.Text.Trim().ÄrEttOKDatum()))
