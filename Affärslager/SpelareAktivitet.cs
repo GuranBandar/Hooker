@@ -38,6 +38,8 @@ namespace Hooker.Affärslager
                 spelare.Kön = spelareDS.Spelare[0].Kon;
                 spelare.Revisionsdatum = spelareDS.Spelare[0].RevisionsDatum;
                 spelare.UppdatDatum = spelareDS.Spelare[0].UppdatDatum;
+                spelare.Portugalgolfare = spelareDS.Spelare[0].Portugalgolfare;
+
                 if (!spelareDS.Spelare[0].IsGolfklubbNrNull())
                 {
                     spelare.GolfklubbNr = spelareDS.Spelare[0].GolfklubbNr;

@@ -419,9 +419,9 @@
             // knappkontroller1
             // 
             this.knappkontroller1.Button4Text = "Knapp4";
-            this.knappkontroller1.Location = new System.Drawing.Point(99, 12);
+            this.knappkontroller1.Location = new System.Drawing.Point(92, 2);
             this.knappkontroller1.Name = "knappkontroller1";
-            this.knappkontroller1.Size = new System.Drawing.Size(417, 33);
+            this.knappkontroller1.Size = new System.Drawing.Size(417, 40);
             this.knappkontroller1.TabIndex = 2;
             this.knappkontroller1.OnKnapp1Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp1ClickEventHandler(this.knappkontroller1_OnKnapp1Click);
             this.knappkontroller1.OnKnapp2Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp2ClickEventHandler(this.knappkontroller1_OnKnapp2Click);
