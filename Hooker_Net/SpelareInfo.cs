@@ -114,6 +114,7 @@ namespace Hooker_GUI
             gbxhandicap.Text = Översätt("Text", gbxhandicap.Text);
             gbxKon.Text = Översätt("Text", gbxKon.Text);
             lnkMinGolf.Text = Översätt("Text", lnkMinGolf.Text);
+            lnkFPG.Text = Översätt("Text", lnkFPG.Text);
 
             foreach (System.Windows.Forms.Control cc in gbxSpelarinfo.Controls)
             {

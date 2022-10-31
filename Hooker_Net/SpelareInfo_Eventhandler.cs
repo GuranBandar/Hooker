@@ -156,6 +156,25 @@ namespace Hooker_GUI
         }
 
         /// <summary>
+        /// Användaren har klickat på länken till "My FPG"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkFPG_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Timglas.WaitCurson();
+                base.StartWebbrowser("my.fpg.pt/Account/login.aspx");
+            }
+            catch (Exception ex)
+            {
+                HanteraUndantag(ex);
+            }
+            Timglas.DefaultCursor();
+        }
+
+        /// <summary>
         /// Visa Rundanotering vid högerklick i grafen
         /// </summary>
         /// <param name="sender"></param>

@@ -63,6 +63,7 @@
             this.rbnMan = new System.Windows.Forms.RadioButton();
             this.tangentkontroll1 = new Hooker_GUI.Kontroller.Tangentkontroll();
             this.chaHcplista = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lnkFPG = new System.Windows.Forms.LinkLabel();
             this.gbxSpelarinfo.SuspendLayout();
             this.gbxhandicap.SuspendLayout();
             this.gbxLinje.SuspendLayout();
@@ -250,11 +251,11 @@
             // lnkMinGolf
             // 
             this.lnkMinGolf.AutoSize = true;
-            this.lnkMinGolf.Location = new System.Drawing.Point(341, 244);
+            this.lnkMinGolf.Location = new System.Drawing.Point(337, 230);
             this.lnkMinGolf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkMinGolf.Name = "lnkMinGolf";
             this.lnkMinGolf.Size = new System.Drawing.Size(125, 17);
-            this.lnkMinGolf.TabIndex = 12;
+            this.lnkMinGolf.TabIndex = 13;
             this.lnkMinGolf.TabStop = true;
             this.lnkMinGolf.Text = "Text_Till_Min_Golf";
             this.lnkMinGolf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkMinGolf_LinkClicked);
@@ -278,7 +279,7 @@
             this.gbxhandicap.Padding = new System.Windows.Forms.Padding(4);
             this.gbxhandicap.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gbxhandicap.Size = new System.Drawing.Size(300, 159);
-            this.gbxhandicap.TabIndex = 100;
+            this.gbxhandicap.TabIndex = 8;
             this.gbxhandicap.TabStop = false;
             this.gbxhandicap.Text = "Rubrik_Hcp";
             // 
@@ -313,7 +314,7 @@
             this.txtRevDatum.Name = "txtRevDatum";
             this.txtRevDatum.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtRevDatum.Size = new System.Drawing.Size(117, 23);
-            this.txtRevDatum.TabIndex = 9;
+            this.txtRevDatum.TabIndex = 10;
             // 
             // txtSpelHcp
             // 
@@ -346,7 +347,7 @@
             this.txtExaktHcp.Name = "txtExaktHcp";
             this.txtExaktHcp.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtExaktHcp.Size = new System.Drawing.Size(52, 23);
-            this.txtExaktHcp.TabIndex = 8;
+            this.txtExaktHcp.TabIndex = 9;
             // 
             // lblKlass
             // 
@@ -413,7 +414,7 @@
             this.gbxLinje.Name = "gbxLinje";
             this.gbxLinje.Padding = new System.Windows.Forms.Padding(4);
             this.gbxLinje.Size = new System.Drawing.Size(559, 65);
-            this.gbxLinje.TabIndex = 300;
+            this.gbxLinje.TabIndex = 15;
             this.gbxLinje.TabStop = false;
             // 
             // knappkontroller1
@@ -464,7 +465,7 @@
             this.rbnKvinna.Name = "rbnKvinna";
             this.rbnKvinna.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rbnKvinna.Size = new System.Drawing.Size(119, 21);
-            this.rbnKvinna.TabIndex = 11;
+            this.rbnKvinna.TabIndex = 12;
             this.rbnKvinna.TabStop = true;
             this.rbnKvinna.Text = "Text_Kvinna";
             this.rbnKvinna.UseVisualStyleBackColor = false;
@@ -481,7 +482,7 @@
             this.rbnMan.Name = "rbnMan";
             this.rbnMan.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rbnMan.Size = new System.Drawing.Size(117, 21);
-            this.rbnMan.TabIndex = 10;
+            this.rbnMan.TabIndex = 11;
             this.rbnMan.TabStop = true;
             this.rbnMan.Text = "Text_Man";
             this.rbnMan.UseVisualStyleBackColor = false;
@@ -515,11 +516,23 @@
             this.chaHcplista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chaHcplista_MouseClick);
             this.chaHcplista.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chaHcplista_MouseDoubleClick);
             // 
+            // lnkFPG
+            // 
+            this.lnkFPG.AutoSize = true;
+            this.lnkFPG.Location = new System.Drawing.Point(337, 264);
+            this.lnkFPG.Name = "lnkFPG";
+            this.lnkFPG.Size = new System.Drawing.Size(123, 17);
+            this.lnkFPG.TabIndex = 14;
+            this.lnkFPG.TabStop = true;
+            this.lnkFPG.Text = "Text_Till_My_FPG";
+            this.lnkFPG.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkFPG_LinkClicked);
+            // 
             // SpelareInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 587);
+            this.Controls.Add(this.lnkFPG);
             this.Controls.Add(this.chaHcplista);
             this.Controls.Add(this.lnkMinGolf);
             this.Controls.Add(this.tangentkontroll1);
@@ -578,5 +591,6 @@
         private System.Windows.Forms.CheckBox cbxPortugalgolfare;
         private System.Windows.Forms.Label lblPortugalgolfare;
         private Kontroller.Knappkontroller knappkontroller1;
+        private System.Windows.Forms.LinkLabel lnkFPG;
     }
 }
