@@ -33,6 +33,8 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpelareInfo));
             this.gbxSpelarinfo = new System.Windows.Forms.GroupBox();
+            this.cbxPortugalgolfare = new System.Windows.Forms.CheckBox();
+            this.lblPortugalgolfare = new System.Windows.Forms.Label();
             this.txtFederationNo = new System.Windows.Forms.TextBox();
             this.lblFederationNo = new System.Windows.Forms.Label();
             this.cboHemmaBana = new System.Windows.Forms.ComboBox();
@@ -54,15 +56,13 @@
             this.lblSpelHcp = new System.Windows.Forms.Label();
             this.lblExaktHcp = new System.Windows.Forms.Label();
             this.gbxLinje = new System.Windows.Forms.GroupBox();
-            this.fönsterhanterare1 = new Hooker_GUI.Kontroller.Fönsterhanterare();
             this.knappkontroller1 = new Hooker_GUI.Kontroller.Knappkontroller();
+            this.fönsterhanterare1 = new Hooker_GUI.Kontroller.Fönsterhanterare();
             this.gbxKon = new System.Windows.Forms.GroupBox();
             this.rbnKvinna = new System.Windows.Forms.RadioButton();
             this.rbnMan = new System.Windows.Forms.RadioButton();
             this.tangentkontroll1 = new Hooker_GUI.Kontroller.Tangentkontroll();
             this.chaHcplista = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbxPortugalgolfare = new System.Windows.Forms.CheckBox();
             this.gbxSpelarinfo.SuspendLayout();
             this.gbxhandicap.SuspendLayout();
             this.gbxLinje.SuspendLayout();
@@ -74,7 +74,7 @@
             // 
             this.gbxSpelarinfo.BackColor = System.Drawing.SystemColors.Control;
             this.gbxSpelarinfo.Controls.Add(this.cbxPortugalgolfare);
-            this.gbxSpelarinfo.Controls.Add(this.label1);
+            this.gbxSpelarinfo.Controls.Add(this.lblPortugalgolfare);
             this.gbxSpelarinfo.Controls.Add(this.txtFederationNo);
             this.gbxSpelarinfo.Controls.Add(this.lblFederationNo);
             this.gbxSpelarinfo.Controls.Add(this.cboHemmaBana);
@@ -88,24 +88,44 @@
             this.gbxSpelarinfo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxSpelarinfo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.gbxSpelarinfo.Location = new System.Drawing.Point(4, 5);
-            this.gbxSpelarinfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxSpelarinfo.Margin = new System.Windows.Forms.Padding(4);
             this.gbxSpelarinfo.Name = "gbxSpelarinfo";
-            this.gbxSpelarinfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxSpelarinfo.Padding = new System.Windows.Forms.Padding(4);
             this.gbxSpelarinfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gbxSpelarinfo.Size = new System.Drawing.Size(524, 123);
             this.gbxSpelarinfo.TabIndex = 0;
             this.gbxSpelarinfo.TabStop = false;
             this.gbxSpelarinfo.Text = "Text_Spelare";
             // 
+            // cbxPortugalgolfare
+            // 
+            this.cbxPortugalgolfare.AutoSize = true;
+            this.cbxPortugalgolfare.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPortugalgolfare.Location = new System.Drawing.Point(123, 54);
+            this.cbxPortugalgolfare.Name = "cbxPortugalgolfare";
+            this.cbxPortugalgolfare.Size = new System.Drawing.Size(18, 17);
+            this.cbxPortugalgolfare.TabIndex = 4;
+            this.cbxPortugalgolfare.UseVisualStyleBackColor = true;
+            // 
+            // lblPortugalgolfare
+            // 
+            this.lblPortugalgolfare.AutoSize = true;
+            this.lblPortugalgolfare.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPortugalgolfare.Location = new System.Drawing.Point(11, 55);
+            this.lblPortugalgolfare.Name = "lblPortugalgolfare";
+            this.lblPortugalgolfare.Size = new System.Drawing.Size(175, 16);
+            this.lblPortugalgolfare.TabIndex = 102;
+            this.lblPortugalgolfare.Text = "Radrubrik_Portugalgolfare";
+            // 
             // txtFederationNo
             // 
             this.txtFederationNo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFederationNo.Location = new System.Drawing.Point(451, 52);
-            this.txtFederationNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFederationNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtFederationNo.Name = "txtFederationNo";
             this.txtFederationNo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFederationNo.Size = new System.Drawing.Size(64, 23);
-            this.txtFederationNo.TabIndex = 4;
+            this.txtFederationNo.TabIndex = 5;
             // 
             // lblFederationNo
             // 
@@ -123,16 +143,16 @@
             this.cboHemmaBana.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHemmaBana.FormattingEnabled = true;
             this.cboHemmaBana.Location = new System.Drawing.Point(335, 84);
-            this.cboHemmaBana.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboHemmaBana.Margin = new System.Windows.Forms.Padding(4);
             this.cboHemmaBana.Name = "cboHemmaBana";
             this.cboHemmaBana.Size = new System.Drawing.Size(180, 24);
-            this.cboHemmaBana.TabIndex = 6;
+            this.cboHemmaBana.TabIndex = 7;
             // 
             // txtLopnr
             // 
             this.txtLopnr.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLopnr.Location = new System.Drawing.Point(476, 21);
-            this.txtLopnr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLopnr.Margin = new System.Windows.Forms.Padding(4);
             this.txtLopnr.MaxLength = 3;
             this.txtLopnr.Name = "txtLopnr";
             this.txtLopnr.Size = new System.Drawing.Size(39, 23);
@@ -146,13 +166,13 @@
             this.cboGolfklubb.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGolfklubb.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cboGolfklubb.IntegralHeight = false;
-            this.cboGolfklubb.Location = new System.Drawing.Point(104, 84);
-            this.cboGolfklubb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboGolfklubb.Location = new System.Drawing.Point(123, 84);
+            this.cboGolfklubb.Margin = new System.Windows.Forms.Padding(4);
             this.cboGolfklubb.Name = "cboGolfklubb";
             this.cboGolfklubb.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cboGolfklubb.Size = new System.Drawing.Size(195, 24);
+            this.cboGolfklubb.Size = new System.Drawing.Size(175, 24);
             this.cboGolfklubb.Sorted = true;
-            this.cboGolfklubb.TabIndex = 5;
+            this.cboGolfklubb.TabIndex = 6;
             this.cboGolfklubb.SelectedIndexChanged += new System.EventHandler(this.cboGolfklubb_SelectedIndexChanged);
             // 
             // txtNamn
@@ -162,12 +182,12 @@
             this.txtNamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNamn.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNamn.Location = new System.Drawing.Point(104, 21);
-            this.txtNamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNamn.Location = new System.Drawing.Point(123, 21);
+            this.txtNamn.Margin = new System.Windows.Forms.Padding(4);
             this.txtNamn.MaxLength = 0;
             this.txtNamn.Name = "txtNamn";
             this.txtNamn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNamn.Size = new System.Drawing.Size(195, 23);
+            this.txtNamn.Size = new System.Drawing.Size(175, 23);
             this.txtNamn.TabIndex = 1;
             // 
             // txtGolfID
@@ -178,7 +198,7 @@
             this.txtGolfID.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGolfID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtGolfID.Location = new System.Drawing.Point(400, 21);
-            this.txtGolfID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGolfID.Margin = new System.Windows.Forms.Padding(4);
             this.txtGolfID.MaxLength = 6;
             this.txtGolfID.Name = "txtGolfID";
             this.txtGolfID.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -234,7 +254,7 @@
             this.lnkMinGolf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkMinGolf.Name = "lnkMinGolf";
             this.lnkMinGolf.Size = new System.Drawing.Size(125, 17);
-            this.lnkMinGolf.TabIndex = 11;
+            this.lnkMinGolf.TabIndex = 12;
             this.lnkMinGolf.TabStop = true;
             this.lnkMinGolf.Text = "Text_Till_Min_Golf";
             this.lnkMinGolf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkMinGolf_LinkClicked);
@@ -253,9 +273,9 @@
             this.gbxhandicap.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxhandicap.ForeColor = System.Drawing.SystemColors.ControlText;
             this.gbxhandicap.Location = new System.Drawing.Point(4, 135);
-            this.gbxhandicap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxhandicap.Margin = new System.Windows.Forms.Padding(4);
             this.gbxhandicap.Name = "gbxhandicap";
-            this.gbxhandicap.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxhandicap.Padding = new System.Windows.Forms.Padding(4);
             this.gbxhandicap.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gbxhandicap.Size = new System.Drawing.Size(300, 159);
             this.gbxhandicap.TabIndex = 100;
@@ -270,7 +290,7 @@
             this.txtKlass.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKlass.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKlass.Location = new System.Drawing.Point(160, 111);
-            this.txtKlass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtKlass.Margin = new System.Windows.Forms.Padding(4);
             this.txtKlass.MaxLength = 0;
             this.txtKlass.Name = "txtKlass";
             this.txtKlass.ReadOnly = true;
@@ -288,12 +308,12 @@
             this.txtRevDatum.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRevDatum.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtRevDatum.Location = new System.Drawing.Point(11, 111);
-            this.txtRevDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRevDatum.Margin = new System.Windows.Forms.Padding(4);
             this.txtRevDatum.MaxLength = 0;
             this.txtRevDatum.Name = "txtRevDatum";
             this.txtRevDatum.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtRevDatum.Size = new System.Drawing.Size(117, 23);
-            this.txtRevDatum.TabIndex = 8;
+            this.txtRevDatum.TabIndex = 9;
             // 
             // txtSpelHcp
             // 
@@ -303,7 +323,7 @@
             this.txtSpelHcp.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSpelHcp.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtSpelHcp.Location = new System.Drawing.Point(160, 49);
-            this.txtSpelHcp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSpelHcp.Margin = new System.Windows.Forms.Padding(4);
             this.txtSpelHcp.MaxLength = 0;
             this.txtSpelHcp.Name = "txtSpelHcp";
             this.txtSpelHcp.ReadOnly = true;
@@ -321,12 +341,12 @@
             this.txtExaktHcp.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExaktHcp.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtExaktHcp.Location = new System.Drawing.Point(11, 49);
-            this.txtExaktHcp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExaktHcp.Margin = new System.Windows.Forms.Padding(4);
             this.txtExaktHcp.MaxLength = 0;
             this.txtExaktHcp.Name = "txtExaktHcp";
             this.txtExaktHcp.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtExaktHcp.Size = new System.Drawing.Size(52, 23);
-            this.txtExaktHcp.TabIndex = 7;
+            this.txtExaktHcp.TabIndex = 8;
             // 
             // lblKlass
             // 
@@ -386,35 +406,35 @@
             // 
             // gbxLinje
             // 
+            this.gbxLinje.Controls.Add(this.knappkontroller1);
             this.gbxLinje.Controls.Add(this.fönsterhanterare1);
-            this.gbxLinje.Location = new System.Drawing.Point(4, 533);
-            this.gbxLinje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxLinje.Location = new System.Drawing.Point(-8, 533);
+            this.gbxLinje.Margin = new System.Windows.Forms.Padding(4);
             this.gbxLinje.Name = "gbxLinje";
-            this.gbxLinje.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbxLinje.Size = new System.Drawing.Size(547, 43);
+            this.gbxLinje.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxLinje.Size = new System.Drawing.Size(559, 65);
             this.gbxLinje.TabIndex = 300;
             this.gbxLinje.TabStop = false;
-            // 
-            // fönsterhanterare1
-            // 
-            this.fönsterhanterare1.Location = new System.Drawing.Point(172, 22);
-            this.fönsterhanterare1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.fönsterhanterare1.Name = "fönsterhanterare1";
-            this.fönsterhanterare1.Size = new System.Drawing.Size(200, 32);
-            this.fönsterhanterare1.TabIndex = 1;
             // 
             // knappkontroller1
             // 
             this.knappkontroller1.Button4Text = "Knapp4";
-            this.knappkontroller1.Location = new System.Drawing.Point(-28, 539);
-            this.knappkontroller1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.knappkontroller1.Location = new System.Drawing.Point(99, 12);
             this.knappkontroller1.Name = "knappkontroller1";
-            this.knappkontroller1.Size = new System.Drawing.Size(556, 38);
-            this.knappkontroller1.TabIndex = 0;
+            this.knappkontroller1.Size = new System.Drawing.Size(417, 33);
+            this.knappkontroller1.TabIndex = 2;
             this.knappkontroller1.OnKnapp1Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp1ClickEventHandler(this.knappkontroller1_OnKnapp1Click);
             this.knappkontroller1.OnKnapp2Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp2ClickEventHandler(this.knappkontroller1_OnKnapp2Click);
             this.knappkontroller1.OnKnapp3Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp3ClickEventHandler(this.knappkontroller1_OnKnapp3Click);
             this.knappkontroller1.OnKnapp4Click += new Hooker_GUI.Kontroller.Knappkontroller.Knapp4ClickEventHandler(this.knappkontroller1_OnKnapp4Click);
+            // 
+            // fönsterhanterare1
+            // 
+            this.fönsterhanterare1.Location = new System.Drawing.Point(172, 22);
+            this.fönsterhanterare1.Margin = new System.Windows.Forms.Padding(4);
+            this.fönsterhanterare1.Name = "fönsterhanterare1";
+            this.fönsterhanterare1.Size = new System.Drawing.Size(200, 32);
+            this.fönsterhanterare1.TabIndex = 1;
             // 
             // gbxKon
             // 
@@ -424,9 +444,9 @@
             this.gbxKon.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxKon.ForeColor = System.Drawing.SystemColors.ControlText;
             this.gbxKon.Location = new System.Drawing.Point(339, 135);
-            this.gbxKon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxKon.Margin = new System.Windows.Forms.Padding(4);
             this.gbxKon.Name = "gbxKon";
-            this.gbxKon.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxKon.Padding = new System.Windows.Forms.Padding(4);
             this.gbxKon.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gbxKon.Size = new System.Drawing.Size(144, 80);
             this.gbxKon.TabIndex = 200;
@@ -440,11 +460,11 @@
             this.rbnKvinna.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbnKvinna.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbnKvinna.Location = new System.Drawing.Point(21, 49);
-            this.rbnKvinna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbnKvinna.Margin = new System.Windows.Forms.Padding(4);
             this.rbnKvinna.Name = "rbnKvinna";
             this.rbnKvinna.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rbnKvinna.Size = new System.Drawing.Size(119, 21);
-            this.rbnKvinna.TabIndex = 10;
+            this.rbnKvinna.TabIndex = 11;
             this.rbnKvinna.TabStop = true;
             this.rbnKvinna.Text = "Text_Kvinna";
             this.rbnKvinna.UseVisualStyleBackColor = false;
@@ -457,11 +477,11 @@
             this.rbnMan.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbnMan.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbnMan.Location = new System.Drawing.Point(21, 20);
-            this.rbnMan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbnMan.Margin = new System.Windows.Forms.Padding(4);
             this.rbnMan.Name = "rbnMan";
             this.rbnMan.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rbnMan.Size = new System.Drawing.Size(117, 21);
-            this.rbnMan.TabIndex = 9;
+            this.rbnMan.TabIndex = 10;
             this.rbnMan.TabStop = true;
             this.rbnMan.Text = "Text_Man";
             this.rbnMan.UseVisualStyleBackColor = false;
@@ -482,7 +502,7 @@
             legend1.Name = "Legend1";
             this.chaHcplista.Legends.Add(legend1);
             this.chaHcplista.Location = new System.Drawing.Point(15, 303);
-            this.chaHcplista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chaHcplista.Margin = new System.Windows.Forms.Padding(4);
             this.chaHcplista.Name = "chaHcplista";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -495,33 +515,11 @@
             this.chaHcplista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chaHcplista_MouseClick);
             this.chaHcplista.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chaHcplista_MouseDoubleClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 16);
-            this.label1.TabIndex = 102;
-            this.label1.Text = "Radrubrik_Portugalgolfare";
-            // 
-            // cbxPortugalgolfare
-            // 
-            this.cbxPortugalgolfare.AutoSize = true;
-            this.cbxPortugalgolfare.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPortugalgolfare.Location = new System.Drawing.Point(104, 54);
-            this.cbxPortugalgolfare.Name = "cbxPortugalgolfare";
-            this.cbxPortugalgolfare.Size = new System.Drawing.Size(98, 20);
-            this.cbxPortugalgolfare.TabIndex = 103;
-            this.cbxPortugalgolfare.Text = "checkBox1";
-            this.cbxPortugalgolfare.UseVisualStyleBackColor = true;
-            // 
             // SpelareInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 587);
-            this.Controls.Add(this.knappkontroller1);
             this.Controls.Add(this.chaHcplista);
             this.Controls.Add(this.lnkMinGolf);
             this.Controls.Add(this.tangentkontroll1);
@@ -572,13 +570,13 @@
         public System.Windows.Forms.RadioButton rbnMan;
         private System.Windows.Forms.TextBox txtLopnr;
         private Hooker_GUI.Kontroller.Tangentkontroll tangentkontroll1;
-        private Kontroller.Knappkontroller knappkontroller1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chaHcplista;
         private System.Windows.Forms.ComboBox cboHemmaBana;
         private System.Windows.Forms.Label lblFederationNo;
         private System.Windows.Forms.TextBox txtFederationNo;
         private Kontroller.Fönsterhanterare fönsterhanterare1;
         private System.Windows.Forms.CheckBox cbxPortugalgolfare;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPortugalgolfare;
+        private Kontroller.Knappkontroller knappkontroller1;
     }
 }
