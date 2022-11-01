@@ -106,7 +106,7 @@ namespace Hooker.Affärslager
             short antArgument = 0;
             string sqlSok = "";
             string sql = "";
-            WhereFörSträng(fromDatum, "t.Datum", ref sqlSok, ref antArgument, " >= ");
+            WhereFörSträng(fromDatum.ToShortDateString(), "b.Datum", ref sqlSok, ref antArgument, " >= ");
            
             if (antArgument > 0)
             {
@@ -114,23 +114,28 @@ namespace Hooker.Affärslager
             }
 
             bokningDagDS = bokningData.HämtaKommandeBokning(sql);
-            List<BokningDag> bokningDag  = new List<BokningDag>(bokningDagDS.Tables["BokningDag"].Rows.Count);
-            foreach (DataRow rad in bokningDagDS.Tables["BokningDag"].Rows)
+            List<BokningDag> bokningDag = new List<BokningDag>();
+
+            if (bokningDagDS.Tables[0].Rows.Count > 0)
             {
-                //Skapa BokningDagObjektet
-                bokningDag.Add(new BokningDag()
+                bokningDag = new List<BokningDag>(bokningDagDS.Tables[0].Rows.Count);
+                foreach (DataRow rad in bokningDagDS.Tables[0].Rows)
                 {
-                    BokningID = (int)rad["BokningID"],
-                    Bana = rad["Bana"].ToString(),
-                    Datum = rad["Datum"].ToString(),
-                    Tider = rad["Tider"].ToString(),
-                    TisdagTorsdag = Convert.ToInt32(rad["TisdagTorsdag"]),
-                    AnvandarNamnSkapad = rad["AnvandarNamnSkapad"].ToString(),
-                    SkapadDatum = rad["SkapadDatum"].ToString(),
-                    AnvandarNamnUppdat = rad["AnvandarNamnUppdat"].ToString(),
-                    UppdatDatum = rad["UppdatDatum"].ToString(),
-                    Notering = rad["Notering"].ToString()
-                });
+                    //Skapa BokningDagObjektet
+                    bokningDag.Add(new BokningDag()
+                    {
+                        BokningID = (int)rad["BokningID"],
+                        Bana = rad["Bana"].ToString(),
+                        Datum = rad["Datum"].ToString(),
+                        Tider = rad["Tider"].ToString(),
+                        TisdagTorsdag = Convert.ToInt32(rad["TisdagTorsdag"]),
+                        AnvandarNamnSkapad = rad["AnvandarNamnSkapad"].ToString(),
+                        SkapadDatum = rad["SkapadDatum"].ToString(),
+                        AnvandarNamnUppdat = rad["AnvandarNamnUppdat"].ToString(),
+                        UppdatDatum = rad["UppdatDatum"].ToString(),
+                        Notering = rad["Notering"].ToString()
+                    });
+                }
             }
 
             return bokningDag;

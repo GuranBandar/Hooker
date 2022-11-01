@@ -123,7 +123,7 @@ namespace Hooker.Datalager
 
             try
             {
-                sql = "SELECT b.BokningID FROM BokningDag b " +
+                sql = "SELECT b.* FROM BokningDag b" +
                     sqlSok.ToString() +
                     " ORDER BY b.Datum ASC";
                 bokningDagDS = DatabasAccess.RunSql(sql);
