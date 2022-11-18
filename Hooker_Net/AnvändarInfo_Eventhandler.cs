@@ -80,11 +80,40 @@ namespace Hooker_GUI
 
         }
 
+        /// <summary>
+        /// Hantera Ta bort-knappen
+        /// </summary>
         private void knappkontroller1_OnKnapp3Click(object sender, EventArgs e)
         {
+            string svar;
+            AnvandareAktivitet anvandareAktivitet;
+
+            try
+            {
+                svar = VisaFråga("Varning_TABORTANVÄNDARE");
+
+                if (svar.Equals("Ja"))
+                {
+                    anvandareAktivitet = new AnvandareAktivitet();
+                    anvandareAktivitet.TaBort(Anvandare, ref FelID, ref Feltext);
+                    VisaMeddelande("Information_OK");
+                    this.Close();
+                }
+            }
+            catch (HookerException)
+            {
+                VisaFelmeddelande(FelID, Feltext);
+            }
+            catch (Exception ex)
+            {
+                HanteraUndantag(ex);
+            }
 
         }
 
+        /// <summary>
+        /// Hantera Avbryt-knappen
+        /// </summary>
         private void knappkontroller1_OnKnapp4Click(object sender, EventArgs e)
         {
             string svar;
