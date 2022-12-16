@@ -106,7 +106,7 @@ namespace Hooker.Affärslager
             short antArgument = 0;
             string sqlSok = "";
             string sql = "";
-            WhereFörSträng(fromDatum.ToShortDateString(), "b.Datum", ref sqlSok, ref antArgument, " >= ");
+            WhereFörSträng(fromDatum, "b.Datum", ref sqlSok, ref antArgument, " >= ");
            
             if (antArgument > 0)
             {
