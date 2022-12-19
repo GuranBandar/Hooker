@@ -113,10 +113,10 @@ namespace Hooker.Datalager
 
         /// <summary>
         /// Hämtar rad från tabellen BokningDag i aktuell databas med start från
-        /// dagens datum.
+        /// sökt bokningsdatum.
         /// </summary>
         /// <returns>Typat dataset med efterfrågat data</returns>
-        public DataSet HämtaKommandeBokning(string sqlSok)
+        public DataSet SearchBokning(string sqlSok)
         {
             DataSet bokningDagDS = new DataSet();
             string sql;

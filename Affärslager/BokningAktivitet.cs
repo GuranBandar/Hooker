@@ -98,7 +98,7 @@ namespace Hooker.Affärslager
         /// </summary>
         /// <param name="fromDatum">Aktuell bokning</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public List<BokningDag> HämtaKommandeBokning(DateTime fromDatum)
+        public List<BokningDag> SearchBokning(DateTime fromDatum)
         {
             DataSet bokningDagDS = new DataSet();
             BokningData bokningData = new BokningData();
@@ -113,7 +113,7 @@ namespace Hooker.Affärslager
                 sql = sql + " WHERE " + sqlSok;
             }
 
-            bokningDagDS = bokningData.HämtaKommandeBokning(sql);
+            bokningDagDS = bokningData.SearchBokning(sql);
             List<BokningDag> bokningDag = new List<BokningDag>();
 
             if (bokningDagDS.Tables[0].Rows.Count > 0)
