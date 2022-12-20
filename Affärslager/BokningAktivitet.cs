@@ -98,7 +98,7 @@ namespace Hooker.Affärslager
         /// </summary>
         /// <param name="fromDatum">Aktuell bokning</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public List<BokningDag> SearchBokning(DateTime fromDatum)
+        public List<BokningDag> SearchBokning(string fromDatum)
         {
             DataSet bokningDagDS = new DataSet();
             BokningData bokningData = new BokningData();
