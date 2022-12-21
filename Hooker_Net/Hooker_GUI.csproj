@@ -690,7 +690,7 @@
     <None Include="Resources\DSCN2815.JPG" />
     <None Include="Resources\DSCN3012.JPG" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5</ProductName>
