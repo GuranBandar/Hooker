@@ -390,6 +390,10 @@ namespace Hooker_GUI
                 {
                     Spelare.Portugalgolfare = "1";
                 }
+                else
+                {
+                    Spelare.Portugalgolfare = string.Empty;
+                }
 
                 if ((txtRevDatum.Text.Trim().ÄrEttOKDatum()))
                 {
