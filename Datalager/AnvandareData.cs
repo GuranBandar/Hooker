@@ -131,6 +131,7 @@ namespace Hooker.Datalager
                 sql = "SELECT a.*, s.Namn AS SpelareNamn " +
                         "FROM Anvandare a " +
                         "LEFT OUTER JOIN Spelare s ON s.SpelarId = a.SpelarID " +
+                        "ORDER BY a.Anvandarnamn";
                     sqlSok.ToString();
                 anvandareDS = DatabasAccess.RunSql(sql);
                 anvandareDS.Tables[0].TableName = "Anvandare";

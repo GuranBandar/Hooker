@@ -12,7 +12,7 @@ namespace Hooker_GUI
             InitieraTexter();
             FyllComboBoxKod(cboAnvandargrupp, Kodtabell.Anvandargrupper, "01");
             this.MdiParent = MdiMain;
-            txtNamn.Focus();
+            txtAnvandarnamn.Focus();
             Timglas.DefaultCursor();
         }
 

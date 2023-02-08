@@ -29,7 +29,8 @@ namespace Hooker_GUI
         private void InitieraTexter()
         {
             this.Text = Översätt("Text", this.Text);
-            lblNamn.Text = Översätt("Text", lblNamn.Text);
+            lblAnvandarnamn.Text = Översätt("Text", lblAnvandarnamn.Text);
+            lblAnvandarnamn.Text = Översätt("Text", lblSpelare.Text);
             lblAnvandargrupp.Text = Översätt("Text", lblAnvandargrupp.Text);
 
             for (int i = 0; i < dgwSokAnvandare.Columns.Count; i++)
@@ -60,7 +61,7 @@ namespace Hooker_GUI
                 dgwSokAnvandare.Rows.Clear();
                 knappkontroller1.btnKnapp2.Enabled = false;
                 List<Anvandare> Anvandare = anvandareAktivitet.
-                    SökAnvandare(txtNamn.Text.ToString().Trim(), anvandarGrupp);
+                    SökAnvandare(txtAnvandarnamn.Text.ToString().Trim(), anvandarGrupp);
 
                 if (Anvandare.Count > 0)
                 {
@@ -70,7 +71,7 @@ namespace Hooker_GUI
                         dgwSokAnvandare.Rows.Add();
                         dgwSokAnvandare.Rows[i].Cells["AnvandarID"].Value = Anvandare[i].AnvandarID;
                         dgwSokAnvandare.Rows[i].Cells["Anvandarnamn"].Value = Anvandare[i].Anvandarnamn;
-                        //dgwSokAnvandare.Rows[i].Cells["Hcp"].Value = Anvandare[i].SpelarID;
+                        dgwSokAnvandare.Rows[i].Cells["Spelare"].Value = Anvandare[i].SpelarID;
                         dgwSokAnvandare.Rows[i].Cells["Epostadress"].Value = Anvandare[i].Epostadress;
                         //dgwSokAnvandare.Rows[i].Cells["Anvandargrupp"].Value = anvandargrupp.;
                     }

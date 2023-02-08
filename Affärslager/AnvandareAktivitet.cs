@@ -128,12 +128,11 @@ namespace Hooker.Affärslager
             return anvandare;
         }
 
-
         /// <summary>
         /// Söker rad/-er från tabellen Anvandare i aktuell databas med angivet sökvillkor.
         /// </summary>
         /// <param name="namn">Aktuell namn</param>
-        /// <param name="golfID">Ev GolfID i sökningen</param>
+        /// <param name="anvandarGrupp">Ev anvädargrupp i sökningen</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
         public List<Anvandare> SökAnvandare(string namn, string anvandarGrupp)
         {
@@ -152,6 +151,58 @@ namespace Hooker.Affärslager
                 if (anvandarGrupp.ToString() != "")
                 {
                     WhereMedLikeEfter(anvandarGrupp, "a.Anvandargrupp", ref sqlSok, ref antArgument);
+                }
+
+                if (antArgument > 0)
+                {
+                    sql = sql + " WHERE " + sqlSok;
+                }
+
+                anvandareDS = AnvandareData.SökAnvandare(sql);
+                List<Anvandare> Anvandare = new List<Anvandare>(anvandareDS.Tables["Anvandare"].Rows.Count);
+                foreach (DataRow rad in anvandareDS.Tables["Anvandare"].Rows)
+                {
+                    Anvandare.Add(new Anvandare()
+                    {
+                        AnvandarID = (int)rad["AnvandarID"],
+                        Anvandarnamn = rad["AnvandarNamn"].ToString(),
+                        Losenord = rad["Losenord"].ToString(),
+                        SpelarID = (int)rad["SpelarID"],
+                        SenastInloggadDatum = rad["SenastInloggadDatum"].ToString(),
+                        SenastByttLosenordDatum = rad["SenastByttLosenordDatum"].ToString(),
+                        Anvandargrupp = rad["Anvandargrupp"].ToString(),
+                        Epostadress = rad["Epostadress"].ToString(),
+                        GIR = rad["GIR"].ToString(),
+                        WebBrowser = rad["WebBrowser"].ToString(),
+                        Sprakkod = rad["Sprakkod"].ToString(),
+                        Epostmeddelande = rad["Epostmeddelande"].ToString()
+                    });
+                }
+                return Anvandare;
+            }
+            catch (HookerException)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Söker rad/-er från tabellen Anvandare i aktuell databas med angivet sökvillkor.
+        /// </summary>
+        /// <param name="namn">Aktuell namn</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public List<Anvandare> SökSpelareIAnvandare(string namn)
+        {
+            DataSet anvandareDS = new DataSet();
+            Datalager.AnvandareData AnvandareData = new AnvandareData();
+            short antArgument = 0;
+            string sqlSok = "";
+            string sql = "";
+            try
+            {
+                if (namn.ToString() != "")
+                {
+                    WhereMedLikeEfter(namn, "s.Namn", ref sqlSok, ref antArgument);
                 }
 
                 if (antArgument > 0)

@@ -18,7 +18,6 @@ namespace Hooker_GUI
             FormEvent();
             txtAnvandarnamn.Focus();
         }
-        #endregion
 
         /// <summary>
         /// Hantera Send mail knappen
@@ -131,6 +130,7 @@ namespace Hooker_GUI
                 this.Close();
             }
         }
+        #endregion
 
         private void FormEvent()
         {
