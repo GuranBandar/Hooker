@@ -3,6 +3,7 @@ using Hooker.Affärsobjekt;
 using Hooker_GUI.Kontroller;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Hooker_GUI
 {
@@ -30,7 +31,7 @@ namespace Hooker_GUI
         {
             this.Text = Översätt("Text", this.Text);
             lblAnvandarnamn.Text = Översätt("Text", lblAnvandarnamn.Text);
-            lblAnvandarnamn.Text = Översätt("Text", lblSpelare.Text);
+            lblSpelare.Text = Översätt("Text", lblSpelare.Text);
             lblAnvandargrupp.Text = Översätt("Text", lblAnvandargrupp.Text);
 
             for (int i = 0; i < dgwSokAnvandare.Columns.Count; i++)
@@ -53,28 +54,40 @@ namespace Hooker_GUI
         {
             AnvandareAktivitet anvandareAktivitet = new AnvandareAktivitet();
             string anvandarGrupp = cboAnvandargrupp.SelectedItem == null ?
-                string.Empty : cboAnvandargrupp.SelectedItem.ToString();
+                string.Empty : ((ComboBoxKod)cboAnvandargrupp.SelectedItem).Kod;
+            cboAnvandargrupp.ValueMember = "Kod";
+            List<Anvandare> Anvandare = null;
 
             try
             {
                 Timglas.WaitCurson();
                 dgwSokAnvandare.Rows.Clear();
                 knappkontroller1.btnKnapp2.Enabled = false;
-                List<Anvandare> Anvandare = anvandareAktivitet.
-                    SökAnvandare(txtAnvandarnamn.Text.ToString().Trim(), anvandarGrupp);
+
+                if (txtSpelare.Text != string.Empty)
+                {
+                    Anvandare = anvandareAktivitet.
+                        SökSpelareIAnvandare(txtSpelare.Text.ToString().Trim());
+                }
+                else
+                {
+                    Anvandare = anvandareAktivitet.
+                        SökAnvandare(txtAnvandarnamn.Text.ToString().Trim(), anvandarGrupp);
+                }
 
                 if (Anvandare.Count > 0)
                 {
                     for (int i = 0; i <= Anvandare.Count - 1; i++)
                     {
-                        anvandarGrupp = cboAnvandargrupp.GetItemText(Anvandare[i].Anvandargrupp);
+                        cboAnvandargrupp.SelectedItem = Anvandare[i].Anvandargrupp;
+                        anvandarGrupp = cboAnvandargrupp.SelectedItem.ToString();
                         dgwSokAnvandare.Rows.Add();
                         dgwSokAnvandare.Rows[i].Cells["AnvandarID"].Value = Anvandare[i].AnvandarID;
                         dgwSokAnvandare.Rows[i].Cells["Anvandarnamn"].Value = Anvandare[i].Anvandarnamn;
-                        dgwSokAnvandare.Rows[i].Cells["Spelare"].Value = Anvandare[i].SpelarID;
+                        dgwSokAnvandare.Rows[i].Cells["Spelare"].Value = Anvandare[i].SpelarNamn;
                         dgwSokAnvandare.Rows[i].Cells["Epostadress"].Value = Anvandare[i].Epostadress;
-                        //dgwSokAnvandare.Rows[i].Cells["Anvandargrupp"].Value = anvandargrupp.;
-                    }
+                        dgwSokAnvandare.Rows[i].Cells["Användargrupp"].Value = anvandarGrupp.ToString();
+                }
                     dgwSokAnvandare.Rows[0].Cells[0].DataGridView.Focus();
                     knappkontroller1.btnKnapp2.Enabled = true;
                 }

@@ -35,17 +35,17 @@ namespace Hooker_GUI
             this.gbxKnapparna = new System.Windows.Forms.GroupBox();
             this.hanteraFönster1 = new Hooker_GUI.Kontroller.Fönsterhanterare();
             this.dgwSokAnvandare = new System.Windows.Forms.DataGridView();
-            this.lblAnvandarnamn = new System.Windows.Forms.Label();
-            this.txtAnvandarnamn = new System.Windows.Forms.TextBox();
-            this.cboAnvandargrupp = new System.Windows.Forms.ComboBox();
-            this.lblAnvandargrupp = new System.Windows.Forms.Label();
             this.AnvandarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnvandarNamn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spelare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Epostadress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Användargrupp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblAnvandarnamn = new System.Windows.Forms.Label();
+            this.txtAnvandarnamn = new System.Windows.Forms.TextBox();
+            this.cboAnvandargrupp = new System.Windows.Forms.ComboBox();
+            this.lblAnvandargrupp = new System.Windows.Forms.Label();
             this.lblSpelare = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSpelare = new System.Windows.Forms.TextBox();
             this.gbxKnapparna.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwSokAnvandare)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +99,36 @@ namespace Hooker_GUI
             this.dgwSokAnvandare.Size = new System.Drawing.Size(623, 161);
             this.dgwSokAnvandare.TabIndex = 11;
             // 
+            // AnvandarID
+            // 
+            this.AnvandarID.HeaderText = "AnvandarID";
+            this.AnvandarID.Name = "AnvandarID";
+            this.AnvandarID.ReadOnly = true;
+            this.AnvandarID.Visible = false;
+            // 
+            // AnvandarNamn
+            // 
+            this.AnvandarNamn.HeaderText = "Text_AnvandarNamn";
+            this.AnvandarNamn.Name = "AnvandarNamn";
+            this.AnvandarNamn.Width = 115;
+            // 
+            // Spelare
+            // 
+            this.Spelare.HeaderText = "Rubrik_Spelare";
+            this.Spelare.Name = "Spelare";
+            this.Spelare.Width = 115;
+            // 
+            // Epostadress
+            // 
+            this.Epostadress.HeaderText = "Text_Epost";
+            this.Epostadress.Name = "Epostadress";
+            this.Epostadress.Width = 225;
+            // 
+            // Användargrupp
+            // 
+            this.Användargrupp.HeaderText = "Text_Anvandargrupp";
+            this.Användargrupp.Name = "Användargrupp";
+            // 
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
@@ -132,36 +162,6 @@ namespace Hooker_GUI
             this.lblAnvandargrupp.TabIndex = 12;
             this.lblAnvandargrupp.Text = "Radrubrik_Anvandargrupp";
             // 
-            // AnvandarID
-            // 
-            this.AnvandarID.HeaderText = "AnvandarID";
-            this.AnvandarID.Name = "AnvandarID";
-            this.AnvandarID.ReadOnly = true;
-            this.AnvandarID.Visible = false;
-            // 
-            // AnvandarNamn
-            // 
-            this.AnvandarNamn.HeaderText = "Text_AnvandarNamn";
-            this.AnvandarNamn.Name = "AnvandarNamn";
-            this.AnvandarNamn.Width = 115;
-            // 
-            // Spelare
-            // 
-            this.Spelare.HeaderText = "Rubrik_Spelare";
-            this.Spelare.Name = "Spelare";
-            this.Spelare.Width = 115;
-            // 
-            // Epostadress
-            // 
-            this.Epostadress.HeaderText = "Text_Epost";
-            this.Epostadress.Name = "Epostadress";
-            this.Epostadress.Width = 225;
-            // 
-            // Användargrupp
-            // 
-            this.Användargrupp.HeaderText = "Text_Anvandargrupp";
-            this.Användargrupp.Name = "Användargrupp";
-            // 
             // lblSpelare
             // 
             this.lblSpelare.AutoSize = true;
@@ -171,19 +171,19 @@ namespace Hooker_GUI
             this.lblSpelare.TabIndex = 14;
             this.lblSpelare.Text = "Radrubrik_Spelare";
             // 
-            // textBox1
+            // txtSpelare
             // 
-            this.textBox1.Location = new System.Drawing.Point(308, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(107, 20);
-            this.textBox1.TabIndex = 15;
+            this.txtSpelare.Location = new System.Drawing.Point(308, 14);
+            this.txtSpelare.Name = "txtSpelare";
+            this.txtSpelare.Size = new System.Drawing.Size(107, 20);
+            this.txtSpelare.TabIndex = 15;
             // 
             // SökAnvändare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 277);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSpelare);
             this.Controls.Add(this.lblSpelare);
             this.Controls.Add(this.cboAnvandargrupp);
             this.Controls.Add(this.lblAnvandargrupp);
@@ -233,6 +233,6 @@ namespace Hooker_GUI
         private System.Windows.Forms.DataGridViewTextBoxColumn Epostadress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Användargrupp;
         private System.Windows.Forms.Label lblSpelare;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSpelare;
     }
 }

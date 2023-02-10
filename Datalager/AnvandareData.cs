@@ -130,9 +130,9 @@ namespace Hooker.Datalager
             {
                 sql = "SELECT a.*, s.Namn AS SpelareNamn " +
                         "FROM Anvandare a " +
-                        "LEFT OUTER JOIN Spelare s ON s.SpelarId = a.SpelarID " +
-                        "ORDER BY a.Anvandarnamn";
-                    sqlSok.ToString();
+                        "LEFT OUTER JOIN Spelare s ON s.SpelarId = a.SpelarID" +
+                    sqlSok.ToString() +
+                    " ORDER BY a.Anvandarnamn";
                 anvandareDS = DatabasAccess.RunSql(sql);
                 anvandareDS.Tables[0].TableName = "Anvandare";
                 return anvandareDS;
