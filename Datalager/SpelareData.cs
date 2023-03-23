@@ -117,8 +117,8 @@ namespace Hooker.Datalager
                 sql = "SELECT s.*, g.GolfklubbNamn, b.Namn AS BanaNamn FROM Spelare s " +
                     "LEFT OUTER JOIN Golfklubb g ON g.GolfklubbNr = s.GolfklubbNr " +
                     "LEFT OUTER JOIN Bana b ON b.BanaNr = s.HemmabanaNr " +
-                    "ORDER BY s.Namn" +
-                    sqlSok.ToString();
+                    sqlSok.ToString() +
+                    " ORDER BY s.Namn";
                 DataSet spelareDS = DatabasAccess.RunSql(sql);
                 spelareDS.Tables[0].TableName = "Spelare";
                 return spelareDS;
