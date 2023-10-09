@@ -4,9 +4,12 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Net;
+using System.Net.Security;
 using System.Net.Mail;
 using System.Windows.Forms;
+using System.Net;
+using MailKit.Net.Smtp;
+using MailKit.Security;
 
 namespace Hooker.Gemensam
 {
@@ -459,11 +462,13 @@ namespace Hooker.Gemensam
         public static string Skicka_Mail(this Hooker.Affärsobjekt.Mail Mailet)
         {
             string resultat = string.Empty;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             try
             {
                 var fromAddress = new MailAddress(Mailet.MailFrom);
                 var fromPassword = Mailet.Password;
-                var toAddress = new MailAddress(Mailet.MailTo);
+                var toAddress = new EASendMail.MailAddress(Mailet.MailTo);
 
                 string subject = Mailet.Subject;
                 string body = Mailet.Body;
@@ -471,19 +476,18 @@ namespace Hooker.Gemensam
                 MailMessage mailMessage = new MailMessage(fromAddress.Address,
                     toAddress.Address);
 
-                SmtpClient client = new SmtpClient
+                System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
                 {
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address,
-                        fromPassword),
                     Host = Mailet.SmtpHost,
                     Port = Mailet.Port,
                     EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
                 };
 
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
-                    SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
@@ -494,7 +498,8 @@ namespace Hooker.Gemensam
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return ex.Message.ToString();
+                //return ex.Message.ToString() + Environment.NewLine + ex.InnerException.ToString();
             }
         }
 

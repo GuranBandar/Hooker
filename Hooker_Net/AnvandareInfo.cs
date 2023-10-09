@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using MailKit.Net.Smtp;
 
 namespace Hooker_GUI
 {
@@ -414,6 +415,10 @@ namespace Hooker_GUI
                 if (resultat == "OK")
                 {
                     VisaMeddelande("Skicka_OK");
+                }
+                else
+                {
+                    VisaMeddelande(resultat);
                 }
                 this.Close();
                 Timglas.DefaultCursor();
