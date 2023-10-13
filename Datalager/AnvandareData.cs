@@ -75,6 +75,36 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämta användare
+        /// </summary>
+        /// <param name="epostadress">Aktuell epostadress</param>
+        /// <returns>Anvandare DS</returns>
+        public AnvandareDS HämtaAnvandare(string epostadress)
+        {
+            AnvandareDS anvandareDS = new AnvandareDS();
+
+            try
+            {
+                anvandareDS.EnforceConstraints = false;
+                string sql = "SELECT a.* FROM Anvandare a WHERE Epostadress = @Epostadress";
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@Epostadress", DataTyp.String, epostadress.ToString())
+                };
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, anvandareDS);
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                DatabasAccess.Dispose();
+            }
+            return anvandareDS;
+        }
+
+        /// <summary>
         /// Datum för senaste inloggning uppdateras
         /// </summary>
         /// <param name="anvandarID">Aktuellt användarID</param>

@@ -129,6 +129,42 @@ namespace Hooker.Affärslager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen Användare i aktuell databas med angiven epostadress.
+        /// </summary>
+        /// <param name="epostadress">Aktuell epostadress</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public Anvandare HämtaAnvandare(string epostadress)
+        {
+            AnvandareData anvandareData = new AnvandareData();
+            AnvandareDS anvandareDS = anvandareData.HämtaAnvandare(epostadress);
+            Anvandare anvandare = null;
+
+            if (anvandareDS.Anvandare.Count == 1)
+            {
+                //Skapa Användarobjektet
+                anvandare = new Anvandare();
+                anvandare.Anvandarnamn = anvandareDS.Anvandare[0].Anvandarnamn;
+                anvandare.AnvandarID = anvandareDS.Anvandare[0].AnvandarID;
+                anvandare.Losenord = anvandareDS.Anvandare[0].Losenord;
+                anvandare.SpelarID = anvandareDS.Anvandare[0].SpelarID;
+                anvandare.SenastInloggadDatum = anvandareDS.Anvandare[0].SenastInloggadDatum;
+                anvandare.SenastByttLosenordDatum = anvandareDS.Anvandare[0].SenastByttLosenordDatum;
+                anvandare.Anvandargrupp = (anvandareDS.Anvandare[0].IsAnvandargruppNull())
+                    ? string.Empty : anvandareDS.Anvandare[0].Anvandargrupp;
+                anvandare.Epostadress = (anvandareDS.Anvandare[0].IsEpostadressNull())
+                    ? string.Empty : anvandareDS.Anvandare[0].Epostadress;
+                anvandare.GIR = (anvandareDS.Anvandare[0].IsGIRNull())
+                    ? string.Empty : anvandareDS.Anvandare[0].GIR;
+                anvandare.WebBrowser = (anvandareDS.Anvandare[0].IsWebBrowserNull())
+                    ? string.Empty : anvandareDS.Anvandare[0].WebBrowser;
+                anvandare.Sprakkod = anvandareDS.Anvandare[0].Sprakkod;
+                anvandare.Epostmeddelande = (anvandareDS.Anvandare[0].IsEpostmeddelandeNull())
+                    ? string.Empty : anvandareDS.Anvandare[0].Epostmeddelande;
+            }
+            return anvandare;
+        }
+
+        /// <summary>
         /// Söker rad/-er från tabellen Anvandare i aktuell databas med angivet sökvillkor.
         /// </summary>
         /// <param name="namn">Aktuell namn</param>
