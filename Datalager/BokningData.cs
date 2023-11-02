@@ -48,6 +48,41 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen BokningDag i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="Datum">Aktuell bokning</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public BokningDagDS HämtaBokningDag(DateTime Datum)
+        {
+            BokningDagDS ds = new BokningDagDS();
+            string sql;
+            string sokdatum = Datum.ToString("yyyy-MM-dd");
+
+            try
+            {
+                ds.EnforceConstraints = false;
+                sql = "SELECT b.* FROM BokningDag b WHERE b.Datum = @Datum";
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@Datum", DataTyp.String, sokdatum.ToString())
+                };
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
         /// Hämtar rad från tabellen BokningsLista i aktuell databas med angiven nyckel.
         /// </summary>
         /// <param name="BokningID">Aktuell bokning</param>

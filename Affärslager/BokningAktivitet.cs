@@ -55,8 +55,51 @@ namespace Hooker.Affärslager
                     bokningsLista.SpelareNamn = rad.SpelareNamn.ToString();
                     bokningDag.AddBokningsLista(bokningsLista);
                 }
-
             }
+            return bokningDag;
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen BokningDag i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="BokningID">Aktuell bokning</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public BokningDag HämtaBokning(DateTime Datum)
+        {
+            BokningData bokningData = new BokningData();
+            BokningsListaDS bokningsListaDS = new BokningsListaDS();
+            BokningDagDS bokningDagDS = bokningData.HämtaBokningDag(Datum);
+            BokningDag bokningDag = null;
+            BokningsLista bokningsLista = null;
+
+            if (bokningDagDS.BokningDag.Count == 1)
+            {
+                //Skapa BokningDagObjektet
+                bokningDag = new BokningDag();
+                bokningDag.BokningID = bokningDagDS.BokningDag[0].BokningID;
+                bokningDag.Bana = bokningDagDS.BokningDag[0].Bana;
+                bokningDag.Datum = bokningDagDS.BokningDag[0].Datum;
+                bokningDag.Tider = bokningDagDS.BokningDag[0].Tider;
+                bokningDag.TisdagTorsdag = Convert.ToInt32(bokningDagDS.BokningDag[0].TisdagTorsdag);
+                bokningDag.AnvandarNamnSkapad = bokningDagDS.BokningDag[0].AnvandarNamnSkapad;
+                bokningDag.SkapadDatum = bokningDagDS.BokningDag[0].SkapadDatum;
+                bokningDag.AnvandarNamnUppdat = bokningDagDS.BokningDag[0].AnvandarNamnUppdat;
+                bokningDag.UppdatDatum = bokningDagDS.BokningDag[0].UppdatDatum;
+                bokningDag.Notering = bokningDagDS.BokningDag[0].Notering;
+            }
+
+            //bokningsListaDS = bokningData.HämtaBokningsLista(bokningDag.BokningID);
+            //if (bokningsListaDS.BokningsLista.Count > 0)
+            //{
+            //    foreach (BokningsListaDS.BokningsListaRow rad in bokningsListaDS.BokningsLista.Rows)
+            //    {
+            //        bokningsLista = new BokningsLista();
+            //        bokningsLista.BokningID = rad.BokningID;
+            //        bokningsLista.BollNr = rad.BollNr.ToString();
+            //        bokningsLista.SpelareNamn = rad.SpelareNamn.ToString();
+            //        bokningDag.AddBokningsLista(bokningsLista);
+            //    }
+            //}
             return bokningDag;
         }
 
