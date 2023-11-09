@@ -216,5 +216,17 @@ namespace Hooker.Affärslager
 
             return nyttBokningID;
         }
+
+        /// <summary>
+        /// Ta bort BokningDag i databasen 
+        /// </summary>
+        /// <param name="BokningDag">Aktuell bokning</param>
+        /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+        /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        public void TaBort(BokningDag bokningDag, ref string felID, ref string feltext)
+        {
+            BokningData bokningData = new BokningData();
+            bokningData.TabortBokningDag(bokningDag, ref felID, ref feltext);
+        }
     }
 }

@@ -404,5 +404,45 @@ namespace Hooker.Datalager
                 }
             }
         }
+
+        /// <summary>
+        /// Ta bort Bokning.
+        /// </summary>
+        /// <param name="anvandare">Anvandare</param>
+        /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
+        /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
+        public void TabortBokningDag(BokningDag bokningDag, ref string felID, ref string feltext)
+        {
+            string sql;
+            DatabasAccess.SkapaTransaktion();
+
+            try
+            {
+                sql = "DELETE FROM BokningDag WHERE BokningID = @BokningID";
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@BokningID", DataTyp.Int, bokningDag.BokningID.ToString())
+                };
+                DatabasAccess.RunSql(sql, dbParameters);
+                DatabasAccess.BekräftaTransaktion();
+            }
+            catch (HookerException hex)
+            {
+                felID = "SQLERROR";
+                feltext = hex.Message.ToString();
+                DatabasAccess.ÅngraTransaktion();
+                throw hex;
+            }
+            catch (Exception ex)
+            {
+                DatabasAccess.ÅngraTransaktion();
+                throw ex;
+            }
+            finally
+            {
+                DatabasAccess.Dispose();
+            }
+        }
+
     }
 }

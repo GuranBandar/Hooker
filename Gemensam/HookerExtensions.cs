@@ -4,12 +4,9 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Net.Security;
 using System.Net.Mail;
 using System.Windows.Forms;
 using System.Net;
-using MailKit.Net.Smtp;
-using MailKit.Security;
 
 namespace Hooker.Gemensam
 {
@@ -526,6 +523,28 @@ namespace Hooker.Gemensam
             {
                 yield return list[i];
             }
+        }
+
+        /// <summary>
+        /// Veckodag för datum
+        /// </summary>
+        /// <param name="datum"></param>
+        /// <returns>Veckodag</returns>
+        public static string Veckodag(DateTime datum)
+        {
+            string veckodag = datum.DayOfWeek.ToString();
+            return veckodag;
+        }
+
+        /// <summary>
+        /// Dagnummer för datum
+        /// </summary>
+        /// <param name="datum"></param>
+        /// <returns>Dagnummer</returns>
+        public static int Dagnummer(DateTime datum)
+        {
+            int dagnummer = (int)datum.DayOfWeek;
+            return dagnummer;
         }
 
         /// <summary>
