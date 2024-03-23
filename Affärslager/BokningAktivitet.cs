@@ -52,6 +52,7 @@ namespace Hooker.Affärslager
                     bokningsLista = new BokningsLista();
                     bokningsLista.BokningID = rad.BokningID;
                     bokningsLista.BollNr = rad.BollNr.ToString();
+                    bokningsLista.SpelarID = rad.SpelarID;
                     bokningsLista.SpelareNamn = rad.SpelareNamn.ToString();
                     bokningDag.AddBokningsLista(bokningsLista);
                 }

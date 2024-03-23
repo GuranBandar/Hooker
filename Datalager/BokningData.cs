@@ -259,13 +259,14 @@ namespace Hooker.Datalager
             {
                 for (int i = 0; i < bokningDag.bokningListas.Length; i++)
                 {
-                    sql = "INSERT INTO BokningsLista(BokningID, BollNr, SpelareNamn) " +
+                    sql = "INSERT INTO BokningsLista(BokningID, BollNr, SpelarID, SpelareNamn) " +
                         "VALUES " +
-                        "(@BokningID, @BollNr, @SpelareNamn)";
+                        "(@BokningID, @BollNr, @SpelarID, @SpelareNamn)";
                     List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                     {
                         new DatabasParameters("@BokningID", DataTyp.Int, bokningDag.BokningID.ToString()),
                         new DatabasParameters("@Bollnr", DataTyp.VarChar, bokningDag.bokningListas[i].BollNr.ToString()),
+                        new DatabasParameters("@SpelarID", DataTyp.Int, bokningDag.bokningListas[i].SpelarID.ToString()),
                         new DatabasParameters("@SpelareNamn", DataTyp.VarChar, bokningDag.bokningListas[i].SpelareNamn.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
@@ -366,13 +367,14 @@ namespace Hooker.Datalager
             {
                 for (int i = 0; i < bokningDag.bokningListas.Length; i++)
                 {
-                    sql = "UPDATE BokningsLista SET BollNr = @Bollnr, " +
+                    sql = "UPDATE BokningsLista SET BollNr = @Bollnr, SpelarID = @SpelarID, " +
                         "SpelareNamn = @SpelareNamn " +
                         "WHERE BokningID = @BokningID AND BollNr = @BollNr";
                     List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                     {
                         new DatabasParameters("@BokningID", DataTyp.Int, bokningDag.BokningID.ToString()),
                         new DatabasParameters("@Bollnr", DataTyp.VarChar, bokningDag.bokningListas[i].BollNr.ToString()),
+                        new DatabasParameters("@SpelarID", DataTyp.Int, bokningDag.bokningListas[i].SpelarID.ToString()),
                         new DatabasParameters("@SpelareNamn", DataTyp.VarChar, bokningDag.bokningListas[i].SpelareNamn.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
