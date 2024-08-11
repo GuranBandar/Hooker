@@ -193,11 +193,11 @@ namespace Hooker.Datalager
                 DatabasAccess.SkapaTransaktion();
                 sql = "INSERT INTO BokningDag(Bana, Datum, Tider, TisdagTorsdag, " +
                     "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum, " +
-                    "Notering)" +
+                    "Notering, Status) " +
                     "VALUES " +
                     "(@Bana, @Datum, @Tider, @TisdagTorsdag, " +
                     "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum, " +
-                    "@Notering)";
+                    "@Notering, @Status)";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@Bana", DataTyp.VarChar, bokningDag.Bana.ToString()),
@@ -208,7 +208,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@SkapadDatum", DataTyp.VarChar, bokningDag.SkapadDatum.ToString()),
                     new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, bokningDag.AnvandarNamnUppdat.ToString()),
                     new DatabasParameters("@UppdatDatum", DataTyp.VarChar, bokningDag.UppdatDatum.ToString()),
-                    new DatabasParameters("@Notering", DataTyp.VarChar, bokningDag.Notering.ToString())
+                    new DatabasParameters("@Notering", DataTyp.VarChar, bokningDag.Notering.ToString()),
+                    new DatabasParameters("@Status", DataTyp.VarChar, bokningDag.Status.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 sql = "SELECT LAST_INSERT_ID()";
@@ -316,7 +317,7 @@ namespace Hooker.Datalager
                     "SET Bana = @Bana, Datum = @Datum, Tider = @Tider, " +
                     "TisdagTorsdag = @TisdagTorsdag, AnvandarNamnSkapad = @AnvandarNamnSkapad, " +
                     "AnvandarNamnUppdat = @AnvandarNamnUppdat, UppdatDatum = @UppdatDatum, " +
-                    "Notering = @Notering " +
+                    "Notering = @Notering, Status = @Status " +
                     "WHERE BokningID = @BokningID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -329,7 +330,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@SkapadDatum", DataTyp.VarChar, bokningDag.SkapadDatum.ToString()),
                     new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, bokningDag.AnvandarNamnUppdat.ToString()),
                     new DatabasParameters("@UppdatDatum", DataTyp.VarChar, bokningDag.UppdatDatum.ToString()),
-                    new DatabasParameters("@Notering", DataTyp.VarChar, bokningDag.Notering.ToString())
+                    new DatabasParameters("@Notering", DataTyp.VarChar, bokningDag.Notering.ToString()),
+                    new DatabasParameters("@Status", DataTyp.VarChar, bokningDag.Status.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();

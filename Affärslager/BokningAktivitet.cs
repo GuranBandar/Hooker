@@ -42,6 +42,8 @@ namespace Hooker.Affärslager
                 bokningDag.AnvandarNamnUppdat = bokningDagDS.BokningDag[0].AnvandarNamnUppdat;
                 bokningDag.UppdatDatum = bokningDagDS.BokningDag[0].UppdatDatum;
                 bokningDag.Notering = bokningDagDS.BokningDag[0].Notering;
+                bokningDag.Status = (bokningDagDS.BokningDag[0].IsStatusNull()) ? string.Empty : bokningDagDS.BokningDag[0].Status;
+
             }
 
             bokningsListaDS = bokningData.HämtaBokningsLista(BokningID);
@@ -87,6 +89,7 @@ namespace Hooker.Affärslager
                 bokningDag.AnvandarNamnUppdat = bokningDagDS.BokningDag[0].AnvandarNamnUppdat;
                 bokningDag.UppdatDatum = bokningDagDS.BokningDag[0].UppdatDatum;
                 bokningDag.Notering = bokningDagDS.BokningDag[0].Notering;
+                bokningDag.Status = (bokningDagDS.BokningDag[0].IsStatusNull()) ? string.Empty : bokningDagDS.BokningDag[0].Status;
             }
 
             //bokningsListaDS = bokningData.HämtaBokningsLista(bokningDag.BokningID);
@@ -177,7 +180,8 @@ namespace Hooker.Affärslager
                         SkapadDatum = rad["SkapadDatum"].ToString(),
                         AnvandarNamnUppdat = rad["AnvandarNamnUppdat"].ToString(),
                         UppdatDatum = rad["UppdatDatum"].ToString(),
-                        Notering = rad["Notering"].ToString()
+                        Notering = rad["Notering"].ToString(),
+                        Status = rad["Status"].ToString()
                     });
                 }
             }

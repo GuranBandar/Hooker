@@ -103,6 +103,36 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen Spelare i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="Portugalgolfare">Markerar portugalgolfare</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public SpelareDS HämtaPortugalgubbar(string Portugalgolfare)
+        {
+            SpelareDS spelareDS = new SpelareDS();
+            string sql = "SELECT s.* FROM Spelare s WHERE s.Portugalgolfare = @Portugalgolfare " +
+                "AND s.Kon != 'K' ORDER BY s.Namn";
+
+            try
+            {
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@Portugalgolfare", DataTyp.Char, Portugalgolfare.ToString())
+                };
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, spelareDS);
+                return spelareDS;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                DatabasAccess.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Hämtar rad/-er från tabellen Bana i aktuell databas med angiven nyckel.
         /// </summary>
         /// <param name="sqlSok">Eventuellt where-villkor</param>
