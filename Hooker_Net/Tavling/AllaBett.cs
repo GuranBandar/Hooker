@@ -435,6 +435,8 @@ namespace Hooker_GUI
             int pris;
             int ant = 0;
 
+            var group = spelarBett.OrderBy(x => x.Rank).Where(s => s.Rank < antalSomSkaDela + 1).ToList();
+
             //Fördela nu priserna
             for (int r = 0; r < antalSomSkaDela; r++)
             {
