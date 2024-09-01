@@ -100,6 +100,7 @@
     <Compile Include="CursorsAktivitet.cs" />
     <Compile Include="ExecuteQueryAktivitet.cs" />
     <Compile Include="GolfklubbAktivitet.cs" />
+    <Compile Include="GubblagAktivitet.cs" />
     <Compile Include="HcplistaAktivitet.cs" />
     <Compile Include="KoderAktivitet.cs" />
     <Compile Include="OrdlistaAktivitet.cs" />

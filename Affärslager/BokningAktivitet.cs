@@ -42,7 +42,8 @@ namespace Hooker.Affärslager
                 bokningDag.AnvandarNamnUppdat = bokningDagDS.BokningDag[0].AnvandarNamnUppdat;
                 bokningDag.UppdatDatum = bokningDagDS.BokningDag[0].UppdatDatum;
                 bokningDag.Notering = bokningDagDS.BokningDag[0].Notering;
-                bokningDag.Status = (bokningDagDS.BokningDag[0].IsStatusNull()) ? string.Empty : bokningDagDS.BokningDag[0].Status;
+                bokningDag.Status = (bokningDagDS.BokningDag[0].IsStatusNull()) ? string.Empty : 
+                    bokningDagDS.BokningDag[0].Status;
 
             }
 

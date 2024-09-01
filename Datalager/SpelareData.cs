@@ -111,7 +111,7 @@ namespace Hooker.Datalager
         {
             SpelareDS spelareDS = new SpelareDS();
             string sql = "SELECT s.* FROM Spelare s WHERE s.Portugalgolfare = @Portugalgolfare " +
-                "AND s.Kon != 'K' ORDER BY s.Namn";
+                "AND s.Kon = 'M' OR s.Kon = ' ' ORDER BY s.Namn";
 
             try
             {

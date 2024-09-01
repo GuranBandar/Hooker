@@ -213,6 +213,7 @@
     <Compile Include="CursorsData.cs" />
     <Compile Include="ExecuteQueryData.cs" />
     <Compile Include="GolfklubbData.cs" />
+    <Compile Include="GubblagData.cs" />
     <Compile Include="HcplistaData.cs" />
     <Compile Include="KoderData.cs" />
     <Compile Include="OrdlistaData.cs" />
