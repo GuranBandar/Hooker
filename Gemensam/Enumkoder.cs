@@ -145,6 +145,10 @@ namespace Hooker.Gemensam
         /// <summary>
         /// 
         /// </summary>
+        Double,
+        /// <summary>
+        /// 
+        /// </summary>
         Int,
         /// <summary>
         /// 

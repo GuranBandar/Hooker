@@ -147,6 +147,38 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen BokningDag i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public string HämtaMaxBokning()
+        {
+            DataSet bokningDagDS = new DataSet();
+            string nyttBokningID = string.Empty;
+            string sql;
+
+            try
+            {
+                sql = "SELECT b.BokningID FROM BokningDag b " +
+                    " ORDER BY b.BokningID DESC";
+                bokningDagDS = DatabasAccess.RunSql(sql);
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+            nyttBokningID = bokningDagDS.Tables[0].Rows[0]["BokningID"].ToString();
+            return nyttBokningID;
+        }
+
+
+        /// <summary>
         /// Hämtar rad från tabellen BokningDag i aktuell databas med start från
         /// sökt bokningsdatum.
         /// </summary>
@@ -183,10 +215,10 @@ namespace Hooker.Datalager
         /// <param name="bokningDag">Bokningen</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int SparaNyBokning(BokningDag bokningDag, ref string felID, ref string feltext)
+        public void SparaNyBokning(BokningDag bokningDag, ref string felID, ref string feltext)
         {
             string sql;
-            int nyttBokningID;
+            //int nyttBokningID;
 
             try
             {
@@ -212,11 +244,11 @@ namespace Hooker.Datalager
                     new DatabasParameters("@Status", DataTyp.VarChar, bokningDag.Status.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
-                sql = "SELECT LAST_INSERT_ID()";
-                nyttBokningID = Convert.ToInt32(DatabasAccess.ExecuteScalar(sql));
-                bokningDag.BokningID = nyttBokningID;
+                //sql = "SELECT MAX(BokningID) FROM BokningDag";
+                //nyttBokningID = Convert.ToInt32(DatabasAccess.ExecuteScalar(sql));
+                //bokningDag.BokningID = nyttBokningID;
                 DatabasAccess.BekräftaTransaktion();
-                SparaNyBokningLIsta(bokningDag, ref felID, ref feltext);
+                //SparaNyBokningLIsta(bokningDag, ref felID, ref feltext);
             }
             catch (HookerException hex)
             {
@@ -243,7 +275,7 @@ namespace Hooker.Datalager
                     DatabasAccess.Dispose();
                 }
             }
-            return nyttBokningID;
+            //return nyttBokningID;
         }
 
         /// <summary>
@@ -258,6 +290,7 @@ namespace Hooker.Datalager
 
             try
             {
+                DatabasAccess.SkapaTransaktion();
                 for (int i = 0; i < bokningDag.bokningListas.Length; i++)
                 {
                     sql = "INSERT INTO BokningsLista(BokningID, BollNr, SpelarID, SpelareNamn) " +
@@ -272,6 +305,7 @@ namespace Hooker.Datalager
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
+                DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
             {

@@ -201,14 +201,17 @@ namespace Hooker.Affärslager
         {
             int nyttBokningID = 0;
             bool kollaOK = true;
-            //                Kolla(bokningDag, ref felID, ref feltext);
+            string sql;
 
             if (kollaOK)
             {
                 BokningData bokningData = new BokningData();
                 if (nyBokning)
                 {
-                    nyttBokningID = bokningData.SparaNyBokning(bokningDag, ref felID, ref feltext);
+                    bokningData.SparaNyBokning(bokningDag, ref felID, ref feltext);
+                    nyttBokningID = Convert.ToInt32(bokningData.HämtaMaxBokning());
+                    bokningDag.BokningID = nyttBokningID;
+                    bokningData.SparaNyBokningLIsta(bokningDag, ref felID, ref feltext);
                 }
                 else
                 {

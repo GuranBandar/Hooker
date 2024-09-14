@@ -439,10 +439,10 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtExaktHcp.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()))
+                    if (((txtExaktHcp.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
                     {
                         hcp = Spelare.ExaktHcp;
-                        Spelare.ExaktHcp = decimal.Parse((txtExaktHcp.Text).BytUtPunkt());
+                        Spelare.ExaktHcp = decimal.Parse((txtExaktHcp.Text).BytUtKomma());
                         UppdateraHcplista(hcp);
                     }
                     else
@@ -453,7 +453,7 @@ namespace Hooker_GUI
                     }
                 }
 
-                Spelare.Klass = Slope.SättKlass(decimal.Parse((txtExaktHcp.Text).BytUtPunkt()), ref FelID);
+                Spelare.Klass = Slope.SättKlass(decimal.Parse((txtExaktHcp.Text).BytUtKomma()), ref FelID);
                 Spelare.UppdatDatum = DateTime.Today.Date;
             }
             catch (Exception ex)

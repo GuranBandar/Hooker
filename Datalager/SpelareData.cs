@@ -311,7 +311,7 @@ namespace Hooker.Datalager
                 {
                     new DatabasParameters("@SpelarID", DataTyp.Int, spelare.AktuelltSpelarID.ToString()),
                     new DatabasParameters("@Namn", DataTyp.VarChar, spelare.Namn),
-                    new DatabasParameters("@Hcp", DataTyp.Decimal, spelare.ExaktHcp.ToString()),
+                    new DatabasParameters("@Hcp", DataTyp.Double, spelare.ExaktHcp.ToString()),
                     new DatabasParameters("@Klass", DataTyp.Char, spelare.Klass),
                     new DatabasParameters("@Kon", DataTyp.Char, spelare.Kön),
                     new DatabasParameters("@RevisionsDatum", DataTyp.SmallDateTime, spelare.Revisionsdatum.ToString()),
@@ -366,7 +366,7 @@ namespace Hooker.Datalager
                 {
                     new DatabasParameters("@SpelarID", DataTyp.Int, spelare.AktuelltSpelarID.ToString()),
                     new DatabasParameters("@Namn", DataTyp.VarChar, spelare.Namn),
-                    new DatabasParameters("@Hcp", DataTyp.Decimal, spelare.ExaktHcp.ToString()),
+                    new DatabasParameters("@Hcp", DataTyp.Double, spelare.ExaktHcp.ToString()),
                     new DatabasParameters("@Klass", DataTyp.Char, spelare.Klass),
                     new DatabasParameters("@Kon", DataTyp.Char, spelare.Kön),
                     new DatabasParameters("@RevisionsDatum", DataTyp.SmallDateTime, spelare.Revisionsdatum.ToString()),
