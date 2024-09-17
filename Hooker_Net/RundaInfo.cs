@@ -1001,7 +1001,7 @@ namespace Hooker_GUI
                     return false;
                 }
 
-                if (((txtExaktHcp.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()))
+                if (((txtExaktHcp.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
                 {
                     Runda.ExaktHcp = decimal.Parse(txtExaktHcp.Text);
                 }
