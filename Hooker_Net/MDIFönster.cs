@@ -110,8 +110,12 @@ namespace Hooker_GUI
                 CultureInfo ci = CultureInfo.InstalledUICulture;
                 //Tala om för hela appen att detta är MdiMain
                 MdiMain = this;
-                toolStripStatusLabel.Text = "Inloggad: " + AppUser.Anvandarnamn;
-                toolStripDatabaseLabel.Text = "Database: " + DatabasNamn;
+
+                if (AppUser != null)
+                {
+                    toolStripStatusLabel.Text = "Inloggad: " + AppUser.Anvandarnamn;
+                    toolStripDatabaseLabel.Text = "Database: " + DatabasNamn;
+                }
             }
             catch (Exception ex)
             {
