@@ -345,7 +345,7 @@ namespace Hooker.Datalager
                     new DatabasParameters("@Markor", DataTyp.Int, runda.Markor.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
-                SparaNyRundaHal(runda, ref felID, ref feltext);
+                //SparaNyRundaHal(runda, ref felID, ref feltext);
                 DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
@@ -381,13 +381,13 @@ namespace Hooker.Datalager
         /// <param name="runda">Runda</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        private void SparaNyRundaHal(Runda runda, ref string felID, ref string feltext)
+        public void SparaNyRundaHal(Runda runda, ref string felID, ref string feltext)
         {
             string sql;
 
             try
             {
-                //DatabasAccess.SkapaTransaktion();
+                DatabasAccess.SkapaTransaktion();
                 for (int i = 0; i < runda.RundaHal.Length; i++)
                 {
                     sql = " INSERT INTO RundaHal (RundaNr, Halnr, AntalSlag, AntalPoang, AntalPuttar" +
@@ -408,7 +408,7 @@ namespace Hooker.Datalager
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
-                //DatabasAccess.BekräftaTransaktion();
+                DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
             {

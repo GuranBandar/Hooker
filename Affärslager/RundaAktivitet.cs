@@ -461,6 +461,7 @@ namespace Hooker.Affärslager
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
         public void Spara(Runda runda, bool nyRunda, ref string felID, ref string feltext)
         {
+            int nyttRundaID = 0;
             bool kollaOK = false;
             kollaOK = Kolla(runda, ref felID, ref feltext);
 
@@ -471,6 +472,7 @@ namespace Hooker.Affärslager
                 {
                     runda.RundaNr = this.HämtaMaxRundaNr() + 1;
                     rundaData.SparaNyRunda(runda, ref felID, ref feltext);
+                    rundaData.SparaNyRundaHal(runda, ref felID, ref feltext);
                 }
                 else
                 {

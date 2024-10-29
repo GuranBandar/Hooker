@@ -38,6 +38,12 @@ namespace Hooker_GUI.Kontroller
         /// FelText från metodanrop till GUI:et
         /// </summary>
         public static string Feltext = "";
+
+        /// <summary>
+        /// Indikerar att applikationen håller på att starta
+        /// </summary>
+        static bool Startar = true;
+
         /// <summary>
         /// Indikerar att applikationen håller på att avsluta
         /// </summary>
@@ -95,11 +101,12 @@ namespace Hooker_GUI.Kontroller
                 designMode = this.IsInDesignMode();
                 InitializeComponent();
 
-                if (!designMode)
+                if (Startar)
                 {
                     DatabasAccess = fabriken.GetDatabase();
                     InitieraSpelare();
                     InitieraSystemvariabler();
+                    Startar = false;
                 }
             }
             catch (Exception)
@@ -324,7 +331,7 @@ namespace Hooker_GUI.Kontroller
         {
             string meddelande = Översätt("Text", msgID);
             _ = MessageBox.Show(meddelande.ToString(), "Information", MessageBoxButtons.OK,
-        MessageBoxIcon.Information);
+            MessageBoxIcon.Information);
         }
 
         /// <summary>
