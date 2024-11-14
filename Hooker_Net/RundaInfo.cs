@@ -163,7 +163,8 @@ namespace Hooker_GUI
         /// <summary>
         /// Alla texter hämtas och knapparna initieras
         /// </summary>
-        private void InitieraTexter(List<Control>, Control parent)
+        //private void InitieraTexter(List<Control>, Control parent)
+        private void InitieraTexter()
         {
             this.Text = Översätt("Text", this.Text);
             gbxRondinformation.Text = Översätt("Text", gbxRondinformation.Text);
