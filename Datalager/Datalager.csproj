@@ -330,6 +330,7 @@
     <Compile Include="KoderData.cs" />
     <Compile Include="OrdlistaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpelformData.cs" />
     <Compile Include="SystemvariablerData.cs" />
     <Compile Include="TavlingData.cs" />
     <Compile Include="TavlingDeltagareData.cs" />
