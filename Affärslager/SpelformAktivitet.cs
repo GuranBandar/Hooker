@@ -19,11 +19,12 @@ namespace Hooker.Affärslager
         /// Hämtar rad från tabellen Spelform i aktuell databas med angiven nyckel.
         /// </summary>
         /// <param name="SpelformID">Aktuell spelform</param>
+        /// <param name="Sprakkod">Användarens språkkod</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public Spelform HämtaSpelform(int SpelformID)
+        public Spelform HämtaSpelform(int SpelformID, string Sprakkod   )
         {
             SpelformData SpelformData = new SpelformData();
-            SpelformDS SpelformDS = SpelformData.HämtaSpelform(SpelformID);
+            SpelformDS SpelformDS = SpelformData.HämtaSpelform(SpelformID, Sprakkod);
             Spelform Spelform = null;
 
             if (SpelformDS.Spelform.Count == 1)
@@ -31,6 +32,7 @@ namespace Hooker.Affärslager
                 //Skapa Spelformobjekt
                 Spelform = new Spelform();
                 Spelform.SpelformID = SpelformDS.Spelform[0].SpelformID;
+                Spelform.Sprakkod = SpelformDS.Spelform[0].Sprakkod;
                 Spelform.Titel = SpelformDS.Spelform[0].Titel;
                 Spelform.Beskrivning = SpelformDS.Spelform[0].Beskrivning;
                 Spelform.Lagspel = SpelformDS.Spelform[0].Lagspel;
@@ -64,6 +66,7 @@ namespace Hooker.Affärslager
                     {
                         SpelformID = (int)rad["SpelformID"],
                         Titel = rad["Titel"].ToString(),
+                        Sprakkod = rad["Sprakkod"].ToString(),
                         Beskrivning = rad["Beskrivning"].ToString(),
                         Lagspel = rad["Lagspel"].ToString(),
                         AntalPerLag = rad["AntalPerLag"].ToString(),
@@ -71,7 +74,7 @@ namespace Hooker.Affärslager
                         SkapadDatum = rad["SkapadDatum"].ToString(),
                         AnvandarNamnUppdat = rad["AnvandarNamnUppdat"].ToString(),
                         UppdatDatum = rad["UppdatDatum"].ToString(),
-                    });
+                    }); ;
                 }
             }
 

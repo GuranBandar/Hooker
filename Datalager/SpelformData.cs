@@ -18,7 +18,7 @@ namespace Hooker.Datalager
         /// </summary>
         /// <param name="SpelformID">Aktuell spelform</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
-        public SpelformDS HämtaSpelform(int SpelformID)
+        public SpelformDS HämtaSpelform(int SpelformID, string Sprakkod)
         {
             SpelformDS ds = new SpelformDS();
             string sql;
@@ -26,10 +26,12 @@ namespace Hooker.Datalager
             try
             {
                 ds.EnforceConstraints = false;
-                sql = "SELECT s.* FROM Spelform s WHERE s.SpelformID = @SpelformID";
+                sql = "SELECT s.* FROM Spelform s WHERE s.SpelformID = @SpelformID " +
+                    "AND s.Sprakkod = @Sprakkod";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
-                    new DatabasParameters("@SpelformID", DataTyp.Int, SpelformID.ToString())
+                    new DatabasParameters("@SpelformID", DataTyp.Int, SpelformID.ToString()),
+                    new DatabasParameters("@Sprakkod", DataTyp.String, Sprakkod.ToString())
                 };
                 DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
                 return ds;
@@ -119,11 +121,14 @@ namespace Hooker.Datalager
             try
             {
                 DatabasAccess.SkapaTransaktion();
-                sql = "INSERT INTO Spelform(Titel, Beskrivning, Lagspel, AntalPerLag, AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum) " +
+                sql = "INSERT INTO Spelform(Sprakkod, Titel, Beskrivning, Lagspel, AntalPerLag, AnvandarNamnSkapad, " +
+                    "SkapadDatum, AnvandarNamnUppdat, UppdatDatum) " +
                     "VALUES " +
-                    "(@Titel, @Beskrivning, @Lagspel, @AntalPerLag, @AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum)";
+                    "(@Sprakkod, @Titel, @Beskrivning, @Lagspel, @AntalPerLag, @AnvandarNamnSkapad, @SkapadDatum, " +
+                    "@AnvandarNamnUppdat, @UppdatDatum)";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
+                    new DatabasParameters("@Sprakkod", DataTyp.VarChar, Spelform.Sprakkod.ToString()),
                     new DatabasParameters("@Titel", DataTyp.VarChar, Spelform.Titel.ToString()),
                     new DatabasParameters("@Beskrivning", DataTyp.VarChar, Spelform.Beskrivning.ToString()),
                     new DatabasParameters("@Lagspel", DataTyp.VarChar, Spelform.Lagspel.ToString()),
@@ -178,12 +183,14 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
                 sql = "UPDATE Spelform " +
-                    "SET Titel = @Titel, Beskrivning = @Beskrivning, Lagspel = @Lagspel, AntalPerLag = @AntalPerLag, " +
-                    "AnvandarNamnSkapad = @AnvandarNamnSkapad, AnvandarNamnUppdat = @AnvandarNamnUppdat, UppdatDatum = @UppdatDatum " +
+                    "SET Titel = @Sprakkod = Sprakkod, @Titel, Beskrivning = @Beskrivning, Lagspel = @Lagspel, " +
+                    "AntalPerLag = @AntalPerLag, AnvandarNamnSkapad = @AnvandarNamnSkapad, " +
+                    "AnvandarNamnUppdat = @AnvandarNamnUppdat, UppdatDatum = @UppdatDatum " +
                     "WHERE SpelformID = @SpelformID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@SpelformID", DataTyp.Int, Spelform.SpelformID.ToString()),
+                    new DatabasParameters("@Sprakkod", DataTyp.VarChar, Spelform.Sprakkod.ToString()),
                     new DatabasParameters("@Titel", DataTyp.VarChar, Spelform.Titel.ToString()),
                     new DatabasParameters("@Beskrivning", DataTyp.VarChar, Spelform.Beskrivning.ToString()),
                     new DatabasParameters("@Lagspel", DataTyp.VarChar, Spelform.Lagspel.ToString()),
