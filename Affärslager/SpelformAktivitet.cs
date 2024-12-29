@@ -21,7 +21,7 @@ namespace Hooker.Affärslager
         /// <param name="SpelformID">Aktuell spelform</param>
         /// <param name="Sprakkod">Användarens språkkod</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public Spelform HämtaSpelform(int SpelformID)
+        public Spelform HämtaSpelform(int SpelformID, string Sprakkod)
         {
             SpelformData SpelformData = new SpelformData();
             SpelformDS SpelformDS = SpelformData.HämtaSpelform(SpelformID, Sprakkod);
