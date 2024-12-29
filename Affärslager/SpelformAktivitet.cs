@@ -21,7 +21,7 @@ namespace Hooker.Affärslager
         /// <param name="SpelformID">Aktuell spelform</param>
         /// <param name="Sprakkod">Användarens språkkod</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public Spelform HämtaSpelform(int SpelformID, string Sprakkod   )
+        public Spelform HämtaSpelform(int SpelformID)
         {
             SpelformData SpelformData = new SpelformData();
             SpelformDS SpelformDS = SpelformData.HämtaSpelform(SpelformID, Sprakkod);
@@ -65,8 +65,8 @@ namespace Hooker.Affärslager
                     Spelform.Add(new Spelform()
                     {
                         SpelformID = (int)rad["SpelformID"],
-                        Titel = rad["Titel"].ToString(),
                         Sprakkod = rad["Sprakkod"].ToString(),
+                        Titel = rad["Titel"].ToString(),
                         Beskrivning = rad["Beskrivning"].ToString(),
                         Lagspel = rad["Lagspel"].ToString(),
                         AntalPerLag = rad["AntalPerLag"].ToString(),
