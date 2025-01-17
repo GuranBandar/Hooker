@@ -60,7 +60,7 @@ namespace Hooker.Datalager
             try
             {
                 ds.EnforceConstraints = false;
-                sql = "SELECT s.* FROM Spelform s ORDER BY s.Beskrivning";
+                sql = "SELECT s.* FROM Spelform s ORDER BY s.Titel";
                 DatabasAccess.FyllEnkeltDataSet(sql, ds);
                 return ds;
             }
