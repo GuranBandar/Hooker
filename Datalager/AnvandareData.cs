@@ -178,6 +178,37 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen Användare i aktuell databas.
+        /// </summary>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public string HämtaMaxAnvandare()
+        {
+            DataSet AnvandareDS = new DataSet();
+            string nyttAnvandarID = string.Empty;
+            string sql;
+
+            try
+            {
+                sql = "SELECT a.AnvandarID FROM Anvandare a " +
+                    " ORDER BY a.AnvandarID DESC";
+                AnvandareDS = DatabasAccess.RunSql(sql);
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+            nyttAnvandarID = AnvandareDS.Tables[0].Rows[0]["AnvandarID"].ToString();
+            return nyttAnvandarID;
+        }
+
+        /// <summary>
         /// Ta bort Användare.
         /// </summary>
         /// <param name="anvandare">Anvandare</param>
@@ -222,7 +253,7 @@ namespace Hooker.Datalager
         /// <param name="anvandare">Anvandare</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int SparaNyAnvandare(Anvandare anvandare, ref string felID, ref string feltext)
+        public void SparaNyAnvandare(Anvandare anvandare, ref string felID, ref string feltext)
         {
             string sql;
             int nyttAnvandarID;
@@ -253,8 +284,8 @@ namespace Hooker.Datalager
                     new DatabasParameters("@Epostmeddelande", DataTyp.Char, anvandare.Epostmeddelande.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
-                sql = "SELECT LAST_INSERT_ID()";
-                nyttAnvandarID = Convert.ToInt32(DatabasAccess.ExecuteScalar(sql));
+                //sql = "SELECT LAST_INSERT_ID()";
+                //nyttAnvandarID = Convert.ToInt32(DatabasAccess.ExecuteScalar(sql));
                 DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
@@ -273,7 +304,6 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.Dispose();
             }
-            return nyttAnvandarID;
         }
 
         /// <summary>

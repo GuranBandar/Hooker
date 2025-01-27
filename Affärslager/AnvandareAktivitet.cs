@@ -293,7 +293,9 @@ namespace Hooker.Affärslager
                 AnvandareData anvandarData = new AnvandareData();
                 if (nyAnvandare)
                 {
-                    nyttAnvandarID = anvandarData.SparaNyAnvandare(anvandare, ref felID, ref feltext);
+                    anvandarData.SparaNyAnvandare(anvandare, ref felID, ref feltext);
+                    nyttAnvandarID = Convert.ToInt32(anvandarData.HämtaMaxAnvandare());
+                    anvandare.AnvandarID = nyttAnvandarID;
                 }
                 else
                 {
