@@ -153,7 +153,9 @@ namespace Hooker.Affärslager
 
                 if (nyRedovisning)
                 {
-                    nyttTransNr = redovisningData.SparaNyRedovisning(redovisning, ref felID, ref feltext);
+                    redovisningData.SparaNyRedovisning(redovisning, ref felID, ref feltext);
+                    nyttTransNr = Convert.ToInt32(redovisningData.HämtaMaxTransNr());
+                    redovisning.TransNr = nyttTransNr;
                 }
                 else
                 {

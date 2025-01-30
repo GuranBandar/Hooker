@@ -83,6 +83,37 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen Spelform i aktuell databas.
+        /// </summary>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public string HämtaMaxTransNr()
+        {
+            DataSet RedovisningDS = new DataSet();
+            string nyttTransNr = string.Empty;
+            string sql;
+
+            try
+            {
+                sql = "SELECT r.TransNr FROM Redovisning r " +
+                    " ORDER BY r.TransNr DESC";
+                RedovisningDS = DatabasAccess.RunSql(sql);
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+            nyttTransNr = RedovisningDS.Tables[0].Rows[0]["TransNr"].ToString();
+            return nyttTransNr;
+        }
+
+        /// <summary>
         /// Ta bort redovisning
         /// </summary>
         /// <param name="rundaNr">RundaNr</param>
@@ -184,10 +215,9 @@ namespace Hooker.Datalager
         /// <param name="redovisning">Redovisning</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int SparaNyRedovisning(Redovisning redovisning, ref string felID, ref string feltext)
+        public void SparaNyRedovisning(Redovisning redovisning, ref string felID, ref string feltext)
         {
             string sql;
-            int nyttTransNr;
 
             try
             {
@@ -207,9 +237,6 @@ namespace Hooker.Datalager
                     new DatabasParameters("@UppdatDatum", DataTyp.SmallDateTime, redovisning.UppdatDatum.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
-                sql = "SELECT LAST_INSERT_ID()";
-
-                nyttTransNr = Convert.ToInt32(DatabasAccess.ExecuteScalar(sql));
                 DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
@@ -237,7 +264,6 @@ namespace Hooker.Datalager
                     DatabasAccess.Dispose();
                 }
             }
-            return nyttTransNr;
         }
 
         /// <summary>
