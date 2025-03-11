@@ -187,6 +187,9 @@ namespace Hooker.Affärslager
                     if (rad.IsGolfklubbNrNull())
                         rad.GolfklubbNr = 0;
 
+                    if (rad.IsMandagsgangNull())
+                        rad.Mandagsgang = string.Empty;
+
                     spelare.Add(new Spelare()
                     {
                         AktuelltSpelarID = rad.SpelarID,
