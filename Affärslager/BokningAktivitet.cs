@@ -227,7 +227,8 @@ namespace Hooker.Affärslager
         }
 
         /// <summary>
-        /// Ta bort BokningDag i databasen 
+        /// Ta bort BokningDag i databasen
+        /// Uppdaterar bokningen med en status som säger att den är borttagen (status = B)
         /// </summary>
         /// <param name="BokningDag">Aktuell bokning</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
@@ -235,7 +236,8 @@ namespace Hooker.Affärslager
         public void TaBort(BokningDag bokningDag, ref string felID, ref string feltext)
         {
             BokningData bokningData = new BokningData();
-            bokningData.TabortBokningDag(bokningDag, ref felID, ref feltext);
+            bokningData.SparaBokningDag(bokningDag, ref felID, ref feltext);
+            //bokningData.TabortBokningDag(bokningDag, ref felID, ref feltext);
         }
     }
 }

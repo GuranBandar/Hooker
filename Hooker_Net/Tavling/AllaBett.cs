@@ -435,6 +435,29 @@ namespace Hooker_GUI
             int pris;
             int ant = 0;
 
+            //Kolla om fler är etta, då ska den med lägst brutto vara etta övriga tvåa. Går ju inte med flera ettor.
+            var spelarRanking = spelarBett.OrderBy(x => x.Rank).Where(s => s.Rank == 1).ToList();
+
+            //if (spelarRanking.Count > 1)
+            //{
+            //    int[] ettorna = spelarRanking.Select(r => r.SpelarID).ToArray();
+            //}
+
+            //Bäst placeringssiffra, dvs räkna även med sämsta rundan, ska då bli etta övriga tvåa
+            var spelareSämst = ranking.Where(p => spelarRanking.Any(x => x.SpelarID == p.SpelarID)).ToList();
+
+            if (spelarRanking.Count > 1)
+            {
+                int j = 0;
+                foreach (SpelareOchBett obj in spelarBett)
+                {
+                    if (obj.SpelarID == spelareSämst[j].SpelarID)
+                    {
+                        obj.Rank = j + 1;
+                    }
+                }
+            }
+
             var group = spelarBett.OrderBy(x => x.Rank).Where(s => s.Rank < antalSomSkaDela + 1).ToList();
 
             //Fördela nu priserna
