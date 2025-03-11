@@ -33,6 +33,8 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpelareInfo));
             this.gbxSpelarinfo = new System.Windows.Forms.GroupBox();
+            this.cbxMandagsgang = new System.Windows.Forms.CheckBox();
+            this.lblMandagsgang = new System.Windows.Forms.Label();
             this.cbxPortugalgolfare = new System.Windows.Forms.CheckBox();
             this.lblPortugalgolfare = new System.Windows.Forms.Label();
             this.txtFederationNo = new System.Windows.Forms.TextBox();
@@ -64,8 +66,6 @@
             this.tangentkontroll1 = new Hooker_GUI.Kontroller.Tangentkontroll();
             this.chaHcplista = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lnkFPG = new System.Windows.Forms.LinkLabel();
-            this.lblMandagsgang = new System.Windows.Forms.Label();
-            this.cbxMandagsgang = new System.Windows.Forms.CheckBox();
             this.gbxSpelarinfo.SuspendLayout();
             this.gbxhandicap.SuspendLayout();
             this.gbxLinje.SuspendLayout();
@@ -100,12 +100,31 @@
             this.gbxSpelarinfo.TabStop = false;
             this.gbxSpelarinfo.Text = "Text_Spelare";
             // 
+            // cbxMandagsgang
+            // 
+            this.cbxMandagsgang.AutoSize = true;
+            this.cbxMandagsgang.Location = new System.Drawing.Point(212, 44);
+            this.cbxMandagsgang.Name = "cbxMandagsgang";
+            this.cbxMandagsgang.Size = new System.Drawing.Size(15, 14);
+            this.cbxMandagsgang.TabIndex = 5;
+            this.cbxMandagsgang.UseVisualStyleBackColor = true;
+            // 
+            // lblMandagsgang
+            // 
+            this.lblMandagsgang.AutoSize = true;
+            this.lblMandagsgang.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMandagsgang.Location = new System.Drawing.Point(120, 44);
+            this.lblMandagsgang.Name = "lblMandagsgang";
+            this.lblMandagsgang.Size = new System.Drawing.Size(127, 14);
+            this.lblMandagsgang.TabIndex = 103;
+            this.lblMandagsgang.Text = "Radrubrik_Måndagsgäng";
+            // 
             // cbxPortugalgolfare
             // 
             this.cbxPortugalgolfare.AutoSize = true;
             this.cbxPortugalgolfare.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPortugalgolfare.Location = new System.Drawing.Point(92, 44);
-            this.cbxPortugalgolfare.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxPortugalgolfare.Margin = new System.Windows.Forms.Padding(2);
             this.cbxPortugalgolfare.Name = "cbxPortugalgolfare";
             this.cbxPortugalgolfare.Size = new System.Drawing.Size(15, 14);
             this.cbxPortugalgolfare.TabIndex = 4;
@@ -129,7 +148,7 @@
             this.txtFederationNo.Name = "txtFederationNo";
             this.txtFederationNo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFederationNo.Size = new System.Drawing.Size(49, 20);
-            this.txtFederationNo.TabIndex = 5;
+            this.txtFederationNo.TabIndex = 6;
             // 
             // lblFederationNo
             // 
@@ -148,7 +167,7 @@
             this.cboHemmaBana.Location = new System.Drawing.Point(251, 68);
             this.cboHemmaBana.Name = "cboHemmaBana";
             this.cboHemmaBana.Size = new System.Drawing.Size(136, 22);
-            this.cboHemmaBana.TabIndex = 7;
+            this.cboHemmaBana.TabIndex = 8;
             // 
             // txtLopnr
             // 
@@ -172,7 +191,7 @@
             this.cboGolfklubb.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cboGolfklubb.Size = new System.Drawing.Size(132, 22);
             this.cboGolfklubb.Sorted = true;
-            this.cboGolfklubb.TabIndex = 6;
+            this.cboGolfklubb.TabIndex = 7;
             this.cboGolfklubb.SelectedIndexChanged += new System.EventHandler(this.cboGolfklubb_SelectedIndexChanged);
             // 
             // txtNamn
@@ -402,7 +421,7 @@
             // 
             this.knappkontroller1.Button4Text = "Knapp4";
             this.knappkontroller1.Location = new System.Drawing.Point(69, 2);
-            this.knappkontroller1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.knappkontroller1.Margin = new System.Windows.Forms.Padding(2);
             this.knappkontroller1.Name = "knappkontroller1";
             this.knappkontroller1.Size = new System.Drawing.Size(313, 32);
             this.knappkontroller1.TabIndex = 2;
@@ -503,25 +522,6 @@
             this.lnkFPG.TabStop = true;
             this.lnkFPG.Text = "Text_Till_My_FPG";
             this.lnkFPG.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkFPG_LinkClicked);
-            // 
-            // lblMandagsgang
-            // 
-            this.lblMandagsgang.AutoSize = true;
-            this.lblMandagsgang.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMandagsgang.Location = new System.Drawing.Point(120, 44);
-            this.lblMandagsgang.Name = "lblMandagsgang";
-            this.lblMandagsgang.Size = new System.Drawing.Size(127, 14);
-            this.lblMandagsgang.TabIndex = 103;
-            this.lblMandagsgang.Text = "Radrubrik_Måndagsgäng";
-            // 
-            // cbxMandagsgang
-            // 
-            this.cbxMandagsgang.AutoSize = true;
-            this.cbxMandagsgang.Location = new System.Drawing.Point(212, 44);
-            this.cbxMandagsgang.Name = "cbxMandagsgang";
-            this.cbxMandagsgang.Size = new System.Drawing.Size(15, 14);
-            this.cbxMandagsgang.TabIndex = 104;
-            this.cbxMandagsgang.UseVisualStyleBackColor = true;
             // 
             // SpelareInfo
             // 
