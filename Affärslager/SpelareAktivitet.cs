@@ -40,6 +40,8 @@ namespace Hooker.Affärslager
                 spelare.UppdatDatum = spelareDS.Spelare[0].UppdatDatum;
                 spelare.Portugalgolfare = (spelareDS.Spelare[0].IsPortugalgolfareNull())
                     ? string.Empty : spelareDS.Spelare[0].Portugalgolfare;
+                spelare.Mandagsgang = (spelareDS.Spelare[0].IsMandagsgangNull())
+                    ? string.Empty : spelareDS.Spelare[0].Mandagsgang;
 
                 if (!spelareDS.Spelare[0].IsGolfklubbNrNull())
                 {
@@ -82,7 +84,8 @@ namespace Hooker.Affärslager
                     UppdatDatum = rad.UppdatDatum,
                     GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
                     FederationNo = rad.FederationNo,
-                    Portugalgolfare = rad.Portugalgolfare
+                    Portugalgolfare = rad.Portugalgolfare,
+                    Mandagsgang = rad.Mandagsgang
                 });
             }
             return spelare;
@@ -153,7 +156,8 @@ namespace Hooker.Affärslager
                         Golfklubbnamn = rad["GolfklubbNamn"].ToString(),
                         Hemmabana = rad["BanaNamn"].ToString(),
                         FederationNo = (int)rad["FederationNo"],
-                        Portugalgolfare = rad["Portugalgolfare"].ToString()
+                        Portugalgolfare = rad["Portugalgolfare"].ToString(),
+                        Mandagsgang = rad["Mandagsgang"].ToString()
                     });
                 }
                 return spelare;
@@ -196,7 +200,52 @@ namespace Hooker.Affärslager
                         UppdatDatum = rad.UppdatDatum,
                         GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
                         FederationNo = rad.FederationNo,
-                        Portugalgolfare = rad.Portugalgolfare
+                        Portugalgolfare = rad.Portugalgolfare,
+                        Mandagsgang = rad.Mandagsgang
+                    });
+                }
+                return spelare;
+            }
+            catch (HookerException)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Hämta alla mandagsgang
+        /// </summary>
+        /// <param name="Mandagsgang"></param>
+        /// <returns>Spelarlista</returns>
+        public List<Spelare> HämtaMandagsgang(string Mandagsgang)
+        {
+            SpelareDS spelareDS = new SpelareDS();
+            SpelareData spelareData = new SpelareData();
+
+            try
+            {
+                spelareDS = spelareData.HämtaMandagsgang(Mandagsgang);
+                List<Spelare> spelare = new List<Spelare>(spelareDS.Tables["Spelare"].Rows.Count);
+                foreach (SpelareDS.SpelareRow rad in spelareDS.Spelare.Rows)
+                {
+                    if (rad.IsGolfklubbNrNull())
+                        rad.GolfklubbNr = 0;
+
+                    spelare.Add(new Spelare()
+                    {
+                        AktuelltSpelarID = rad.SpelarID,
+                        Namn = rad.Namn,
+                        ExaktHcp = rad.Hcp,
+                        GolfID = rad.GolfID,
+                        HemmabanaNr = rad.Hemmabananr,
+                        Klass = rad.Klass,
+                        Kön = rad.Kon,
+                        Revisionsdatum = rad.RevisionsDatum,
+                        UppdatDatum = rad.UppdatDatum,
+                        GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
+                        FederationNo = rad.FederationNo,
+                        Portugalgolfare = rad.Portugalgolfare,
+                        Mandagsgang = rad.Mandagsgang
                     });
                 }
                 return spelare;
@@ -239,7 +288,8 @@ namespace Hooker.Affärslager
                         UppdatDatum = rad.UppdatDatum,
                         GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
                         FederationNo = rad.FederationNo,
-                        Portugalgolfare = rad.Portugalgolfare
+                        Portugalgolfare = rad.Portugalgolfare,
+                        Mandagsgang = rad.Mandagsgang
                     });
                 }
                 return spelare;
@@ -285,7 +335,8 @@ namespace Hooker.Affärslager
                         Golfklubbnamn = rad["GolfklubbNamn"].ToString(),
                         Hemmabana = rad["BanaNamn"].ToString(),
                         FederationNo = (int)rad["FederationNo"],
-                        Portugalgolfare = rad["Portugalgolfare"].ToString()
+                        Portugalgolfare = rad["Portugalgolfare"].ToString(),
+                        Mandagsgang = rad["Mandagsgang"].ToString()
                     });
                 }
                 return spelare;

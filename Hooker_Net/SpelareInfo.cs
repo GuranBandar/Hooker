@@ -196,6 +196,11 @@ namespace Hooker_GUI
                 cbxPortugalgolfare.Checked = true;
             }
 
+            if (Spelare.Mandagsgang == "1")
+            {
+                cbxMandagsgang.Checked = true;
+            }
+
             txtSpelHcp.Text = ("D").Formatera(Spelare.ExaktHcp);
 
             switch (Spelare.Kön)
@@ -393,6 +398,15 @@ namespace Hooker_GUI
                 else
                 {
                     Spelare.Portugalgolfare = string.Empty;
+                }
+
+                if (cbxMandagsgang.Checked)
+                {
+                    Spelare.Mandagsgang = "1";
+                }
+                else
+                {
+                    Spelare.Mandagsgang = string.Empty;
                 }
 
                 if ((txtRevDatum.Text.Trim().ÄrEttOKDatum()))
