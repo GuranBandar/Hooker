@@ -71,6 +71,11 @@ namespace Hooker.Affärslager
                 if (rad.IsGolfklubbNrNull())
                     rad.GolfklubbNr = 0;
 
+                if (rad.IsMandagsgangNull())
+                {
+                    rad.Mandagsgang = string.Empty;
+                }
+
                 spelare.Add(new Spelare()
                 {
                     AktuelltSpelarID = rad.SpelarID,
@@ -141,6 +146,12 @@ namespace Hooker.Affärslager
                     {
                         rad["GolfklubbNr"] = 0;
                     }
+
+                    if (rad["Mandagsgang"] == DBNull.Value)
+                    {
+                        rad["Mandagsgang"] = string.Empty;
+                    }
+
                     spelare.Add(new Spelare()
                     {
                         AktuelltSpelarID = (int)rad["SpelarID"],
@@ -234,6 +245,11 @@ namespace Hooker.Affärslager
                     if (rad.IsGolfklubbNrNull())
                         rad.GolfklubbNr = 0;
 
+                    if (rad.IsMandagsgangNull())
+                    {
+                        rad.Mandagsgang = string.Empty;
+                    }
+
                     spelare.Add(new Spelare()
                     {
                         AktuelltSpelarID = rad.SpelarID,
@@ -277,6 +293,11 @@ namespace Hooker.Affärslager
                 {
                     if (rad.IsGolfklubbNrNull())
                         rad.GolfklubbNr = 0;
+
+                    if (rad.IsMandagsgangNull())
+                    {
+                        rad.Mandagsgang = string.Empty;
+                    }
 
                     spelare.Add(new Spelare()
                     {
@@ -323,6 +344,12 @@ namespace Hooker.Affärslager
                     {
                         rad["GolfklubbNr"] = 0;
                     }
+
+                    if (rad["Mandagsgang"] == DBNull.Value)
+                    {
+                        rad["Mandagsgang"] = 0;
+                    }
+
                     spelare.Add(new Spelare()
                     {
                         AktuelltSpelarID = (int)rad["SpelarID"],
