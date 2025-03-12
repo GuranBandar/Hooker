@@ -61,28 +61,17 @@ namespace Hooker.Affärslager
                     anvandare.SpelarID = (anvandareDS.Anvandare[0].IsSpelarIDNull()) ?
                         0 : anvandareDS.Anvandare[0].SpelarID;
 
-                    //if (spelare.AktuelltSpelarID != 0)
-                    //{ 
-                    ////och läs nu aktuell Anvandare för att komplettera användarobjektet
-                    //SpelareAktivitet spelareAktivitet = new SpelareAktivitet();
-                    //spelare = spelareAktivitet.HämtaSpelare(spelare.AktuelltSpelarID);
-                    //if (spelare != null)
-                    //{
-                    //    anvandare.AktuelltSpelarID = spelare.AktuelltSpelarID;
-                    //    anvandare.Namn = spelare.Namn;
-                    //    anvandare.ExaktHcp = spelare.ExaktHcp;
-                    //    anvandare.Klass = spelare.Klass;
-                    //    anvandare.Kön = spelare.Kön;
-                    //    anvandare.Revisionsdatum = spelare.Revisionsdatum;
-                    //    anvandare.HemmabanaNr = spelare.HemmabanaNr;
-                    //    anvandare.GolfID = spelare.GolfID;
-                    //    anvandare.UppdatDatum = spelare.UppdatDatum;
-                    //    if (spelare.GolfklubbNr != 0)
-                    //    {
-                    //        anvandare.GolfklubbNr = spelare.GolfklubbNr;
-                    //    }
-                    //}
-                    //}
+                    if (anvandare.SpelarID != 0)
+                    {
+                        //och läs nu aktuell Anvandare för att komplettera användarobjektet
+                        SpelareAktivitet spelareAktivitet = new SpelareAktivitet();
+                        spelare = spelareAktivitet.HämtaSpelare(anvandare.SpelarID);
+                        if (spelare != null)
+                        {
+                            anvandare.SpelarNamn = spelare.Namn;
+                            anvandare.Mandagsgang = spelare.Mandagsgang;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
