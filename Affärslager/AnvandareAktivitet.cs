@@ -69,7 +69,14 @@ namespace Hooker.Affärslager
                         if (spelare != null)
                         {
                             anvandare.SpelarNamn = spelare.Namn;
+                            anvandare.GolfklubbNr = spelare.GolfklubbNr;
                             anvandare.Mandagsgang = spelare.Mandagsgang;
+                        }
+                        else
+                        {
+                            anvandare.SpelarNamn = string.Empty;
+                            anvandare.GolfklubbNr = 0;
+                            anvandare.Mandagsgang = string.Empty;
                         }
                     }
                 }
