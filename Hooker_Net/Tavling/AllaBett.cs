@@ -448,13 +448,11 @@ namespace Hooker_GUI
 
             if (spelarRanking.Count > 1)
             {
-                int j = 0;
-                foreach (SpelareOchBett obj in spelarBett)
+                for (int r = 0; r < spelarRanking.Count; r++)
                 {
-                    if (obj.SpelarID == spelareSämst[j].SpelarID)
-                    {
-                        obj.Rank = j + 1;
-                    }
+                    int SpelarID = spelarRanking[r].SpelarID;
+                    var item = spelarBett.Single(x => x.SpelarID == SpelarID);
+                    item.Rank = r + 1;
                 }
             }
 
