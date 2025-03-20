@@ -4,7 +4,11 @@ using Hooker.Affärsobjekt;
 using Hooker.Gemensam;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
+using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Hooker_GUI.Kontroller
@@ -87,6 +91,11 @@ namespace Hooker_GUI.Kontroller
         protected bool FormsLaddar { get { return _formsLaddar; } set { _formsLaddar = value; } }
 
         protected static bool designMode;
+
+        private string defaultLanguage;
+        protected string dateTimeFormat;
+        protected CultureInfo Culture { get; set; }
+
         /// <summary>
         /// Konstruktor, sätter upp connectiom mot aktuell databas
         /// </summary>
@@ -106,6 +115,7 @@ namespace Hooker_GUI.Kontroller
                     DatabasAccess = fabriken.GetDatabase();
                     InitieraSpelare();
                     InitieraSystemvariabler();
+                    SetDefaultCulture();
                     Startar = false;
                 }
             }
@@ -114,6 +124,43 @@ namespace Hooker_GUI.Kontroller
                 Application.Exit();
                 //SkrivLog.SkrivPåLog(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Get current cultureinfo för nationella inställningar
+        /// </summary>
+        public void GetCurrentCulture()
+        {
+            defaultLanguage = ConfigurationManager.AppSettings["GlobalEnvironmentLanguage"];
+            CultureInfo.CurrentCulture = new CultureInfo("sv-SE");
+            Culture = CultureInfo.CurrentCulture;
+            defaultLanguage = Culture.DisplayName;
+            Culture.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+        }
+
+        /// <summary>
+        /// Set defaultt cultureinfo för nationella inställningar
+        /// </summary>
+        public static void SetDefaultCulture()
+        {
+            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture("sv-SE");
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+            Type type = typeof(CultureInfo);
+            type.InvokeMember("s_userDefaultCulture",
+                                BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Static,
+                                null,
+                                cultureInfo,
+                                new object[] { cultureInfo });
+
+            type.InvokeMember("s_userDefaultUICulture",
+                                BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Static,
+                                null,
+                                cultureInfo,
+                                new object[] { cultureInfo });
         }
 
         /// <summary>

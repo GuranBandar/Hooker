@@ -5,6 +5,8 @@ using Hooker_GUI.Kontroller;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Hooker_GUI
@@ -57,6 +59,8 @@ namespace Hooker_GUI
             FormsLaddar = true;
             FormsUppdaterad = false;
             InitializeComponent();
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo("sv-SE");
+            //Culture = FormBas.cu
         }
 
         #region "Publika metoder"
@@ -685,7 +689,7 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtDamerCRGul.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()))
+                    if (((txtDamerCRGul.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
                     {
                         Bana.CrDamerGul = decimal.Parse(txtDamerCRGul.Text);
                     }
@@ -704,7 +708,7 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtDamerCRRod.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()))
+                    if (((txtDamerCRRod.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
                     {
                         Bana.CrDamerRod = decimal.Parse(txtDamerCRRod.Text);
                     }
@@ -723,8 +727,9 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtHerrarCRGul.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()))
+                    if (((txtHerrarCRGul.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
                     {
+                        string crgul = txtHerrarCRGul.Text;
                         Bana.CrHerrarGul = decimal.Parse(txtHerrarCRGul.Text);
                     }
                     else
@@ -741,7 +746,7 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtHerrarCRRod.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()))
+                    if (((txtHerrarCRRod.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
                     {
                         Bana.CrHerrarRod = decimal.Parse(txtHerrarCRRod.Text);
                     }

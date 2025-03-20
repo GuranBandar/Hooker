@@ -25,7 +25,7 @@ namespace Hooker.Gemensam
         }
 
         /// <summary>
-        /// Ersätter elaka kommatecken i decimaltal med punkt, databasen vill ha det så.
+        /// Ersätter elaka punkter i decimaltal med komma, databasen vill ha det så.
         /// </summary>
         /// <param name="text">talet, på vilket punkten ska ersättas med kommatecken</param>
         /// <returns>talet, i strängformat, med punkten utbytt mot kommatecken</returns>
