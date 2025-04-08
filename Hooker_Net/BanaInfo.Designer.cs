@@ -2118,7 +2118,7 @@
             this.txtNotering.MaxLength = 120;
             this.txtNotering.Name = "txtNotering";
             this.txtNotering.Size = new System.Drawing.Size(432, 20);
-            this.txtNotering.TabIndex = 40;
+            this.txtNotering.TabIndex = 35;
             // 
             // lblNotering
             // 
@@ -2180,7 +2180,7 @@
             this.txtRange.Location = new System.Drawing.Point(129, 96);
             this.txtRange.Name = "txtRange";
             this.txtRange.Size = new System.Drawing.Size(25, 20);
-            this.txtRange.TabIndex = 11;
+            this.txtRange.TabIndex = 45;
             this.txtRange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblRange
@@ -2199,7 +2199,7 @@
             this.txtStrategi.Location = new System.Drawing.Point(54, 96);
             this.txtStrategi.Name = "txtStrategi";
             this.txtStrategi.Size = new System.Drawing.Size(25, 20);
-            this.txtStrategi.TabIndex = 9;
+            this.txtStrategi.TabIndex = 44;
             this.txtStrategi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblStrategi
@@ -2218,7 +2218,7 @@
             this.txtEtikett.Location = new System.Drawing.Point(129, 64);
             this.txtEtikett.Name = "txtEtikett";
             this.txtEtikett.Size = new System.Drawing.Size(25, 20);
-            this.txtEtikett.TabIndex = 7;
+            this.txtEtikett.TabIndex = 43;
             this.txtEtikett.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblEtikett
@@ -2237,7 +2237,7 @@
             this.txtSkick.Location = new System.Drawing.Point(54, 64);
             this.txtSkick.Name = "txtSkick";
             this.txtSkick.Size = new System.Drawing.Size(25, 20);
-            this.txtSkick.TabIndex = 5;
+            this.txtSkick.TabIndex = 42;
             this.txtSkick.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblSkick
@@ -2256,7 +2256,7 @@
             this.txtNatur.Location = new System.Drawing.Point(129, 32);
             this.txtNatur.Name = "txtNatur";
             this.txtNatur.Size = new System.Drawing.Size(25, 20);
-            this.txtNatur.TabIndex = 3;
+            this.txtNatur.TabIndex = 41;
             this.txtNatur.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblNatur
@@ -2275,7 +2275,7 @@
             this.txtLayout.Location = new System.Drawing.Point(54, 32);
             this.txtLayout.Name = "txtLayout";
             this.txtLayout.Size = new System.Drawing.Size(25, 20);
-            this.txtLayout.TabIndex = 1;
+            this.txtLayout.TabIndex = 40;
             this.txtLayout.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblLayout
