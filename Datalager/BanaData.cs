@@ -318,13 +318,15 @@ namespace Hooker.Datalager
                 sql = "INSERT INTO Bana (BanaNr, Namn, GolfklubbNr, SlopeHerrarGul, CrHerrarGul" +
                     ", SlopeDamerRod, CrDamerRod, UppdatDatum, RankLayout, RankSkick" +
                     ", RankStrategi, RankNatur, RankEtikett, RankRange, SlopeHerrarRod, CrHerrarRod" +
-                    ", SlopeDamerGul, CrDamerGul, Notering, Aktuell, AntalHal) " +
+                    ", SlopeDamerGul, CrDamerGul, Notering, Aktuell, AntalHal, SlopeHerrarVit, CrHerrarVit " +
+                    ", SlopeHerrarBla, CrHerrarBla, SlopeDamerBla, CrDamerBla) " +
                     "VALUES " +
                     "(@BanaNr, @Namn, @GolfklubbNr, @SlopeHerrarGul, @CrHerrarGul, @SlopeDamerRod" +
                     ", @CrDamerRod, @UppdatDatum, @RankLayout" +
                     ", @RankSkick, @RankStrategi, @RankNatur, @RankEtikett, @RankRange" +
                     ", @SlopeHerrarRod, @CrHerrarRod, @SlopeDamerGul, @CrDamerGul" +
-                    ", @Notering, @Aktuell, @AntalHal)";
+                    ", @Notering, @Aktuell, @AntalHal" +
+                    ", @SlopeHerrarVit, @CrHerrarVit, @SlopeHerrarBla, @CrHerrarBla, @SlopeDamerBla, @CrDamerBla)";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@BanaNr", DataTyp.Int, bana.BanaNr.ToString()),
@@ -347,8 +349,15 @@ namespace Hooker.Datalager
                     new DatabasParameters("@CrDamerGul", DataTyp.Decimal, bana.CrDamerGul.ToString()),
                     new DatabasParameters("@Notering", DataTyp.VarChar, bana.Notering),
                     new DatabasParameters("@Aktuell", DataTyp.Int, bana.Aktuell),
-                    new DatabasParameters("@AntalHal", DataTyp.Char, bana.AntalHal)
+                    new DatabasParameters("@AntalHal", DataTyp.Char, bana.AntalHal),
+                    new DatabasParameters("@SlopeHerrarVit", DataTyp.Int, bana.SlopeHerrarVit.ToString()),
+                    new DatabasParameters("@CrHerrarVit", DataTyp.Decimal, bana.CrHerrarVit.ToString()),
+                    new DatabasParameters("@SlopeHerrarBla", DataTyp.Int, bana.SlopeHerrarBla.ToString()),
+                    new DatabasParameters("@CrHerrarBla", DataTyp.Decimal, bana.CrHerrarBla.ToString()),
+                    new DatabasParameters("@SlopeDamerBla", DataTyp.Int, bana.SlopeDamerBla.ToString()),
+                    new DatabasParameters("@CrDamerBla", DataTyp.Decimal, bana.CrDamerBla.ToString())
                 };
+
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();
 
@@ -450,6 +459,9 @@ namespace Hooker.Datalager
                      ", SlopeHerrarRod = @SlopeHerrarRod, CrHerrarRod = @CrHerrarRod" +
                      ", SlopeDamerGul = @SlopeDamerGul, CrDamerGul = @CrDamerGul" +
                      ", Notering = @Notering, Aktuell = @Aktuell, AntalHal = @AntalHal " +
+                     ", SlopeHerrarVit = @SlopeHerrarVit, CrHerrarVit = @CrHerrarVit" +
+                     ", SlopeHerrarBla = @SlopeHerrarBla, CrHerrarBla = @CrHerrarBla" +
+                     ", SlopeDamerBla = @SlopeDamerBla, CrDamerBla = @CrDamerBla " +
                      "WHERE BanaNr = @BanaNr";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -473,7 +485,13 @@ namespace Hooker.Datalager
                     new DatabasParameters("@CrDamerGul", DataTyp.Decimal, bana.CrDamerGul.ToString()),
                     new DatabasParameters("@Notering", DataTyp.VarChar, bana.Notering),
                     new DatabasParameters("@Aktuell", DataTyp.Int, bana.Aktuell),
-                    new DatabasParameters("@AntalHal", DataTyp.Char, bana.AntalHal)
+                    new DatabasParameters("@AntalHal", DataTyp.Char, bana.AntalHal),
+                    new DatabasParameters("@SlopeHerrarVit", DataTyp.Int, bana.SlopeHerrarVit.ToString()),
+                    new DatabasParameters("@CrHerrarVit", DataTyp.Decimal, bana.CrHerrarVit.ToString()),
+                    new DatabasParameters("@SlopeHerrarBla", DataTyp.Int, bana.SlopeHerrarBla.ToString()),
+                    new DatabasParameters("@CrHerrarBla", DataTyp.Decimal, bana.CrHerrarBla.ToString()),
+                    new DatabasParameters("@SlopeDamerBla", DataTyp.Int, bana.SlopeDamerBla.ToString()),
+                    new DatabasParameters("@CrDamerBla", DataTyp.Decimal, bana.CrDamerBla.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
 

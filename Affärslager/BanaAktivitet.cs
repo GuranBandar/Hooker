@@ -56,6 +56,12 @@ namespace Hooker.Affärslager
                     bana.Notering = (banaDS.Bana[0].IsNoteringNull()) ? string.Empty : banaDS.Bana[0].Notering;
                     bana.Aktuell = banaDS.Bana[0].Aktuell;
                     bana.AntalHal = banaDS.Bana[0].AntalHal;
+                    bana.SlopeHerrarVit = (banaDS.Bana[0].IsSlopeHerrarVitNull()) ? 0 : banaDS.Bana[0].SlopeHerrarVit;
+                    bana.CrHerrarVit = (banaDS.Bana[0].IsCrHerrarVitNull()) ? 0 : banaDS.Bana[0].CrHerrarVit;
+                    bana.SlopeHerrarBla = (banaDS.Bana[0].IsSlopeHerrarBlaNull()) ? 0 : banaDS.Bana[0].SlopeHerrarBla;
+                    bana.CrHerrarBla = (banaDS.Bana[0].IsCrHerrarBlaNull()) ? 0 : banaDS.Bana[0].CrHerrarBla;
+                    bana.SlopeDamerBla = (banaDS.Bana[0].IsSlopeDamerBlaNull()) ? 0 : banaDS.Bana[0].SlopeDamerBla;
+                    bana.CrDamerBla = (banaDS.Bana[0].IsCrDamerBlaNull()) ? 0 : banaDS.Bana[0].CrDamerBla;
                 }
             }
             catch (Exception ex)
@@ -105,7 +111,13 @@ namespace Hooker.Affärslager
                         CrDamerGul = rad.CrDamerGul,
                         Notering = rad.GetText("Notering"),
                         Aktuell = rad.Aktuell,
-                        AntalHal = rad.AntalHal
+                        AntalHal = rad.AntalHal,
+                        SlopeHerrarVit = rad.SlopeHerrarVit,
+                        CrHerrarVit = rad.CrHerrarVit,
+                        SlopeHerrarBla = rad.SlopeHerrarBla,
+                        CrHerrarBla = rad.CrHerrarBla,
+                        SlopeDamerBla = rad.SlopeDamerBla,
+                        CrDamerBla = rad.CrDamerBla
                     });
                 }
             }
@@ -152,7 +164,13 @@ namespace Hooker.Affärslager
                         CrDamerGul = rad.CrDamerGul,
                         Notering = rad.GetText("Notering"),
                         Aktuell = rad.Aktuell,
-                        AntalHal = rad.AntalHal
+                        AntalHal = rad.AntalHal,
+                        SlopeHerrarVit = rad.SlopeHerrarVit,
+                        CrHerrarVit = rad.CrHerrarVit,
+                        SlopeHerrarBla = rad.SlopeHerrarBla,
+                        CrHerrarBla = rad.CrHerrarBla,
+                        SlopeDamerBla = rad.SlopeDamerBla,
+                        CrDamerBla = rad.CrDamerBla
                     });
                 }
             }
@@ -199,7 +217,13 @@ namespace Hooker.Affärslager
                         CrDamerGul = rad.CrDamerGul,
                         Notering = rad.GetText("Notering"),
                         Aktuell = rad.Aktuell,
-                        AntalHal = rad.AntalHal
+                        AntalHal = rad.AntalHal,
+                        SlopeHerrarVit = rad.SlopeHerrarVit,
+                        CrHerrarVit = rad.CrHerrarVit,
+                        SlopeHerrarBla = rad.SlopeHerrarBla,
+                        CrHerrarBla = rad.CrHerrarBla,
+                        SlopeDamerBla = rad.SlopeDamerBla,
+                        CrDamerBla = rad.CrDamerBla
                     });
                 }
             }
@@ -311,7 +335,13 @@ namespace Hooker.Affärslager
                             CrDamerGul = (Convert.IsDBNull(rad["CrDamerGul"]) ? 0 : (decimal)rad["CrDamerGul"]),
                             Notering = (Convert.IsDBNull(rad["bananotering"]) ? string.Empty : rad["bananotering"].ToString()),
                             Aktuell = (Convert.IsDBNull(rad["Aktuell"]) ? string.Empty : rad["Aktuell"]).ToString(),
-                            AntalHal = (Convert.IsDBNull(rad["AntalHal"]) ? string.Empty : rad["AntalHal"]).ToString()
+                            AntalHal = (Convert.IsDBNull(rad["AntalHal"]) ? string.Empty : rad["AntalHal"]).ToString(),
+                            SlopeHerrarVit = (Convert.IsDBNull(rad["SlopeHerrarVit"]) ? 0 : (int)rad["SlopeHerrarVit"]),
+                            CrHerrarVit = (Convert.IsDBNull(rad["CrHerrarVit"]) ? 0 : (decimal)rad["CrHerrarVit"]),
+                            SlopeHerrarBla = (Convert.IsDBNull(rad["SlopeHerrarBla"]) ? 0 : (int)rad["SlopeHerrarBla"]),
+                            CrHerrarBla = (Convert.IsDBNull(rad["CrHerrarBla"]) ? 0 : (decimal)rad["CrHerrarBla"]),
+                            SlopeDamerBla = (Convert.IsDBNull(rad["SlopeDamerBla"]) ? 0 : (int)rad["SlopeDamerBla"]),
+                            CrDamerBla = (Convert.IsDBNull(rad["CrDamerBla"]) ? 0 : (decimal)rad["CrDamerBla"])
                         });
                     }
                 }
@@ -361,6 +391,12 @@ namespace Hooker.Affärslager
                 bana.Notering = (banaBanaHalSDS.Bana[0].IsNoteringNull()) ? string.Empty : banaBanaHalSDS.Bana[0].Notering;
                 bana.Aktuell = banaBanaHalSDS.Bana[0].Aktuell;
                 bana.AntalHal = banaBanaHalSDS.Bana[0].AntalHal;
+                bana.SlopeHerrarVit = (banaBanaHalSDS.Bana[0].IsSlopeHerrarVitNull()) ? 0 : banaBanaHalSDS.Bana[0].SlopeHerrarVit;
+                bana.CrHerrarVit = (banaBanaHalSDS.Bana[0].IsCrHerrarVitNull()) ? 0 : banaBanaHalSDS.Bana[0].CrHerrarVit;
+                bana.SlopeHerrarBla = (banaBanaHalSDS.Bana[0].IsSlopeHerrarBlaNull()) ? 0 : banaBanaHalSDS.Bana[0].SlopeHerrarBla;
+                bana.CrHerrarBla = (banaBanaHalSDS.Bana[0].IsCrHerrarBlaNull()) ? 0 : banaBanaHalSDS.Bana[0].CrHerrarBla;
+                bana.SlopeDamerBla = (banaBanaHalSDS.Bana[0].IsSlopeDamerBlaNull()) ? 0 : banaBanaHalSDS.Bana[0].SlopeDamerBla;
+                bana.CrDamerBla = (banaBanaHalSDS.Bana[0].IsCrDamerBlaNull()) ? 0 : banaBanaHalSDS.Bana[0].CrDamerBla;
 
                 foreach (BanaBanaHalSDS.BanaHalRow rad in banaBanaHalSDS.BanaHal.Rows)
                 {

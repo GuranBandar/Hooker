@@ -59,6 +59,7 @@ namespace Hooker_GUI
             FormsLaddar = true;
             FormsUppdaterad = false;
             InitializeComponent();
+            //GetCurrentCulture();
             //Thread.CurrentThread.CurrentCulture = new CultureInfo("sv-SE");
             //Culture = FormBas.cu
         }
@@ -303,8 +304,10 @@ namespace Hooker_GUI
             }
 
             txtDamerCRGul.Text = ("").Formatera(Bana.CrDamerGul);
+            txtDamerCRBla.Text = ("").Formatera(Bana.CrDamerBla);
             txtDamerCRRod.Text = ("").Formatera(Bana.CrDamerRod);
             txtDamerSlopeGul.Text = ("D").Formatera(Bana.SlopeDamerGul);
+            txtDamerSlopeBla.Text = ("D").Formatera(Bana.SlopeDamerBla);
             txtDamerSlopeRod.Text = ("D").Formatera(Bana.SlopeDamerRod);
 
             if (txtHemsida.Text.Length > 0)
@@ -316,9 +319,13 @@ namespace Hooker_GUI
                 lnkHemsida.Visible = false;
             }
 
+            txtHerrarCRVit.Text = ("").Formatera(Bana.CrHerrarVit);
             txtHerrarCRGul.Text = ("").Formatera(Bana.CrHerrarGul);
+            txtHerrarCRBla.Text = ("").Formatera(Bana.CrHerrarBla);
             txtHerrarCRRod.Text = ("").Formatera(Bana.CrHerrarRod);
+            txtHerrarSlopeVit.Text = ("D").Formatera(Bana.SlopeHerrarVit);
             txtHerrarSlopeGul.Text = ("D").Formatera(Bana.SlopeHerrarGul);
+            txtHerrarSlopeBla.Text = ("D").Formatera(Bana.SlopeHerrarBla);
             txtHerrarSlopeRod.Text = ("D").Formatera(Bana.SlopeHerrarRod);
             txtNotering.Text = Bana.Notering;
             txtLayout.Text = ("D").Formatera(Bana.RankLayout);
@@ -689,9 +696,10 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtDamerCRGul.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
+                    if (((txtDamerCRGul.Text).ÄrEnIckeNegativDecimal()))
                     {
-                        Bana.CrDamerGul = decimal.Parse(txtDamerCRGul.Text);
+                        string crgulDamer = txtDamerCRGul.Text.BytUtKomma();
+                        Bana.CrDamerGul = decimal.Parse(crgulDamer);
                     }
                     else
                     {
@@ -701,6 +709,27 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
+                if (string.IsNullOrEmpty(txtDamerCRBla.Text.Trim()))
+                {
+                    Bana.CrDamerBla = 0;
+                }
+                else
+                {
+                    if (((txtDamerCRBla.Text).ÄrEnIckeNegativDecimal()))
+                    {
+                        string crblaDamer = txtDamerCRBla.Text.BytUtKomma();
+                        Bana.CrDamerBla = decimal.Parse(crblaDamer);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        tabBanuppgifter.SelectedTab = tabUppgifter;
+                        txtDamerCRBla.Focus();
+                        return false;
+                    }
+                }
+
                 if (string.IsNullOrEmpty(txtDamerCRRod.Text.Trim()))
                 {
                     //Bana.CrDamerRod = 0;
@@ -708,9 +737,10 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtDamerCRRod.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
+                    if (((txtDamerCRRod.Text).ÄrEnIckeNegativDecimal()))
                     {
-                        Bana.CrDamerRod = decimal.Parse(txtDamerCRRod.Text);
+                        string crrodDamer = txtDamerCRRod.Text.BytUtKomma();
+                        Bana.CrDamerRod = decimal.Parse(crrodDamer);
                     }
                     else
                     {
@@ -720,6 +750,27 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
+                if (string.IsNullOrEmpty(txtHerrarCRVit.Text.Trim()))
+                {
+                    Bana.CrHerrarVit = 0;
+                }
+                else
+                {
+                    if (((txtHerrarCRVit.Text).ÄrEnIckeNegativDecimal()))
+                    {
+                        string crvitHerrar = txtHerrarCRVit.Text.BytUtKomma();
+                        Bana.CrHerrarVit = decimal.Parse(crvitHerrar);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        tabBanuppgifter.SelectedTab = tabUppgifter;
+                        txtHerrarCRVit.Focus();
+                        return false;
+                    }
+                }
+
                 if (string.IsNullOrEmpty(txtHerrarCRGul.Text.Trim()))
                 {
                     //Bana.CrHerrarGul = 0;
@@ -727,10 +778,10 @@ namespace Hooker_GUI
                 }
                 else
                 {
-                    if (((txtHerrarCRGul.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
+                    if (((txtHerrarCRGul.Text).ÄrEnIckeNegativDecimal()))
                     {
-                        string crgul = txtHerrarCRGul.Text;
-                        Bana.CrHerrarGul = decimal.Parse(txtHerrarCRGul.Text);
+                        string crgulHerrar = txtHerrarCRGul.Text.BytUtKomma();
+                        Bana.CrHerrarGul = decimal.Parse(crgulHerrar);
                     }
                     else
                     {
@@ -740,15 +791,37 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
+                if (string.IsNullOrEmpty(txtHerrarCRBla.Text.Trim()))
+                {
+                    Bana.CrHerrarBla = 0;
+                }
+                else
+                {
+                    if (((txtHerrarCRBla.Text).ÄrEnIckeNegativDecimal()))
+                    {
+                        string crblaHerrar = txtHerrarCRBla.Text.BytUtKomma();
+                        Bana.CrHerrarBla = decimal.Parse(crblaHerrar);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        tabBanuppgifter.SelectedTab = tabUppgifter;
+                        txtHerrarCRBla.Focus();
+                        return false;
+                    }
+                }
+
                 if (string.IsNullOrEmpty(txtHerrarCRRod.Text.Trim()))
                 {
                     Bana.CrHerrarRod = 0;
                 }
                 else
                 {
-                    if (((txtHerrarCRRod.Text).BytUtKomma().ÄrEnIckeNegativDecimal()))
+                    if (((txtHerrarCRRod.Text).ÄrEnIckeNegativDecimal()))
                     {
-                        Bana.CrHerrarRod = decimal.Parse(txtHerrarCRRod.Text);
+                        string crrodHerrar = txtHerrarCRRod.Text.BytUtKomma();
+                        Bana.CrHerrarRod = decimal.Parse(crrodHerrar);
                     }
                     else
                     {
@@ -777,6 +850,26 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
+                if (string.IsNullOrEmpty(txtDamerSlopeBla.Text.Trim()))
+                {
+                    Bana.SlopeDamerBla = 0;
+                }
+                else
+                {
+                    if ((txtDamerSlopeBla.Text).ÄrEnInt())
+                    {
+                        Bana.SlopeDamerBla = int.Parse(txtDamerSlopeBla.Text);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        tabBanuppgifter.SelectedTab = tabUppgifter;
+                        txtDamerSlopeBla.Focus();
+                        return false;
+                    }
+                }
+
                 if (string.IsNullOrEmpty(txtDamerSlopeRod.Text.Trim()))
                 {
                     //Bana.SlopeDamerRod = 0;
@@ -796,6 +889,26 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
+                if (string.IsNullOrEmpty(txtHerrarSlopeVit.Text.Trim()))
+                {
+                    Bana.SlopeHerrarVit = 0;
+                }
+                else
+                {
+                    if ((txtHerrarSlopeVit.Text).ÄrEnInt())
+                    {
+                        Bana.SlopeHerrarVit = int.Parse(txtHerrarSlopeVit.Text);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        tabBanuppgifter.SelectedTab = tabUppgifter;
+                        txtHerrarSlopeVit.Focus();
+                        return false;
+                    }
+                }
+
                 if (string.IsNullOrEmpty(txtHerrarSlopeGul.Text.Trim()))
                 {
                     //Bana.SlopeHerrarGul = 0;
@@ -815,6 +928,26 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
+                if (string.IsNullOrEmpty(txtHerrarSlopeBla.Text.Trim()))
+                {
+                    Bana.SlopeHerrarBla = 0;
+                }
+                else
+                {
+                    if ((txtHerrarSlopeBla.Text).ÄrEnInt())
+                    {
+                        Bana.SlopeHerrarBla = int.Parse(txtHerrarSlopeBla.Text);
+                    }
+                    else
+                    {
+                        VisaFelmeddelande("NOTNUMERIC");
+                        tabBanuppgifter.SelectedTab = tabUppgifter;
+                        txtHerrarSlopeBla.Focus();
+                        return false;
+                    }
+                }
+
                 if (string.IsNullOrEmpty(txtHerrarSlopeRod.Text.Trim()))
                 {
                     Bana.SlopeHerrarRod = 0;
@@ -833,6 +966,7 @@ namespace Hooker_GUI
                         return false;
                     }
                 }
+
                 Bana.UppdatDatum = DateTime.Today;
             }
             catch (Exception ex)

@@ -96,6 +96,9 @@ namespace Hooker_GUI.Kontroller
         protected string dateTimeFormat;
         protected CultureInfo Culture { get; set; }
 
+        public NumberFormatInfo numberFormatInfo { get; set; }
+
+
         /// <summary>
         /// Konstruktor, sätter upp connectiom mot aktuell databas
         /// </summary>
@@ -132,10 +135,11 @@ namespace Hooker_GUI.Kontroller
         public void GetCurrentCulture()
         {
             defaultLanguage = ConfigurationManager.AppSettings["GlobalEnvironmentLanguage"];
-            CultureInfo.CurrentCulture = new CultureInfo("sv-SE");
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
             Culture = CultureInfo.CurrentCulture;
             defaultLanguage = Culture.DisplayName;
             Culture.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+            var numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
         }
 
         /// <summary>
@@ -148,6 +152,8 @@ namespace Hooker_GUI.Kontroller
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+            cultureInfo.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+            var numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
 
             Type type = typeof(CultureInfo);
             type.InvokeMember("s_userDefaultCulture",

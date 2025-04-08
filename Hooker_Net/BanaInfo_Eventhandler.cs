@@ -243,6 +243,7 @@ namespace Hooker_GUI
         private void btnBeraknaSlag_Click(object sender, EventArgs e)
         {
             int banansPar = 0;
+            string exaktHcp;
             txtErhallnaSlagVit.Text = "";
             txtErhallnaSlagGul.Text = "";
             txtErhallnaSlagBla.Text = "";
@@ -255,31 +256,53 @@ namespace Hooker_GUI
                     banansPar = banansPar + Bana.BanaHal[i].Par;
                 }
 
-                if (((txtExaktHcp.Text).BytUtPunkt().ÄrEnIckeNegativDecimal()) == true)
+                if (((txtExaktHcp.Text).ÄrEnIckeNegativDecimal()) == true)
                 {
+                    exaktHcp = txtExaktHcp.Text.BytUtKomma();
+
                     if (rbnMan.Checked)
                     {
+
+                        if (Bana.CrHerrarVit > 0)
+                        {
+                            txtErhallnaSlagVit.Text =
+                                Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrHerrarVit,
+                                Bana.SlopeHerrarVit, banansPar,
+                                decimal.Parse(exaktHcp),
+                                ref Feltext).ToString();
+                        }
+
                         if (Bana.CrHerrarGul > 0)
                         {
                             txtErhallnaSlagGul.Text =
                                 Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrHerrarGul,
                                 Bana.SlopeHerrarGul, banansPar,
-                                decimal.Parse((txtExaktHcp.Text).BytUtPunkt()),
+                                decimal.Parse(exaktHcp),
                                 ref Feltext).ToString();
                         }
+
+                        if (Bana.CrHerrarBla > 0)
+                        {
+                            txtErhallnaSlagBla.Text =
+                                Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrHerrarBla,
+                                Bana.SlopeHerrarBla, banansPar,
+                                decimal.Parse(exaktHcp),
+                                ref Feltext).ToString();
+                        }
+
                         if (Bana.CrHerrarRod > 0)
                         {
                             txtErhallnaSlagRod.Text =
                                 Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrHerrarRod,
                                 Bana.SlopeHerrarRod, banansPar,
-                                decimal.Parse((txtExaktHcp.Text).BytUtPunkt()),
+                                decimal.Parse(exaktHcp),
                                 ref Feltext).ToString();
                         }
                         if (Bana.CrHerrarGul == 0 && Bana.CrHerrarRod == 0)
                         {
                             txtErhallnaSlagGul.Text =
                                 Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(0, 0, banansPar,
-                                decimal.Parse((txtExaktHcp.Text).BytUtPunkt()),
+                                decimal.Parse(exaktHcp),
                                 ref Feltext).ToString();
                         }
                     }
@@ -290,22 +313,32 @@ namespace Hooker_GUI
                             txtErhallnaSlagGul.Text =
                                 Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrDamerGul,
                                 Bana.SlopeDamerGul, banansPar,
-                                decimal.Parse((txtExaktHcp.Text).BytUtPunkt()),
+                                decimal.Parse(exaktHcp),
                                 ref Feltext).ToString();
                         }
+
+                        if (Bana.CrDamerBla > 0)
+                        {
+                            txtErhallnaSlagBla.Text =
+                                Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrDamerBla,
+                                Bana.SlopeDamerBla, banansPar,
+                                decimal.Parse(exaktHcp),
+                                ref Feltext).ToString();
+                        }
+
                         if (Bana.CrDamerRod > 0)
                         {
                             txtErhallnaSlagRod.Text =
                                 Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(Bana.CrDamerRod,
                                 Bana.SlopeDamerRod, banansPar,
-                                decimal.Parse((txtExaktHcp.Text).BytUtPunkt()),
+                                decimal.Parse(exaktHcp),
                                 ref Feltext).ToString();
                         }
                         if (Bana.CrDamerGul == 0 && Bana.CrDamerRod == 0)
                         {
                             txtErhallnaSlagRod.Text =
                                 Hooker.Affärslager.Slope.RäknaUtErhållnaSlag(0, 0, banansPar,
-                                decimal.Parse((txtExaktHcp.Text).BytUtPunkt()),
+                                decimal.Parse(exaktHcp),
                                 ref Feltext).ToString();
                         }
                     }

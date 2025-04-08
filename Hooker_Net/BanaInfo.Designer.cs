@@ -218,10 +218,16 @@
             this.txtLayout = new System.Windows.Forms.TextBox();
             this.lblLayout = new System.Windows.Forms.Label();
             this.gbxSlope = new System.Windows.Forms.GroupBox();
-            this.txtDamerCRRod = new System.Windows.Forms.TextBox();
-            this.txtDamerSlopeRod = new System.Windows.Forms.TextBox();
+            this.txtDamerCRBla = new System.Windows.Forms.TextBox();
+            this.txtDamerSlopeBla = new System.Windows.Forms.TextBox();
             this.txtHerrarCRRod = new System.Windows.Forms.TextBox();
             this.txtHerrarSlopeRod = new System.Windows.Forms.TextBox();
+            this.txtHerrarCRVit = new System.Windows.Forms.TextBox();
+            this.txtHerrarSlopeVit = new System.Windows.Forms.TextBox();
+            this.txtDamerCRRod = new System.Windows.Forms.TextBox();
+            this.txtDamerSlopeRod = new System.Windows.Forms.TextBox();
+            this.txtHerrarCRBla = new System.Windows.Forms.TextBox();
+            this.txtHerrarSlopeBla = new System.Windows.Forms.TextBox();
             this.txtDamerCRGul = new System.Windows.Forms.TextBox();
             this.txtDamerSlopeGul = new System.Windows.Forms.TextBox();
             this.txtHerrarCRGul = new System.Windows.Forms.TextBox();
@@ -2098,7 +2104,7 @@
             // lnkHemsida
             // 
             this.lnkHemsida.AutoSize = true;
-            this.lnkHemsida.Location = new System.Drawing.Point(271, 132);
+            this.lnkHemsida.Location = new System.Drawing.Point(376, 86);
             this.lnkHemsida.Name = "lnkHemsida";
             this.lnkHemsida.Size = new System.Drawing.Size(88, 13);
             this.lnkHemsida.TabIndex = 217;
@@ -2112,7 +2118,7 @@
             this.txtNotering.MaxLength = 120;
             this.txtNotering.Name = "txtNotering";
             this.txtNotering.Size = new System.Drawing.Size(432, 20);
-            this.txtNotering.TabIndex = 216;
+            this.txtNotering.TabIndex = 40;
             // 
             // lblNotering
             // 
@@ -2140,9 +2146,9 @@
             this.gbxRanking.Controls.Add(this.txtLayout);
             this.gbxRanking.Controls.Add(this.lblLayout);
             this.gbxRanking.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxRanking.Location = new System.Drawing.Point(349, 160);
+            this.gbxRanking.Location = new System.Drawing.Point(349, 134);
             this.gbxRanking.Name = "gbxRanking";
-            this.gbxRanking.Size = new System.Drawing.Size(160, 160);
+            this.gbxRanking.Size = new System.Drawing.Size(160, 173);
             this.gbxRanking.TabIndex = 0;
             this.gbxRanking.TabStop = false;
             this.gbxRanking.Text = "Text_Ranking";
@@ -2284,10 +2290,16 @@
             // 
             // gbxSlope
             // 
-            this.gbxSlope.Controls.Add(this.txtDamerCRRod);
-            this.gbxSlope.Controls.Add(this.txtDamerSlopeRod);
+            this.gbxSlope.Controls.Add(this.txtDamerCRBla);
+            this.gbxSlope.Controls.Add(this.txtDamerSlopeBla);
             this.gbxSlope.Controls.Add(this.txtHerrarCRRod);
             this.gbxSlope.Controls.Add(this.txtHerrarSlopeRod);
+            this.gbxSlope.Controls.Add(this.txtHerrarCRVit);
+            this.gbxSlope.Controls.Add(this.txtHerrarSlopeVit);
+            this.gbxSlope.Controls.Add(this.txtDamerCRRod);
+            this.gbxSlope.Controls.Add(this.txtDamerSlopeRod);
+            this.gbxSlope.Controls.Add(this.txtHerrarCRBla);
+            this.gbxSlope.Controls.Add(this.txtHerrarSlopeBla);
             this.gbxSlope.Controls.Add(this.txtDamerCRGul);
             this.gbxSlope.Controls.Add(this.txtDamerSlopeGul);
             this.gbxSlope.Controls.Add(this.txtHerrarCRGul);
@@ -2297,98 +2309,158 @@
             this.gbxSlope.Controls.Add(this.lblCR);
             this.gbxSlope.Controls.Add(this.lblSlope);
             this.gbxSlope.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxSlope.Location = new System.Drawing.Point(179, 160);
+            this.gbxSlope.Location = new System.Drawing.Point(179, 134);
             this.gbxSlope.Name = "gbxSlope";
-            this.gbxSlope.Size = new System.Drawing.Size(160, 160);
-            this.gbxSlope.TabIndex = 0;
+            this.gbxSlope.Size = new System.Drawing.Size(160, 197);
+            this.gbxSlope.TabIndex = 9;
             this.gbxSlope.TabStop = false;
             this.gbxSlope.Text = "Text_Slope";
             // 
-            // txtDamerCRRod
+            // txtDamerCRBla
             // 
-            this.txtDamerCRRod.BackColor = System.Drawing.Color.Tomato;
-            this.txtDamerCRRod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDamerCRRod.Location = new System.Drawing.Point(112, 133);
-            this.txtDamerCRRod.Name = "txtDamerCRRod";
-            this.txtDamerCRRod.Size = new System.Drawing.Size(40, 20);
-            this.txtDamerCRRod.TabIndex = 215;
-            this.txtDamerCRRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDamerCRBla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtDamerCRBla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDamerCRBla.Location = new System.Drawing.Point(112, 146);
+            this.txtDamerCRBla.Name = "txtDamerCRBla";
+            this.txtDamerCRBla.Size = new System.Drawing.Size(40, 20);
+            this.txtDamerCRBla.TabIndex = 31;
+            this.txtDamerCRBla.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtDamerSlopeRod
+            // txtDamerSlopeBla
             // 
-            this.txtDamerSlopeRod.BackColor = System.Drawing.Color.Tomato;
-            this.txtDamerSlopeRod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDamerSlopeRod.Location = new System.Drawing.Point(70, 133);
-            this.txtDamerSlopeRod.Name = "txtDamerSlopeRod";
-            this.txtDamerSlopeRod.Size = new System.Drawing.Size(40, 20);
-            this.txtDamerSlopeRod.TabIndex = 214;
-            this.txtDamerSlopeRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDamerSlopeBla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtDamerSlopeBla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDamerSlopeBla.Location = new System.Drawing.Point(70, 145);
+            this.txtDamerSlopeBla.Name = "txtDamerSlopeBla";
+            this.txtDamerSlopeBla.Size = new System.Drawing.Size(40, 20);
+            this.txtDamerSlopeBla.TabIndex = 30;
+            this.txtDamerSlopeBla.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtHerrarCRRod
             // 
             this.txtHerrarCRRod.BackColor = System.Drawing.Color.Tomato;
             this.txtHerrarCRRod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHerrarCRRod.Location = new System.Drawing.Point(112, 73);
+            this.txtHerrarCRRod.Location = new System.Drawing.Point(111, 97);
             this.txtHerrarCRRod.Name = "txtHerrarCRRod";
             this.txtHerrarCRRod.Size = new System.Drawing.Size(40, 20);
-            this.txtHerrarCRRod.TabIndex = 211;
+            this.txtHerrarCRRod.TabIndex = 27;
             this.txtHerrarCRRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtHerrarSlopeRod
             // 
             this.txtHerrarSlopeRod.BackColor = System.Drawing.Color.Tomato;
             this.txtHerrarSlopeRod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHerrarSlopeRod.Location = new System.Drawing.Point(70, 73);
+            this.txtHerrarSlopeRod.Location = new System.Drawing.Point(71, 97);
             this.txtHerrarSlopeRod.Name = "txtHerrarSlopeRod";
             this.txtHerrarSlopeRod.Size = new System.Drawing.Size(40, 20);
-            this.txtHerrarSlopeRod.TabIndex = 210;
+            this.txtHerrarSlopeRod.TabIndex = 26;
             this.txtHerrarSlopeRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtHerrarCRVit
+            // 
+            this.txtHerrarCRVit.BackColor = System.Drawing.Color.White;
+            this.txtHerrarCRVit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHerrarCRVit.Location = new System.Drawing.Point(113, 33);
+            this.txtHerrarCRVit.Name = "txtHerrarCRVit";
+            this.txtHerrarCRVit.Size = new System.Drawing.Size(40, 20);
+            this.txtHerrarCRVit.TabIndex = 21;
+            this.txtHerrarCRVit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtHerrarSlopeVit
+            // 
+            this.txtHerrarSlopeVit.BackColor = System.Drawing.Color.White;
+            this.txtHerrarSlopeVit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHerrarSlopeVit.Location = new System.Drawing.Point(71, 33);
+            this.txtHerrarSlopeVit.Name = "txtHerrarSlopeVit";
+            this.txtHerrarSlopeVit.Size = new System.Drawing.Size(40, 20);
+            this.txtHerrarSlopeVit.TabIndex = 20;
+            this.txtHerrarSlopeVit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtDamerCRRod
+            // 
+            this.txtDamerCRRod.BackColor = System.Drawing.Color.Tomato;
+            this.txtDamerCRRod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDamerCRRod.Location = new System.Drawing.Point(112, 168);
+            this.txtDamerCRRod.Name = "txtDamerCRRod";
+            this.txtDamerCRRod.Size = new System.Drawing.Size(40, 20);
+            this.txtDamerCRRod.TabIndex = 33;
+            this.txtDamerCRRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtDamerSlopeRod
+            // 
+            this.txtDamerSlopeRod.BackColor = System.Drawing.Color.Tomato;
+            this.txtDamerSlopeRod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDamerSlopeRod.Location = new System.Drawing.Point(70, 168);
+            this.txtDamerSlopeRod.Name = "txtDamerSlopeRod";
+            this.txtDamerSlopeRod.Size = new System.Drawing.Size(40, 20);
+            this.txtDamerSlopeRod.TabIndex = 32;
+            this.txtDamerSlopeRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtHerrarCRBla
+            // 
+            this.txtHerrarCRBla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtHerrarCRBla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHerrarCRBla.Location = new System.Drawing.Point(112, 76);
+            this.txtHerrarCRBla.Name = "txtHerrarCRBla";
+            this.txtHerrarCRBla.Size = new System.Drawing.Size(40, 20);
+            this.txtHerrarCRBla.TabIndex = 25;
+            this.txtHerrarCRBla.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtHerrarSlopeBla
+            // 
+            this.txtHerrarSlopeBla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtHerrarSlopeBla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHerrarSlopeBla.Location = new System.Drawing.Point(71, 76);
+            this.txtHerrarSlopeBla.Name = "txtHerrarSlopeBla";
+            this.txtHerrarSlopeBla.Size = new System.Drawing.Size(40, 20);
+            this.txtHerrarSlopeBla.TabIndex = 24;
+            this.txtHerrarSlopeBla.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDamerCRGul
             // 
             this.txtDamerCRGul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtDamerCRGul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDamerCRGul.Location = new System.Drawing.Point(112, 111);
+            this.txtDamerCRGul.Location = new System.Drawing.Point(112, 125);
             this.txtDamerCRGul.Name = "txtDamerCRGul";
             this.txtDamerCRGul.Size = new System.Drawing.Size(40, 20);
-            this.txtDamerCRGul.TabIndex = 213;
+            this.txtDamerCRGul.TabIndex = 29;
             this.txtDamerCRGul.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDamerSlopeGul
             // 
             this.txtDamerSlopeGul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtDamerSlopeGul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDamerSlopeGul.Location = new System.Drawing.Point(70, 111);
+            this.txtDamerSlopeGul.Location = new System.Drawing.Point(70, 125);
             this.txtDamerSlopeGul.Name = "txtDamerSlopeGul";
             this.txtDamerSlopeGul.Size = new System.Drawing.Size(40, 20);
-            this.txtDamerSlopeGul.TabIndex = 212;
+            this.txtDamerSlopeGul.TabIndex = 28;
             this.txtDamerSlopeGul.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtHerrarCRGul
             // 
             this.txtHerrarCRGul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtHerrarCRGul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHerrarCRGul.Location = new System.Drawing.Point(112, 51);
+            this.txtHerrarCRGul.Location = new System.Drawing.Point(112, 55);
             this.txtHerrarCRGul.Name = "txtHerrarCRGul";
             this.txtHerrarCRGul.Size = new System.Drawing.Size(40, 20);
-            this.txtHerrarCRGul.TabIndex = 209;
+            this.txtHerrarCRGul.TabIndex = 23;
             this.txtHerrarCRGul.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtHerrarSlopeGul
             // 
             this.txtHerrarSlopeGul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtHerrarSlopeGul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHerrarSlopeGul.Location = new System.Drawing.Point(70, 51);
+            this.txtHerrarSlopeGul.Location = new System.Drawing.Point(71, 55);
             this.txtHerrarSlopeGul.Name = "txtHerrarSlopeGul";
             this.txtHerrarSlopeGul.Size = new System.Drawing.Size(40, 20);
-            this.txtHerrarSlopeGul.TabIndex = 208;
+            this.txtHerrarSlopeGul.TabIndex = 22;
             this.txtHerrarSlopeGul.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDamer
             // 
             this.lblDamer.AutoSize = true;
             this.lblDamer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDamer.Location = new System.Drawing.Point(6, 114);
+            this.lblDamer.Location = new System.Drawing.Point(6, 129);
             this.lblDamer.Name = "lblDamer";
             this.lblDamer.Size = new System.Drawing.Size(90, 13);
             this.lblDamer.TabIndex = 3;
@@ -2398,7 +2470,7 @@
             // 
             this.lblHerrar.AutoSize = true;
             this.lblHerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHerrar.Location = new System.Drawing.Point(6, 54);
+            this.lblHerrar.Location = new System.Drawing.Point(6, 36);
             this.lblHerrar.Name = "lblHerrar";
             this.lblHerrar.Size = new System.Drawing.Size(88, 13);
             this.lblHerrar.TabIndex = 0;
@@ -2408,7 +2480,7 @@
             // 
             this.lblCR.AutoSize = true;
             this.lblCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCR.Location = new System.Drawing.Point(122, 28);
+            this.lblCR.Location = new System.Drawing.Point(122, 17);
             this.lblCR.Name = "lblCR";
             this.lblCR.Size = new System.Drawing.Size(49, 13);
             this.lblCR.TabIndex = 1;
@@ -2418,7 +2490,7 @@
             // 
             this.lblSlope.AutoSize = true;
             this.lblSlope.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlope.Location = new System.Drawing.Point(74, 28);
+            this.lblSlope.Location = new System.Drawing.Point(74, 17);
             this.lblSlope.Name = "lblSlope";
             this.lblSlope.Size = new System.Drawing.Size(61, 13);
             this.lblSlope.TabIndex = 0;
@@ -2437,9 +2509,9 @@
             this.gbxSlopekalkylator.Controls.Add(this.rbnMan);
             this.gbxSlopekalkylator.Controls.Add(this.lblHcp);
             this.gbxSlopekalkylator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxSlopekalkylator.Location = new System.Drawing.Point(11, 160);
+            this.gbxSlopekalkylator.Location = new System.Drawing.Point(11, 134);
             this.gbxSlopekalkylator.Name = "gbxSlopekalkylator";
-            this.gbxSlopekalkylator.Size = new System.Drawing.Size(160, 160);
+            this.gbxSlopekalkylator.Size = new System.Drawing.Size(160, 173);
             this.gbxSlopekalkylator.TabIndex = 0;
             this.gbxSlopekalkylator.TabStop = false;
             this.gbxSlopekalkylator.Text = "Text_Slopekalkylator";
@@ -2567,7 +2639,7 @@
             // lblHemsida
             // 
             this.lblHemsida.AutoSize = true;
-            this.lblHemsida.Location = new System.Drawing.Point(271, 89);
+            this.lblHemsida.Location = new System.Drawing.Point(271, 86);
             this.lblHemsida.Name = "lblHemsida";
             this.lblHemsida.Size = new System.Drawing.Size(85, 13);
             this.lblHemsida.TabIndex = 0;
@@ -2584,7 +2656,7 @@
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(14, 89);
+            this.lblEpost.Location = new System.Drawing.Point(14, 86);
             this.lblEpost.Name = "lblEpost";
             this.lblEpost.Size = new System.Drawing.Size(71, 13);
             this.lblEpost.TabIndex = 8;
@@ -3046,8 +3118,8 @@
         private System.Windows.Forms.TextBox txtHerrarSlopeGul;
         private System.Windows.Forms.TextBox txtDamerCRRod;
         private System.Windows.Forms.TextBox txtDamerSlopeRod;
-        private System.Windows.Forms.TextBox txtHerrarCRRod;
-        private System.Windows.Forms.TextBox txtHerrarSlopeRod;
+        private System.Windows.Forms.TextBox txtHerrarCRBla;
+        private System.Windows.Forms.TextBox txtHerrarSlopeBla;
         private System.Windows.Forms.TextBox txtDamerCRGul;
         private System.Windows.Forms.TextBox txtDamerSlopeGul;
         private System.Windows.Forms.TextBox txtErhallnaSlagRod;
@@ -3078,5 +3150,11 @@
         private System.Windows.Forms.RadioButton rbn18Hal;
         private System.Windows.Forms.RadioButton rbn12Hal;
         private System.Windows.Forms.RadioButton rbn9Hal;
+        private System.Windows.Forms.TextBox txtHerrarCRRod;
+        private System.Windows.Forms.TextBox txtHerrarSlopeRod;
+        private System.Windows.Forms.TextBox txtHerrarCRVit;
+        private System.Windows.Forms.TextBox txtHerrarSlopeVit;
+        private System.Windows.Forms.TextBox txtDamerCRBla;
+        private System.Windows.Forms.TextBox txtDamerSlopeBla;
     }
 }

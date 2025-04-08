@@ -109,12 +109,13 @@ namespace Hooker.Gemensam
         /// <returns>True om OK, annars false</returns>
         public static bool ÄrEnIckeNegativDecimal(this string indata)
         {
+            var numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
             decimal nummer = -1;
             try
             {
                 if (!(indata == null))
                 {
-                    nummer = decimal.Parse(indata);
+                    nummer = decimal.Parse(indata, numberFormatInfo);
                 }
             }
             catch
@@ -142,12 +143,13 @@ namespace Hooker.Gemensam
                 return false;
             }
 
+            var numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
             decimal nummer;
             try
             {
                 if (!(indata == null))
                 {
-                    nummer = decimal.Parse(indata);
+                    nummer = decimal.Parse(indata, numberFormatInfo);
                 }
             }
             catch
