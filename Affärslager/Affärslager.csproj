@@ -114,6 +114,8 @@
     <Compile Include="BanaHalAktivitet.cs" />
     <Compile Include="BokningAktivitet.cs" />
     <Compile Include="CursorsAktivitet.cs" />
+    <Compile Include="EclecticAktivitet.cs" />
+    <Compile Include="EclecticRondAktivitet.cs" />
     <Compile Include="ExecuteQueryAktivitet.cs" />
     <Compile Include="GolfklubbAktivitet.cs" />
     <Compile Include="GubblagAktivitet.cs" />
