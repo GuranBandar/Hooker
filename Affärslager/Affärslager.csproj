@@ -116,6 +116,10 @@
     <Compile Include="CursorsAktivitet.cs" />
     <Compile Include="EclecticAktivitet.cs" />
     <Compile Include="EclecticRondAktivitet.cs" />
+    <Compile Include="EclecticRondResultatAktivitet.cs" />
+    <Compile Include="EclecticRondTotalAktivitet.cs" />
+    <Compile Include="EclecticTillfalleAktivitet.cs" />
+    <Compile Include="EclecticTotalAktivitet.cs" />
     <Compile Include="ExecuteQueryAktivitet.cs" />
     <Compile Include="GolfklubbAktivitet.cs" />
     <Compile Include="GubblagAktivitet.cs" />

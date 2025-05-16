@@ -41,8 +41,8 @@ namespace Hooker.Affärslager
         /// <summary>
         /// Hämtar alla eclecticrondposter i tabellen EclecticRond för angiven Bana
         /// </summary>
-        /// <param name="tavlingID">Aktuell tavling</param>
-        /// <param name="klass">Aktuell klass</param>
+        /// <param name="eclecticID">Aktuell eclectic</param>
+        /// <param name="banaNr">Aktuell bana</param>
         /// <returns>Objekt med efterfrågat data</returns>
         public List<EclecticRond> HämtaAllaEclecticRonderFörEclecticen(int eclecticID, int banaNr)
         {

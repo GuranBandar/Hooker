@@ -115,7 +115,7 @@ namespace Hooker.Datalager
                         new DatabasParameters("@HalNr", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].HalNr.ToString()),
                         new DatabasParameters("@AntalSlag", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalSlag.ToString()),
                         new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalPoang.ToString()),
-                        new DatabasParameters("@RondTotalDatum", DataTyp.VarChar, eclecticTotal.eclecticRondTotals[i].TotalUppdatDatum.ToString())
+                        new DatabasParameters("@RondTotalDatum", DataTyp.VarChar, eclecticTotal.eclecticRondTotals[i].RondTotalUppdatDatum.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
@@ -176,7 +176,7 @@ namespace Hooker.Datalager
                         new DatabasParameters("@HalNr", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].HalNr.ToString()),
                         new DatabasParameters("@AntalSlag", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalSlag.ToString()),
                         new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalPoang.ToString()),
-                        new DatabasParameters("@TotalUppdatDatum", DataTyp.VarChar, eclecticTotal.eclecticRondTotals[i].TotalUppdatDatum.ToString())
+                        new DatabasParameters("@TotalUppdatDatum", DataTyp.VarChar, eclecticTotal.eclecticRondTotals[i].RondTotalUppdatDatum.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
