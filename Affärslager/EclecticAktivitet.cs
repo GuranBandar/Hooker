@@ -34,6 +34,26 @@ namespace Hooker.Affärslager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen Tavling i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="tavlingID">Aktuell Tavling</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public Eclectic HämtaEclectic(string eclecticStatus)
+        {
+            EclecticData eclecticData = new EclecticData();
+            EclecticDS eclecticDS = eclecticData.HämtaEclectic(eclecticStatus);
+            Eclectic eclectic = new Eclectic
+            {
+                EclecticID = eclecticDS.Eclectic[0].EclecticID,
+                Namn = eclecticDS.Eclectic[0].Namn,
+                StartDatum = eclecticDS.Eclectic[0].StartDatum,
+                Eclecticstatus = eclecticDS.Eclectic[0].EclecticStatus,
+                Notering = eclecticDS.Eclectic[0].Notering
+            };
+            return eclectic;
+        }
+
+        /// <summary>
         ///     Sparar alla förändringar i Eclectic i databasen 
         /// </summary>
         /// <param name="eclectic">Aktuell Eclectic</param>

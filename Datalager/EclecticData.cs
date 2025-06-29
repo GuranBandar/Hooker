@@ -50,6 +50,42 @@ namespace Hooker.Datalager
         /// <summary>
         /// Hämtar rad från tabellen Eclectic i aktuell databas med angiven nyckel.
         /// </summary>
+        /// <param name="EclecticStatus">Aktuell eclectic</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public EclecticDS HämtaEclectic(string EclecticStatus)
+        {
+            EclecticDS ds = new EclecticDS();
+            string sql;
+
+            try
+            {
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM Eclectic e WHERE e.EclecticStatus = @EclecticStatus";
+                
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@EclecticStatus", DataTyp.Int, EclecticStatus.ToString())
+                };
+                
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen Eclectic i aktuell databas med angiven nyckel.
+        /// </summary>
         /// <param name="BanaNr">Aktuell bana</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
         public EclecticDS HämtaEclecticBana(int BanaNr)

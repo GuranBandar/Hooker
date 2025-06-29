@@ -112,12 +112,12 @@ namespace Hooker.Affärslager
                         Notering = rad.GetText("Notering"),
                         Aktuell = rad.Aktuell,
                         AntalHal = rad.AntalHal,
-                        SlopeHerrarVit = rad.SlopeHerrarVit,
-                        CrHerrarVit = rad.CrHerrarVit,
-                        SlopeHerrarBla = rad.SlopeHerrarBla,
-                        CrHerrarBla = rad.CrHerrarBla,
-                        SlopeDamerBla = rad.SlopeDamerBla,
-                        CrDamerBla = rad.CrDamerBla
+                        SlopeHerrarVit = (rad.IsSlopeHerrarVitNull()) ? 0 : rad.SlopeHerrarVit,
+                        CrHerrarVit = (rad.IsCrHerrarVitNull()) ? 0 : rad.CrHerrarVit,
+                        SlopeHerrarBla = (rad.IsSlopeHerrarBlaNull()) ? 0 : rad.SlopeHerrarBla,
+                        CrHerrarBla = (rad.IsCrHerrarBlaNull()) ? 0 : rad.CrHerrarBla,
+                        SlopeDamerBla = (rad.IsSlopeDamerBlaNull()) ? 0 : rad.SlopeDamerBla,
+                        CrDamerBla = (rad.IsCrDamerBlaNull()) ? 0 : rad.CrDamerBla
                     });
                 }
             }
@@ -165,13 +165,13 @@ namespace Hooker.Affärslager
                         Notering = rad.GetText("Notering"),
                         Aktuell = rad.Aktuell,
                         AntalHal = rad.AntalHal,
-                        SlopeHerrarVit = rad.SlopeHerrarVit,
-                        CrHerrarVit = rad.CrHerrarVit,
-                        SlopeHerrarBla = rad.SlopeHerrarBla,
-                        CrHerrarBla = rad.CrHerrarBla,
-                        SlopeDamerBla = rad.SlopeDamerBla,
-                        CrDamerBla = rad.CrDamerBla
-                    });
+                        SlopeHerrarVit = (rad.IsSlopeHerrarVitNull()) ? 0 : rad.SlopeHerrarVit,
+                        CrHerrarVit = (rad.IsCrHerrarVitNull()) ? 0 : rad.CrHerrarVit,
+                        SlopeHerrarBla = (rad.IsSlopeHerrarBlaNull()) ? 0 : rad.SlopeHerrarBla,
+                        CrHerrarBla = (rad.IsCrHerrarBlaNull()) ? 0 : rad.CrHerrarBla,
+                        SlopeDamerBla = (rad.IsSlopeDamerBlaNull()) ? 0 : rad.SlopeDamerBla,
+                        CrDamerBla = (rad.IsCrDamerBlaNull()) ? 0 : rad.CrDamerBla
+                });
                 }
             }
             return bana;

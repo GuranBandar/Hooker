@@ -132,7 +132,7 @@ namespace Hooker.Datalager
             try
             {
                 sql = "SELECT e.RondID FROM EclecticRond e " +
-                    " ORDER BY e.EclecticRondID DESC";
+                    " ORDER BY e.RondID DESC";
                 eclecticRondDS = DatabasAccess.RunSql(sql);
             }
             catch (HookerException hex)
@@ -146,7 +146,7 @@ namespace Hooker.Datalager
                     DatabasAccess.Dispose();
                 }
             }
-            nyttRondID = eclecticRondDS.Tables[0].Rows[0]["EclecticID"].ToString();
+            nyttRondID = eclecticRondDS.Tables[0].Rows[0]["RondID"].ToString();
             return nyttRondID;
         }
 
@@ -164,10 +164,10 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
                 sql = "INSERT INTO EclecticRond(EclecticID, RondNotering, RondNamn, RondDatum, RondStatus, BanaNr, " +
-                    " AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum " +
+                    "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum) " +
                     "VALUES " +
-                    "(@EclecticID, @RondNotering, @RondNamn, @RondDatum, @RondStatus, @BanaNr, )" +
-                    "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum";
+                    "(@EclecticID, @RondNotering, @RondNamn, @RondDatum, @RondStatus, @BanaNr, " +
+                    "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum)";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -176,6 +176,7 @@ namespace Hooker.Datalager
                     new DatabasParameters("@RondNamn", DataTyp.VarChar, eclecticRond.RondNamn.ToString()),
                     new DatabasParameters("@RondDatum", DataTyp.VarChar, eclecticRond.RondDatum.ToString()),
                     new DatabasParameters("@RondStatus", DataTyp.Char, eclecticRond.Rondstatus.ToString()),
+                    new DatabasParameters("@BanaNr", DataTyp.Int, eclecticRond.BanaNr.ToString()),
                     new DatabasParameters("@AnvandarNamnSkapad", DataTyp.VarChar, eclecticRond.AnvandarNamnSkapad.ToString()),
                     new DatabasParameters("@SkapadDatum", DataTyp.VarChar, eclecticRond.SkapadDatum.ToString()),
                     new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, eclecticRond.AnvandarNamnUppdat.ToString()),
