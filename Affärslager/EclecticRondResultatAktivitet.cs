@@ -15,13 +15,13 @@ namespace Hooker.Affärslager
         /// <summary>
         /// Hämtar en post i tabellen EclecticRondResultat
         /// </summary>
-        /// <param name="tillfalleID">Aktuell tillfäller</param>
+        /// <param name="deltagarID">Aktuell RondDeltagare</param>
         /// <param name="spelarID">Aktuellt spelarID</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public List<EclecticRondResultat> HämtaEclecticRondResultat(int tillfalleID, int spelarID)
+        public List<EclecticRondResultat> HämtaEclecticRondResultat(int deltagarID, int spelarID)
         {
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
-            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(tillfalleID, spelarID);
+            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(deltagarID, spelarID);
             List<EclecticRondResultat> eclecticRondResultats = null;
 
             if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count > 0)
@@ -31,7 +31,7 @@ namespace Hooker.Affärslager
                 {
                     eclecticRondResultats.Add(new EclecticRondResultat()
                     {
-                        TillfalleID = rad.TillfalleID,
+                        DeltagarID = rad.DeltagarID,
                         SpelarID = rad.SpelarID,
                         HalNr = rad.HalNr,
                         AntalSlag = rad.AntalSlag,
@@ -51,14 +51,14 @@ namespace Hooker.Affärslager
         /// <param name="spelarID">Aktuellt SpelarID</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void Spara(EclecticTillfalle eclecticTillfalle, int tillfallerondID, int spelarID, ref string felID, ref string feltext)
+        public void Spara(EclecticRondDeltagare eclecticRondDeltagare, int deltagarID, int spelarID, ref string felID, ref string feltext)
         {
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
             EclecticRondResultatDS eclecticRondResultatDS;
 
-            foreach (EclecticRondResultat eclecticRondResultat in eclecticTillfalle.eclecticRondResultats)
+            foreach (EclecticRondResultat eclecticRondResultat in eclecticRondDeltagare.eclecticRondResultats)
             {
-                eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat.TillfalleID,
+                eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat.DeltagarID,
                     eclecticRondResultat.SpelarID);
 
                 if (eclecticRondResultatDS.EclecticRondResultat.Count > 0)

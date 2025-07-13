@@ -118,7 +118,7 @@
     <Compile Include="EclecticRondAktivitet.cs" />
     <Compile Include="EclecticRondResultatAktivitet.cs" />
     <Compile Include="EclecticRondTotalAktivitet.cs" />
-    <Compile Include="EclecticTillfalleAktivitet.cs" />
+    <Compile Include="EclecticRondDeltagareAktivitet.cs" />
     <Compile Include="EclecticTotalAktivitet.cs" />
     <Compile Include="ExecuteQueryAktivitet.cs" />
     <Compile Include="GolfklubbAktivitet.cs" />

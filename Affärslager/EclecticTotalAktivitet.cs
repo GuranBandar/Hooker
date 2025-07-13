@@ -40,7 +40,7 @@ namespace Hooker.Affärslager
                         ErhallnaSlag = rad.ErhallnaSlag,
                         Tee = rad.Tee,
                         BanaNr = rad.BanaNr,
-                        TotalDatum = rad.TotalDatum
+                        TotalUppdatDatum = rad.TotalDatum
                     });
                 }
             }
@@ -74,7 +74,7 @@ namespace Hooker.Affärslager
                         ErhallnaSlag = rad.ErhallnaSlag,
                         Tee = rad.Tee,
                         BanaNr = rad.BanaNr,
-                        TotalDatum = rad.TotalDatum
+                        TotalUppdatDatum = rad.TotalDatum
                     });
                 }
             }
