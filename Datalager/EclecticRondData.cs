@@ -9,7 +9,7 @@ using System.Data;
 namespace Hooker.Datalager
 {
     /// <summary>
-    /// Datalagerklass för Eclectic
+    /// Datalagerklass för EclecticRond
     /// </summary>
     public sealed class EclecticRondData : AbstractDataLager
     {

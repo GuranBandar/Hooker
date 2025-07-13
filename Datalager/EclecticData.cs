@@ -161,16 +161,22 @@ namespace Hooker.Datalager
             try
             {
                 DatabasAccess.SkapaTransaktion();
-                sql = "INSERT INTO Eclectic(Namn, StartDatum, EclecticStatus, Notering) " +
+                sql = "INSERT INTO Eclectic(Namn, StartDatum, EclecticStatus, Notering, " +
+                    "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum)" +
                     "VALUES " +
-                    "(@Namn, @StartDatum, @EclecticStatus, @Notering)";
+                    "(@Namn, @StartDatum, @EclecticStatus, @Notering " +
+                    "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum)";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@Namn", DataTyp.VarChar, eclectic.Namn.ToString()),
                     new DatabasParameters("@StartDatum", DataTyp.VarChar, eclectic.StartDatum.ToString()),
                     new DatabasParameters("@EclecticStatus", DataTyp.VarChar, eclectic.Eclecticstatus.ToString()),
-                    new DatabasParameters("@Notering", DataTyp.VarChar, eclectic.Notering.ToString())
+                    new DatabasParameters("@Notering", DataTyp.VarChar, eclectic.Notering.ToString()),
+                    new DatabasParameters("@AnvandarNamnSkapad", DataTyp.VarChar, eclectic.AnvandarNamnSkapad.ToString()),
+                    new DatabasParameters("@SkapadDatum", DataTyp.VarChar, eclectic.SkapadDatum.ToString()),
+                    new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, eclectic.AnvandarNamnUppdat.ToString()),
+                    new DatabasParameters("@UppdatDatum", DataTyp.VarChar, eclectic.UppdatDatum.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();
@@ -217,7 +223,8 @@ namespace Hooker.Datalager
                 DatabasAccess.SkapaTransaktion();
                 sql = "UPDATE Eclectic " +
                     "SET Namn = @Namn, StartDatum = @StartDatum, EclecticStatus = @EclecticStatus, " +
-                    "Notering = @Notering " +
+                    "Notering = @Notering, AnvandarNamnSkapad = @AnvandarNamnSkapad, SkapadDatum = @SkapadDatum, " +
+                    "AnvandarNamnUppdat = @AnvandarNamnUppdat, UppdatDatum = @UppdatDatum " +
                     "WHERE EclecticID = @EclecticID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -225,7 +232,11 @@ namespace Hooker.Datalager
                     new DatabasParameters("@Namn", DataTyp.VarChar, eclectic.Namn.ToString()),
                     new DatabasParameters("@StartDatum", DataTyp.VarChar, eclectic.StartDatum.ToString()),
                     new DatabasParameters("@EclecticStatus", DataTyp.Char, eclectic.Eclecticstatus.ToString()),
-                    new DatabasParameters("@Notering", DataTyp.VarChar, eclectic.Notering.ToString())
+                    new DatabasParameters("@Notering", DataTyp.VarChar, eclectic.Notering.ToString()),
+                    new DatabasParameters("@AnvandarNamnSkapad", DataTyp.VarChar, eclectic.AnvandarNamnSkapad.ToString()),
+                    new DatabasParameters("@SkapadDatum", DataTyp.VarChar, eclectic.SkapadDatum.ToString()),
+                    new DatabasParameters("@AnvandarNamnUppdat", DataTyp.VarChar, eclectic.AnvandarNamnUppdat.ToString()),
+                    new DatabasParameters("@UppdatDatum", DataTyp.VarChar, eclectic.UppdatDatum.ToString())
                 };
                 DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();

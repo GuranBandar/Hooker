@@ -327,7 +327,7 @@
     <Compile Include="EclecticRondData.cs" />
     <Compile Include="EclecticRondResultatData.cs" />
     <Compile Include="EclecticRondTotalData.cs" />
-    <Compile Include="EclecticTillfalleData.cs" />
+    <Compile Include="EclecticTRondDeltagare.cs" />
     <Compile Include="EclecticTotalData.cs" />
     <Compile Include="ExecuteQueryData.cs" />
     <Compile Include="GolfklubbData.cs" />

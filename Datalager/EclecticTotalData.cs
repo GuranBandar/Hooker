@@ -110,7 +110,7 @@ namespace Hooker.Datalager
                         new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclectic.eclecticTotals[i].ErhallnaSlag.ToString()),
                         new DatabasParameters("@Tee", DataTyp.Char, eclectic.eclecticTotals[i].Tee.ToString()),
                         new DatabasParameters("@BanaNr", DataTyp.Int, eclectic.eclecticTotals[i].BanaNr.ToString()),
-                        new DatabasParameters("@TotalDatum", DataTyp.VarChar, eclectic.eclecticTotals[i].TotalDatum.ToString())
+                        new DatabasParameters("@TotalDatum", DataTyp.VarChar, eclectic.eclecticTotals[i].TotalUppdatDatum.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
@@ -171,7 +171,7 @@ namespace Hooker.Datalager
                     new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclecticTotal.ErhallnaSlag.ToString()),
                     new DatabasParameters("@Tee", DataTyp.Char, eclecticTotal.Tee.ToString()),
                     new DatabasParameters("@BanaNr", DataTyp.Int, eclecticTotal.BanaNr.ToString()),
-                    new DatabasParameters("@TotalDatum", DataTyp.VarChar, eclecticTotal.TotalDatum.ToString())
+                    new DatabasParameters("@TotalDatum", DataTyp.VarChar, eclecticTotal.TotalUppdatDatum.ToString())
                 };
                 
                 DatabasAccess.RunSql(sql, dbParameters);

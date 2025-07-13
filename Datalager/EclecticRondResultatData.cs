@@ -15,9 +15,9 @@ namespace Hooker.Datalager
         /// <summary>
         /// Hämtar rad från tabellen EclecticRondResultat i aktuell databas med angiven nyckel.
         /// </summary>
-        /// <param name="TillfalleID">Aktuell EclecticRondResultat</param>
+        /// <param name="RondDeltagarID">Aktuell EclecticRondResultat</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
-        public EclecticRondResultatDS HämtaEclecticRondResultat(int TillfalleID)
+        public EclecticRondResultatDS HämtaEclecticRondResultat(int RondDeltagarID)
         {
             EclecticRondResultatDS ds = new EclecticRondResultatDS();
             string sql;
@@ -25,11 +25,11 @@ namespace Hooker.Datalager
             try
             {
                 ds.EnforceConstraints = false;
-                sql = "SELECT e.* FROM EclecticRondResultat e WHERE e.TillfalleID = @TillfalleID";
+                sql = "SELECT e.* FROM EclecticRondResultat e WHERE e.RondDeltagarID = @RondDeltagarID";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
-                    new DatabasParameters("@TillfalleID", DataTyp.Int, TillfalleID.ToString())
+                    new DatabasParameters("@RondDeltagarID", DataTyp.Int, RondDeltagarID.ToString())
                 };
 
                 DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
@@ -51,10 +51,10 @@ namespace Hooker.Datalager
         /// <summary>
         /// Hämtar rad från tabellen EclecticRondResultat i aktuell databas med angiven nyckel.
         /// </summary>
-        /// <param name="TillfalleID">Aktuell EclecticRondResultat</param>
+        /// <param name="RondDeltagarID">Aktuell EclecticRondResultat</param>
         /// <param name="SpelarID">Aktuell spelare</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
-        public EclecticRondResultatDS HämtaEclecticRondResultat(int TillfalleID, int SpelarID)
+        public EclecticRondResultatDS HämtaEclecticRondResultat(int RondDeltagarID, int SpelarID)
         {
             EclecticRondResultatDS ds = new EclecticRondResultatDS();
             string sql;
@@ -62,12 +62,12 @@ namespace Hooker.Datalager
             try
             {
                 ds.EnforceConstraints = false;
-                sql = "SELECT e.* FROM EclecticRondResultat e WHERE e.TillfalleID = @TillfalleID " +
+                sql = "SELECT e.* FROM EclecticRondResultat e WHERE e.RondDeltagarID = @RondDeltagarID " +
                     "AND e.SpelarID = @SpelarID";
                 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
-                    new DatabasParameters("@TillfalleID", DataTyp.Int, TillfalleID.ToString()),
+                    new DatabasParameters("@RondDeltagarID", DataTyp.Int, RondDeltagarID.ToString()),
                     new DatabasParameters("@SpelarID", DataTyp.Int, SpelarID.ToString())
                 };
                 
@@ -90,31 +90,31 @@ namespace Hooker.Datalager
         /// <summary>
         /// Ny EclecticRondResultat.
         /// </summary>
-        /// <param name="EclecticTillfalle">EclecticTillfalle</param>
+        /// <param name="EclecticRondDeltagare">EclecticRondDeltagare</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void SparaNyEclecticRondResultat(EclecticTillfalle eclecticTillfalle, ref string felID, ref string feltext)
+        public void SparaNyEclecticRondResultat(EclecticRondDeltagare eclecticRondDeltagare, ref string felID, ref string feltext)
         {
             string sql;
 
             try
             {
                 DatabasAccess.SkapaTransaktion();
-                for (int i = 0; i < eclecticTillfalle.eclecticRondResultats.Length; i++)
+                for (int i = 0; i < eclecticRondDeltagare.eclecticRondResultats.Length; i++)
                 {
-                    sql = "INSERT INTO EclecticRondResultat(TillfalleID, SpelarID, HalNr, AntalSlag, AntalPoang, " +
+                    sql = "INSERT INTO EclecticRondResultat(DeltagarID, SpelarID, HalNr, AntalSlag, AntalPoang, " +
                         "RondDatum) " +
                         "VALUES " +
-                        "(@TillfalleID, @SpelarID, @HalNr, @AntalSlag, @AntalPoang, @RondDatum)";
+                        "(@DeltagarID, @SpelarID, @HalNr, @AntalSlag, @AntalPoang, @RondDatum)";
 
                     List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                     {
-                        new DatabasParameters("@TillfalleID", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].TillfalleID.ToString()),
-                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].SpelarID.ToString()),
-                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].HalNr.ToString()),
-                        new DatabasParameters("@AntalSlag", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].AntalSlag.ToString()),
-                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].AntalPoang.ToString()),
-                        new DatabasParameters("@RondDatum", DataTyp.VarChar, eclecticTillfalle.eclecticRondResultats[i].RondDatum.ToString())
+                        new DatabasParameters("@DeltagarID", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].DeltagarID.ToString()),
+                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].SpelarID.ToString()),
+                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].HalNr.ToString()),
+                        new DatabasParameters("@AntalSlag", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].AntalSlag.ToString()),
+                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].AntalPoang.ToString()),
+                        new DatabasParameters("@RondDatum", DataTyp.VarChar, eclecticRondDeltagare.eclecticRondResultats[i].RondDatum.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
@@ -153,7 +153,7 @@ namespace Hooker.Datalager
         /// <param name="EclecticTillfalle">EclecticTillfalle</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void SparaEclecticRondResultat(EclecticTillfalle eclecticTillfalle, ref string felID, ref string feltext)
+        public void SparaEclecticRondResultat(EclecticRondDeltagare eclecticRondDeltagare, ref string felID, ref string feltext)
         {
             string sql;
 
@@ -161,20 +161,20 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
 
-                for (int i = 0; i < eclecticTillfalle.eclecticRondResultats.Length; i++)
+                for (int i = 0; i < eclecticRondDeltagare.eclecticRondResultats.Length; i++)
                 {
                     sql = "UPDATE EclecticRondResultat " +
                         "SET HalNr = @HalNr, AntalSlag = @AntalSlag, AntalPoang = @AntalPoang, RondDatum = @RondDatum " +
-                        "WHERE TillfalleID = @TillfalleID AND SpelarID = @SpelarID";
+                        "WHERE DeltagarID = @DeltagarID AND SpelarID = @SpelarID";
 
                       List < DatabasParameters> dbParameters = new List<DatabasParameters>()
                     {
-                        new DatabasParameters("@TillfalleID", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].TillfalleID.ToString()),
-                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].SpelarID.ToString()),
-                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].HalNr.ToString()),
-                        new DatabasParameters("@AntalSlag", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].AntalSlag.ToString()),
-                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticTillfalle.eclecticRondResultats[i].AntalPoang.ToString()),
-                        new DatabasParameters("@RondDatum", DataTyp.VarChar, eclecticTillfalle.eclecticRondResultats[i].RondDatum.ToString())
+                        new DatabasParameters("@DeltagarID", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].DeltagarID.ToString()),
+                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].SpelarID.ToString()),
+                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].HalNr.ToString()),
+                        new DatabasParameters("@AntalSlag", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].AntalSlag.ToString()),
+                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticRondDeltagare.eclecticRondResultats[i].AntalPoang.ToString()),
+                        new DatabasParameters("@RondDatum", DataTyp.VarChar, eclecticRondDeltagare.eclecticRondResultats[i].RondDatum.ToString())
                     };
 
                     DatabasAccess.RunSql(sql, dbParameters);
