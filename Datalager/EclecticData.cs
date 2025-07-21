@@ -162,9 +162,9 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
                 sql = "INSERT INTO Eclectic(Namn, StartDatum, EclecticStatus, Notering, " +
-                    "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum)" +
+                    "AnvandarNamnSkapad, SkapadDatum, AnvandarNamnUppdat, UppdatDatum) " +
                     "VALUES " +
-                    "(@Namn, @StartDatum, @EclecticStatus, @Notering " +
+                    "(@Namn, @StartDatum, @EclecticStatus, @Notering, " +
                     "@AnvandarNamnSkapad, @SkapadDatum, @AnvandarNamnUppdat, @UppdatDatum)";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()

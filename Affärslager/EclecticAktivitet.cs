@@ -28,7 +28,11 @@ namespace Hooker.Affärslager
                 Namn = eclecticDS.Eclectic[0].Namn,
                 StartDatum = eclecticDS.Eclectic[0].StartDatum,
                 Eclecticstatus = eclecticDS.Eclectic[0].EclecticStatus,
-                Notering = eclecticDS.Eclectic[0].Notering
+                Notering = eclecticDS.Eclectic[0].Notering,
+                AnvandarNamnSkapad = eclecticDS.Eclectic[0].AnvandarNamnSkapad,
+                SkapadDatum = eclecticDS.Eclectic[0].SkapadDatum,
+                AnvandarNamnUppdat = eclecticDS.Eclectic[0].AnvandarNamnUppdat,
+                UppdatDatum = eclecticDS.Eclectic[0].UppdatDatum
             };
             return eclectic;
         }
@@ -36,20 +40,33 @@ namespace Hooker.Affärslager
         /// <summary>
         /// Hämtar rad från tabellen Tavling i aktuell databas med angiven nyckel.
         /// </summary>
-        /// <param name="tavlingID">Aktuell Tavling</param>
+        /// <param name="eclecticStatus">Aktuell Tavling</param>
         /// <returns>Objekt med efterfrågat data</returns>
         public Eclectic HämtaEclectic(string eclecticStatus)
         {
             EclecticData eclecticData = new EclecticData();
             EclecticDS eclecticDS = eclecticData.HämtaEclectic(eclecticStatus);
-            Eclectic eclectic = new Eclectic
+            Eclectic eclectic;
+
+            if (eclecticDS.Eclectic.Count == 0)
             {
-                EclecticID = eclecticDS.Eclectic[0].EclecticID,
-                Namn = eclecticDS.Eclectic[0].Namn,
-                StartDatum = eclecticDS.Eclectic[0].StartDatum,
-                Eclecticstatus = eclecticDS.Eclectic[0].EclecticStatus,
-                Notering = eclecticDS.Eclectic[0].Notering
-            };
+                eclectic = new Eclectic();
+            }
+            else
+            {
+                eclectic = new Eclectic
+                {
+                    EclecticID = eclecticDS.Eclectic[0].EclecticID,
+                    Namn = eclecticDS.Eclectic[0].Namn,
+                    StartDatum = eclecticDS.Eclectic[0].StartDatum,
+                    Eclecticstatus = eclecticDS.Eclectic[0].EclecticStatus,
+                    Notering = eclecticDS.Eclectic[0].Notering,
+                    AnvandarNamnSkapad = eclecticDS.Eclectic[0].AnvandarNamnSkapad,
+                    SkapadDatum = eclecticDS.Eclectic[0].SkapadDatum,
+                    AnvandarNamnUppdat = eclecticDS.Eclectic[0].AnvandarNamnUppdat,
+                    UppdatDatum = eclecticDS.Eclectic[0].UppdatDatum
+                };
+            }
             return eclectic;
         }
 
