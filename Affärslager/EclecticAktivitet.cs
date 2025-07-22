@@ -3,6 +3,8 @@ using Hooker.Datalager;
 using Hooker.Dataset;
 using Hooker.Gemensam;
 using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -13,6 +15,41 @@ namespace Hooker.Affärslager
     /// </summary>
     public sealed class EclecticAktivitet : SökVillkor
     {
+
+        /// <summary>
+        /// Hämtar alla rader från tabellen Eclectic i aktuell databas.
+        /// </summary>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public List<Eclectic> HämtaAllaEclectic()
+        {
+            DataSet EclecticDS = new DataSet();
+            EclecticData EclecticData = new EclecticData();
+            EclecticDS = EclecticData.HämtaAllaEclectic();
+            List<Eclectic> Eclectic = new List<Eclectic>();
+
+            if (EclecticDS.Tables[0].Rows.Count > 0)
+            {
+                Eclectic = new List<Eclectic>(EclecticDS.Tables[0].Rows.Count);
+                foreach (DataRow rad in EclecticDS.Tables[0].Rows)
+                {
+                    //Skapa EclecticObjektet
+                    Eclectic.Add(new Eclectic()
+                    {
+                        EclecticID = (int)rad["EclecticID"],
+                        Namn = rad["Namn"].ToString(),
+                        StartDatum = DateTime.Parse(rad["StartDatum"].ToString()),
+                        Eclecticstatus = rad["Eclecticstatus"].ToString(),
+                        Notering = rad["Notering"].ToString(),
+                        AnvandarNamnSkapad = rad["AnvandarNamnSkapad"].ToString(),
+                        SkapadDatum = rad["SkapadDatum"].ToString(),
+                        AnvandarNamnUppdat = rad["AnvandarNamnUppdat"].ToString(),
+                        UppdatDatum = rad["UppdatDatum"].ToString(),
+                    }); ;
+                }
+            }
+
+            return Eclectic;
+        }
         /// <summary>
         /// Hämtar rad från tabellen Tavling i aktuell databas med angiven nyckel.
         /// </summary>

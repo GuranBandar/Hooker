@@ -14,6 +14,35 @@ namespace Hooker.Datalager
     public sealed class EclecticData : AbstractDataLager
     {
         /// <summary>
+        /// Hämtar alla rader från tabellen Eclectic i aktuell databas.
+        /// </summary>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public DataSet HämtaAllaEclectic()
+        {
+            EclecticDS ds = new EclecticDS();
+            string sql;
+
+            try
+            {
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM Eclectic e ORDER BY e.Startdatum desc";
+                DatabasAccess.FyllEnkeltDataSet(sql, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
         /// Hämtar rad från tabellen Eclectic i aktuell databas med angiven nyckel.
         /// </summary>
         /// <param name="EclecticID">Aktuell bokning</param>
