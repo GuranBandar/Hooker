@@ -31,10 +31,10 @@ namespace Hooker.Affärslager
             EclecticRond.RondDatum = EclecticRondDS.EclecticRond[0].RondDatum;
             EclecticRond.Rondstatus = EclecticRondDS.EclecticRond[0].RondStatus;
             EclecticRond.BanaNr = EclecticRondDS.EclecticRond[0].BanaNr;
-            EclecticRond.AnvandarNamnSkapad = EclecticRondDS.EclecticRond[0].AnvandarNamnSkapad;
-            EclecticRond.SkapadDatum = EclecticRondDS.EclecticRond[0].SkapadDatum;
-            EclecticRond.AnvandarNamnUppdat = EclecticRondDS.EclecticRond[0].AnvandarNamnUppdat;
-            EclecticRond.UppdatDatum = EclecticRondDS.EclecticRond[0].UppdatDatum;
+            EclecticRond.AnvandarNamnRondSkapad = EclecticRondDS.EclecticRond[0].AnvandarNamnRondSkapad;
+            EclecticRond.RondSkapadDatum = EclecticRondDS.EclecticRond[0].RondSkapadDatum;
+            EclecticRond.AnvandarNamnRondUppdat = EclecticRondDS.EclecticRond[0].AnvandarNamnRondUppdat;
+            EclecticRond.RondUppdatDatum = EclecticRondDS.EclecticRond[0].RondUppdatDatum;
             return EclecticRond;
         }
 
@@ -64,10 +64,10 @@ namespace Hooker.Affärslager
                         RondDatum = rad.RondDatum,
                         Rondstatus = rad.RondStatus,
                         BanaNr = rad.BanaNr,
-                        AnvandarNamnSkapad = rad.AnvandarNamnSkapad,
-                        SkapadDatum = rad.SkapadDatum,
-                        AnvandarNamnUppdat = rad.AnvandarNamnUppdat,
-                        UppdatDatum = rad.UppdatDatum
+                        AnvandarNamnRondSkapad = rad.AnvandarNamnRondSkapad,
+                        RondSkapadDatum = rad.RondSkapadDatum,
+                        AnvandarNamnRondUppdat = rad.AnvandarNamnRondUppdat,
+                        RondUppdatDatum = rad.RondUppdatDatum
                     });
                 }
             }
@@ -81,10 +81,10 @@ namespace Hooker.Affärslager
         /// <param name="nyEclecticRond">Ny EclecticRond, true or false</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int Spara(EclecticRond eclecticRond, bool nyEclecticRond, ref string felID, ref string feltext)
+        public int Spara(Eclectic eclectic, bool nyEclecticRond, ref string felID, ref string feltext)
         {
             int nyttRondID = 0;
-            bool kollaOK = Kolla(eclecticRond, ref felID, ref feltext);
+            bool kollaOK = true;
 
             if (kollaOK)
             {
@@ -92,13 +92,13 @@ namespace Hooker.Affärslager
 
                 if (nyEclecticRond)
                 {
-                    eclecticRondData.SparaNyEclecticRond(eclecticRond, ref felID, ref feltext);
+                    eclecticRondData.SparaNyEclecticRond(eclectic, ref felID, ref feltext);
                     nyttRondID = Convert.ToInt32(eclecticRondData.HämtaMaxRondID());
-                    eclecticRond.RondID = nyttRondID    ;
+                    eclectic.eclecticRonds[0].RondID = nyttRondID;
                 }
                 else
                 {
-                    eclecticRondData.SparaEclecticRond(eclecticRond, ref felID, ref feltext);
+                    eclecticRondData.SparaEclecticRond(eclectic, ref felID, ref feltext);
                 }
             }
             else
@@ -114,9 +114,9 @@ namespace Hooker.Affärslager
         /// <param name="eclecticRond">Tavling med informationen som ska kollas</param>
         /// <param name="felID">Ev felID som returneras</param>
         /// <param name="felmeddelande">Ev felmeddelande som returneras</param>
-        private bool Kolla(EclecticRond eclecticRond, ref string felID, ref string felmeddelande)
+        private bool Kolla(Eclectic eclectic, ref string felID, ref string felmeddelande)
         {
-            if (string.IsNullOrEmpty(eclecticRond.BanaNr.ToString()))
+            if (string.IsNullOrEmpty(eclectic.eclecticRonds[0].BanaNr.ToString()))
             {
                 felID = "BANASAKNAS";
                 felmeddelande = "";

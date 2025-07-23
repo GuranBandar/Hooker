@@ -52,6 +52,10 @@ namespace Hooker_GUI
         public bool NyRunda { get; set; }
         #endregion
 
+        private bool niohal;
+        private bool tolvhal;
+        private bool artonhal;
+
         /// <summary>
         /// Konstruktor
         /// </summary>
@@ -501,9 +505,9 @@ namespace Hooker_GUI
         /// <param name="cc"></param>
         private void HanteraAntalHal(int halnr, System.Windows.Forms.Control cc)
         {
-            bool niohal = false;
-            bool tolvhal = false;
-            bool artonhal = false;
+            niohal = false;
+            tolvhal = false;
+            artonhal = false;
 
             switch (Bana.AntalHal)
             {
@@ -778,6 +782,7 @@ namespace Hooker_GUI
                 txtSummaPuttarUt.Text = ("N").Formatera(puttarUt);
                 txtSummaSlagUt.Text = ("N").Formatera(slagUt);
 
+                //Kolla om bara nio eller 12 hål, då ska inte spökhålen räknas
                 // och fortrsätt med hålen in
                 foreach (System.Windows.Forms.Control cc in gbxIn.Controls)
                 {
