@@ -15,11 +15,45 @@ namespace Hooker.Affärslager
     public sealed class EclecticRondAktivitet
     {
         /// <summary>
-        /// Hämtar en post i tabellen EclecticRond
+        /// Hämtar alla rader från tabellen EclecticRond i aktuell databas.
         /// </summary>
-        /// <param name="rondID">Aktuell rond</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public EclecticRond HämtaEclecticRond(int rondID)
+        public List<EclecticRond> HämtaAllaEclecticRonder(int eclecticID)
+        {
+            EclecticRondData eclecticRondData = new EclecticRondData();
+            EclecticRondDS eclecticRondDS = eclecticRondData.HämtaEclecticRonder(eclecticID);
+            List<EclecticRond> eclecticRonds = null;
+
+            if (eclecticRondDS.EclecticRond.Rows.Count > 0)
+            {
+                eclecticRonds = new List<EclecticRond>(eclecticRondDS.EclecticRond.Rows.Count);
+                foreach (EclecticRondDS.EclecticRondRow rad in eclecticRondDS.EclecticRond.Rows)
+                {
+                    eclecticRonds.Add(new EclecticRond()
+                    {
+                        RondID = rad.RondID,
+                        EclecticID = rad.EclecticID,
+                        RondNotering = rad.RondNotering,
+                        RondNamn = rad.RondNamn,
+                        RondDatum = rad.RondDatum,
+                        Rondstatus = rad.RondStatus,
+                        BanaNr = rad.BanaNr,
+                        AnvandarNamnRondSkapad = rad.AnvandarNamnRondSkapad,
+                        RondSkapadDatum = rad.RondSkapadDatum,
+                        AnvandarNamnRondUppdat = rad.AnvandarNamnRondUppdat,
+                        RondUppdatDatum = rad.RondUppdatDatum
+                    });
+                }
+            }
+            return eclecticRonds;
+        }
+
+    /// <summary>
+    /// Hämtar en post i tabellen EclecticRond
+    /// </summary>
+    /// <param name="rondID">Aktuell rond</param>
+    /// <returns>Objekt med efterfrågat data</returns>
+    public EclecticRond HämtaEclecticRond(int rondID)
         {
             EclecticRondData eclecticRondData = new EclecticRondData();
             EclecticRondDS EclecticRondDS = eclecticRondData.HämtaEclecticRond(rondID);

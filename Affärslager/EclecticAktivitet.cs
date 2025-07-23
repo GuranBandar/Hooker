@@ -15,7 +15,6 @@ namespace Hooker.Affärslager
     /// </summary>
     public sealed class EclecticAktivitet : SökVillkor
     {
-
         /// <summary>
         /// Hämtar alla rader från tabellen Eclectic i aktuell databas.
         /// </summary>
@@ -50,6 +49,7 @@ namespace Hooker.Affärslager
 
             return Eclectic;
         }
+
         /// <summary>
         /// Hämtar rad från tabellen Tavling i aktuell databas med angiven nyckel.
         /// </summary>

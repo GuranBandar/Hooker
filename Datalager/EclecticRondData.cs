@@ -52,6 +52,42 @@ namespace Hooker.Datalager
         /// </summary>
         /// <param name="RondID">Aktuell bokning</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
+        public EclecticRondDS HämtaEclecticRonder(int EclecticID)
+        {
+            EclecticRondDS ds = new EclecticRondDS();
+            string sql;
+
+            try
+            {
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM EclecticRond e WHERE e.EclecticID = @EclecticID";
+
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@EclecticID", DataTyp.Int, EclecticID.ToString()),
+                };
+
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+      
+        /// <summary>
+        /// Hämtar rad från tabellen EclecticRond i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="RondID">Aktuell bokning</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
         public EclecticRondDS HämtaEclecticRondBana(int EclecticID, int BanaNr)
         {
             EclecticRondDS ds = new EclecticRondDS();
@@ -165,7 +201,10 @@ namespace Hooker.Datalager
                 DatabasAccess.SkapaTransaktion();
                 for (int i = 0; i < eclectic.eclecticRonds.Length; i++)
                 {
-                    sql = "INSERT INTO EclecticRond(EclecticID, RondNotering, RondNamn, RondDatum, RondStatus, BanaNr, " +
+                    sql = "INSERT INTO EclecticRond(EclecticID, RondNotering, RondNamn, RondDatum, " +
+                        "RondStatus, BanaNr, AnvandarNamnRondSkapad, RondSkapadDatum, " +
+                        "AnvandarNamnRondUppdat, RondUppdatDatum) " +
+
                     "VALUES " +
                     "(@EclecticID, @RondNotering, @RondNamn, @RondDatum, @RondStatus, @BanaNr, " +
                     "@AnvandarNamnRondSkapad, @RondSkapadDatum, @AnvandarNamnRondUppdat, @RondUppdatDatum)";
