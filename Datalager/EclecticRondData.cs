@@ -277,19 +277,19 @@ namespace Hooker.Datalager
                     "WHERE RondID = @RondID";
 
                     List<DatabasParameters> dbParameters = new List<DatabasParameters>()
-                {
-                    new DatabasParameters("@RondID", DataTyp.Int, eclectic.eclecticRonds[i].RondID.ToString()),
-                    new DatabasParameters("@EclecticID", DataTyp.Int, eclectic.eclecticRonds[i].EclecticID.ToString()),
-                    new DatabasParameters("@RondNotering", DataTyp.VarChar, eclectic.eclecticRonds[i].RondNotering.ToString()),
-                    new DatabasParameters("@RondNamn", DataTyp.VarChar, eclectic.eclecticRonds[i].RondNamn.ToString()),
-                    new DatabasParameters("@RondDatum", DataTyp.VarChar, eclectic.eclecticRonds[i].RondDatum.ToString()),
-                    new DatabasParameters("@RondStatus", DataTyp.Char, eclectic.eclecticRonds[i].Rondstatus.ToString()),
-                    new DatabasParameters("@BanaNr", DataTyp.Int, eclectic.eclecticRonds[i].BanaNr.ToString()),
-                    new DatabasParameters("@AnvandarNamnRondSkapad", DataTyp.VarChar, eclectic.eclecticRonds[i].AnvandarNamnRondSkapad.ToString()),
-                    new DatabasParameters("@RondSkapadDatum", DataTyp.VarChar, eclectic.eclecticRonds[i].RondSkapadDatum.ToString()),
-                    new DatabasParameters("@AnvandarNamnRondUppdat", DataTyp.VarChar, eclectic.eclecticRonds[i].AnvandarNamnRondUppdat.ToString()),
-                    new DatabasParameters("@RondUppdatDatum", DataTyp.VarChar, eclectic.eclecticRonds[i].RondUppdatDatum.ToString())
-                };
+                    {
+                        new DatabasParameters("@RondID", DataTyp.Int, eclectic.eclecticRonds[i].RondID.ToString()),
+                        new DatabasParameters("@EclecticID", DataTyp.Int, eclectic.eclecticRonds[i].EclecticID.ToString()),
+                        new DatabasParameters("@RondNotering", DataTyp.VarChar, eclectic.eclecticRonds[i].RondNotering.ToString()),
+                        new DatabasParameters("@RondNamn", DataTyp.VarChar, eclectic.eclecticRonds[i].RondNamn.ToString()),
+                        new DatabasParameters("@RondDatum", DataTyp.VarChar, eclectic.eclecticRonds[i].RondDatum.ToString()),
+                        new DatabasParameters("@RondStatus", DataTyp.Char, eclectic.eclecticRonds[i].Rondstatus.ToString()),
+                        new DatabasParameters("@BanaNr", DataTyp.Int, eclectic.eclecticRonds[i].BanaNr.ToString()),
+                        new DatabasParameters("@AnvandarNamnRondSkapad", DataTyp.VarChar, eclectic.eclecticRonds[i].AnvandarNamnRondSkapad.ToString()),
+                        new DatabasParameters("@RondSkapadDatum", DataTyp.VarChar, eclectic.eclecticRonds[i].RondSkapadDatum.ToString()),
+                        new DatabasParameters("@AnvandarNamnRondUppdat", DataTyp.VarChar, eclectic.eclecticRonds[i].AnvandarNamnRondUppdat.ToString()),
+                        new DatabasParameters("@RondUppdatDatum", DataTyp.VarChar, eclectic.eclecticRonds[i].RondUppdatDatum.ToString())
+                    };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }
                 DatabasAccess.BekräftaTransaktion();
