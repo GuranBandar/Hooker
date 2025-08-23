@@ -227,7 +227,7 @@ namespace Hooker.Affärslager
         }
 
         /// <summary>
-        /// Hämta alla mandagsgang
+        /// Hämta alla i måndagsgänget
         /// </summary>
         /// <param name="Mandagsgang"></param>
         /// <returns>Spelarlista</returns>
@@ -239,6 +239,55 @@ namespace Hooker.Affärslager
             try
             {
                 spelareDS = spelareData.HämtaMandagsgang(Mandagsgang);
+                List<Spelare> spelare = new List<Spelare>(spelareDS.Tables["Spelare"].Rows.Count);
+                foreach (SpelareDS.SpelareRow rad in spelareDS.Spelare.Rows)
+                {
+                    if (rad.IsGolfklubbNrNull())
+                        rad.GolfklubbNr = 0;
+
+                    if (rad.IsMandagsgangNull())
+                    {
+                        rad.Mandagsgang = string.Empty;
+                    }
+
+                    spelare.Add(new Spelare()
+                    {
+                        AktuelltSpelarID = rad.SpelarID,
+                        Namn = rad.Namn,
+                        ExaktHcp = rad.Hcp,
+                        GolfID = rad.GolfID,
+                        HemmabanaNr = rad.Hemmabananr,
+                        Klass = rad.Klass,
+                        Kön = rad.Kon,
+                        Revisionsdatum = rad.RevisionsDatum,
+                        UppdatDatum = rad.UppdatDatum,
+                        GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
+                        FederationNo = rad.FederationNo,
+                        Portugalgolfare = rad.Portugalgolfare,
+                        Mandagsgang = rad.Mandagsgang
+                    });
+                }
+                return spelare;
+            }
+            catch (HookerException)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Hämta alla i spelare i en eclecticrond
+        /// </summary>
+        /// <param name="Mandagsgang"></param>
+        /// <returns>Spelarlista</returns>
+        public List<Spelare> HämtaEclecticRondDelatagare(int rondID, int eclecticID)
+        {
+            SpelareDS spelareDS = new SpelareDS();
+            SpelareData spelareData = new SpelareData();
+
+            try
+            {
+                spelareDS = spelareData.HämtaEclecticRondDelatagare(rondID, eclecticID);
                 List<Spelare> spelare = new List<Spelare>(spelareDS.Tables["Spelare"].Rows.Count);
                 foreach (SpelareDS.SpelareRow rad in spelareDS.Spelare.Rows)
                 {

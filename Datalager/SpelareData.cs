@@ -135,6 +135,39 @@ namespace Hooker.Datalager
         /// <summary>
         /// Hämtar rad från tabellen Spelare i aktuell databas med angiven nyckel.
         /// </summary>
+        /// <param name="Mandagsgang">Markerar måndagsgäng</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public SpelareDS HämtaEclecticRondDelatagare(int rondID, int eclecticID)
+        {
+            SpelareDS spelareDS = new SpelareDS();
+            string sql = "SELECT s.* FROM Spelare s " +
+                "INNER JOIN EclecticRondDeltagare ed ON s.SpelarID = ed.SpelarID " +
+                "INNER JOIN EclecticRond er ON ed.RondID = @RondID " +
+            "WHERE e.RondID = @RondID AND er.EclecticID = @EclecticID " +
+            "ORDER BY s.Namn";
+
+            try
+            {                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@RondID", DataTyp.Int, rondID.ToString()),
+                    new DatabasParameters("@EclecticID", DataTyp.Int, eclecticID.ToString()),
+                };
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, spelareDS);
+                return spelareDS;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                DatabasAccess.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen Spelare i aktuell databas med angiven nyckel.
+        /// </summary>
         /// <param name="Portugalgolfare">Markerar portugalgolfare</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
         public SpelareDS HämtaPortugalgubbar(string Portugalgolfare)

@@ -48,12 +48,59 @@ namespace Hooker.Affärslager
             return eclecticRonds;
         }
 
-    /// <summary>
-    /// Hämtar en post i tabellen EclecticRond
-    /// </summary>
-    /// <param name="rondID">Aktuell rond</param>
-    /// <returns>Objekt med efterfrågat data</returns>
-    public EclecticRond HämtaEclecticRond(int rondID)
+        /// <summary>
+        /// Hämtar en post i tabellen EclecticRond
+        /// </summary>
+        /// <param name="rondID">Aktuell rond</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public Eclectic HämtaEclecticOchEclecticRond(int eclecticID, int rondID)
+        {
+            EclecticData eclecticData = new EclecticData();
+            EclecticDS eclecticDS = eclecticData.HämtaEclectic(eclecticID);
+            Eclectic eclectic = null;
+
+            if (eclecticDS.Eclectic.Count == 1)
+
+            {
+                eclectic = new Eclectic();
+                eclectic.EclecticID = eclecticDS.Eclectic[0].EclecticID;
+                eclectic.Namn = eclecticDS.Eclectic[0].Namn;
+                eclectic.StartDatum = eclecticDS.Eclectic[0].StartDatum;
+                eclectic.Eclecticstatus = eclecticDS.Eclectic[0].EclecticStatus;
+                eclectic.Notering = eclecticDS.Eclectic[0].Notering;
+                eclectic.AnvandarNamnSkapad = eclecticDS.Eclectic[0].AnvandarNamnSkapad;
+                eclectic.SkapadDatum = eclecticDS.Eclectic[0].SkapadDatum;
+                eclectic.AnvandarNamnUppdat = eclecticDS.Eclectic[0].AnvandarNamnUppdat;
+                eclectic.UppdatDatum = eclecticDS.Eclectic[0].UppdatDatum;
+            }
+            
+            EclecticRondData eclecticRondData = new EclecticRondData();
+            EclecticRondDS eclecticRondDS = eclecticRondData.HämtaEclecticRond(rondID);
+            if (eclecticRondDS.EclecticRond.Count == 1)
+            {
+                EclecticRond eclecticRond = new EclecticRond();
+                eclecticRond.RondID = eclecticRondDS.EclecticRond[0].RondID;
+                eclecticRond.EclecticID = eclecticRondDS.EclecticRond[0].EclecticID;
+                eclecticRond.RondNotering = eclecticRondDS.EclecticRond[0].RondNotering;
+                eclecticRond.RondNamn = eclecticRondDS.EclecticRond[0].RondNamn;
+                eclecticRond.RondDatum = eclecticRondDS.EclecticRond[0].RondDatum;
+                eclecticRond.Rondstatus = eclecticRondDS.EclecticRond[0].RondStatus;
+                eclecticRond.BanaNr = eclecticRondDS.EclecticRond[0].BanaNr;
+                eclecticRond.AnvandarNamnRondSkapad = eclecticRondDS.EclecticRond[0].AnvandarNamnRondSkapad;
+                eclecticRond.RondSkapadDatum = eclecticRondDS.EclecticRond[0].RondSkapadDatum;
+                eclecticRond.AnvandarNamnRondUppdat = eclecticRondDS.EclecticRond[0].AnvandarNamnRondUppdat;
+                eclecticRond.RondUppdatDatum = eclecticRondDS.EclecticRond[0].RondUppdatDatum;
+                eclectic.AddEclecticRond(eclecticRond);
+            }
+            return eclectic;
+        }
+
+        /// <summary>
+        /// Hämtar en post i tabellen EclecticRond
+        /// </summary>
+        /// <param name="rondID">Aktuell rond</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public EclecticRond HämtaEclecticRond(int rondID)
         {
             EclecticRondData eclecticRondData = new EclecticRondData();
             EclecticRondDS EclecticRondDS = eclecticRondData.HämtaEclecticRond(rondID);
@@ -115,48 +162,27 @@ namespace Hooker.Affärslager
         /// <param name="nyEclecticRond">Ny EclecticRond, true or false</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int Spara(Eclectic eclectic, bool nyEclecticRond, ref string felID, ref string feltext)
+        public int Spara(EclecticRond eclecticRond, bool nyEclecticRond, ref string felID, ref string feltext)
         {
             int nyttRondID = 0;
-            bool kollaOK = true;
+            EclecticRondData eclecticRondData = new EclecticRondData();
+            EclecticRondDS eclecticRondDS = eclecticRondData.HämtaEclecticRond(eclecticRond.RondID);
+            eclecticRond.UppdatDatum = DateTime.Today.ToString();
 
-            if (kollaOK)
+            if (eclecticRondDS.EclecticRond.Count == 1)
             {
-                EclecticRondData eclecticRondData = new EclecticRondData();
-
-                if (nyEclecticRond)
-                {
-                    eclecticRondData.SparaNyEclecticRond(eclectic, ref felID, ref feltext);
-                    nyttRondID = Convert.ToInt32(eclecticRondData.HämtaMaxRondID());
-                    eclectic.eclecticRonds[0].RondID = nyttRondID;
-                }
-                else
-                {
-                    eclecticRondData.SparaEclecticRond(eclectic, ref felID, ref feltext);
-                }
+                eclecticRond.AnvandarNamnRondSkapad = eclecticRondDS.EclecticRond[0].AnvandarNamnRondSkapad;
+                eclecticRond.RondSkapadDatum = eclecticRondDS.EclecticRond[0].RondSkapadDatum;
+                eclecticRondData.SparaEclecticRond(eclecticRond, ref felID, ref feltext);
+                nyttRondID = eclecticRond.RondID;
             }
             else
             {
-                throw new HookerException();
+                eclecticRondData.SparaNyEclecticRond(eclecticRond, ref felID, ref feltext);
+                nyttRondID = int.Parse(eclecticRondData.HämtaMaxRondID());
             }
-            return nyttRondID;
-        }
 
-        /// <summary>
-        ///     Metoden kollar informationen innan uppdatering ska göras
-        /// </summary>
-        /// <param name="eclecticRond">Tavling med informationen som ska kollas</param>
-        /// <param name="felID">Ev felID som returneras</param>
-        /// <param name="felmeddelande">Ev felmeddelande som returneras</param>
-        private bool Kolla(Eclectic eclectic, ref string felID, ref string felmeddelande)
-        {
-            if (string.IsNullOrEmpty(eclectic.eclecticRonds[0].BanaNr.ToString()))
-            {
-                felID = "BANASAKNAS";
-                felmeddelande = "";
-                return false;
-            }
-            return true;
+            return nyttRondID;
         }
     }
 }
