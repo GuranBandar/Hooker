@@ -18,20 +18,22 @@ namespace Hooker.Affärslager
         /// <param name="deltagarID">Aktuell RondDeltagare</param>
         /// <param name="spelarID">Aktuellt spelarID</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public List<EclecticRondResultat> HämtaEclecticRondResultat(int deltagarID, int spelarID)
+        public List<EclecticRondResultat> HämtaEclecticRondResultat(int rondID, int spelarID)
         {
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
-            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(deltagarID, spelarID);
-            List<EclecticRondResultat> eclecticRondResultats = null;
+            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.
+                HämtaEclecticRondResultat(rondID, spelarID);
+            List<EclecticRondResultat> eclecticRondResultat = new List<EclecticRondResultat>();
 
-            if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count > 0)
+            if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count.Equals(1))
             {
-                eclecticRondResultats = new List<EclecticRondResultat>(eclecticRondResultatDS.EclecticRondResultat.Rows.Count);
+                eclecticRondResultat = new List<EclecticRondResultat>
+                    (eclecticRondResultatDS.EclecticRondResultat.Rows.Count);
                 foreach (EclecticRondResultatDS.EclecticRondResultatRow rad in eclecticRondResultatDS.EclecticRondResultat.Rows)
                 {
-                    eclecticRondResultats.Add(new EclecticRondResultat()
+                    eclecticRondResultat.Add(new EclecticRondResultat()
                     {
-                        DeltagarID = rad.DeltagarID,
+                        RondID = rad.RondID,
                         SpelarID = rad.SpelarID,
                         HalNr = rad.HalNr,
                         AntalSlag = rad.AntalSlag,
@@ -40,26 +42,24 @@ namespace Hooker.Affärslager
                     });
                 }
             }
-            return eclecticRondResultats;
+            return eclecticRondResultat;
         }
 
         /// <summary>
         /// Spara i tabellen EclecticRondResultat för en spelare och ett tillfälle
         /// </summary>
         /// <param name="EclecticRondResultat">Aktuellt objekt</param>
-        /// <param name="tillfalleID">Aktuellt tillfalleID</param>
-        /// <param name="spelarID">Aktuellt SpelarID</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void Spara(EclecticRondDeltagare eclecticRondDeltagare, int deltagarID, int spelarID, ref string felID, ref string feltext)
+        public void Spara(List<EclecticRondResultat> eclecticRondResultats, ref string felID, ref string feltext)
         {
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
             EclecticRondResultatDS eclecticRondResultatDS;
 
-            foreach (EclecticRondResultat eclecticRondResultat in eclecticRondDeltagare.eclecticRondResultats)
+            foreach (EclecticRondResultat eclecticRondResultat in eclecticRondResultats)
             {
-                eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat.DeltagarID,
-                    eclecticRondResultat.SpelarID);
+                eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat.RondID,
+                    eclecticRondResultat.SpelarID, eclecticRondResultat.HalNr);
 
                 if (eclecticRondResultatDS.EclecticRondResultat.Count > 0)
                 {

@@ -19,30 +19,6 @@ namespace Hooker.Affärslager
         /// </summary>
         /// <param name="deltagarID">Aktuell spelare</param>
         /// <returns>Objekt med efterfrågat data</returns>
-        public EclecticRondDeltagare HämtaEclecticRondDeltagare(int deltagarID)
-        {
-            EclecticRondDeltagareData eclecticRondDeltagareData = new EclecticRondDeltagareData();
-            EclecticRondDeltagareDS eclecticRondDeltagareDS =
-                eclecticRondDeltagareData.HämtaEclecticRondDeltagare(deltagarID);
-            EclecticRondDeltagare eclecticRondDeltagare = new EclecticRondDeltagare();
-
-            eclecticRondDeltagare.DeltagarID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarID;
-            eclecticRondDeltagare.SpelarID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].SpelarID;
-            eclecticRondDeltagare.RondID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].RondID;
-            eclecticRondDeltagare.ExaktHcp = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ExaktHcp;
-            eclecticRondDeltagare.ErhallnaSlag = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ErhallnaSlag;
-            eclecticRondDeltagare.Tee = eclecticRondDeltagareDS.EclecticRondDeltagare[0].Tee;
-            eclecticRondDeltagare.DeltagarDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarDatum;
-            eclecticRondDeltagare.DeltagarUppdatDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarUppdatDatum;
-            return eclecticRondDeltagare;
-        }
-
-        /// <summary>
-        /// Hämtar eclecticronddeltagare i tabellen EclecticDeltagare för angiven spelare och Rond
-        /// </summary>
-        /// <param name="spelarID">Aktuell spelare</param>
-        /// <param name="rondID">Aktuell rond</param>
-        /// <returns>Objekt med efterfrågat data</returns>
         public EclecticRondDeltagare HämtaEclecticRondDeltagare(int spelarID, int rondID)
         {
             EclecticRondDeltagareData eclecticRondDeltagareData = new EclecticRondDeltagareData();
@@ -50,7 +26,6 @@ namespace Hooker.Affärslager
                 eclecticRondDeltagareData.HämtaEclecticRondDeltagare(spelarID, rondID);
             EclecticRondDeltagare eclecticRondDeltagare = new EclecticRondDeltagare();
 
-            eclecticRondDeltagare.DeltagarID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarID;
             eclecticRondDeltagare.SpelarID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].SpelarID;
             eclecticRondDeltagare.RondID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].RondID;
             eclecticRondDeltagare.ExaktHcp = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ExaktHcp;
@@ -69,7 +44,8 @@ namespace Hooker.Affärslager
         public List<EclecticRondDeltagare> HämtaAllaEclecticRondDeltagareFörRonden(int rondID)
         {
             EclecticRondDeltagareData eclecticRondDeltagareData = new EclecticRondDeltagareData();
-            EclecticRondDeltagareDS eclecticRondDeltagareDS = eclecticRondDeltagareData.HämtaEclecticAllaRondDeltagare(rondID);
+            EclecticRondDeltagareDS eclecticRondDeltagareDS = eclecticRondDeltagareData.
+                HämtaAllaEclecticRondDeltagare(rondID);
             List<EclecticRondDeltagare> eclecticRondDeltagares = null;
 
             if (eclecticRondDeltagareDS.EclecticRondDeltagare.Rows.Count > 0)
@@ -79,7 +55,6 @@ namespace Hooker.Affärslager
                 {
                     eclecticRondDeltagares.Add(new EclecticRondDeltagare()
                     {
-                        DeltagarID = rad.DeltagarID,
                         SpelarID = rad.SpelarID,
                         RondID = rad.RondID,
                         ExaktHcp = rad.ExaktHcp,
@@ -96,32 +71,27 @@ namespace Hooker.Affärslager
         /// <summary>
         /// Sparar alla förändringar i EclecticTillfalle i databasen 
         /// </summary>
-        /// <param name="eclecticTillfalle">Aktuell EclecticTillfalle</param>
-        /// <param name="nyEclecticTillfalle">Ny EclecticTillfalle, true or false</param>
+        /// <param name="eclecticRondDeltagare">Aktuell EclecticRondDeltagare</param>
+        /// <param name="nyEclecticRondDeltagare">Ny EclecticRondDeltagare, true or false</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public int Spara(EclecticRondDeltagare eclecticRondDeltagare, bool nyEclecticRondDeltagare, ref string felID, ref string feltext)
+        public void Spara(EclecticRondDeltagare eclecticRondDeltagare, bool nyEclecticRondDeltagare, ref string felID, ref string feltext)
         {
-            int nyttRondDeltagareID = 0;
             EclecticRondDeltagareData eclecticRondDeltagareData = new EclecticRondDeltagareData();
-            EclecticRondDeltagareDS eclecticRondDeltagareDS = 
-                eclecticRondDeltagareData.HämtaEclecticRondDeltagare(eclecticRondDeltagare.DeltagarID);
+            EclecticRondDeltagareDS eclecticRondDeltagareDS =
+                eclecticRondDeltagareData.HämtaEclecticRondDeltagare(eclecticRondDeltagare.SpelarID,
+                eclecticRondDeltagare.RondID);
             eclecticRondDeltagare.UppdatDatum = DateTime.Today.ToString();
 
             if (eclecticRondDeltagareDS.EclecticRondDeltagare.Count > 0)
             {
                 eclecticRondDeltagare.DeltagarDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarDatum;
                 eclecticRondDeltagareData.SparaEclecticRondDeltagare(eclecticRondDeltagare, ref felID, ref feltext);
-                nyttRondDeltagareID = eclecticRondDeltagare.DeltagarID;
             }
             else
             {
                 eclecticRondDeltagareData.SparaNyEclecticRondDeltagare(eclecticRondDeltagare, ref felID, ref feltext);
-                nyttRondDeltagareID = int.Parse(eclecticRondDeltagareData.HämtaMaxEclecticRondDeltagare());
-                eclecticRondDeltagare.DeltagarID = nyttRondDeltagareID;
             }
-
-            return nyttRondDeltagareID;
         }
     }
 }
