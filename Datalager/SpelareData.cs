@@ -143,11 +143,12 @@ namespace Hooker.Datalager
             string sql = "SELECT s.* FROM Spelare s " +
                 "INNER JOIN EclecticRondDeltagare ed ON s.SpelarID = ed.SpelarID " +
                 "INNER JOIN EclecticRond er ON ed.RondID = @RondID " +
-            "WHERE e.RondID = @RondID AND er.EclecticID = @EclecticID " +
+            "WHERE er.RondID = @RondID AND er.EclecticID = @EclecticID " +
             "ORDER BY s.Namn";
 
             try
-            {                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+            {                
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@RondID", DataTyp.Int, rondID.ToString()),
                     new DatabasParameters("@EclecticID", DataTyp.Int, eclecticID.ToString()),

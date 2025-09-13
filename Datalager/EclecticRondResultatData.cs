@@ -163,7 +163,7 @@ namespace Hooker.Datalager
                 DatabasAccess.SkapaTransaktion();
                 sql = "UPDATE EclecticRondResultat " +
                     "SET HalNr = @HalNr, AntalSlag = @AntalSlag, AntalPoang = @AntalPoang, RondDatum = @RondDatum " +
-                    "WHERE RondID = @RondID AND SpelarID = @SpelarID";
+                    "WHERE RondID = @RondID AND SpelarID = @SpelarID AND HalNr = @HalNr";
 
                     List < DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {

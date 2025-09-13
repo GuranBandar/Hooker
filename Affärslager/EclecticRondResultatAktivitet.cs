@@ -21,14 +21,12 @@ namespace Hooker.Affärslager
         public List<EclecticRondResultat> HämtaEclecticRondResultat(int rondID, int spelarID)
         {
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
-            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.
-                HämtaEclecticRondResultat(rondID, spelarID);
-            List<EclecticRondResultat> eclecticRondResultat = new List<EclecticRondResultat>();
+            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(rondID, spelarID);
+            List<EclecticRondResultat> eclecticRondResultat = null;
 
-            if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count.Equals(1))
+            if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count > 0)
             {
-                eclecticRondResultat = new List<EclecticRondResultat>
-                    (eclecticRondResultatDS.EclecticRondResultat.Rows.Count);
+                eclecticRondResultat = new List<EclecticRondResultat>(eclecticRondResultatDS.EclecticRondResultat.Rows.Count);
                 foreach (EclecticRondResultatDS.EclecticRondResultatRow rad in eclecticRondResultatDS.EclecticRondResultat.Rows)
                 {
                     eclecticRondResultat.Add(new EclecticRondResultat()
