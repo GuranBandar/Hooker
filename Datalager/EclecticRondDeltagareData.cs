@@ -26,7 +26,8 @@ namespace Hooker.Datalager
             try
             {
                 ds.EnforceConstraints = false;
-                sql = "SELECT e.* FROM EclecticRondDeltagare e WHERE e.RondID = @RondID";
+                sql = "SELECT e.* FROM EclecticRondDeltagare e WHERE e.RondID = @RondID " +
+                    "ORDER BY e.SpelarID";
                 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
@@ -110,7 +111,7 @@ namespace Hooker.Datalager
                     {
                         new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRondDeltagare.SpelarID.ToString()),
                         new DatabasParameters("@RondID", DataTyp.Int, eclecticRondDeltagare.RondID.ToString()),
-                        new DatabasParameters("@ExaktHcp", DataTyp.Decimal, eclecticRondDeltagare.ExaktHcp.ToString()),
+                        new DatabasParameters("@ExaktHcp", DataTyp.String, eclecticRondDeltagare.ExaktHcp.ToString()),
                         new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclecticRondDeltagare.ErhallnaSlag.ToString()),
                         new DatabasParameters("@Tee", DataTyp.Char, eclecticRondDeltagare.Tee.ToString()),
                         new DatabasParameters("@DeltagarDatum", DataTyp.VarChar, eclecticRondDeltagare.DeltagarDatum.ToString()),
@@ -171,7 +172,7 @@ namespace Hooker.Datalager
                     {
                         new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRondDeltagare.SpelarID.ToString()),
                         new DatabasParameters("@RondID", DataTyp.Int, eclecticRondDeltagare.RondID.ToString()),
-                        new DatabasParameters("@ExaktHcp", DataTyp.Decimal, eclecticRondDeltagare.ExaktHcp.ToString()),
+                        new DatabasParameters("@ExaktHcp", DataTyp.String, eclecticRondDeltagare.ExaktHcp.ToString()),
                         new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclecticRondDeltagare.ErhallnaSlag.ToString()),
                         new DatabasParameters("@Tee", DataTyp.Char, eclecticRondDeltagare.Tee.ToString()),
                         new DatabasParameters("@DeltagarDatum", DataTyp.VarChar, eclecticRondDeltagare.DeltagarDatum.ToString()),

@@ -26,13 +26,17 @@ namespace Hooker.Affärslager
                 eclecticRondDeltagareData.HämtaEclecticRondDeltagare(spelarID, rondID);
             EclecticRondDeltagare eclecticRondDeltagare = new EclecticRondDeltagare();
 
-            eclecticRondDeltagare.SpelarID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].SpelarID;
-            eclecticRondDeltagare.RondID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].RondID;
-            eclecticRondDeltagare.ExaktHcp = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ExaktHcp;
-            eclecticRondDeltagare.ErhallnaSlag = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ErhallnaSlag;
-            eclecticRondDeltagare.Tee = eclecticRondDeltagareDS.EclecticRondDeltagare[0].Tee;
-            eclecticRondDeltagare.DeltagarDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarDatum;
-            eclecticRondDeltagare.DeltagarUppdatDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarUppdatDatum;
+            if (eclecticRondDeltagareDS.EclecticRondDeltagare.Rows.Count > 0)
+            {
+                eclecticRondDeltagare.SpelarID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].SpelarID;
+                eclecticRondDeltagare.RondID = eclecticRondDeltagareDS.EclecticRondDeltagare[0].RondID;
+                eclecticRondDeltagare.ExaktHcp = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ExaktHcp;
+                eclecticRondDeltagare.ErhallnaSlag = eclecticRondDeltagareDS.EclecticRondDeltagare[0].ErhallnaSlag;
+                eclecticRondDeltagare.Tee = eclecticRondDeltagareDS.EclecticRondDeltagare[0].Tee;
+                eclecticRondDeltagare.DeltagarDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarDatum;
+                eclecticRondDeltagare.DeltagarUppdatDatum = eclecticRondDeltagareDS.EclecticRondDeltagare[0].DeltagarUppdatDatum;
+            }
+
             return eclecticRondDeltagare;
         }
 

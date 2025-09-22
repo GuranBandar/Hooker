@@ -35,12 +35,11 @@ namespace Hooker.Affärslager
                         TotalID = rad.TotalID,
                         SpelarID = rad.SpelarID,
                         EclecticID = rad.EclecticID,
-                        RondID = rad.RondID,
                         ExaktHcp = rad.ExaktHcp,
                         ErhallnaSlag = rad.ErhallnaSlag,
                         Tee = rad.Tee,
                         BanaNr = rad.BanaNr,
-                        TotalUppdatDatum = rad.TotalDatum
+                        TotalUppdatDatum = rad.TotalUppdatDatum
                     });
                 }
             }
@@ -69,16 +68,47 @@ namespace Hooker.Affärslager
                         TotalID = rad.TotalID,
                         SpelarID = rad.SpelarID,
                         EclecticID = rad.EclecticID,
-                        RondID = rad.RondID,
                         ExaktHcp = rad.ExaktHcp,
                         ErhallnaSlag = rad.ErhallnaSlag,
                         Tee = rad.Tee,
                         BanaNr = rad.BanaNr,
-                        TotalUppdatDatum = rad.TotalDatum
+                        TotalUppdatDatum = rad.TotalUppdatDatum
                     });
                 }
             }
             return eclecticTotals;
+        }
+
+        /// <summary>
+        /// Hämtar eclecticTotalpost i tabellen EclecticTotal för spelaren, banan och tee
+        /// </summary>
+        /// <param name="eclecticID">Aktuell eclectic</param>
+        /// <param name="spelarID">Aktuell spelare</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public EclecticTotal HämtaEclecticTotalFörSpelareBanaOchTee(int spelarID, int banaNr, string tee)
+        {
+            EclecticTotalData eclecticTotalData = new EclecticTotalData();
+            EclecticTotalDS eclecticTotalDS = eclecticTotalData.HämtaEclecticTotalFörSpelareBanaOchTee(spelarID, banaNr, tee);
+            EclecticTotal eclecticTotal = null;
+
+            if (eclecticTotalDS.EclecticTotal.Count == 1)
+            {
+                foreach (EclecticTotalDS.EclecticTotalRow rad in eclecticTotalDS.EclecticTotal.Rows)
+                {
+                    eclecticTotal = new EclecticTotal()
+                    {
+                        TotalID = rad.TotalID,
+                        SpelarID = rad.SpelarID,
+                        EclecticID = rad.EclecticID,
+                        ExaktHcp = rad.ExaktHcp,
+                        ErhallnaSlag = rad.ErhallnaSlag,
+                        Tee = rad.Tee,
+                        BanaNr = rad.BanaNr,
+                        TotalUppdatDatum = rad.TotalUppdatDatum
+                    };
+                }
+            }
+            return eclecticTotal;
         }
 
         /// <summary>
@@ -100,8 +130,8 @@ namespace Hooker.Affärslager
                 if (nyEclecticTotal)
                 {
                     eclecticTotalData.SparaNyEclecticTotal(eclecticTotal, ref felID, ref feltext);
-                    //nyttTotalID = Convert.ToInt32(eclecticTotalData.HämtaMaxEclecticTillfalle());
-                    //eclecticTillfalle.TillfalleID = nyttTillfalleID;
+                    nyttTotalID = Convert.ToInt32(eclecticTotalData.HämtaMaxEclecticTotal());
+                    eclecticTotal.TotalID = nyttTotalID;
                 }
                 else
                 {

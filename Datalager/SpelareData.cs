@@ -142,7 +142,7 @@ namespace Hooker.Datalager
             SpelareDS spelareDS = new SpelareDS();
             string sql = "SELECT s.* FROM Spelare s " +
                 "INNER JOIN EclecticRondDeltagare ed ON s.SpelarID = ed.SpelarID " +
-                "INNER JOIN EclecticRond er ON ed.RondID = @RondID " +
+                "INNER JOIN EclecticRond er ON ed.RondID = er.RondID " +
             "WHERE er.RondID = @RondID AND er.EclecticID = @EclecticID " +
             "ORDER BY s.Namn";
 

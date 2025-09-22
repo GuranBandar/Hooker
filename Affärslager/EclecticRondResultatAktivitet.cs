@@ -44,6 +44,37 @@ namespace Hooker.Affärslager
         }
 
         /// <summary>
+        /// Hämtar alla poster i tabellen EclecticRondResultat för en rond
+        /// </summary>
+        /// <param name="rondID">Aktuell Rond</param>
+        /// <param name="spelarID">Aktuellt spelarID</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public List<EclecticRondResultat> HämtaEclecticRondResultat(int rondID)
+        {
+            EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
+            EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(rondID);
+            List<EclecticRondResultat> eclecticRondResultat = null;
+
+            if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count > 0)
+            {
+                eclecticRondResultat = new List<EclecticRondResultat>(eclecticRondResultatDS.EclecticRondResultat.Rows.Count);
+                foreach (EclecticRondResultatDS.EclecticRondResultatRow rad in eclecticRondResultatDS.EclecticRondResultat.Rows)
+                {
+                    eclecticRondResultat.Add(new EclecticRondResultat()
+                    {
+                        RondID = rad.RondID,
+                        SpelarID = rad.SpelarID,
+                        HalNr = rad.HalNr,
+                        AntalSlag = rad.AntalSlag,
+                        AntalPoang = rad.AntalPoang,
+                        RondDatum = rad.RondDatum
+                    });
+                }
+            }
+            return eclecticRondResultat;
+        }
+
+        /// <summary>
         /// Spara i tabellen EclecticRondResultat för en spelare och ett tillfälle
         /// </summary>
         /// <param name="EclecticRondResultat">Aktuellt objekt</param>

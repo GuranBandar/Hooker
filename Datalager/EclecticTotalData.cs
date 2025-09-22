@@ -4,6 +4,7 @@ using Hooker.Dataset;
 using Hooker.Gemensam;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Datalager
 {
@@ -84,36 +85,102 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rad från tabellen EclecticTotal i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="eclecticID">Aktuell EclecticTotal</param>
+        /// <param name="spelarID">Aktuell spelare</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public EclecticTotalDS HämtaEclecticTotalFörSpelareBanaOchTee(int spelarID, int banaNr, string tee)
+        {
+            EclecticTotalDS ds = new EclecticTotalDS();
+            string sql;
+
+            try
+            {
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@SpelarID", DataTyp.Int, spelarID.ToString()),
+                    new DatabasParameters("@BanaNr", DataTyp.Int, banaNr.ToString()),
+                    new DatabasParameters("@Tee", DataTyp.Char, tee.ToString()),
+                };
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM EclecticTotal e WHERE e.SpelarID = @SpelarID " +
+                    "AND e.BanaNr = @BanaNr AND e.Tee = @Tee";
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hämtar max TotalID från tabellen EclecticTotal i aktuell databas.
+        /// </summary>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public string HämtaMaxEclecticTotal()
+        {
+            DataSet eclecticTotalDS = new DataSet();
+            string nyttEclecticTotalID = string.Empty;
+            string sql;
+
+            try
+            {
+                sql = "SELECT e.TotalID FROM EclecticTotal e " +
+                    " ORDER BY e.TotalID DESC";
+                eclecticTotalDS = DatabasAccess.RunSql(sql);
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+            nyttEclecticTotalID = eclecticTotalDS.Tables[0].Rows[0]["TotalID"].ToString();
+            return nyttEclecticTotalID;
+        }
+
+        /// <summary>
         /// Ny EclecticTotal.
         /// </summary>
         /// <param name="Eclectic">Eclectic</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void SparaNyEclecticTotal(Eclectic eclectic, ref string felID, ref string feltext)
+        public void SparaNyEclecticTotal(EclecticTotal eclecticTotal, ref string felID, ref string feltext)
         {
             string sql;
 
             try
             {
                 DatabasAccess.SkapaTransaktion();
-                for (int i = 0; i < eclectic.eclecticTotals.Length; i++)
+                sql = "INSERT INTO EclecticTotal(SpelarID, EclecticID, ExaktHcp, ErhallnaSlag, " +
+                    "Tee, BanaNr, TotalUppdatDatum) " +
+                    "VALUES " +
+                    "(@SpelarID, @EclecticID, @ExaktHcp, @ErhallnaSlag, @Tee, @BanaNr, @TotalUppdatDatum)";
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
-                    sql = "INSERT INTO EclecticTotal(SpelarID, EclecticID, RondID, ExaktHcp, ErhallnaSlag, " +
-                        "Tee, BanaNr, TotalDatum) " +
-                        "VALUES " +
-                        "(@SpelarID, @EclecticID, @RondID, @ExaktHcp, @ErhallnaSlag, @Tee, @BanaNr, @TotalDatum)";
-                    List<DatabasParameters> dbParameters = new List<DatabasParameters>()
-                    {
-                        new DatabasParameters("@EclectiCID", DataTyp.Int, eclectic.eclecticTotals[i].EclecticID.ToString()),
-                        new DatabasParameters("@SpelarID", DataTyp.Int, eclectic.eclecticTotals[i].SpelarID.ToString()),
-                        new DatabasParameters("@ExaktHcp", DataTyp.Decimal, eclectic.eclecticTotals[i].ExaktHcp.ToString()),
-                        new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclectic.eclecticTotals[i].ErhallnaSlag.ToString()),
-                        new DatabasParameters("@Tee", DataTyp.Char, eclectic.eclecticTotals[i].Tee.ToString()),
-                        new DatabasParameters("@BanaNr", DataTyp.Int, eclectic.eclecticTotals[i].BanaNr.ToString()),
-                        new DatabasParameters("@TotalDatum", DataTyp.VarChar, eclectic.eclecticTotals[i].TotalUppdatDatum.ToString())
-                    };
-                    DatabasAccess.RunSql(sql, dbParameters);
-                }
+                    new DatabasParameters("@SpelarID", DataTyp.Int, eclecticTotal.SpelarID.ToString()),
+                    new DatabasParameters("@EclectiCID", DataTyp.Int, eclecticTotal.EclecticID.ToString()),
+                    new DatabasParameters("@ExaktHcp", DataTyp.String, eclecticTotal.ExaktHcp.ToString()),
+                    new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclecticTotal.ErhallnaSlag.ToString()),
+                    new DatabasParameters("@Tee", DataTyp.Char, eclecticTotal.Tee.ToString()),
+                    new DatabasParameters("@BanaNr", DataTyp.Int, eclecticTotal.BanaNr.ToString()),
+                    new DatabasParameters("@TotalUppdatDatum", DataTyp.VarChar, eclecticTotal.TotalUppdatDatum.ToString())
+                };
+                DatabasAccess.RunSql(sql, dbParameters);
                 DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
@@ -157,21 +224,20 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
                 sql = "UPDATE EclecticTotal " +
-                    "SET EclecticID = @Eclectic, RondID = @RondID ExaktHcp = @ExaktHcp, ErhallnaSlag = @ErhallnaSlag, " +
-                    "Tee = @Tee, BanaNr = @BanaNr, TotalDatum = @TotalDatum, " +
-                    "WHERE TotalID = @TotalID AND SpelarID = @SpelarID";
+                    "SET ExaktHcp = @ExaktHcp, ErhallnaSlag = @ErhallnaSlag, " +
+                    "Tee = @Tee, BanaNr = @BanaNr, TotalUppdatDatum = @TotalUppdatDatum " +
+                    "WHERE TotalID = @TotalID AND SpelarID = @SpelarID AND EclecticID = @EclecticID";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@TotalID", DataTyp.Int, eclecticTotal.TotalID.ToString()),
                     new DatabasParameters("@SpelarID", DataTyp.Int, eclecticTotal.SpelarID.ToString()),
                     new DatabasParameters("@EclecticID", DataTyp.Int, eclecticTotal.EclecticID.ToString()),
-                    new DatabasParameters("@RondID", DataTyp.Int, eclecticTotal.RondID.ToString()),
-                    new DatabasParameters("@ExaktHcp", DataTyp.Decimal, eclecticTotal.ExaktHcp.ToString()),
+                    new DatabasParameters("@ExaktHcp", DataTyp.String, eclecticTotal.ExaktHcp.ToString()),
                     new DatabasParameters("@ErhallnaSlag", DataTyp.Int, eclecticTotal.ErhallnaSlag.ToString()),
                     new DatabasParameters("@Tee", DataTyp.Char, eclecticTotal.Tee.ToString()),
                     new DatabasParameters("@BanaNr", DataTyp.Int, eclecticTotal.BanaNr.ToString()),
-                    new DatabasParameters("@TotalDatum", DataTyp.VarChar, eclecticTotal.TotalUppdatDatum.ToString())
+                    new DatabasParameters("@TotalUppdatDatum", DataTyp.VarChar, eclecticTotal.TotalUppdatDatum.ToString())
                 };
                 
                 DatabasAccess.RunSql(sql, dbParameters);

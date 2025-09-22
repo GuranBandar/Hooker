@@ -18,6 +18,38 @@ namespace Hooker.Affärslager
         /// <param name="totalID">Aktuell total</param>
         /// <param name="spelarID">Aktuellt spelarID</param>
         /// <returns>Objekt med efterfrågat data</returns>
+        public EclecticRondTotal HämtaEclecticRondTotal(int totalID, int spelarID, int halNr)
+        {
+            EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
+            EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaEclecticRondTotal(totalID, spelarID, halNr);
+            EclecticRondTotal eclecticRondTotal = null;
+
+            if (eclecticRondTotalDS.EclecticRondTotal.Rows.Count > 0)
+            {
+                eclecticRondTotal = new EclecticRondTotal();
+                foreach (EclecticRondTotalDS.EclecticRondTotalRow rad in eclecticRondTotalDS.EclecticRondTotal.Rows)
+                {
+                    eclecticRondTotal = new EclecticRondTotal()
+                    {
+                        TotalID = rad.TotalID,
+                        SpelarID = rad.SpelarID,
+                        HalNr = rad.HalNr,
+                        AntalSlag_Brutto = rad.AntalSlag_Brutto,
+                        AntalSlag_Netto = rad.AntalSlag_Netto,
+                        AntalPoang = rad.AntalPoang,
+                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum
+                    };
+                }
+            }
+            return eclecticRondTotal;
+        }
+
+        /// <summary>
+        /// Hämtar en listpost i tabellen EclecticRondTotal
+        /// </summary>
+        /// <param name="totalID">Aktuell total</param>
+        /// <param name="spelarID">Aktuellt spelarID</param>
+        /// <returns>Objekt med efterfrågat data</returns>
         public List<EclecticRondTotal> HämtaEclecticRondTotal(int totalID, int spelarID)
         {
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
@@ -34,7 +66,8 @@ namespace Hooker.Affärslager
                         TotalID = rad.TotalID,
                         SpelarID = rad.SpelarID,
                         HalNr = rad.HalNr,
-                        AntalSlag = rad.AntalSlag,
+                        AntalSlag_Brutto = rad.AntalSlag_Brutto,
+                        AntalSlag_Netto = rad.AntalSlag_Netto,
                         AntalPoang = rad.AntalPoang,
                         RondTotalUppdatDatum = rad.RondTotalUppdatDatum
                     });
@@ -51,7 +84,7 @@ namespace Hooker.Affärslager
         /// <returns></returns>
         public void HämtaResultatlista(Eclectic eclectic, int TotalID)
         {
-            EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
+            //EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
             //EclecticResultatLista eclecticResultat = null;
 
             ////Fältet Spelform i Tavlingklass anger om slag eller poäng ska räknas. 
@@ -109,25 +142,24 @@ namespace Hooker.Affärslager
         /// <param name="spelarID">Aktuellt SpelarID</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void Spara(EclecticTotal eclectic, int totalID, int spelarID, ref string felID, ref string feltext)
+        public void Spara(List<EclecticRondTotal> eclecticRondTotals, ref string felID, ref string feltext)
         {
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
             EclecticRondTotalDS eclecticRondTotalDS;
 
-            //foreach (TavlingRondResultat tavlingRondResultat in tavling.TavlingRondResultat)
-            //{
-            //    tavlingRondResultatDS = tavlingRondResultatData.HämtaTavlingRondResultat(tavlingRondResultat.RondId,
-            //        tavlingRondResultat.SpelarID, tavlingRondResultat.HalNr);
+            foreach (EclecticRondTotal eclecticRondTotal in eclecticRondTotals)
+            {
+                eclecticRondTotalDS = eclecticRondTotalData.HämtaEclecticRondTotal(eclecticRondTotal.TotalID, eclecticRondTotal.SpelarID);
 
-            //    if (tavlingRondResultatDS.TavlingRondResultat.Count > 0)
-            //    {
-            //        tavlingRondResultatData.SparaTavlingRondResultat(tavlingRondResultat, ref felID, ref feltext);
-            //    }
-            //    else
-            //    {
-            //        tavlingRondResultatData.InitieraTavlingRondResultat(tavlingRondResultat, ref felID, ref feltext);
-            //    }
-            //}
+                if (eclecticRondTotalDS.EclecticRondTotal.Count > 0)
+                {
+                    eclecticRondTotalData.SparaEclecticRondTotal(eclecticRondTotal, ref felID, ref feltext);
+                }
+                else
+                {
+                    eclecticRondTotalData.SparaNyEclecticRondTotalAllaHal(eclecticRondTotals, ref felID, ref feltext);
+                }
+            }
         }
     }
 }
