@@ -17,36 +17,36 @@ namespace Hooker.Datalager
         /// </summary>
         /// <param name="TotalID">Aktuell EclecticTotal</param>
         /// <returns>Typat dataset med efterfrågat data</returns>
-        public EclecticRondTotalDS HämtaEclecticRondTotal(int TotalID)
-        {
-            EclecticRondTotalDS ds = new EclecticRondTotalDS();
-            string sql;
+        //public EclecticRondTotalDS HämtaEclecticRondTotal(int TotalID)
+        //{
+        //    EclecticRondTotalDS ds = new EclecticRondTotalDS();
+        //    string sql;
 
-            try
-            {
-                ds.EnforceConstraints = false;
-                sql = "SELECT e.* FROM EclecticRondTotal e WHERE e.TotalID = @TotalID";
+        //    try
+        //    {
+        //        ds.EnforceConstraints = false;
+        //        sql = "SELECT e.* FROM EclecticRondTotal e WHERE e.TotalID = @TotalID";
 
-                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
-                {
-                    new DatabasParameters("@TotalID", DataTyp.Int, TotalID.ToString())
-                };
+        //        List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+        //        {
+        //            new DatabasParameters("@TotalID", DataTyp.Int, TotalID.ToString())
+        //        };
                 
-                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
-                return ds;
-            }
-            catch (HookerException hex)
-            {
-                throw hex;
-            }
-            finally
-            {
-                if (DatabasAccess != null)
-                {
-                    DatabasAccess.Dispose();
-                }
-            }
-        }
+        //        DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+        //        return ds;
+        //    }
+        //    catch (HookerException hex)
+        //    {
+        //        throw hex;
+        //    }
+        //    finally
+        //    {
+        //        if (DatabasAccess != null)
+        //        {
+        //            DatabasAccess.Dispose();
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Hämtar rad från tabellen EclecticRondTotal i aktuell databas med angiven nyckel.
@@ -109,6 +109,88 @@ namespace Hooker.Datalager
                 {
                     new DatabasParameters("@TotalID", DataTyp.Int, totalID.ToString()),
                     new DatabasParameters("@SpelarID", DataTyp.Int, spelarID.ToString())
+                };
+
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen EclecticRondTotal i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="TotalID">Aktuell EclecticTotal</param>
+        /// <param name="SpelarID">Aktuell spelare</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public EclecticRondTotalDS HämtaEclecticRondTotal(int eclecticID)
+        {
+            EclecticRondTotalDS ds = new EclecticRondTotalDS();
+            string sql;
+
+            try
+            {
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* " +
+                    "FROM EclecticTotal et " +
+                    "INNER JOIN EclecticRondTotal e ON e.TotalID = et.TotalID " +
+                    "WHERE et.EclecticID = @EclecticID";
+
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@EclecticID", DataTyp.Int, eclecticID.ToString())
+                };
+
+
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen EclecticRondTotal i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="TotalID">Aktuell EclecticTotal</param>
+        /// <param name="SpelarID">Aktuell spelare</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public EclecticRondTotalDS HämtaResultatlista(int eclecticID)
+        {
+            EclecticRondTotalDS ds = new EclecticRondTotalDS();
+            string sql;
+
+            try
+            {
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.TotalID, e.SpelarID, s.Namn, et.ExaktHcp, e.HalNr, e.AntalSlag_Brutto, e.AntalSlag_Netto, e.AntalPoang " +
+                    "FROM EclecticTotal et " +
+                    "INNER JOIN EclecticRondTotal e ON e.TotalID = et.TotalID " +
+                    "INNER JOIN Spelare s ON e.SpelarID = s.SpelarID " +
+                    "WHERE et.EclecticID = @EclecticID";
+
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@EclecticID", DataTyp.Int, eclecticID.ToString())
                 };
 
                 DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
@@ -194,30 +276,30 @@ namespace Hooker.Datalager
         /// <param name="EclecticTotal">EclecticTotal</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void SparaEclecticRondTotal(EclecticTotal eclecticTotal, ref string felID, ref string feltext)
+        public void SparaEclecticRondTotal(List<EclecticRondTotal> eclecticRondTotal, ref string felID, ref string feltext)
         {
             string sql;
 
             try
             {
                 DatabasAccess.SkapaTransaktion();
+                sql = "UPDATE EclecticRondTotal " +
+                    "SET AntalSlag_Brutto = @AntalSlag_Brutto, AntalSlag_Netto = @AntalSlag_Netto, AntalPoang = @AntalPoang, " +
+                    "RondTotalUppdatDatum = @RondTotalUppdatDatum " +
+                    "WHERE TotalID = @TotalID AND SpelarID = @SpelarID AND HalNr = @HalNr";
 
-                for (int i = 0; i < eclecticTotal.eclecticRondTotals.Length; i++)
+                //for (int i = 0; i < eclecticRondTotal.Count; i++)
+                foreach (EclecticRondTotal eclecticRond in eclecticRondTotal)
                 {
-                    sql = "UPDATE EclecticRondTotal " +
-                        "SET HalNr = @HalNr, AntalSlag_Brutto = @AntalSlag_Brutto, AntalSlag_Netto = @AntalSlag_Netto, AntalPoang = @AntalPoang, " +
-                        "TotalUppdatDatum = @TotalUppdatDatum " +
-                        "WEHERE TotalID = @TotalID AND SpelarID = @SpelarID";
-
                       List < DatabasParameters> dbParameters = new List<DatabasParameters>()
                     {
-                        new DatabasParameters("@TotalID", DataTyp.Int, eclecticTotal.TotalID.ToString()),
-                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticTotal.SpelarID.ToString()),
-                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].HalNr.ToString()),
-                        new DatabasParameters("@AntalSlag_Brutto", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalSlag_Brutto.ToString()),
-                        new DatabasParameters("@AntalSlag_Netto", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalSlag_Netto.ToString()),
-                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticTotal.eclecticRondTotals[i].AntalPoang.ToString()),
-                        new DatabasParameters("@TotalUppdatDatum", DataTyp.VarChar, eclecticTotal.eclecticRondTotals[i].RondTotalUppdatDatum.ToString())
+                        new DatabasParameters("@TotalID", DataTyp.Int, eclecticRond.TotalID.ToString()),
+                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRond.SpelarID.ToString()),
+                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticRond.HalNr.ToString()),
+                        new DatabasParameters("@AntalSlag_Brutto", DataTyp.Int, eclecticRond.AntalSlag_Brutto.ToString()),
+                        new DatabasParameters("@AntalSlag_Netto", DataTyp.Int, eclecticRond.AntalSlag_Netto.ToString()),
+                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticRond.AntalPoang.ToString()),
+                        new DatabasParameters("@RondTotalUppdatDatum", DataTyp.VarChar, eclecticRond.RondTotalUppdatDatum.ToString())
                     };
                     DatabasAccess.RunSql(sql, dbParameters);
                 }

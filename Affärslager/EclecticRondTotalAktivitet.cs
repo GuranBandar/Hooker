@@ -2,6 +2,7 @@
 using Hooker.Datalager;
 using Hooker.Dataset;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -50,6 +51,38 @@ namespace Hooker.Affärslager
         /// <param name="totalID">Aktuell total</param>
         /// <param name="spelarID">Aktuellt spelarID</param>
         /// <returns>Objekt med efterfrågat data</returns>
+        public List<EclecticRondTotal> HämtaEclecticRondTotal(int eclecticID)
+        {
+            EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
+            EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaEclecticRondTotal(eclecticID);
+            List<EclecticRondTotal> eclecticRondTotals = null;
+
+            if (eclecticRondTotalDS.EclecticRondTotal.Rows.Count > 0)
+            {
+                eclecticRondTotals = new List<EclecticRondTotal>(eclecticRondTotalDS.EclecticRondTotal.Rows.Count);
+                foreach (EclecticRondTotalDS.EclecticRondTotalRow rad in eclecticRondTotalDS.EclecticRondTotal.Rows)
+                {
+                    eclecticRondTotals.Add(new EclecticRondTotal()
+                    {
+                        TotalID = rad.TotalID,
+                        SpelarID = rad.SpelarID,
+                        HalNr = rad.HalNr,
+                        AntalSlag_Brutto = rad.AntalSlag_Brutto,
+                        AntalSlag_Netto = rad.AntalSlag_Netto,
+                        AntalPoang = rad.AntalPoang,
+                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum
+                    });
+                }
+            }
+            return eclecticRondTotals;
+        }
+
+        /// <summary>
+        /// Hämtar en listpost i tabellen EclecticRondTotal
+        /// </summary>
+        /// <param name="totalID">Aktuell total</param>
+        /// <param name="spelarID">Aktuellt spelarID</param>
+        /// <returns>Objekt med efterfrågat data</returns>
         public List<EclecticRondTotal> HämtaEclecticRondTotal(int totalID, int spelarID)
         {
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
@@ -82,10 +115,32 @@ namespace Hooker.Affärslager
         /// <param name="Eclectic">Eclecticobjekt</param>
         /// <param name="Rondtotal">A</param>
         /// <returns></returns>
-        public void HämtaResultatlista(Eclectic eclectic, int TotalID)
+        public List<Golfresultat> HämtaResultatlista(int eclecticID)
         {
-            //EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
-            //EclecticResultatLista eclecticResultat = null;
+            EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
+            List<EclecticRondTotal> eclecticResultat = null;
+            EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaResultatlista(eclecticID);
+            List<Golfresultat> lista = new List<Golfresultat>();
+
+            if (eclecticRondTotalDS.Tables[0].Rows.Count > 0)
+            {
+                //tavlingResultatLista = new List<TavlingResultatLista>(resultatlistaDS.Tables[0].Rows.Count);
+                foreach (DataRow rad in eclecticRondTotalDS.Tables[0].Rows)
+                {
+                    lista.Add(new Golfresultat
+                    {
+                        TotalID = (int)rad["TotalID"],
+                        SpelarID = (int)rad["SpelarID"],
+                        Namn = rad["Namn"].ToString(),
+                        Hcp = rad["ExaktHcp"].ToString(),
+                        HalNr = (int)rad["HalNr"],
+                        AntalSlag_Brutto = (int)rad["AntalSlag_Brutto"],
+                        AntalSlag_Netto = (int)rad["AntalSlag_Netto"],
+                        AntalPoang = (int)rad["AntalPoang"]
+                    });
+                }
+            }
+            return lista;
 
             ////Fältet Spelform i Tavlingklass anger om slag eller poäng ska räknas. 
             ////Spelform "SG" och "ST" är slagspelformer
@@ -153,7 +208,7 @@ namespace Hooker.Affärslager
 
                 if (eclecticRondTotalDS.EclecticRondTotal.Count > 0)
                 {
-                    eclecticRondTotalData.SparaEclecticRondTotal(eclecticRondTotal, ref felID, ref feltext);
+                    eclecticRondTotalData.SparaEclecticRondTotal(eclecticRondTotals, ref felID, ref feltext);
                 }
                 else
                 {
