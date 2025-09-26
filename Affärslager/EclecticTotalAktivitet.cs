@@ -50,6 +50,38 @@ namespace Hooker.Affärslager
         /// Hämtar alla eclecticTotalposter i tabellen EclecticTotal för angiven Eclectic
         /// </summary>
         /// <param name="eclecticID">Aktuell eclectic</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public List<EclecticTotal> HämtaAllaEclecticTotalFörBanan(int eclecticID, int banaNr)
+        {
+            EclecticTotalData eclecticTotalData = new EclecticTotalData();
+            EclecticTotalDS eclecticTotalDS = eclecticTotalData.HämtaEclecticTotal(eclecticID, banaNr);
+            List<EclecticTotal> eclecticTotals = null;
+
+            if (eclecticTotalDS.EclecticTotal.Rows.Count > 0)
+            {
+                eclecticTotals = new List<EclecticTotal>(eclecticTotalDS.EclecticTotal.Rows.Count);
+                foreach (EclecticTotalDS.EclecticTotalRow rad in eclecticTotalDS.EclecticTotal.Rows)
+                {
+                    eclecticTotals.Add(new EclecticTotal()
+                    {
+                        TotalID = rad.TotalID,
+                        SpelarID = rad.SpelarID,
+                        EclecticID = rad.EclecticID,
+                        ExaktHcp = rad.ExaktHcp,
+                        ErhallnaSlag = rad.ErhallnaSlag,
+                        Tee = rad.Tee,
+                        BanaNr = rad.BanaNr,
+                        TotalUppdatDatum = rad.TotalUppdatDatum
+                    });
+                }
+            }
+            return eclecticTotals;
+        }
+
+        /// <summary>
+        /// Hämtar alla eclecticTotalposter i tabellen EclecticTotal för angiven Eclectic
+        /// </summary>
+        /// <param name="eclecticID">Aktuell eclectic</param>
         /// <param name="spelarID">Aktuell spelare</param>
         /// <returns>Objekt med efterfrågat data</returns>
         public List<EclecticTotal> HämtaAllaEclecticTotalFörEclecticen(int eclecticID, int spelarID)

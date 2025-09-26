@@ -38,7 +38,8 @@ namespace Hooker.Affärslager
                         AntalSlag_Brutto = rad.AntalSlag_Brutto,
                         AntalSlag_Netto = rad.AntalSlag_Netto,
                         AntalPoang = rad.AntalPoang,
-                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum
+                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum,
+                        Uppdaterad = rad.Uppdaterad
                     };
                 }
             }
@@ -70,7 +71,8 @@ namespace Hooker.Affärslager
                         AntalSlag_Brutto = rad.AntalSlag_Brutto,
                         AntalSlag_Netto = rad.AntalSlag_Netto,
                         AntalPoang = rad.AntalPoang,
-                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum
+                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum,
+                        Uppdaterad = rad.Uppdaterad
                     });
                 }
             }
@@ -102,7 +104,8 @@ namespace Hooker.Affärslager
                         AntalSlag_Brutto = rad.AntalSlag_Brutto,
                         AntalSlag_Netto = rad.AntalSlag_Netto,
                         AntalPoang = rad.AntalPoang,
-                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum
+                        RondTotalUppdatDatum = rad.RondTotalUppdatDatum,
+                        Uppdaterad = rad.Uppdaterad
                     });
                 }
             }
@@ -115,11 +118,11 @@ namespace Hooker.Affärslager
         /// <param name="Eclectic">Eclecticobjekt</param>
         /// <param name="Rondtotal">A</param>
         /// <returns></returns>
-        public List<Golfresultat> HämtaResultatlista(int eclecticID)
+        public List<Golfresultat> HämtaResultatlista(int eclecticID, int banaNr)
         {
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
             List<EclecticRondTotal> eclecticResultat = null;
-            EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaResultatlista(eclecticID);
+            EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaResultatlista(eclecticID, banaNr);
             List<Golfresultat> lista = new List<Golfresultat>();
 
             if (eclecticRondTotalDS.Tables[0].Rows.Count > 0)
@@ -142,51 +145,6 @@ namespace Hooker.Affärslager
             }
             return lista;
 
-            ////Fältet Spelform i Tavlingklass anger om slag eller poäng ska räknas. 
-            ////Spelform "SG" och "ST" är slagspelformer
-            //bool slag = false;
-            //string spelform = "";
-            //int antalKlasser = tavling.AntalTavlingKlass();
-
-            //if (antalKlasser > 0)
-            //{
-            //    for (int i = 0; i < tavling.TavlingKlass.Length; i++)
-            //    {
-            //        if (tavling.TavlingKlass[i].Klass == klass)
-            //        {
-            //            spelform = tavling.TavlingKlass[i].Spelform.Trim();
-            //        }
-            //    }
-
-            //    if (spelform.Equals("SG") || spelform.Equals("ST"))
-            //    {
-            //        slag = true;
-            //    }
-            //}
-
-            //DataSet resultatlistaDS = tavlingRondResultatData.HämtaResultatlista(tavling.TavlingID, klass, rondNr, slag);
-
-            //if (resultatlistaDS.Tables[0].Rows.Count > 0)
-            //{
-            //    //tavlingResultatLista = new List<TavlingResultatLista>(resultatlistaDS.Tables[0].Rows.Count);
-            //    foreach (DataRow rad in resultatlistaDS.Tables[0].Rows)
-            //    {
-            //        tavlingResultatLista = new TavlingResultatLista();
-            //        tavlingResultatLista.SpelarID = (int)rad["SpelarID"];
-            //        tavlingResultatLista.RondID = (int)rad["RondID"];
-            //        tavlingResultatLista.RondNr = (int)rad["RondNr"];
-            //        tavlingResultatLista.Klass = rad["Klass"].ToString();
-            //        tavlingResultatLista.Spelarnamn = rad["Spelarnamn"].ToString();
-            //        tavlingResultatLista.Hemmaklubb = rad["Hemmaklubb"].ToString();
-            //        tavlingResultatLista.SpelHcp = (int)rad["ErhallnaSlag"];
-            //        tavlingResultatLista.RondResultatUt = Convert.ToInt32(rad["RondResultatUt"]);
-            //        tavlingResultatLista.RondResultatIn = Convert.ToInt32(rad["RondResultatIn"]);
-            //        tavlingResultatLista.RondResultatTot = Convert.ToInt32(rad["RondResultatTot"]);
-            //        tavlingResultatLista.TotalResultat = Convert.ToInt32(rad["TotalResultat"]);
-            //        tavling.AddTavlingResultatLista(tavlingResultatLista);
-            //    }
-            //}
-            //return tavlingResultatLista;
         }
 
         /// <summary>
