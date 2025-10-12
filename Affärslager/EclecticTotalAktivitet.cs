@@ -144,6 +144,38 @@ namespace Hooker.Affärslager
         }
 
         /// <summary>
+        /// Hämtar eclecticTotalpost i tabellen EclecticTotal för spelaren, banan och tee
+        /// </summary>
+        /// <param name="eclecticID">Aktuell eclectic</param>
+        /// <param name="spelarID">Aktuell spelare</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public EclecticTotal HämtaEclecticTotalFörSpelare(int totalID, int spelarID)
+        {
+            EclecticTotalData eclecticTotalData = new EclecticTotalData();
+            EclecticTotalDS eclecticTotalDS = eclecticTotalData.HämtaEclecticTotalFörSpelare(totalID, spelarID);
+            EclecticTotal eclecticTotal = null;
+
+            if (eclecticTotalDS.EclecticTotal.Count == 1)
+            {
+                foreach (EclecticTotalDS.EclecticTotalRow rad in eclecticTotalDS.EclecticTotal.Rows)
+                {
+                    eclecticTotal = new EclecticTotal()
+                    {
+                        TotalID = rad.TotalID,
+                        SpelarID = rad.SpelarID,
+                        EclecticID = rad.EclecticID,
+                        ExaktHcp = rad.ExaktHcp,
+                        ErhallnaSlag = rad.ErhallnaSlag,
+                        Tee = rad.Tee,
+                        BanaNr = rad.BanaNr,
+                        TotalUppdatDatum = rad.TotalUppdatDatum
+                    };
+                }
+            }
+            return eclecticTotal;
+        }
+
+        /// <summary>
         /// Sparar alla förändringar i EclecticTotal i databasen 
         /// </summary>
         /// <param name="eclecticTotal">Aktuell EclecticTotal</param>

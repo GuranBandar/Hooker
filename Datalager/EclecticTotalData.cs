@@ -157,6 +157,38 @@ namespace Hooker.Datalager
             }
         }
 
+        public EclecticTotalDS HämtaEclecticTotalFörSpelare(int totalID, int spelarID)
+        {
+            EclecticTotalDS ds = new EclecticTotalDS();
+            string sql;
+
+            try
+            {
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@TotalID", DataTyp.Int, totalID.ToString()),
+                    new DatabasParameters("@SpelarID", DataTyp.Int, spelarID.ToString())
+                };
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM EclecticTotal e WHERE e.TotalID = @TotalID " +
+                    "AND e.SpelarID = @SpelarID";
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+
+        }
+
         /// <summary>
         /// Hämtar max TotalID från tabellen EclecticTotal i aktuell databas.
         /// </summary>

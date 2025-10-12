@@ -45,6 +45,11 @@ namespace Hooker.Affärslager
                     });
                 }
             }
+            else 
+            {
+                eclecticRonds = new List<EclecticRond>();
+            }
+
             return eclecticRonds;
         }
 

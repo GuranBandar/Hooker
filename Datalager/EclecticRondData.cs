@@ -202,10 +202,9 @@ namespace Hooker.Datalager
                 sql = "INSERT INTO EclecticRond(EclecticID, RondNotering, RondNamn, RondDatum, " +
                     "RondStatus, BanaNr, AnvandarNamnRondSkapad, RondSkapadDatum, " +
                     "AnvandarNamnRondUppdat, RondUppdatDatum) " +
-
-                "VALUES " +
-                "(@EclecticID, @RondNotering, @RondNamn, @RondDatum, @RondStatus, @BanaNr, " +
-                "@AnvandarNamnRondSkapad, @RondSkapadDatum, @AnvandarNamnRondUppdat, @RondUppdatDatum)";
+                    "VALUES " +
+                    "(@EclecticID, @RondNotering, @RondNamn, @RondDatum, @RondStatus, @BanaNr, " +
+                    "@AnvandarNamnRondSkapad, @RondSkapadDatum, @AnvandarNamnRondUppdat, @RondUppdatDatum)";
 
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {

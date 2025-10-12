@@ -34,7 +34,10 @@ namespace Hooker.Affärslager
                         RondID = rad.RondID,
                         SpelarID = rad.SpelarID,
                         HalNr = rad.HalNr,
-                        AntalSlag = rad.AntalSlag,
+                        Par = rad.Par,
+                        Hcp = rad.Hcp,
+                        AntalSlag_Brutto = rad.AntalSlag_Brutto,
+                        AntalSlag_Netto = rad.AntalSlag_Netto,
                         AntalPoang = rad.AntalPoang,
                         RondDatum = rad.RondDatum
                     });
@@ -65,7 +68,10 @@ namespace Hooker.Affärslager
                         RondID = rad.RondID,
                         SpelarID = rad.SpelarID,
                         HalNr = rad.HalNr,
-                        AntalSlag = rad.AntalSlag,
+                        Par = rad.Par,
+                        Hcp = rad.Hcp,
+                        AntalSlag_Brutto = rad.AntalSlag_Brutto,
+                        AntalSlag_Netto = rad.AntalSlag_Netto,
                         AntalPoang = rad.AntalPoang,
                         RondDatum = rad.RondDatum
                     });
@@ -80,24 +86,22 @@ namespace Hooker.Affärslager
         /// <param name="EclecticRondResultat">Aktuellt objekt</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void Spara(List<EclecticRondResultat> eclecticRondResultats, ref string felID, ref string feltext)
+        public void Spara(List<EclecticRondResultat> eclecticRondResultat, ref string felID, ref string feltext)
         {
+            int resultat = 0;
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
             EclecticRondResultatDS eclecticRondResultatDS;
 
-            foreach (EclecticRondResultat eclecticRondResultat in eclecticRondResultats)
-            {
-                eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat.RondID,
-                    eclecticRondResultat.SpelarID, eclecticRondResultat.HalNr);
+            eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat[0].RondID,
+                eclecticRondResultat[0].SpelarID, eclecticRondResultat[0].HalNr);
 
-                if (eclecticRondResultatDS.EclecticRondResultat.Count > 0)
-                {
-                    eclecticRondResultatData.SparaEclecticRondResultat(eclecticRondResultat, ref felID, ref feltext);
-                }
-                else
-                {
-                    eclecticRondResultatData.SparaNyEclecticRondResultat(eclecticRondResultat, ref felID, ref feltext);
-                }
+            if (eclecticRondResultatDS.EclecticRondResultat.Count > 0)
+            {
+                eclecticRondResultatData.SparaEclecticRondResultat(eclecticRondResultat, ref felID, ref feltext);
+            }
+            else
+            {
+                eclecticRondResultatData.SparaNyEclecticRondResultat(eclecticRondResultat, ref felID, ref feltext);
             }
         }
     }
