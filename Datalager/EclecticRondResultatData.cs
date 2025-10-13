@@ -142,7 +142,7 @@ namespace Hooker.Datalager
             try
             {
                 DatabasAccess.SkapaTransaktion();
-                sql = @"INSERT INTO EclecticRondResultat(RondID, SpelarID, HalNr, Par, Hcp, AntalSlag_Bruuto, AntalSlag_Netto, " +
+                sql = @"INSERT INTO EclecticRondResultat(RondID, SpelarID, HalNr, Par, Hcp, AntalSlag_Brutto, AntalSlag_Netto, " +
                      "AntalPoang, RondDatum) " +
                     "VALUES " +
                     "(@RondID, @SpelarID, @HalNr, @Par, @Hcp, @AntalSlag_Brutto, @AntalSlag_Netto, @AntalPoang, @RondDatum)";

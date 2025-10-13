@@ -108,20 +108,25 @@ namespace Hooker.Affärslager
         public EclecticRond HämtaEclecticRond(int rondID)
         {
             EclecticRondData eclecticRondData = new EclecticRondData();
-            EclecticRondDS EclecticRondDS = eclecticRondData.HämtaEclecticRond(rondID);
-            EclecticRond EclecticRond = new EclecticRond();
-            EclecticRond.RondID = EclecticRondDS.EclecticRond[0].RondID;
-            EclecticRond.EclecticID = EclecticRondDS.EclecticRond[0].EclecticID;
-            EclecticRond.RondNotering = EclecticRondDS.EclecticRond[0].RondNotering;
-            EclecticRond.RondNamn = EclecticRondDS.EclecticRond[0].RondNamn;
-            EclecticRond.RondDatum = EclecticRondDS.EclecticRond[0].RondDatum;
-            EclecticRond.Rondstatus = EclecticRondDS.EclecticRond[0].RondStatus;
-            EclecticRond.BanaNr = EclecticRondDS.EclecticRond[0].BanaNr;
-            EclecticRond.AnvandarNamnRondSkapad = EclecticRondDS.EclecticRond[0].AnvandarNamnRondSkapad;
-            EclecticRond.RondSkapadDatum = EclecticRondDS.EclecticRond[0].RondSkapadDatum;
-            EclecticRond.AnvandarNamnRondUppdat = EclecticRondDS.EclecticRond[0].AnvandarNamnRondUppdat;
-            EclecticRond.RondUppdatDatum = EclecticRondDS.EclecticRond[0].RondUppdatDatum;
-            return EclecticRond;
+            EclecticRondDS eclecticRondDS = eclecticRondData.HämtaEclecticRond(rondID);
+            EclecticRond eclecticRond = null;
+
+            if (eclecticRondDS.EclecticRond.Count == 1)
+            {
+                eclecticRond = new EclecticRond();
+                eclecticRond.RondID = eclecticRondDS.EclecticRond[0].RondID;
+                eclecticRond.EclecticID = eclecticRondDS.EclecticRond[0].EclecticID;
+                eclecticRond.RondNotering = eclecticRondDS.EclecticRond[0].RondNotering;
+                eclecticRond.RondNamn = eclecticRondDS.EclecticRond[0].RondNamn;
+                eclecticRond.RondDatum = eclecticRondDS.EclecticRond[0].RondDatum;
+                eclecticRond.Rondstatus = eclecticRondDS.EclecticRond[0].RondStatus;
+                eclecticRond.BanaNr = eclecticRondDS.EclecticRond[0].BanaNr;
+                eclecticRond.AnvandarNamnRondSkapad = eclecticRondDS.EclecticRond[0].AnvandarNamnRondSkapad;
+                eclecticRond.RondSkapadDatum = eclecticRondDS.EclecticRond[0].RondSkapadDatum;
+                eclecticRond.AnvandarNamnRondUppdat = eclecticRondDS.EclecticRond[0].AnvandarNamnRondUppdat;
+                eclecticRond.RondUppdatDatum = eclecticRondDS.EclecticRond[0].RondUppdatDatum;
+            }
+            return eclecticRond;
         }
 
         /// <summary>
