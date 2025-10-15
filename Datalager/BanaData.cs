@@ -44,6 +44,36 @@ namespace Hooker.Datalager
         }
 
         /// <summary>
+        /// Hämtar rader från tabellen BanaHal i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="banaNR">Aktuellt BanaNR</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public BanaHalDS HämtaBanaHal(int banaNR)
+        {
+            BanaHalDS banaHalDS = new BanaHalDS();
+            string sql = "SELECT b.* FROM BanaHal b " +
+                "WHERE b.BanaNR = @BanaNr";
+
+            try
+            {
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@BanaNr", banaNR.ToString())
+                };
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, banaHalDS);
+                return banaHalDS;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                DatabasAccess.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Hämtar rad från tabellen Bana i aktuell databas med angiven nyckel.
         /// </summary>
         /// <param name="namn">Aktuellt namn</param>

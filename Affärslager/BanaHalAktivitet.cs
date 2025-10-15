@@ -1,6 +1,8 @@
 ﻿using Hooker.Affärsobjekt;
+using Hooker.Dataset;
 using Hooker.Gemensam;
 using System;
+using System.Collections.Generic;
 
 namespace Hooker.Affärslager
 {
@@ -98,6 +100,41 @@ namespace Hooker.Affärslager
             }
 
             return true;
+        }
+
+        /// <summary>
+        ///     Hämta Bana och banans alla BanaHal för angivet banaNr.
+        /// </summary>
+        /// <param name="banaNr">Banans nr</param>
+        /// <returns>Ett sammansatt typat dataset med aktuell information</returns>
+        public List<BanaHal> HämtaBanaHal(int banaNr)
+        {
+            BanaHalDS banaHalDS = new BanaHalDS();
+            Datalager.BanaData banaData = new Datalager.BanaData();
+            banaHalDS = banaData.HämtaBanaHal(banaNr);
+            List<BanaHal> banaHal = null;
+
+            if (banaHalDS.BanaHal.Rows.Count > 0)
+            {
+                //Skapa Banahalobjektet
+
+                banaHal = new List<BanaHal>(banaHalDS.BanaHal.Rows.Count);
+                foreach (BanaHalDS.BanaHalRow rad in banaHalDS.BanaHal.Rows)
+                {
+                    banaHal.Add(new BanaHal()
+                    {
+                        BanaNr = rad.BanaNr,
+                        HalNr = rad.Halnr,
+                        LangdVit = rad.LangdVit,
+                        LangdGul = rad.LangdGul,
+                        LangdBla = rad.LangdBla,
+                        LangdRod = rad.LangdRod,
+                        Par = rad.Par,
+                        Hcp = rad.Hcp
+                    });
+                }
+            }
+            return banaHal;
         }
     }
 }
