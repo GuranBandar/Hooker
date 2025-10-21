@@ -4,6 +4,7 @@ using Hooker.Dataset;
 using Hooker.Gemensam;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Hooker.Datalager
 {
@@ -223,31 +224,56 @@ namespace Hooker.Datalager
 
             try
             {
-                DatabasAccess.SkapaTransaktion();
-                for (int i = 0; i < eclecticRondTotal.Count; i++)
-                {
-                    sql = "INSERT INTO EclecticRondTotal(TotalID, SpelarID, HalNr, Par, Hcp, AntalSlag_Brutto, AntalSlag_Netto, AntalPoang, " +
-                        "RondTotalUppdatDatum, Uppdaterad) " +
-                        "VALUES " +
-                        "(@TotalID, @SpelarID, @HalNr, @Par, @Hcp, @AntalSlag_Brutto, @AntalSlag_Netto, @AntalPoang, " +
-                        "@RondTotalUppdatDatum, @Uppdaterad)";
+                var sb = new StringBuilder();
+                var parameters = new Dictionary<string, object>();
+                int index = 0;
 
-                    List<DatabasParameters> dbParameters = new List<DatabasParameters>()
-                    {
-                        new DatabasParameters("@TotalID", DataTyp.Int, eclecticRondTotal[i].TotalID.ToString()),
-                        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRondTotal[i].SpelarID.ToString()),
-                        new DatabasParameters("@HalNr", DataTyp.Int, eclecticRondTotal[i].HalNr.ToString()),
-                        new DatabasParameters("@Par", DataTyp.Int, eclecticRondTotal[i].Par.ToString()),
-                        new DatabasParameters("@Hcp", DataTyp.Int, eclecticRondTotal[i].Hcp.ToString()),
-                        new DatabasParameters("@AntalSlag_Brutto", DataTyp.Int, eclecticRondTotal[i].AntalSlag_Brutto.ToString()),
-                        new DatabasParameters("@AntalSlag_Netto", DataTyp.Int, eclecticRondTotal[i].AntalSlag_Netto.ToString()),
-                        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticRondTotal[i].AntalPoang.ToString()),
-                        new DatabasParameters("@RondTotalUppdatDatum", DataTyp.VarChar, eclecticRondTotal[i].RondTotalUppdatDatum.ToString()),
-                        new DatabasParameters("@Uppdaterad", DataTyp.VarChar, eclecticRondTotal[i].Uppdaterad.ToString())
-                    };
-                    DatabasAccess.RunSql(sql, dbParameters);
+                sb.Append("INSERT INTO EclecticRondTotal(TotalID, SpelarID, HalNr, AntalSlag_Brutto, AntalSlag_Netto, AntalPoang, RondTotalUppdatDatum, Uppdaterad) VALUES ");
+
+                foreach (var item in eclecticRondTotal)
+                {
+                    if (index > 0) sb.Append(", ");
+                    sb.Append($"(@TotalID{index}, @SpelarID{index}, @HalNr{index}, @AntalSlag_Brutto{index}, @AntalSlag_Netto{index}, @AntalPoang{index}, @RondTotalUppdatDatum{index}, @Uppdaterad{index})");
+
+                    parameters[$"@TotalID{index}"] = item.TotalID;
+                    parameters[$"@SpelarID{index}"] = item.SpelarID;
+                    parameters[$"@HalNr{index}"] = item.HalNr;
+                    parameters[$"@AntalSlag_Brutto{index}"] = item.AntalSlag_Brutto;
+                    parameters[$"@AntalSlag_Netto{index}"] = item.AntalSlag_Netto;
+                    parameters[$"@AntalPoang{index}"] = item.AntalPoang;
+                    parameters[$"@RondTotalUppdatDatum{index}"] = item.RondTotalUppdatDatum;
+                    parameters[$"@Uppdaterad{index}"] = item.Uppdaterad;
+
+                    index++;
                 }
+
+                DatabasAccess.SkapaTransaktion();
+                DatabasAccess.ExecuteNonQuery(sb.ToString(), parameters);
                 DatabasAccess.BekräftaTransaktion();
+
+                //DatabasAccess.SkapaTransaktion();
+                //for (int i = 0; i < eclecticRondTotal.Count; i++)
+                //{
+                //    sql = "INSERT INTO EclecticRondTotal(TotalID, SpelarID, HalNr, AntalSlag_Brutto, AntalSlag_Netto, AntalPoang, " +
+                //        "RondTotalUppdatDatum, Uppdaterad) " +
+                //        "VALUES " +
+                //        "(@TotalID, @SpelarID, @HalNr, @AntalSlag_Brutto, @AntalSlag_Netto, @AntalPoang, " +
+                //        "@RondTotalUppdatDatum, @Uppdaterad)";
+
+                //    List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                //    {
+                //        new DatabasParameters("@TotalID", DataTyp.Int, eclecticRondTotal[i].TotalID.ToString()),
+                //        new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRondTotal[i].SpelarID.ToString()),
+                //        new DatabasParameters("@HalNr", DataTyp.Int, eclecticRondTotal[i].HalNr.ToString()),
+                //        new DatabasParameters("@AntalSlag_Brutto", DataTyp.Int, eclecticRondTotal[i].AntalSlag_Brutto.ToString()),
+                //        new DatabasParameters("@AntalSlag_Netto", DataTyp.Int, eclecticRondTotal[i].AntalSlag_Netto.ToString()),
+                //        new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticRondTotal[i].AntalPoang.ToString()),
+                //        new DatabasParameters("@RondTotalUppdatDatum", DataTyp.VarChar, eclecticRondTotal[i].RondTotalUppdatDatum.ToString()),
+                //        new DatabasParameters("@Uppdaterad", DataTyp.VarChar, eclecticRondTotal[i].Uppdaterad.ToString())
+                //    };
+                //    DatabasAccess.RunSql(sql, dbParameters);
+                //}
+                //DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
             {
@@ -290,7 +316,7 @@ namespace Hooker.Datalager
             {
                 DatabasAccess.SkapaTransaktion();
                 sql = "UPDATE EclecticRondTotal " +
-                    "SET Par = @Par, Hcp = @Hcp, AntalSlag_Brutto = @AntalSlag_Brutto, AntalSlag_Netto = @AntalSlag_Netto, " +
+                    "SET AntalSlag_Brutto = @AntalSlag_Brutto, AntalSlag_Netto = @AntalSlag_Netto, " +
                     "AntalPoang = @AntalPoang, RondTotalUppdatDatum = @RondTotalUppdatDatum, Uppdaterad = @Uppdaterad " +
                     "WHERE TotalID = @TotalID AND SpelarID = @SpelarID AND HalNr = @HalNr";
 
@@ -302,8 +328,6 @@ namespace Hooker.Datalager
                         new DatabasParameters("@TotalID", DataTyp.Int, eclecticRond.TotalID.ToString()),
                         new DatabasParameters("@SpelarID", DataTyp.Int, eclecticRond.SpelarID.ToString()),
                         new DatabasParameters("@HalNr", DataTyp.Int, eclecticRond.HalNr.ToString()),
-                        new DatabasParameters("@Par", DataTyp.Int, eclecticRond.Par.ToString()),
-                        new DatabasParameters("@Hcp", DataTyp.Int, eclecticRond.Hcp.ToString()),
                         new DatabasParameters("@AntalSlag_Brutto", DataTyp.Int, eclecticRond.AntalSlag_Brutto.ToString()),
                         new DatabasParameters("@AntalSlag_Netto", DataTyp.Int, eclecticRond.AntalSlag_Netto.ToString()),
                         new DatabasParameters("@AntalPoang", DataTyp.Int, eclecticRond.AntalPoang.ToString()),
