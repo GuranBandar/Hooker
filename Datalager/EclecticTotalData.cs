@@ -122,6 +122,43 @@ namespace Hooker.Datalager
         /// <summary>
         /// Hämtar rad från tabellen EclecticTotal i aktuell databas med angiven nyckel.
         /// </summary>
+        /// <param name="spelarID">Aktuell spelare</param>
+        /// <param name="banaNr">Aktuell bana</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public EclecticTotalDS HämtaEclecticTotalFörSpelareOchBana(int spelarID, int banaNr)
+        {
+            EclecticTotalDS ds = new EclecticTotalDS();
+            string sql;
+
+            try
+            {
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@SpelarID", DataTyp.Int, spelarID.ToString()),
+                    new DatabasParameters("@BanaNr", DataTyp.Int, banaNr.ToString())
+                };
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM EclecticTotal e WHERE e.SpelarID = @SpelarID " +
+                    "AND e.BanaNr = @BanaNr";
+                DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
+                return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen EclecticTotal i aktuell databas med angiven nyckel.
+        /// </summary>
         /// <param name="eclecticID">Aktuell EclecticTotal</param>
         /// <param name="spelarID">Aktuell spelare</param>
         /// <returns>Typat dataset med efterfrågat data</returns>

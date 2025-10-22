@@ -23,7 +23,7 @@ namespace Hooker.Affärslager
         {
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
             EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaEclecticRondTotal(totalID, spelarID, halNr);
-            EclecticRondTotal eclecticRondTotal = null;
+            EclecticRondTotal eclecticRondTotal = new EclecticRondTotal();
 
             if (eclecticRondTotalDS.EclecticRondTotal.Rows.Count > 0)
             {
@@ -89,7 +89,7 @@ namespace Hooker.Affärslager
         {
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
             EclecticRondTotalDS eclecticRondTotalDS = eclecticRondTotalData.HämtaEclecticRondTotal(totalID, spelarID);
-            List<EclecticRondTotal> eclecticRondTotals = null;
+            List<EclecticRondTotal> eclecticRondTotals = new List<EclecticRondTotal>();
 
             if (eclecticRondTotalDS.EclecticRondTotal.Rows.Count > 0)
             {
@@ -155,23 +155,22 @@ namespace Hooker.Affärslager
         /// <param name="spelarID">Aktuellt SpelarID</param>
         /// <param name="felID">Felmeddelande i Ordlistan som ska visas</param>
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
-        public void Spara(List<EclecticRondTotal> eclecticRondTotals, ref string felID, ref string feltext)
+        public void Spara(List<EclecticRondTotal> eclecticRondTotal, ref string felID, ref string feltext)
         {
+            int antalRader = 0;
             EclecticRondTotalData eclecticRondTotalData = new EclecticRondTotalData();
-            EclecticRondTotalDS eclecticRondTotalDS;
+            List<EclecticRondTotal> eclecticRondTotalOld;
 
-            foreach (EclecticRondTotal eclecticRondTotal in eclecticRondTotals)
+            //För uppdatering av förändrade värden
+            eclecticRondTotalOld = this.HämtaEclecticRondTotal(eclecticRondTotal[0].TotalID, eclecticRondTotal[0].SpelarID);
+
+            if (eclecticRondTotalOld.Count > 0)
             {
-                eclecticRondTotalDS = eclecticRondTotalData.HämtaEclecticRondTotal(eclecticRondTotal.TotalID, eclecticRondTotal.SpelarID);
-
-                if (eclecticRondTotalDS.EclecticRondTotal.Count > 0)
-                {
-                    eclecticRondTotalData.SparaEclecticRondTotal(eclecticRondTotals, ref felID, ref feltext);
-                }
-                else
-                {
-                    eclecticRondTotalData.SparaNyEclecticRondTotalAllaHal(eclecticRondTotals, ref felID, ref feltext);
-                }
+                eclecticRondTotalData.UppdateraRondTotal(eclecticRondTotal, eclecticRondTotalOld, ref felID, ref feltext);
+            }
+            else
+            {
+                antalRader = eclecticRondTotalData.SparaNyEclecticRondTotalAllaHal(eclecticRondTotal, ref felID, ref feltext);
             }
         }
     }

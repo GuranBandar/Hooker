@@ -4,6 +4,7 @@ using Hooker.Dataset;
 using Hooker.Gemensam;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Hooker.Datalager
@@ -137,17 +138,10 @@ namespace Hooker.Datalager
         /// <param name="feltext">Ev kompletterande felmeddelande som returneras</param>
         public void SparaNyEclecticRondResultat(List<EclecticRondResultat> eclecticRondResultat, ref string felID, ref string feltext)
         {
-            string sql;
             int nyaRader = 0;
 
             try
             {
-                //DatabasAccess.SkapaTransaktion();
-                //sql = @"INSERT INTO EclecticRondResultat(RondID, SpelarID, HalNr, Par, Hcp, AntalSlag_Brutto, AntalSlag_Netto, " +
-                //     "AntalPoang, RondDatum) " +
-                //    "VALUES " +
-                //    "(@RondID, @SpelarID, @HalNr, @Par, @Hcp, @AntalSlag_Brutto, @AntalSlag_Netto, @AntalPoang, @RondDatum)";
-
                 var sb = new StringBuilder();
                 var parameters = new Dictionary<string, object>();
                 int index = 0;
@@ -171,24 +165,6 @@ namespace Hooker.Datalager
                 DatabasAccess.SkapaTransaktion();
                 nyaRader = DatabasAccess.ExecuteNonQuery(sb.ToString(), parameters);
                 DatabasAccess.BekräftaTransaktion();
-
-                //foreach (var result in eclecticRondResultat)
-                //{
-                //    var dbParameters = new Dictionary<string, object>
-                //    {
-                //        ["@RondId"] = result.RondID,
-                //        ["@SpelarId"] = result.SpelarID,
-                //        ["@HalNr"] = result.HalNr,
-                //        ["@Par"] = result.Par,
-                //        ["@Hcp"] = result.Hcp,
-                //        ["@AntalSlag_Brutto"] = result.AntalSlag_Brutto,
-                //        ["@AntalSlag_Netto"] = result.AntalSlag_Netto,
-                //        ["@AntalPoang"] = result.AntalPoang,
-                //        ["@RondDatum"] = result.RondDatum,
-                //    };
-                //    nyaRader = DatabasAccess.ExecuteNonQuery(sql, dbParameters);
-                //}
-                //DatabasAccess.BekräftaTransaktion();
             }
             catch (HookerException hex)
             {
@@ -216,6 +192,60 @@ namespace Hooker.Datalager
                 }
             }
         }
+
+        /// <summary>
+        /// Uppdaterar EclecticRondResultat med förändrade data
+        /// </summary>
+        /// <param name="nyaRader">Den uppdaterade listan</param>
+        /// <param name="gamlaRader">Lista med gamla värden</param>
+        /// <param name="felID"></param>
+        /// <param name="feltext"></param>
+        public void UppdateraRondResultat(List<EclecticRondResultat> nyaRader, List<EclecticRondResultat> gamlaRader, ref string felID, ref string feltext)
+        {
+            DatabasAccess.SkapaTransaktion();
+
+            string sql = @"UPDATE EclecticRondResultat SET 
+                    AntalSlag_Brutto = @AntalSlag_Brutto,
+                    AntalSlag_Netto = @AntalSlag_Netto,
+                    AntalPoang = @AntalPoang,
+                    RondDatum = @RondDatum,
+                    Uppdaterad = 'J'
+                   WHERE TotalID = @RondID AND SpelarID = @SpelarID AND HalNr = @HalNr";
+
+            foreach (var ny in nyaRader)
+            {
+                var gammal = gamlaRader.FirstOrDefault(x =>
+                    x.RondID == ny.RondID &&
+                    x.SpelarID == ny.SpelarID &&
+                    x.HalNr == ny.HalNr);
+
+                if (gammal == null) continue;
+
+                bool ändrad =
+                    ny.AntalSlag_Brutto != gammal.AntalSlag_Brutto ||
+                    ny.AntalSlag_Netto != gammal.AntalSlag_Netto ||
+                    ny.AntalPoang != gammal.AntalPoang ||
+                    ny.RondDatum != gammal.RondDatum;
+
+                if (!ändrad) continue;
+
+                var param = new Dictionary<string, object>
+                {
+                    ["@RondID"] = ny.RondID,
+                    ["@SpelarID"] = ny.SpelarID,
+                    ["@HalNr"] = ny.HalNr,
+                    ["@AntalSlag_Brutto"] = ny.AntalSlag_Brutto,
+                    ["@AntalSlag_Netto"] = ny.AntalSlag_Netto,
+                    ["@AntalPoang"] = ny.AntalPoang,
+                    ["@RondDatum"] = ny.RondDatum
+                };
+
+                DatabasAccess.ExecuteNonQuery(sql, param);
+            }
+
+            DatabasAccess.BekräftaTransaktion();
+        }
+
 
         /// <summary>
         /// Sprara EclecticRondResultat.

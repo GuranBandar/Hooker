@@ -2,6 +2,7 @@
 using Hooker.Datalager;
 using Hooker.Dataset;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Hooker.Affärslager
 {
@@ -22,7 +23,7 @@ namespace Hooker.Affärslager
         {
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
             EclecticRondResultatDS eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(rondID, spelarID);
-            List<EclecticRondResultat> eclecticRondResultat = null;
+            List<EclecticRondResultat> eclecticRondResultat = new List<EclecticRondResultat>();
 
             if (eclecticRondResultatDS.EclecticRondResultat.Rows.Count > 0)
             {
@@ -86,14 +87,15 @@ namespace Hooker.Affärslager
         {
             int resultat = 0;
             EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
-            EclecticRondResultatDS eclecticRondResultatDS;
+            List<EclecticRondResultat> eclecticRondResultatOld = new List<EclecticRondResultat>();
 
-            eclecticRondResultatDS = eclecticRondResultatData.HämtaEclecticRondResultat(eclecticRondResultat[0].RondID,
-                eclecticRondResultat[0].SpelarID, eclecticRondResultat[0].HalNr);
+            //För uppdatering av förändrade värden
+            eclecticRondResultatOld = this.HämtaEclecticRondResultat(eclecticRondResultat[0].RondID, eclecticRondResultat[0].SpelarID);
 
-            if (eclecticRondResultatDS.EclecticRondResultat.Count > 0)
+            if (eclecticRondResultatOld.Count > 0)
             {
-                eclecticRondResultatData.SparaEclecticRondResultat(eclecticRondResultat, ref felID, ref feltext);
+                eclecticRondResultatData.UppdateraRondResultat(eclecticRondResultat, eclecticRondResultatOld, ref felID, ref feltext);
+                //eclecticRondResultatData.SparaEclecticRondResultat(eclecticRondResultat, ref felID, ref feltext);
             }
             else
             {
