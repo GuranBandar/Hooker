@@ -110,14 +110,15 @@ namespace Hooker.Datalager
         public SpelareDS HämtaMandagsgang(string Mandagsgang)
         {
             SpelareDS spelareDS = new SpelareDS();
-            string sql = "SELECT s.* FROM Spelare s WHERE s.Mandagsgang = @Mandagsgang " +
+            string sql = "SELECT s.SpelarID, s.Namn, s.Hcp, s.Kon, s.Mandagsgang " +
+                "FROM Spelare s WHERE s.Mandagsgang = @Mandagsgang " +
                 "ORDER BY s.Namn";
 
             try
             {
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
-                    new DatabasParameters("@Mandagsgang", DataTyp.Char, Mandagsgang.ToString())
+                    new DatabasParameters("@Mandagsgang", DataTyp.String, Mandagsgang.ToString())
                 };
                 DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, spelareDS);
                 return spelareDS;

@@ -201,14 +201,14 @@ namespace Hooker.Datalager
 
             try
             {
+                ds.EnforceConstraints = false;
+                sql = "SELECT e.* FROM EclecticTotal e WHERE e.TotalID = @TotalID " +
+                    "AND e.SpelarID = @SpelarID";
                 List<DatabasParameters> dbParameters = new List<DatabasParameters>()
                 {
                     new DatabasParameters("@TotalID", DataTyp.Int, totalID.ToString()),
                     new DatabasParameters("@SpelarID", DataTyp.Int, spelarID.ToString())
                 };
-                ds.EnforceConstraints = false;
-                sql = "SELECT e.* FROM EclecticTotal e WHERE e.TotalID = @TotalID " +
-                    "AND e.SpelarID = @SpelarID";
                 DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
                 return ds;
             }

@@ -255,15 +255,7 @@ namespace Hooker.Affärslager
                         AktuelltSpelarID = rad.SpelarID,
                         Namn = rad.Namn,
                         ExaktHcp = rad.Hcp,
-                        GolfID = rad.GolfID,
-                        HemmabanaNr = rad.Hemmabananr,
-                        Klass = rad.Klass,
                         Kön = rad.Kon,
-                        Revisionsdatum = rad.RevisionsDatum,
-                        UppdatDatum = rad.UppdatDatum,
-                        GolfklubbNr = Functions.ToInt(rad.GolfklubbNr),
-                        FederationNo = rad.FederationNo,
-                        Portugalgolfare = rad.Portugalgolfare,
                         Mandagsgang = rad.Mandagsgang
                     });
                 }
