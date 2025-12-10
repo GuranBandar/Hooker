@@ -208,9 +208,8 @@ namespace Hooker.Datalager
                     AntalSlag_Brutto = @AntalSlag_Brutto,
                     AntalSlag_Netto = @AntalSlag_Netto,
                     AntalPoang = @AntalPoang,
-                    RondDatum = @RondDatum,
-                    Uppdaterad = 'J'
-                   WHERE TotalID = @RondID AND SpelarID = @SpelarID AND HalNr = @HalNr";
+                    RondDatum = @RondDatum
+                    WHERE RondID = @RondID AND SpelarID = @SpelarID AND HalNr = @HalNr";
 
             foreach (var ny in nyaRader)
             {

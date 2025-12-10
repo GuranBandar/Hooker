@@ -185,6 +185,20 @@ namespace Hooker.Gemensam
     }
 
     /// <summary>
+    /// TeeColor
+    /// </summary>
+    public enum TeeColor
+    {
+        /// <summary>
+        /// Alla_Koder
+        /// </summary>
+        Röd = 1,
+        Blå = 2,
+        Gul = 3,
+        Vit = 4
+    }
+
+    /// <summary>
     /// 
     /// </summary>
     [Flags()]
