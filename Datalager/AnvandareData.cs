@@ -256,7 +256,6 @@ namespace Hooker.Datalager
         public void SparaNyAnvandare(Anvandare anvandare, ref string felID, ref string feltext)
         {
             string sql;
-            int nyttAnvandarID;
 
             try
             {

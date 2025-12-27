@@ -50,6 +50,7 @@ namespace Hooker.Gemensam
             }
             catch (Exception ex)
             {
+                throw ex;
             }
         }
     }
