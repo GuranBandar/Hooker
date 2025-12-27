@@ -1,8 +1,9 @@
 ﻿using Hooker.Affärsobjekt;
 using Hooker.Datalager;
 using Hooker.Dataset;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
 
 namespace Hooker.Affärslager
 {
@@ -75,6 +76,42 @@ namespace Hooker.Affärslager
                 }
             }
             return eclecticRondResultat;
+        }
+
+        /// <summary>
+        /// Skapa en resultatlista från tabellen EclecticRondResultat
+        /// </summary>
+        /// <param name="rondID">Aktuell Rond</param>
+        /// <returns>Objekt med efterfrågat data</returns>
+        public List<EclecticResultatlista> SkapaResultatlista(int rondID)
+        {
+            DataSet resultatlistaDS = new DataSet();
+            EclecticRondResultatData eclecticRondResultatData = new EclecticRondResultatData();
+            List<EclecticResultatlista> resultatlista = new List<EclecticResultatlista>();
+            resultatlistaDS = eclecticRondResultatData.SkapaResultatlista(rondID);
+
+            if (resultatlistaDS.Tables["Resultatlista"].Rows.Count > 0)
+            {
+                resultatlista = new List<EclecticResultatlista>(resultatlistaDS.Tables["Resultatlista"].Rows.Count);
+                foreach (DataRow rad in resultatlistaDS.Tables["Resultatlista"].Rows)
+                {
+                    resultatlista.Add(new EclecticResultatlista()
+                    {
+                        Placering = Convert.ToInt32(rad["Placering"]),
+                        RondID = (int)rad["RondID"],
+                        BanaNr = (int)rad["BanaNr"],
+                        BanaNamn = rad["BanaNamn"].ToString(),
+                        SpelarID = (int)rad["SpelarID"],
+                        Namn = rad["Namn"].ToString(),
+                        Exakthcp = rad["Exakthcp"].ToString(),
+                        ErhallnaSlag = (int)rad["ErhallnaSlag"],
+                        AntalPoang_Totalt= Convert.ToInt32(rad["PoangTotalt"]),
+                        AntalPoang_Ut = Convert.ToInt32(rad["PoangUt"]),
+                        AntalPoang_In = Convert.ToInt32(rad["PoangIn"])
+                    });
+                }
+            }
+            return resultatlista;
         }
 
         /// <summary>

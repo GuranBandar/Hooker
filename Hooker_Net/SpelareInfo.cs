@@ -319,13 +319,13 @@ namespace Hooker_GUI
                     var nLista = hcplista.LastN(12);
                     var maxvalue = nLista.Max(w => w.Hcp);
                     var minvalue = nLista.Min(w => w.Hcp);
-                    cha.AxisY.Minimum = Convert.ToDouble(minvalue) - 2;
-                    cha.AxisY.Maximum = Convert.ToDouble(maxvalue) + 2;
+                    cha.AxisY.Minimum = Convert.ToDouble(minvalue) - 1;
+                    cha.AxisY.Maximum = Convert.ToDouble(maxvalue) + 3;
                 }
                 else
                 {
                     cha.AxisY.Minimum = Convert.ToDouble(Spelare.ExaktHcp) - 2;
-                    cha.AxisY.Maximum = Convert.ToDouble(Spelare.ExaktHcp) + 2;
+                    cha.AxisY.Maximum = Convert.ToDouble(Spelare.ExaktHcp) + 3;
                 }
 
                 chaHcplista.Series.Clear();

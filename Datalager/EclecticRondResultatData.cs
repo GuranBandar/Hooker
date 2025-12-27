@@ -4,6 +4,7 @@ using Hooker.Dataset;
 using Hooker.Gemensam;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -116,6 +117,60 @@ namespace Hooker.Datalager
 
                 DatabasAccess.FyllEnkeltDataSet(sql, dbParameters, ds);
                 return ds;
+            }
+            catch (HookerException hex)
+            {
+                throw hex;
+            }
+            finally
+            {
+                if (DatabasAccess != null)
+                {
+                    DatabasAccess.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hämtar rad från tabellen EclecticRondResultat i aktuell databas med angiven nyckel.
+        /// </summary>
+        /// <param name="rondID">Aktuell EclecticRond</param>
+        /// <param name="spelarID">Aktuell spelare</param>
+        /// <param name="halnr">Aktuellt hål</param>
+        /// <returns>Typat dataset med efterfrågat data</returns>
+        public DataSet SkapaResultatlista(int rondID)
+        {
+            DataSet ResultatListaDS = new DataSet();
+            string sql;
+
+            try
+            {
+                sql = "SELECT " +
+                    "RANK() OVER(" +
+                        "PARTITION BY r.RondID " +
+                        "ORDER BY SUM(r.AntalPoang) DESC" +
+                    ") AS Placering, " +
+                    "r.RondID, b.BanaNr, b.Namn AS BanaNamn, s.SpelarID, s.Namn, ed.Exakthcp, ed.ErhallnaSlag, " +
+                    "SUM(r.AntalPoang) AS PoangTotalt, " +
+                    "SUM(CASE WHEN r.HalNr BETWEEN 1 AND 9 THEN r.AntalPoang ELSE 0 END) AS PoangUt, " +
+                    "SUM(CASE WHEN r.HalNr BETWEEN 10 AND 18 THEN r.AntalPoang ELSE 0 END) AS PoangIn " +
+                "FROM EclecticRondResultat r " +
+                "INNER JOIN Spelare s ON r.SpelarID = s.SpelarID " +
+                "INNER JOIN EclecticRond er ON er.RondID = r.RondID " +
+                "INNER JOIN EclecticRondDeltagare ed ON ed.SpelarID = r.SpelarID AND ed.RondID = r.RondID " +
+                "INNER JOIN Bana b ON b.BanaNr = er.BanaNr " +
+                "WHERE r.RondID = @RondID " +
+                "GROUP BY r.RondID, s.Namn " +
+                "ORDER BY r.RondID, Placering";
+
+                List<DatabasParameters> dbParameters = new List<DatabasParameters>()
+                {
+                    new DatabasParameters("@RondID", DataTyp.Int, rondID.ToString())
+                };
+
+                ResultatListaDS = DatabasAccess.FyllDataSet(sql, dbParameters);
+                ResultatListaDS.Tables[0].TableName = "Resultatlista";
+                return ResultatListaDS;
             }
             catch (HookerException hex)
             {
